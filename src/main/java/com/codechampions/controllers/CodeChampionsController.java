@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.List;
 
 /**
  * Created by Jack on 12/9/15.
@@ -36,36 +37,42 @@ public class CodeChampionsController {
     }
 
     @RequestMapping("/create-user")
-    public void createUser(HttpServletResponse response, HttpSession session, String username, String password) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
-        User user = users.findOneByUsername(username);
-        if (user == null) {
+    public void createUser(HttpServletResponse response, String username, String password) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
+        //User user = users.findOneByUsername(username);
+        //if (user == null) {
+
+            User user = new User();
             user.username = username;
-            user.password = PasswordHash.createHash(password);
+            //user.password = PasswordHash.createHash(password);
+            user.password = password;
             users.save(user);
-            session.setAttribute("username", username);
-            response.sendRedirect("/");
-        }
-        else {
-            response.sendRedirect("/login");
-        }
+            response.sendRedirect("/#/home");
+       // }
+        //else {
+          //  response.sendRedirect("/login");
+        //}
     }
 
     @RequestMapping("/login")
     public void login(HttpServletResponse response, HttpSession session, String username, String password) throws Exception {
         User user = users.findOneByUsername(username);
-        if (user == null) {
-            response.sendRedirect("/create-user");
-        }
-
-        if (!PasswordHash.validatePassword(password, user.password)) {
-            throw new Exception("Wrong password! Try Again!");
-        }
-        else if (username == null || password == null) {
-            throw new Exception("Please enter both a username and password!");
+       /* if (user == null) {
+            response.sendRedirect("/#/newUser");
         }
         else if (PasswordHash.validatePassword(password, user.password)) {
             session.setAttribute("username", username);
-            response.sendRedirect("/");
+            response.sendRedirect("/#/home");
+        }
+        else {
+            throw new Exception("Your password is not correct");
+        }*/
+
+        if (user == null) {
+            throw new Exception("user does not exist");
+        }
+        else {
+            session.setAttribute("username", username);
+            response.sendRedirect("/#/home");
         }
     }
 
@@ -73,6 +80,11 @@ public class CodeChampionsController {
     public void logout(HttpSession session, HttpServletResponse response) throws IOException {
         session.invalidate();
         response.sendRedirect("/");
+    }
+
+    @RequestMapping("/users")
+    public List<User> users() {
+        return (List<User>) users.findAll();
     }
 
 

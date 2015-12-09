@@ -15,10 +15,10 @@ public class User {
     @Column(nullable = false)
     public int id;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     public String username;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     public String password;
 
     //Email field
