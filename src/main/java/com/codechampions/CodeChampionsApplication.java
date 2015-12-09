@@ -10,3 +10,5 @@ public class CodeChampionsApplication {
         SpringApplication.run(CodeChampionsApplication.class, args);
     }
 }
+
+//random comment
