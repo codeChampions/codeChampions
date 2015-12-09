@@ -21,6 +21,8 @@ public class User {
     @Column(nullable = false)
     public String password;
 
+    //Email field
+
     //Image Avatar field
 
     //@OneToMany(mappedBy = "user")
