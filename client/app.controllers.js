@@ -14,6 +14,11 @@
         };
     })
     .controller('NewUserController', function($scope, NewUserService){
+      var vm = this;
 
+      vm.createNewUser = function(newUserInfo){
+        NewUserService.createNewUser(newUserInfo);
+      };
+      
     });
 }());
