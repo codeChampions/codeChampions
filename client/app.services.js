@@ -4,10 +4,9 @@
   angular
     .module('codeChampions')
     .factory('LoginService', function($http, _){
-      var loginUrl ='';
+      var loginUrl ='/login';
       var login = function(userInfo){
-        console.log(userInfo);
-        //$http.post(loginUrl, userInfo);
+        $http.post(loginUrl, userInfo);
       };
 
 
