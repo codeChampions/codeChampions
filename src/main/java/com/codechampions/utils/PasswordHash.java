@@ -193,7 +193,7 @@ public class PasswordHash
      *
      * @param   args        ignored
      */
-    public static void main(String[] args)
+   /* public static void main(String[] args)
     {
         try
         {
@@ -232,6 +232,6 @@ public class PasswordHash
         {
             System.out.println("ERROR: " + ex);
         }
-    }
+    }*/
 
 }
