@@ -16,6 +16,11 @@
       };
     })
     .factory('NewUserService', function($http, _){
+      var createNewUser= function(newUserInfo){
 
+      };
+      return{
+          createNewUser: createNewUser,
+      };
     });
 }());
