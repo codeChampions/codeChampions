@@ -1,0 +1,10 @@
+#login {
+  background-color: #40B9ED;
+  text-align: center;
+  height: 600px; }
+  #login input {
+    width: 30%;
+    margin: 0 auto; }
+  #login .login {
+    width: 14%;
+    margin-top: 5px; }
