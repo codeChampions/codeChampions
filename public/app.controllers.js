@@ -17,8 +17,10 @@
       var vm = this;
 
       vm.createNewUser = function(newUserInfo){
+        console.log("in the controller");
+
         NewUserService.createNewUser(newUserInfo);
       };
-      
+
     });
 }());

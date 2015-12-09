@@ -1,6 +1,6 @@
 <div class="newUser">
   <h1>Create New User</h1>
-  <form ng-submt="newUserCtrl.createNewUser(newUserInfo)">
+  <form ng-submit="newUserCtrl.createNewUser(newUserInfo)">
   <input class="form-control" type="text" placeholder="Username" value="" name="username" ng-model="newUserInfo.name">
   <!-- <input class="form-control" type="text" placeholder="Email" value="" name="email" ng-model="userInfo.email"> -->
   <input class="form-control" type="password" placeholder="Password" value="" name="password" ng-model="newUserInfo.password">
@@ -14,4 +14,5 @@
    <option>jQuery</option>
   </select> -->
   <input class="btn btn-primary login" type="submit" name="submit" value="Login">
+</form>
 </div>
