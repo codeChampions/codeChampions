@@ -21,9 +21,13 @@ public class User {
     //@Column(nullable = false)
     public String password;
 
+    //Progress field
+
     //Email field
 
     //Image Avatar field
+
+    //user type (extend user class or as field?
 
     //@OneToMany(mappedBy = "user")
     //public List<Message> messages;
