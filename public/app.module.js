@@ -19,7 +19,7 @@
           controller: 'NewUserController as newUserCtrl'
         })
         .when('/home',{
-          templateUrl: 'views/home.html',
+          templateUrl: 'views/profile.html',
           controller: 'MainController'
         })
         .when('/404',{
