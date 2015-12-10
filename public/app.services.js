@@ -6,9 +6,10 @@
     .factory('LoginService', function($http, $location, _){
       var loginUrl ='/login';
       var login = function(userInfo){
-        return $http.post(loginUrl, userInfo).then(function(res){console.log("good", res);},function(res){
+      return $http.post(loginUrl, userInfo).then(function (res) {console.log(res)});
+        return $http.post(loginUrl + '/?username=' + userInfo.username + '&password=' + userInfo.password).then(function(res){console.log("good", res);},function(res){
           console.log(res);
-          $location.path('/newUser');
+//          $location.path('/newUser');
         });
       };
 

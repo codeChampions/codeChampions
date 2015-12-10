@@ -54,8 +54,8 @@ public class CodeChampionsController {
 
     @RequestMapping("/login")
     public void login(HttpServletResponse response, HttpSession session, String username, String password) throws Exception {
-        session.setAttribute("username", username);
         User user = users.findOneByUsername(username);
+        session.setAttribute("username", username);
 
         if (user == null) {
             response.sendError(403, "Username does not exist!");
@@ -63,10 +63,10 @@ public class CodeChampionsController {
         else if (username == null || password == null) {
             response.sendError(403, "Please enter both a username and password!");
         }
-       // if (PasswordHash.validatePassword(password, user.password))
+      //  else if (PasswordHash.validatePassword(password, user.password))
         else if (password == user.password)  {
 
-            response.sendRedirect("/#/home");
+            System.out.println("Success!");
         }
     }
 
