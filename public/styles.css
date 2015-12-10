@@ -6,16 +6,29 @@ body {
 #login {
   text-align: center;
   height: 600px; }
+  #login h1 {
+    font-size: 60px; }
+  #login .img-logo {
+    margin-bottom: 10px;
+    width: 100px; }
   #login input {
     width: 30%;
     margin: 0 auto; }
   #login .login {
     width: 14%;
-    margin-top: 5px; }
+    margin-top: 5px;
+    background-color: #B71427;
+    color: white; }
 
 .newUser {
   text-align: center; }
+  .newUser .btn {
+    background-color: #B71427;
+    color: white; }
 
 .newUserInput {
   width: 30%;
   margin: 0 auto; }
+
+.btn {
+  font-size: 20px; }

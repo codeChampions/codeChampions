@@ -1,12 +1,12 @@
 <div id="login">
 <div class="container">
 <h1>Code Champions</h1>
-<img src="../images/ccLogo.png">
+<img class="img-logo" src="../images/ccLogo.png">
 <form ng-submit="loginCtrl.login(userInfo)">
   <input class="form-control" type="text" placeholder="Username" value="" name="username" ng-model="userInfo.username">
   <input class="form-control" type="password" placeholder="Password" value="" name="password" ng-model="userInfo.password">
-  <input class="btn btn-primary login" type="submit" name="submit" value="Login">
-  <a href="#/newUser" class="btn btn-danger login">Register</a>
+  <input class="btn btn-primary login login-btn" type="submit" name="submit" value="Login">
+  <a href="#/newUser" class="btn login register-btn">Register</a>
 </form>
 </div>
 </div>
