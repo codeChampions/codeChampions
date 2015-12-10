@@ -44,6 +44,15 @@
         });
       };
 
-    });
+    })
+    .controller('UserController', function($scope, $location, UserService){
+      var vm = this;
+
+      vm.logout = function(){
+        UserService.logout().then(function(){
+          $location.path('/');
+        });
+        }
+      });
 
 }());

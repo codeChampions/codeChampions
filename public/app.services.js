@@ -22,6 +22,15 @@
       return{
           createNewUser: createNewUser,
       };
+    })
+    .factory('UserService', function($http, _){
+      var logoutUrl = '/logout';
+      var logout = function(){
+        return $http.post();
+      };
+      return {
+        logout: logout;
+      };
     });
 
 }());
