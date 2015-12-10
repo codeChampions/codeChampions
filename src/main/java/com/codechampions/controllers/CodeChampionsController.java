@@ -31,46 +31,38 @@ public class CodeChampionsController {
         if (admin == null) {
             admin = new User();
             admin.username = "Admin";
-            admin.password = PasswordHash.createHash("Admin");
+            //admin.password = PasswordHash.createHash("Admin");
+            admin.password = "Admin";
             users.save(admin);
         }
     }
 
-    @RequestMapping("/create-user")
-    public void createUser(HttpServletResponse response, String username, String password) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
-        //User user = users.findOneByUsername(username);
-        //if (user == null) {
-
+    @RequestMapping("/newUser")
+    public void createUser(HttpServletResponse response, String username, String password) throws Exception {
+            if (username == null || password == null) {
+                response.sendError(403, "Please enter both a username and password!");
+            }
+            else {
             User user = new User();
             user.username = username;
             //user.password = PasswordHash.createHash(password);
             user.password = password;
             users.save(user);
             response.sendRedirect("/#/home");
-       // }
-        //else {
-          //  response.sendRedirect("/login");
-        //}
+            }
     }
 
     @RequestMapping("/login")
     public void login(HttpServletResponse response, HttpSession session, String username, String password) throws Exception {
         User user = users.findOneByUsername(username);
-       /* if (user == null) {
-            response.sendRedirect("/#/newUser");
-        }
-        else if (PasswordHash.validatePassword(password, user.password)) {
-            session.setAttribute("username", username);
-            response.sendRedirect("/#/home");
-        }
-        else {
-            throw new Exception("Your password is not correct");
-        }*/
-
         if (user == null) {
-            throw new Exception("user does not exist");
+            response.sendError(403, "Username does not exist!");
         }
-        else {
+        else if (username == null || password == null) {
+            response.sendError(403, "Please enter both a username and password!");
+        }
+       // if (PasswordHash.validatePassword(password, user.password))
+        else if (password == user.password)  {
             session.setAttribute("username", username);
             response.sendRedirect("/#/home");
         }
@@ -86,6 +78,5 @@ public class CodeChampionsController {
     public List<User> users() {
         return (List<User>) users.findAll();
     }
-
 
 }
