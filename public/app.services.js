@@ -26,10 +26,10 @@
     .factory('UserService', function($http, _){
       var logoutUrl = '/logout';
       var logout = function(){
-        return $http.post();
+        return $http.post(logoutUrl);
       };
       return {
-        logout: logout;
+        logout: logout,
       };
     });
 
