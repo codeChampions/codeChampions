@@ -44,7 +44,7 @@ public class CodeChampionsController {
                 response.sendError(403, "Please enter both a username and password!");
             }
             else if (users.findOneByUsername(tempUser.username) != null) {
-                System.out.println("Username already exists!");
+                response.sendError(404, "Username already exists");
             }
             else {
             User user = new User();
