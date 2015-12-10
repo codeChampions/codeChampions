@@ -39,16 +39,19 @@ public class CodeChampionsController {
     }
 
     @RequestMapping("/newUser")
-    public void createUser(HttpServletResponse response, String username, String password) throws Exception {
-            if (username == null || password == null) {
+    public void createUser(HttpServletResponse response, @RequestBody User tempUser) throws Exception {
+            if (tempUser.username == null || tempUser.password == null) {
                 response.sendError(403, "Please enter both a username and password!");
+            }
+            else if (users.findOneByUsername(tempUser.username) != null) {
+                System.out.println("Username already exists!");
             }
             else {
             User user = new User();
-            user.username = username;
-            user.password = PasswordHash.createHash(password);
+            user.username = tempUser.username;
+            user.password = PasswordHash.createHash(tempUser.password);
             users.save(user);
-            response.sendRedirect("/#/home");
+                System.out.println("Success!");
             }
     }
 
