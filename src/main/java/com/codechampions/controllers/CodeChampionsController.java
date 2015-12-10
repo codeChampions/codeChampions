@@ -3,7 +3,9 @@ package com.codechampions.controllers;
 import com.codechampions.entities.User;
 import com.codechampions.services.UserRepository;
 import com.codechampions.utils.PasswordHash;
+import org.hibernate.annotations.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,20 +55,22 @@ public class CodeChampionsController {
     }
 
     @RequestMapping("/login")
-    public void login(HttpServletResponse response, HttpSession session, String username, String password) throws Exception {
-        User user = users.findOneByUsername(username);
-        session.setAttribute("username", username);
+    public void login(HttpServletResponse response, HttpSession session, @RequestBody User userParams) throws Exception {
+        User user = users.findOneByUsername(userParams.username);
+        session.setAttribute("username", userParams.username);
 
         if (user == null) {
             response.sendError(403, "Username does not exist!");
         }
-        else if (username == null || password == null) {
-            response.sendError(403, "Please enter both a username and password!");
+        else if (userParams.username == null || userParams.password == null) {
+            response.sendError(404, "Please enter both a username and password!");
         }
       //  else if (PasswordHash.validatePassword(password, user.password))
-        else if (password == user.password)  {
-
+        else if (userParams.password.equals(user.password)) {
             System.out.println("Success!");
+        }
+        else {
+            response.sendError(405, "Wrong password");
         }
     }
 
