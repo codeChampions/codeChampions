@@ -14,5 +14,8 @@ body {
     margin-top: 5px; }
 
 .newUser {
+  text-align: center; }
+
+.newUserInput {
   width: 30%;
   margin: 0 auto; }
