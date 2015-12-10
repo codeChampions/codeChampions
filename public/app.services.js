@@ -6,7 +6,7 @@
     .factory('LoginService', function($http, $location, _){
       var loginUrl ='/login';
       var login = function(userInfo){
-        return $http.post(loginUrl, userInfo).error(function(res){
+        return $http.post(loginUrl, userInfo).then(function(res){console.log("good", res);},function(res){
           console.log(res);
           $location.path('/newUser');
         });
