@@ -14,9 +14,17 @@
             console.log("success");
             $location.path('/home');
           }, function(res){
-            var goOn = confirm(res.data.message + " Create new user?");
-            if(goOn){
-            $location.path('/newUser');
+            if(res.data.status === 405){
+              alert("Wrong Password. Please try again");
+            }
+            else if(res.data.status === 403){
+              var goOn = confirm(res.data.message + " Create new user?");
+              if(goOn){
+              $location.path('/newUser');
+            }
+          }
+          else{
+            alert("Please enter both a username and Password");
           }
           });
         };
@@ -36,6 +44,6 @@
         });
       };
 
-    })
-    
+    });
+
 }());
