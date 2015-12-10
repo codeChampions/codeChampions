@@ -1,5 +1,11 @@
-#login{
+body{
   background-color: #40B9ED;
+  font-family:  'Anton', sans-serif;
+  color: white;
+}
+
+#login{
+
   text-align: center;
   height: 600px;
   input{
@@ -10,4 +16,9 @@
     width: 14%;
     margin-top: 5px;
   }
+}
+
+.newUser{
+  width: 30%;
+  margin: 0 auto;
 }
