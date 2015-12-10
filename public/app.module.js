@@ -28,7 +28,7 @@
         })
         .when('/home',{
           templateUrl: 'views/profile.html',
-          controller: 'MainController'
+          controller: 'UserController as userCtrl'
         })
         .when('/404',{
           template: '<h1>Sorry page not found</h1>',
