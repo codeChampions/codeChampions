@@ -29,7 +29,7 @@
         return $http.post();
       };
       return {
-        logout: logout;
+        logout: logout,
       };
     });
 
