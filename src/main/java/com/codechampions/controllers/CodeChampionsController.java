@@ -86,9 +86,4 @@ public class CodeChampionsController {
         return (List<User>) users.findAll();
     }
 
-   /* @RequestMapping("/currentUser")
-    public User user(HttpSession session) {
-        session.getAttribute()
-    }*/
-
 }
