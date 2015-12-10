@@ -25,4 +25,5 @@
           createNewUser: createNewUser,
       };
     });
+
 }());

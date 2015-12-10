@@ -28,5 +28,6 @@
         NewUserService.createNewUser(newUserInfo);
       };
 
-    });
+    })
+    
 }());
