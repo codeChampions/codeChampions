@@ -14,18 +14,26 @@
             console.log("success");
             $location.path('/home');
           }, function(res){
-            console.log("failed");
+            var goOn = confirm(res.data.message + " Create new user?");
+            if(goOn){
             $location.path('/newUser');
+          }
           });
         };
     })
-    .controller('NewUserController', function($scope, NewUserService){
+    .controller('NewUserController', function($scope, $location, NewUserService){
       var vm = this;
 
       vm.createNewUser = function(newUserInfo){
         console.log("in the controller");
 
-        NewUserService.createNewUser(newUserInfo);
+        NewUserService.createNewUser(newUserInfo).then(function(res){
+          console.log("successfully made new user");
+          $location.path('/home');
+        }, function(res){
+          alert("failed to make new user");
+
+        });
       };
 
     })
