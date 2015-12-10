@@ -60,11 +60,11 @@ public class CodeChampionsController {
         User user = users.findOneByUsername(tempUser.username);
         session.setAttribute("username", tempUser.username);
 
-        if (user == null) {
-            response.sendError(403, "Username does not exist!");
-        }
-        else if (tempUser.username == null || tempUser.password == null) {
+        if (tempUser.username == null || tempUser.password == null) {
             response.sendError(404, "Please enter both a username and password!");
+        }
+        else if (user == null) {
+            response.sendError(403, "Username does not exist!");
         }
         else if (!PasswordHash.validatePassword(tempUser.password, user.password)) {
             response.sendError(405, "Wrong Password!");
