@@ -8,6 +8,13 @@ body{
 
   text-align: center;
   height: 600px;
+  h1 {
+    font-size: 60px;
+  }
+  .img-logo {
+    margin-bottom: 10px;
+    width: 100px;
+  }
   input{
     width: 30%;
     margin: 0 auto;
@@ -15,13 +22,23 @@ body{
   .login{
     width: 14%;
     margin-top: 5px;
+    background-color: #B71427;
+    color: white;
   }
 }
 
 .newUser{
   text-align: center;
+  .btn {
+  background-color: #B71427;
+  color: white;
+  }
 }
 .newUserInput{
   width: 30%;
   margin: 0 auto;
+}
+
+.btn {
+  font-size: 20px;
 }
