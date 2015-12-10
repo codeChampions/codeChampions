@@ -11,7 +11,8 @@
 
         vm.login = function(userInfo){
           LoginService.login(userInfo).then(function(res){
-            console.log("success");
+            console.log(res);
+            sessionStorage.setItem('username', res.config.data.username);
             $location.path('/home');
           }, function(res){
             if(res.data.status === 405){
@@ -51,8 +52,9 @@
       vm.logout = function(){
         UserService.logout().then(function(){
           $location.path('/');
+          sessionStorage.removeItem('username');
         });
-        }
+      };
       });
 
 }());
