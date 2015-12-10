@@ -33,8 +33,7 @@ public class CodeChampionsController {
         if (admin == null) {
             admin = new User();
             admin.username = "Admin";
-            //admin.password = PasswordHash.createHash("Admin");
-            admin.password = "Admin";
+            admin.password = PasswordHash.createHash("Admin");
             users.save(admin);
         }
     }
@@ -47,30 +46,28 @@ public class CodeChampionsController {
             else {
             User user = new User();
             user.username = username;
-            //user.password = PasswordHash.createHash(password);
-            user.password = password;
+            user.password = PasswordHash.createHash(password);
             users.save(user);
             response.sendRedirect("/#/home");
             }
     }
 
     @RequestMapping("/login")
-    public void login(HttpServletResponse response, HttpSession session, @RequestBody User userParams) throws Exception {
-        User user = users.findOneByUsername(userParams.username);
-        session.setAttribute("username", userParams.username);
+    public void login(HttpServletResponse response, HttpSession session, @RequestBody User tempUser) throws Exception {
+        User user = users.findOneByUsername(tempUser.username);
+        session.setAttribute("username", tempUser.username);
 
         if (user == null) {
             response.sendError(403, "Username does not exist!");
         }
-        else if (userParams.username == null || userParams.password == null) {
+        else if (tempUser.username == null || tempUser.password == null) {
             response.sendError(404, "Please enter both a username and password!");
         }
-      //  else if (PasswordHash.validatePassword(password, user.password))
-        else if (userParams.password.equals(user.password)) {
-            System.out.println("Success!");
+        else if (!PasswordHash.validatePassword(tempUser.password, user.password)) {
+            response.sendError(405, "Wrong Password!");
         }
         else {
-            response.sendError(405, "Wrong password");
+            System.out.println("Success!");
         }
     }
 
