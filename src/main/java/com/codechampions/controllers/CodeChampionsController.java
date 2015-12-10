@@ -59,6 +59,7 @@ public class CodeChampionsController {
     public void login(HttpServletResponse response, HttpSession session, @RequestBody User tempUser) throws Exception {
         User user = users.findOneByUsername(tempUser.username);
         session.setAttribute("username", tempUser.username);
+        session.getAttribute(tempUser.username);
 
         if (tempUser.username == null || tempUser.password == null) {
             response.sendError(404, "Please enter both a username and password!");
@@ -77,12 +78,17 @@ public class CodeChampionsController {
     @RequestMapping("/logout")
     public void logout(HttpSession session, HttpServletResponse response) throws IOException {
         session.invalidate();
-        response.sendRedirect("/");
+        System.out.println("Successfully Logged Out!");
     }
 
     @RequestMapping("/users")
     public List<User> users() {
         return (List<User>) users.findAll();
     }
+
+   /* @RequestMapping("/currentUser")
+    public User user(HttpSession session) {
+        session.getAttribute()
+    }*/
 
 }
