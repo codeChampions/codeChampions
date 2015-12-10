@@ -4,6 +4,8 @@ body{
   color: white;
 }
 
+// login page
+
 #login{
 
   text-align: center;
@@ -27,6 +29,8 @@ body{
   }
 }
 
+// newUser page
+
 .newUser{
   text-align: center;
   .btn {
@@ -41,4 +45,20 @@ body{
 
 .btn {
   font-size: 20px;
+}
+
+// profile page
+
+.nav {
+  h1{
+    float: left;
+  }
+  .btn {
+    float: right;
+    margin-top: 10px;
+    background-color: #B71427;
+  }
+  hr {
+    width: 100%;
+  }
 }

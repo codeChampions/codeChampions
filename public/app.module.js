@@ -18,6 +18,14 @@
           templateUrl: 'views/accountCreation.html',
           controller: 'NewUserController as newUserCtrl'
         })
+        .when('/student', {
+          templateUrl: 'views/studentHome.html',
+          controller: 'NewUserController as newUserCtrl'
+        })
+        .when('/teacher', {
+          templateUrl: 'views/teacherHome.html',
+          controller: 'NewUserController as newUserCtrl'
+        })
         .when('/home',{
           templateUrl: 'views/profile.html',
           controller: 'MainController'

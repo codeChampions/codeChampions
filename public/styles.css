@@ -32,3 +32,14 @@ body {
 
 .btn {
   font-size: 20px; }
+
+.nav h1 {
+  float: left; }
+
+.nav .btn {
+  float: right;
+  margin-top: 10px;
+  background-color: #B71427; }
+
+.nav hr {
+  width: 100%; }
