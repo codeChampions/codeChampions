@@ -14,8 +14,10 @@
             console.log("success");
             $location.path('/home');
           }, function(res){
-            console.log("failed");
+            var goOn = confirm(res.data.message + " Create new user?");
+            if(goOn){
             $location.path('/newUser');
+          }
           });
         };
     })
