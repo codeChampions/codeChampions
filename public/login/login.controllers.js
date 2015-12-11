@@ -9,7 +9,8 @@
         vm.login = function(userInfo){
           LoginService.login(userInfo).then(function(res){
             console.log(res);
-            sessionStorage.setItem('username', res.config.data.username);
+            sessionStorage.setItem('username', res.data.username);
+            sessionStorage.setItem('id', res.data.id);
             $location.path('/home');
           }, function(res){
             if(res.data.status === 405){

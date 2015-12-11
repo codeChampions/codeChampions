@@ -10,6 +10,7 @@
         UserService.logout().then(function(){
           $location.path('/');
           sessionStorage.removeItem('username');
+          sessionStorage.removeItem('id');
         });
       };
       });
