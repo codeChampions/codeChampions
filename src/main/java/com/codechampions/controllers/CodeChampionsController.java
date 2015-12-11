@@ -57,7 +57,7 @@ public class CodeChampionsController {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public void login(HttpServletResponse response, HttpSession session, @RequestBody User tempUser) throws Exception {
+    public User login(HttpServletResponse response, HttpSession session, @RequestBody User tempUser) throws Exception {
         User user = users.findOneByUsername(tempUser.username);
         session.setAttribute("username", tempUser.username);
         session.getAttribute(tempUser.username);
@@ -73,11 +73,13 @@ public class CodeChampionsController {
         }
         else {
             System.out.println("Success!");
+            return user;
         }
+        return null;
     }
 
     @RequestMapping("/logout")
-    public void logout(HttpSession session, HttpServletResponse response) throws IOException {
+    public void logout(HttpSession session) throws IOException {
         session.invalidate();
         System.out.println("Successfully Logged Out!");
     }
