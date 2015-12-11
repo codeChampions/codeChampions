@@ -40,7 +40,7 @@ public class CodeChampionsController {
     }
 
     @RequestMapping(path = "/newUser", method = RequestMethod.POST)
-    public void createUser(HttpServletResponse response, @RequestBody User tempUser) throws Exception {
+    public User createUser(HttpServletResponse response, @RequestBody User tempUser) throws Exception {
             if (tempUser.username == null || tempUser.password == null) {
                 response.sendError(403, "Please enter both a username and password!");
             }
@@ -53,7 +53,9 @@ public class CodeChampionsController {
             user.password = PasswordHash.createHash(tempUser.password);
             users.save(user);
                 System.out.println("Success!");
+                return user;
             }
+        return null;
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
