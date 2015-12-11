@@ -45,6 +45,22 @@ body {
 .nav hr {
   width: 100%; }
 
+.image {
+  border: 1px solid black;
+  background: white;
+  height: 300px; }
+
+.image-edit {
+  background-color: #B71427;
+  font-size: 20px; }
+
+aside .edit {
+  display: inline-block;
+  margin-top: 10px; }
+  aside .edit button {
+    background-color: #B71427;
+    font-size: 20px; }
+
 .lesson {
   margin-left: auto;
   margin-right: auto; }

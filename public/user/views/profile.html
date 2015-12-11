@@ -3,12 +3,21 @@
     <h1>Code Champions</h1>
     <button ng-click="userCtrl.logout()" class="btn btn-logout">Logout</button>
     <button class="btn btn-home">Home</button>
-
     <hr>
   </div>
   <div class="profile-info">
-    <img ng-src="{{user.image}}" class="col-md-3">
-    <h3>{{userCtrl.currentUser}}</h3>
-    <h3>{{user.email}}</h3>
+    <aside class="col-md-3">
+      <p class="image"><img ng-src=""></p>
+      <button class="image-edit" ng-click="">Edit</button>
+    </aside>
+    <aside>
+      <h3 class="col-md-5">Username: {{userCtrl.currentUser}}</h3><input style="color: black" type="text" class="terry" ng-model="userCtrl.currentUser">
+      <p class="edit"><button ng-click="userCtrl.edit({username: userCtrl.currentUser}, userCtrl.id)">Submit</button></p>
+<!-- <p class="edit"><button ng-init="nameEdit=0" ng-click="nameEdit=nameEdit + 1">Edit</button></p> -->
+    </aside>
+    <aside>
+      <h3 class="col-md-5">Email: </h3>
+      <p class="edit"><button ng-click="">Edit</button></p>
+    </aside>
   </div>
 </div>
