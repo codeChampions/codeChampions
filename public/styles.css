@@ -44,3 +44,22 @@ body {
 
 .nav hr {
   width: 100%; }
+
+.lesson {
+  margin-left: auto;
+  margin-right: auto; }
+  .lesson .video {
+    background-color: white;
+    border: 1px solid black;
+    height: 400px;
+    margin-right: 10px; }
+  .lesson .notes {
+    background-color: white;
+    border: 1px solid black;
+    height: 400px; }
+  .lesson p .next {
+    float: right;
+    margin-right: 5px;
+    margin-top: 10px;
+    background-color: #B71427;
+    color: white; }
