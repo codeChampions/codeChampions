@@ -7,6 +7,7 @@ import org.hibernate.annotations.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
@@ -38,7 +39,7 @@ public class CodeChampionsController {
         }
     }
 
-    @RequestMapping("/newUser")
+    @RequestMapping(path = "/newUser", method = RequestMethod.POST)
     public void createUser(HttpServletResponse response, @RequestBody User tempUser) throws Exception {
             if (tempUser.username == null || tempUser.password == null) {
                 response.sendError(403, "Please enter both a username and password!");
@@ -55,7 +56,7 @@ public class CodeChampionsController {
             }
     }
 
-    @RequestMapping("/login")
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
     public void login(HttpServletResponse response, HttpSession session, @RequestBody User tempUser) throws Exception {
         User user = users.findOneByUsername(tempUser.username);
         session.setAttribute("username", tempUser.username);
