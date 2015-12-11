@@ -64,41 +64,37 @@ body {
     background-color: #B71427;
     color: white; }
 
-.gameView .ace_editor {
-  width: 100%;
-  height: 390px;
-  margin-top: 5px; }
-
-.gameView .notes {
-  padding-top: 10px;
-  background-color: white;
-  border: 1px solid black;
-  height: 400px;
-  color: black; }
-
-.gameView .editor {
-  background-color: white;
-  border: 1px solid black;
-  height: 400px; }
-
-.gameView .gameBox {
-  background-color: white;
-  border: 1px solid black;
-  height: 400px;
-  color: black; }
-
-.gameView #char {
-  position: absolute; }
-
-.gameView #field {
-  position: relative;
-  width: 85%;
-  height: 235px;
-  border: 1px solid gray; }
-
-.gameView #x {
-  position: absolute;
-  top: 100px;
-  left: 150px;
-  font-size: 50px;
-  color: red; }
+.gameView {
+  padding: 10px 20px; }
+  .gameView .ace_editor {
+    width: 100%;
+    height: 390px;
+    margin-top: 5px; }
+  .gameView .notes {
+    padding-top: 10px;
+    background-color: white;
+    border: 1px solid black;
+    height: 400px;
+    color: black; }
+  .gameView .editor {
+    background-color: white;
+    border: 1px solid black;
+    height: 400px; }
+  .gameView .gameBox {
+    background-color: white;
+    border: 1px solid black;
+    height: 400px;
+    color: black; }
+  .gameView #char {
+    position: absolute; }
+  .gameView #field {
+    position: relative;
+    width: 85%;
+    height: 235px;
+    border: 1px solid gray; }
+  .gameView #x {
+    position: absolute;
+    top: 100px;
+    left: 150px;
+    font-size: 50px;
+    color: red; }
