@@ -1,1 +1,17 @@
-<h1> game view</h1>
+<div class="container">
+  <div class="nav">
+    <h1>Code Champions</h1>
+    <button ng-click="userCtrl.logout()" class="btn btn-logout">Logout</button>
+    <button class="btn btn-home">Home</button>
+
+    <hr>
+  </div>
+  <div class="row gameView">
+  <div class="notes col-xs-4">Notes go here<br>You are currently at position (0,0) and the treasure is at (150, 100). Move the character to the treasure by using the <br>moveLeft( ), <br>moveRight( ),<br> moveUp( ),<br> and moveDown( ) functions.<br>
+    Each moves the character 50px in the indicated direction. Be quick. You only have 3 seconds to reach the destination and each move takes 0.5s.</div>
+  <div class="col-xs-4 editor">
+  <div ui-ace="gameCtrl.aceOption" ng-model="gameCtrl.aceModel">stuff</div>
+  </div>
+  <div class="col-xs-4 gameBox">Game goes here <button class="btn btn-danger" ng-click="gameCtrl.run()">Run</button><br><div id="field"><img id="char" class="char" src="../../images/terry.png"><div id="x">x</div></div></div>
+  </div>
+</div>
