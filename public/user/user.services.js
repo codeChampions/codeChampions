@@ -9,7 +9,7 @@
         return $http.post(logoutUrl);
       };
       return {
-        logout: logout,
+        logout: logout
       };
     });
 }());
