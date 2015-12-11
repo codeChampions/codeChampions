@@ -15,7 +15,7 @@
           };
         }
       };
-      if($location.url()==='/ace'){
+      if($location.url()==='/game'){
       vm.aceModel = '//Javascript goes here \n moveDown();';
       }
       else{
