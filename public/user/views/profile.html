@@ -12,7 +12,7 @@
     </aside>
     <aside>
       <h3 class="col-md-5">Username: {{userCtrl.currentUser}}</h3><input style="color: black" type="text" class="terry" ng-model="userCtrl.currentUser">
-      <p class="edit"><button ng-click="userCtrl.edit({username: userCtrl.currentUser}, userCtrl.id)">Submit</button></p>
+      <p class="edit"><button ng-click="userCtrl.edit(userCtrl.currentUser, userCtrl.id)">Submit</button></p>
 <!-- <p class="edit"><button ng-init="nameEdit=0" ng-click="nameEdit=nameEdit + 1">Edit</button></p> -->
     </aside>
     <aside>
