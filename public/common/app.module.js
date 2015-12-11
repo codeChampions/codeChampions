@@ -9,7 +9,9 @@
       'ui.ace',
       'login',
       'newuser',
-      'user'
+      'user',
+      'lesson',
+      'game'
     ])
     .config(function($routeProvider){
       $routeProvider
