@@ -2,24 +2,19 @@
   'use strict';
 
   angular
-    .module('codeChampions', [
+    .module('game', [
       'ngRoute',
       'underscore',
       'ui.bootstrap',
       'ui.ace',
-      'login',
-      'newuser',
-      'user',
-      'lesson',
-      'game'
     ])
     .config(function($routeProvider){
       $routeProvider
-        .when('/404',{
-          template: '<h1>Sorry page not found</h1>',
-          controller: 'MainController'
-        })
-        .otherwise({redirectTo: '/404'});
+        .when('/game', {
+          templateUrl: 'game/views/game.html',
+          controller: 'GameController as gameCtrl'
+        });
+
     });
 
     angular
