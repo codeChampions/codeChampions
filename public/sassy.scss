@@ -151,7 +151,8 @@ aside {
     }
 
   #char {
-    position: absolute; }
+    position: absolute;
+    z-index: 3;}
 
   #field {
     position: relative;

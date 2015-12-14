@@ -106,7 +106,8 @@ aside .edit {
       font-family: 'Anton', sans-serif;
       margin-top: 5px; }
   .gameView #char {
-    position: absolute; }
+    position: absolute;
+    z-index: 3; }
   .gameView #field {
     position: relative;
     margin: 10px auto;
