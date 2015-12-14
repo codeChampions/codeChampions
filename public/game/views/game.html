@@ -7,7 +7,7 @@
     <hr>
   </div>
   <div class="row gameView">
-  <div class="notes col-xs-4">You are currently at position (0,0) and the treasure is at (150, 100). Move the character to the treasure by using the <br>moveLeft( ), <br>moveRight( ),<br> moveUp( ),<br> and moveDown( ) functions.<br>
+  <div class="notes col-xs-4">You are currently at position (0,0) and the treasure is at (150, -100). Move the character to the treasure by using the <br>moveLeft( ), <br>moveRight( ),<br> moveUp( ),<br> and moveDown( ) functions.<br>
     Each moves the character 50px in the indicated direction. Be quick. You only have 3 seconds to reach the destination and each move takes 0.5s.</div>
   <div class="col-xs-4 editor">
   <div ui-ace="gameCtrl.aceOption" ng-model="gameCtrl.aceModel">stuff</div>
@@ -20,6 +20,8 @@
         <button ng-click="hintOpen = !hintOpen" class="hint btn btn-danger">Hint</button>
       </div>
       <div ng-show="hintOpen" class="hint-box col-xs-8">
+        <div class="row hintRow"><div class="col-xs-8">The coordinates shown are in the x-y plane (x,y). You start off at 0 in the x-direction and 0 in the y-direction. You must get to 150 in the x-direction and -100 in the y-direction. Each move takes you 50 pixels, so divide the total amount you need to move in each direction by 50 to find out how many times to call each function.</div>
+        <div class="col-xs-4"><img src="../../images/xy.png"</div></div>
       </div>
     </div>
   </div>
