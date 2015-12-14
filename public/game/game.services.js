@@ -42,10 +42,22 @@
         down++;
       }
       };
+      var resetGame = function(){
+        $("#char").css('top', '0px');
+        $("#char").css('left', '0px');
+        posUp = 0;
+        posLeft = 0;
+        down = 0;
+        right = 0;
+        left = 0;
+        top = 0;
+        $('#error').html("");
+        $('#error').addClass('hidden');
+      };
 
       var run = function(input){
+
         try{
-          $('#error').html("");
           eval(input);
           if(down != 2) throw "You need to move down twice";
           if(right != 3) throw "You need to move right three times";
@@ -53,6 +65,7 @@
           if(left > 0) throw "You do not need to move left";
         }
         catch(err){
+          $('#error').removeClass('hidden');
           $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
         }
         setTimeout(function(){
@@ -60,12 +73,10 @@
         var next = confirm("Go to next lesson?");
         if(next === true){
           $location.path('/for');
+          resetGame();
         }
         else{
-        $("#char").css('top', '0px');
-        $("#char").css('left', '0px');
-        posUp = 0;
-        posLeft = 0;
+        resetGame();
       }
 
       }
@@ -73,10 +84,7 @@
         alert("Sorry, try again");
         console.log($('#char').position());
         console.log($('#x').position());
-        $("#char").css('top', '0px');
-        $("#char").css('left', '0px');
-        posUp = 0;
-        posLeft = 0;
+        resetGame();
 
       }}, 3000);
 
