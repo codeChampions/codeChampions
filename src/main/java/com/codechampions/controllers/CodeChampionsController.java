@@ -99,6 +99,9 @@ public class CodeChampionsController {
         if (tempUser.username == null) {
             response.sendError(403, "Not logged in.");
         }
+        else if (users.findOneByUsername(tempUser.username) != null) {
+            response.sendError(404, "Username already exists!");
+        }
         else {
             user.username = tempUser.username;
             users.save(user);
