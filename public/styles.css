@@ -1,5 +1,5 @@
 body {
-  background-color: #40B9ED;
+  background-color: #2196F3;
   font-family: 'Anton', sans-serif;
   color: white; }
 
@@ -17,13 +17,13 @@ body {
   #login .login {
     width: 14%;
     margin-top: 5px;
-    background-color: #B71427;
+    background-color: #D32F2F;
     color: white; }
 
 .newUser {
   text-align: center; }
   .newUser .btn {
-    background-color: #B71427;
+    background-color: #D32F2F;
     color: white; }
 
 .newUserInput {
@@ -40,7 +40,7 @@ body {
   float: right;
   margin-right: 5px;
   margin-top: 10px;
-  background-color: #B71427; }
+  background-color: #D32F2F; }
 
 .nav hr {
   width: 100%; }
@@ -51,14 +51,14 @@ body {
   height: 300px; }
 
 .image-edit {
-  background-color: #B71427;
+  background-color: #D32F2F;
   font-size: 20px; }
 
 aside .edit {
   display: inline-block;
   margin-top: 10px; }
   aside .edit button {
-    background-color: #B71427;
+    background-color: #D32F2F;
     font-size: 20px; }
 
 .lesson {
@@ -77,7 +77,7 @@ aside .edit {
     float: right;
     margin-right: 5px;
     margin-top: 10px;
-    background-color: #B71427;
+    background-color: #D32F2F;
     color: white; }
 
 .gameView {
