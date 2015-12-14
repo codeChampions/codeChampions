@@ -10,12 +10,14 @@
       var right = 0;
       var up = 0;
       var down = 0;
+      var numMoves =0;
 
       var moveLeft = function(){
         if(posLeft>0){
         $('#char').animate({left: "-=50"}, {duration: 500});
         posLeft -=50;
         left++;
+        numMoves++;
       }
       };
 
@@ -24,6 +26,7 @@
         $('#char').animate({left: "+=50"}, {duration: 500});
         posLeft +=50;
         right++;
+        numMoves++;
       }
       };
 
@@ -32,6 +35,7 @@
         $('#char').animate({top: "-=50"}, {duration: 500});
         posUp -= 50;
         up++;
+        numMoves++;
       }
       };
 
@@ -40,6 +44,7 @@
         $('#char').animate({top: "+=50"}, {duration: 500});
         posUp += 50;
         down++;
+        numMoves++;
       }
       };
       var resetGame = function(){
@@ -51,6 +56,7 @@
         right = 0;
         left = 0;
         top = 0;
+        numMoves = 0;
         $('#error').html("");
         $('#error').addClass('hidden');
       };
@@ -59,6 +65,7 @@
 
         try{
           eval(input);
+          if(numMoves > 5) throw "You are using too many steps to get to the destination. Remember you only have 3s.";
           if(down != 2) throw "You need to move down twice";
           if(right != 3) throw "You need to move right three times";
           if(up > 0) throw "You do not need to move up";
@@ -81,6 +88,7 @@
 
       }
       else{
+        $('#char').stop();
         alert("Sorry, try again");
         console.log($('#char').position());
         console.log($('#x').position());
