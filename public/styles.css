@@ -136,6 +136,13 @@ aside .edit {
   background-color: white;
   font-family: 'Ek Mukta', sans-serif;
   color: black;
-  height: 100px;
+  height: 150px;
   border: 1px solid black;
   margin-bottom: 50px; }
+
+.hintView .hintRow {
+  padding-top: 6px; }
+
+.hintView img {
+  height: 140px;
+  text-align: center; }
