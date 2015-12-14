@@ -91,19 +91,17 @@ public class CodeChampionsController {
         return (List<User>) users.findAll();
     }
 
-    @RequestMapping("/editUser/{id}/")
+    @RequestMapping(path = "/editUser/{id}", method = RequestMethod.PUT)
     public void editUser(HttpSession session, HttpServletResponse response, @RequestBody User tempUser) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
         session.getAttribute(tempUser.username);
+        User user = users.findOne(tempUser.id);
+
         if (tempUser.username == null) {
             response.sendError(403, "Not logged in.");
         }
         else {
-            User user = users.findOne(tempUser.id);
             user.username = tempUser.username;
-            user.password = PasswordHash.createHash(tempUser.password);
             users.save(user);
-            System.out.println("Success!");
         }
     }
-
 }
