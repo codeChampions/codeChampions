@@ -115,3 +115,8 @@ aside .edit {
     left: 150px;
     font-size: 50px;
     color: red; }
+  .gameView #error {
+    width: 85%;
+    margin: 0 auto; }
+  .gameView .hidden {
+    display: none; }
