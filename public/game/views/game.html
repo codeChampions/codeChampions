@@ -7,11 +7,20 @@
     <hr>
   </div>
   <div class="row gameView">
-  <div class="notes col-xs-4">Notes go here<br>You are currently at position (0,0) and the treasure is at (150, 100). Move the character to the treasure by using the <br>moveLeft( ), <br>moveRight( ),<br> moveUp( ),<br> and moveDown( ) functions.<br>
+  <div class="notes col-xs-4">You are currently at position (0,0) and the treasure is at (150, 100). Move the character to the treasure by using the <br>moveLeft( ), <br>moveRight( ),<br> moveUp( ),<br> and moveDown( ) functions.<br>
     Each moves the character 50px in the indicated direction. Be quick. You only have 3 seconds to reach the destination and each move takes 0.5s.</div>
   <div class="col-xs-4 editor">
   <div ui-ace="gameCtrl.aceOption" ng-model="gameCtrl.aceModel">stuff</div>
   </div>
-  <div class="col-xs-4 gameBox">Game goes here <button class="btn btn-danger" ng-click="gameCtrl.run()">Run</button><br><div id="field"><img id="char" class="char" src="../../images/terry.png"><div id="x">x</div></div><div id="error" class="alert alert-danger hidden" role="alert"></div></div>
+  <div class="col-xs-4 gameBox"><button class="run btn btn-danger" ng-click="gameCtrl.run()">Run</button><br><div id="field"><img id="char" class="char" src="../../images/terry.png"><div id="x">x</div></div><div id="error" class="alert alert-danger hidden" role="alert"></div></div>
+  </div>
+  <div class="hintView">
+    <div class="col-xs-12">
+      <div class="col-xs-1">
+        <button ng-click="hintOpen = !hintOpen" class="hint btn btn-danger">Hint</button>
+      </div>
+      <div ng-show="hintOpen" class="hint-box col-xs-8">
+      </div>
+    </div>
   </div>
 </div>
