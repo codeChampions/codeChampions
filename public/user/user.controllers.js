@@ -17,7 +17,9 @@
 
       vm.edit = function(editInfo, id){
         console.log(editInfo + " stuff " + id);
-        UserService.edit(editInfo, id).then(function(){sessionStorage.setItem('username', editInfo);});
+        UserService.edit(editInfo, id).then(function(){sessionStorage.setItem('username', editInfo);}, function(res){
+          alert(res.error);
+        });
           console.log(editInfo);
           // console.log(res);
 
