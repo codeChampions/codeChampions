@@ -4,11 +4,11 @@
   angular
     .module('message')
     .factory('MessageService', function($http, _){
-      var getUrl = '/showGameBoard';
+      var getUrl = '/showReplies/1';
       var postUrl = '';
 
       var getMessages = function(){
-        return $http.get(getUrl);
+        return $http.post('/showReplies/1', {id: 1});
       };
       var sendNewMessage = function(newMessage){
           console.log("send new message");

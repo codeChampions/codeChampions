@@ -42,10 +42,10 @@
           </div>
         </div>
     </form>
-    <div class="row" id="messages">
+    <div class="row" id="messages" ng-repeat="message in messageCtrl.messages">
       <div class="col-xs-1"></div>
       <div class="col-xs-8 mainMessage">
-        <p>Username: This is the message</p>
+        <p><strong>{{message.user.username}}</strong>: {{message.messageText}}</p>
         <div class="col-xs-8">
           <button ng-click="replyMessage = !replyMessage" class="message-btn btn btn-danger">Reply</button>
         </div>
