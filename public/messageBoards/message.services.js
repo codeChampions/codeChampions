@@ -4,9 +4,12 @@
   angular
     .module('message')
     .factory('MessageService', function($http, _){
-      var getUrl = '';
+      var getUrl = '/showGameBoard';
       var postUrl = '';
-      
+
+      var getMessages = function(){
+        return $http.get(getUrl);
+      };
       var sendNewMessage = function(newMessage){
           console.log("send new message");
       };
@@ -23,7 +26,8 @@
       return{
           sendReply: sendReply,
           sendNewMessage: sendNewMessage,
-          check: check
+          check: check,
+          getMessages: getMessages,
       };
     });
 }());

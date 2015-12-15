@@ -18,7 +18,11 @@
         console.log("in message controller");
         MessageService.check();
       };
-
+      vm.getMessages = function(){
+        MessageService.getMessages().then(function(res){
+          console.log(res);});
+    };
+    vm.getMessages();
     });
 
 }());
