@@ -20,7 +20,7 @@
       };
       vm.getMessages = function(){
         MessageService.getMessages().then(function(res){
-          console.log(res);});
+          console.log(res.data);});
     };
     vm.getMessages();
     });
