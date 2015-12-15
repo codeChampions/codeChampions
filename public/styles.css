@@ -162,3 +162,40 @@ aside .edit {
 .hintView img {
   height: 140px;
   text-align: center; }
+
+.messageForm {
+  height: 50px; }
+
+.noPadding {
+  padding-left: 0;
+  padding-right: 0; }
+
+#messages {
+  font-family: 'Ek Mukta', sans-serif; }
+
+.mainMessage {
+  background-color: white;
+  font-family: 'Ek Mukta', sans-serif;
+  color: black;
+  min-height: 100px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+  border-radius: 5px; }
+
+.replyMessage {
+  background-color: white;
+  font-family: 'Ek Mukta', sans-serif;
+  color: black;
+  height: 50px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+  border-radius: 5px; }
+
+.message-btn {
+  background-color: #D32F2F;
+  font-family: 'Anton', sans-serif;
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+.replies {
+  margin-left: 50px; }
