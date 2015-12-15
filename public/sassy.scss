@@ -97,11 +97,28 @@ aside {
     border: 1px solid black;
     height: 400px;
     margin-right: 10px;
+    iframe{
+      margin-top:120px;
+      width: 100%;
+    }
   }
   .notes {
     background-color: white;
     border: 1px solid black;
     height: 400px;
+    overflow-y: scroll;
+    color: black;
+    font-family: 'Ek Mukta', sans-serif;
+    font-size: 16px;
+    img{
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    figcaption{
+      text-align: center;
+      font-size: 12px;
+    }
   }
   p {
     .next {

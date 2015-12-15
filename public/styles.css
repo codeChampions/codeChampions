@@ -69,10 +69,24 @@ aside .edit {
     border: 1px solid black;
     height: 400px;
     margin-right: 10px; }
+    .lesson .video iframe {
+      margin-top: 120px;
+      width: 100%; }
   .lesson .notes {
     background-color: white;
     border: 1px solid black;
-    height: 400px; }
+    height: 400px;
+    overflow-y: scroll;
+    color: black;
+    font-family: 'Ek Mukta', sans-serif;
+    font-size: 16px; }
+    .lesson .notes img {
+      width: 100%;
+      margin: 0 auto;
+      text-align: center; }
+    .lesson .notes figcaption {
+      text-align: center;
+      font-size: 12px; }
   .lesson p .next {
     float: right;
     margin-right: 5px;
