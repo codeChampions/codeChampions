@@ -19,7 +19,7 @@
         MessageService.check();
       };
       vm.getMessages = function(){
-        MessageService.getMessages().then(function(res){
+        MessageService.getMessages(1).then(function(res){
           vm.messages = res.data;});
     };
     vm.getMessages();

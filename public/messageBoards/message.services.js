@@ -7,8 +7,11 @@
       var getUrl = '/showReplies/1';
       var postUrl = '';
 
-      var getMessages = function(){
-        return $http.post('/showReplies/1', {id: 1});
+      var getMessages = function(id){
+        return $http.post('/showReplies/'+id, {id: 1});
+      };
+      var getReplies = function(Id){
+        return $http.post('/showReplies/' + Id, {id: Id});
       };
       var sendNewMessage = function(newMessage){
           console.log("send new message");
@@ -28,6 +31,7 @@
           sendNewMessage: sendNewMessage,
           check: check,
           getMessages: getMessages,
+          getReplies: getReplies
       };
     });
 }());
