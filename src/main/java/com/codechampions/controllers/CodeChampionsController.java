@@ -7,10 +7,7 @@ import com.codechampions.services.UserRepository;
 import com.codechampions.utils.PasswordHash;
 import org.hibernate.annotations.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
@@ -41,7 +38,6 @@ public class CodeChampionsController {
             admin.password = PasswordHash.createHash("Admin");
             users.save(admin);
         }
-
 
             Message message = new Message(1, -1, "Game Message Board", admin);
             Message message1 = new Message(2, -1, "Classroom Message Board", admin);
@@ -143,7 +139,7 @@ public class CodeChampionsController {
     }
 
     @RequestMapping("/showReplies/{id}")
-    public List<Message> showReplies(@RequestBody Message topMessage) {
-        return messages.findAllByReplyId(topMessage.id);
+    public List<Message> showReplies(@PathVariable("id") int id) {
+        return messages.findAllByReplyId(id);
     }
 }
