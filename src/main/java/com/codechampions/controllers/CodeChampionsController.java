@@ -46,13 +46,17 @@ public class CodeChampionsController {
             Message message = new Message(1, -1, "Game Message Board", admin);
             Message message1 = new Message(2, -1, "Classroom Message Board", admin);
             Message message2 = new Message(3, -1, "Lesson Message Board", admin);
-            Message message3 = new Message(5, 0, "Hello Game Board!", admin);
-            Message message4 = new Message(5, 1, "Hello Classroom Board!", admin);
+            Message message3 = new Message(5, 1, "Hello Game Board!", admin);
+            Message message4 = new Message(5, 2, "Hello Classroom Board!", admin);
+            Message message5 = new Message(6, 1, "Hey Game Board!", admin);
+            Message message6 = new Message(7, 6, "Whats Up! This is a reply to a reply", admin);
             messages.save(message);
             messages.save(message1);
             messages.save(message2);
             messages.save(message3);
             messages.save(message4);
+            messages.save(message5);
+            messages.save(message6);
     }
 
     @RequestMapping(path = "/newUser", method = RequestMethod.POST)
@@ -127,4 +131,19 @@ public class CodeChampionsController {
         public Message gameMessage() {
             return messages.findOne(1);
         }
+
+    @RequestMapping("/showClassroomBoard")
+    public Message classroomMessage() {
+        return messages.findOne(2);
+    }
+
+    @RequestMapping("/showLessonBoard")
+    public Message lessonMessage() {
+        return messages.findOne(3);
+    }
+
+    @RequestMapping("/showReplies/{id}")
+    public List<Message> showReplies(@RequestBody Message topMessage) {
+        return messages.findAllByReplyId(topMessage.id);
+    }
 }
