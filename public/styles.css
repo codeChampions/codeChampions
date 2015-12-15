@@ -172,6 +172,8 @@ aside .edit {
 
 #messages {
   font-family: 'Ek Mukta', sans-serif; }
+  #messages strong {
+    font-size: 20px; }
 
 .mainMessage {
   background-color: white;
