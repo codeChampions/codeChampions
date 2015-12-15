@@ -1,6 +1,8 @@
 package com.codechampions.controllers;
 
+import com.codechampions.entities.Message;
 import com.codechampions.entities.User;
+import com.codechampions.services.MessageRepository;
 import com.codechampions.services.UserRepository;
 import com.codechampions.utils.PasswordHash;
 import org.hibernate.annotations.SourceType;
@@ -27,6 +29,8 @@ import java.util.List;
 public class CodeChampionsController {
     @Autowired
     UserRepository users;
+    @Autowired
+    MessageRepository messages;
 
     @PostConstruct
     public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException {
@@ -37,24 +41,35 @@ public class CodeChampionsController {
             admin.password = PasswordHash.createHash("Admin");
             users.save(admin);
         }
+
+
+            Message message = new Message(1, -1, "Game Message Board", admin);
+            Message message1 = new Message(2, -1, "Classroom Message Board", admin);
+            Message message2 = new Message(3, -1, "Lesson Message Board", admin);
+            Message message3 = new Message(5, 0, "Hello Game Board!", admin);
+            Message message4 = new Message(5, 1, "Hello Classroom Board!", admin);
+            messages.save(message);
+            messages.save(message1);
+            messages.save(message2);
+            messages.save(message3);
+            messages.save(message4);
     }
 
     @RequestMapping(path = "/newUser", method = RequestMethod.POST)
     public User createUser(HttpServletResponse response, @RequestBody User tempUser) throws Exception {
-            if (tempUser.username == null || tempUser.password == null) {
-                response.sendError(403, "Please enter both a username and password!");
-            }
-            else if (users.findOneByUsername(tempUser.username) != null) {
-                response.sendError(404, "Username already exists");
-            }
-            else {
+        if (tempUser.username == null || tempUser.password == null) {
+            response.sendError(403, "Please enter both a username and password!");
+        } else if (users.findOneByUsername(tempUser.username) != null) {
+            response.sendError(404, "Username already exists");
+        } else {
             User user = new User();
             user.username = tempUser.username;
             user.password = PasswordHash.createHash(tempUser.password);
+            user.email = tempUser.email;
             users.save(user);
-                System.out.println("Success!");
-                return user;
-            }
+            System.out.println("Success!");
+            return user;
+        }
         return null;
     }
 
@@ -66,14 +81,11 @@ public class CodeChampionsController {
 
         if (tempUser.username == null || tempUser.password == null) {
             response.sendError(404, "Please enter both a username and password!");
-        }
-        else if (user == null) {
+        } else if (user == null) {
             response.sendError(403, "Username does not exist!");
-        }
-        else if (!PasswordHash.validatePassword(tempUser.password, user.password)) {
+        } else if (!PasswordHash.validatePassword(tempUser.password, user.password)) {
             response.sendError(405, "Wrong Password!");
-        }
-        else {
+        } else {
             System.out.println("Success!");
             return user;
         }
@@ -98,13 +110,21 @@ public class CodeChampionsController {
 
         if (tempUser.username == null) {
             response.sendError(403, "Not logged in.");
-        }
-        else if (users.findOneByUsername(tempUser.username) != null) {
+        } else if (users.findOneByUsername(tempUser.username) != null) {
             response.sendError(404, "Username already exists!");
-        }
-        else {
+        } else {
             user.username = tempUser.username;
             users.save(user);
         }
     }
+
+    @RequestMapping("/messages")
+    public List<Message> messages() {
+        return (List<Message>) messages.findAll();
+    }
+
+    @RequestMapping("/showGameBoard")
+        public Message gameMessage() {
+            return messages.findOne(1);
+        }
 }

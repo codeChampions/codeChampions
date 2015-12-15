@@ -15,22 +15,30 @@ public class User {
     @Column(nullable = false)
     public int id;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     public String username;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     public String password;
 
+    @Column
+    public String email;
+
+  //  @OneToMany(mappedBy = "user")
+ //   public List<Message> messages;
+
+   // public enum userType {
+     //   ADMIN, TEACHER, STUDENT
+    //}
     //Progress field
 
-    //Email field
+
 
     //Image Avatar field
 
     //user type (extend user class or as field?
 
-    //@OneToMany(mappedBy = "user")
-    //public List<Message> messages;
+
 
 
     public int getId() {
