@@ -20,7 +20,14 @@
       };
       vm.getMessages = function(){
         MessageService.getMessages(1).then(function(res){
-          vm.messages = res.data;});
+          vm.messages = res.data;
+          _.each(vm.messages, function(currVal, idx, arr){
+            MessageService.getMessages(currVal.id).then(function(res){
+              arr[idx].replies=res.data;
+            });
+          });
+          console.log(vm.messages);
+        });
     };
     vm.getMessages();
     });
