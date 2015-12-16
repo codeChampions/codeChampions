@@ -151,16 +151,14 @@ public class CodeChampionsController {
 
         if (user == null) {
             response.sendError(403, "You are not logged in!");
+            return null;
         }
-        else {
-            Message newMessage = new Message();
-            newMessage.replyId = message.id;
-            newMessage.messageText = tempMessage.messageText;
-            newMessage.user = user;
-            messages.save(newMessage);
-            System.out.println("New message added!");
-            return newMessage;
-        }
-        return null;
+        Message newMessage = new Message();
+        newMessage.replyId = message.id;
+        newMessage.messageText = tempMessage.messageText;
+        newMessage.user = user;
+        messages.save(newMessage);
+        System.out.println("New message added!");
+        return newMessage;
     }
 }
