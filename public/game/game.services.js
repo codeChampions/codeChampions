@@ -98,7 +98,7 @@
 
       };
 
-      var game1Code = '/getGame1Code';
+      var game1Code = '/getGameCode';
 
       var getCode = function() {
         return $http.get(game1Code);
