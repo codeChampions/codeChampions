@@ -14,6 +14,7 @@
       };
 
       vm.sendReply = function(replyMessage, replyId){
+        console.log("replyID: " + replyId);
         angular.element(document).find('input[name="replymessage"]').val("");
         MessageService.sendReply(replyMessage, replyId).then(function(res){
           vm.getMessages();
