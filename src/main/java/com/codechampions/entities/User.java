@@ -31,6 +31,9 @@ public class User {
     @Column
     public String game1Code;
 
+    @Column
+    public int lesson1Progress;
+
    // @Column
    // public String game2Code;
 
