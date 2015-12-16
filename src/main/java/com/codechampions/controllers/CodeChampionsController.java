@@ -29,7 +29,7 @@ public class CodeChampionsController {
     @Autowired
     MessageRepository messages;
 
-    public String game1InitialCode = ("'//Javascript goes here \\n moveDown();'");
+    public String game1InitialCode = ("//Javascript goes here \\n moveDown();");
 
     @PostConstruct
     public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException {
@@ -166,7 +166,7 @@ public class CodeChampionsController {
         return newMessage;
     }
 
-    @RequestMapping("/getGame1Code")
+    @RequestMapping("/getGameCode")
     public User user(HttpSession session) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
