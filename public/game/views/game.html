@@ -59,18 +59,18 @@
       <div class="col-xs-1">
       </div>
       <div class="col-xs-8 mainMessage">
-        <p><strong>{{message.user.username}}</strong>: {{message.messageText}} : replyID: {{message.replyId}} numReplies:{{message.replies.length}}</p>
+        <p><strong>{{message.user.username}}</strong>: {{message.messageText}} : replyID: {{message.replyId}} numReplies:{{message.replies.length}} ID{{message.id}}</p>
         <div class="col-xs-8">
           <button ng-click="replyMessage = !replyMessage" class="message-btn btn btn-danger">Reply</button>
         </div>
       </div>
       <aside class="row replies" ng-show="replyMessage">
         <div class="col-xs-12">
-          <form ng-submit="messageCtrl.reply(replyMessage)">
+          <form ng-submit="messageCtrl.sendReply(repMessage, message.id)">
             <div class="col-xs-1">
             </div>
             <div class="col-xs-7 noPadding">
-              <input class="messageForm form-control" type="text" name="message" ng-model="replyMessage.content" placeholder="Enter reply" value="">
+              <input class="messageForm form-control" type="text" name="replymessage" ng-model="repMessage" placeholder="Enter reply" value="">
             </div>
             <div class="col-xs-1 minPadding">
             <input class="message-btn btn btn-danger" type="submit" name="submit-reply" value="Submit">
