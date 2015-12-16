@@ -163,6 +163,9 @@ aside .edit {
   height: 140px;
   text-align: center; }
 
+.minPadding {
+  padding-left: 5px; }
+
 .messageForm {
   height: 50px; }
 
