@@ -14,7 +14,7 @@
         return $http.post('/showReplies/' + Id, {id: Id});
       };
       var sendNewMessage = function(newMessage, userName, id){
-        var obj = {username: userName, message: newMessage, id: id};
+        var obj = {username: userName, messageText: newMessage, id: id};
         console.log(obj);
         return $http.post(postUrl + '/' + id, obj);
       };
