@@ -16,7 +16,7 @@
       var sendNewMessage = function(newMessage, userName, id){
         var obj = {username: userName, message: newMessage, id: id};
         console.log(obj);
-        return $http.post(postUrl, obj);
+        return $http.post(postUrl + '/' + id, obj);
       };
 
 
