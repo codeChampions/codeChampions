@@ -47,6 +47,31 @@ body{
   font-size: 20px;
 }
 
+// student page
+
+.student {
+  h2 {
+    font-size: 46px;
+  }
+  h3 {
+    font-size: 40px;
+  }
+  .col-md-3 {
+    background-color: white;
+    border: 1px solid white;
+    color: black;
+    margin-right: 5px;
+    text-align: center;
+    min-height: 200px;
+    border-radius: 5px;
+    margin-top: 100px;
+  }
+}
+
+.glyphicon {
+  font-size: 72px;
+}
+
 // profile page
 
 .nav {
