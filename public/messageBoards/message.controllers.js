@@ -5,9 +5,9 @@
     .module('message')
     .controller('MessageController', function($scope, $location, MessageService){
       var vm = this;
-
+      vm.currentUser = sessionStorage.getItem('username');
       vm.sendNewMessage = function(newMessage){
-        MessageService.sendNewMessage(newMessage);
+        MessageService.sendNewMessage(newMessage, vm.currentUser, 1);
       };
 
       vm.sendReply = function(replyMessage){
