@@ -144,9 +144,10 @@ public class CodeChampionsController {
     }
 
     @RequestMapping("/addMessage/{id}")
-    public Message addMessage(HttpServletResponse response, HttpSession session, @RequestBody User tempUser, @PathVariable("id") int id, @RequestBody Message tempMessage) throws IOException {
-        session.getAttribute(tempUser.username);
-        User user = users.findOne(tempUser.id);
+    public Message addMessage(HttpServletResponse response, HttpSession session, @PathVariable("id") int id, @RequestBody Message tempMessage) throws IOException {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+
         Message message = messages.findOne(id);
 
         if (user == null) {
