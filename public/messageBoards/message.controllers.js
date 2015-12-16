@@ -7,12 +7,17 @@
       var vm = this;
       vm.currentUser = sessionStorage.getItem('username');
       vm.sendNewMessage = function(newMessage){
-        MessageService.sendNewMessage(newMessage, vm.currentUser, 1);
+        angular.element(document).find('input[name="message"]').val("");
+        MessageService.sendNewMessage(newMessage, vm.currentUser, 1).then(function(res){
+          vm.getMessages();
+        });
       };
 
-      vm.sendReply = function(replyMessage){
-
-        MessageService.sendReply(replyMessage);
+      vm.sendReply = function(replyMessage, replyId){
+        angular.element(document).find('input[name="replymessage"]').val("");
+        MessageService.sendReply(replyMessage, replyId).then(function(res){
+          vm.getMessages();
+        });
       };
       vm.check = function(){
         console.log("in message controller");
