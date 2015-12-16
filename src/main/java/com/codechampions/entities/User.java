@@ -10,6 +10,10 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
+    public enum userType {
+        ADMIN, TEACHER, STUDENT
+    }
+
     @Id
     @GeneratedValue
     @Column(nullable = false)
@@ -28,11 +32,14 @@ public class User {
     public String game1Code;
 
    // @Column
+   // public String game2Code;
+
+   // @Column
    // public int progress;
 
-   // public enum userType {
-     //   ADMIN, TEACHER, STUDENT
-    //}
+    @Column
+    public userType userType;
+
 
     //Image Avatar field
 
