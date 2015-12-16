@@ -5,7 +5,7 @@
     .module('message')
     .factory('MessageService', function($http, _){
       var getUrl = '/showReplies/1';
-      var postUrl = '';
+      var postUrl = '/addMessage';
 
       var getMessages = function(id){
         return $http.post('/showReplies/'+id, {id: 1});
@@ -13,9 +13,12 @@
       var getReplies = function(Id){
         return $http.post('/showReplies/' + Id, {id: Id});
       };
-      var sendNewMessage = function(newMessage){
-          console.log("send new message");
+      var sendNewMessage = function(newMessage, userName, id){
+        var obj = {username: userName, message: newMessage, id: id};
+        console.log(obj);
+        return $http.post(postUrl, obj);
       };
+
 
       var sendReply = function(replyMessage){
         console.log("send reply message");
