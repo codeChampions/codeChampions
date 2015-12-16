@@ -77,6 +77,8 @@
         }
         setTimeout(function(){
         if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left){
+        //we succeeeded so we put update the progress
+        putProgress();
         var next = confirm("Go to next lesson?");
         if(next === true){
           $location.path('/for');
@@ -104,9 +106,23 @@
         return $http.get(game1Code);
       };
 
+      var putGameCode = '/putGameCode';
+
+      var putCode = function(code) {
+        var obj = {
+          game1Code: code,
+        };
+        return $http.post(putGameCode, obj);
+      };
+      var incrProgressUrl = '/'
+      var putProgress = function(){
+        return $http.post(incrProgressUrl);
+      };
+
       return {
         run: run,
-        getCode: getCode
+        getCode: getCode,
+        putCode: putCode
       };
     });
 
