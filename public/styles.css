@@ -52,6 +52,13 @@ body {
 .glyphicon {
   font-size: 72px; }
 
+.main-lessons .col-md-8 {
+  height: 50px;
+  background-color: white;
+  color: black;
+  margin-top: 10px;
+  border-radius: 5px; }
+
 .nav h1 {
   float: left; }
 

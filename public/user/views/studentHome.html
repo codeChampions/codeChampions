@@ -25,12 +25,20 @@
       </div>
     </div>
   </section>
-  <section ng-show="lessonOpen" class="row">
-    <div class="col-md-12">
-      <section class="col-md-8">
-        <h3>Lesson 1</h3><uib-progressbar animate="false" value="dynamic" type="success"><b>{{dynamic}}%</b></uib-progressbar>
-        <h3>Lesson 2</h3><uib-progressbar animate="false" value="dynamic" type="success"><b>{{dynamic}}%</b></uib-progressbar>
-      </section>
-    </div>
+  <section ng-controller="LessonController as lessonCtrl" ng-show="lessonOpen" class="row main-lessons">
+    <aside class="col-md-12">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8">
+        <h3 ng-click="lessonCtrl.goToLesson1()">Lesson 1</h3>
+      </div>
+    </aside>
+    <aside class="col-md-12">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8">
+        <h3>Lesson 2</h3>
+      </div>
+    </aside>
   </section>
 </div>
