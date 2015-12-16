@@ -42,7 +42,7 @@ public class CodeChampionsController {
             Message message = new Message(1, -1, "Game Message Board", admin);
             Message message1 = new Message(2, -1, "Classroom Message Board", admin);
             Message message2 = new Message(3, -1, "Lesson Message Board", admin);
-            Message message3 = new Message(5, 1, "Hello Game Board!", admin);
+            Message message3 = new Message(4, 1, "Hello Game Board!", admin);
             Message message4 = new Message(5, 2, "Hello Classroom Board!", admin);
             Message message5 = new Message(6, 1, "Hey Game Board!", admin);
             Message message6 = new Message(7, 6, "Whats Up! This is a reply to a reply", admin);
@@ -141,5 +141,26 @@ public class CodeChampionsController {
     @RequestMapping("/showReplies/{id}")
     public List<Message> showReplies(@PathVariable("id") int id) {
         return messages.findAllByReplyId(id);
+    }
+
+    @RequestMapping("/addMessage")
+    public Message addMessage(HttpServletResponse response, HttpSession session, @RequestBody User tempUser, @PathVariable("id") int id, @RequestBody Message tempMessage) throws IOException {
+        session.getAttribute(tempUser.username);
+        User user = users.findOne(tempUser.id);
+        Message message = messages.findOne(id);
+
+        if (user == null) {
+            response.sendError(403, "You are not logged in!");
+        }
+        else {
+            Message newMessage = new Message();
+            newMessage.replyId = message.id;
+            newMessage.messageText = tempMessage.messageText;
+            newMessage.user = user;
+            messages.save(newMessage);
+            System.out.println("New message added!");
+            return newMessage;
+        }
+        return null;
     }
 }
