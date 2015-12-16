@@ -29,6 +29,8 @@ public class CodeChampionsController {
     @Autowired
     MessageRepository messages;
 
+    public String game1InitialCode = ("'//Javascript goes here \\n moveDown();'");
+
     @PostConstruct
     public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException {
         User admin = users.findOneByUsername("Admin");
@@ -36,6 +38,7 @@ public class CodeChampionsController {
             admin = new User();
             admin.username = "Admin";
             admin.password = PasswordHash.createHash("Admin");
+            admin.game1Code = "This is Admin's game 1 code!";
             users.save(admin);
         }
 
@@ -161,5 +164,19 @@ public class CodeChampionsController {
         messages.save(newMessage);
         System.out.println("New message added!");
         return newMessage;
+    }
+
+    @RequestMapping("/getGame1Code")
+    public User user(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+
+        if (user.game1Code == null) {
+            user.game1Code = game1InitialCode;
+            return user;
+        }
+        else {
+            return user;
+        }
     }
 }

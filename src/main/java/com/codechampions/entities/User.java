@@ -1,7 +1,5 @@
 package com.codechampions.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -26,15 +24,15 @@ public class User {
     @Column
     public String email;
 
-  //  @OneToMany(mappedBy = "user")
- //   public List<Message> messages;
+    @Column
+    public String game1Code;
+
+   // @Column
+   // public int progress;
 
    // public enum userType {
      //   ADMIN, TEACHER, STUDENT
     //}
-    //Progress field
-
-
 
     //Image Avatar field
 
