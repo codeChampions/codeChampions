@@ -183,7 +183,6 @@ public class CodeChampionsController {
     public void putGameCode(HttpSession session, @RequestBody User tempUser) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
-
         user.game1Code = tempUser.game1Code;
         users.save(user);
     }
