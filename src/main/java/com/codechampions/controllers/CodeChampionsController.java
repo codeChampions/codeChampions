@@ -38,6 +38,7 @@ public class CodeChampionsController {
             admin.username = "Admin";
             admin.password = PasswordHash.createHash("Admin");
             admin.game1Code = "This is Admin's game 1 code!";
+            admin.lesson1Progress = 0;
             users.save(admin);
         }
 
@@ -183,8 +184,14 @@ public class CodeChampionsController {
     public void putGameCode(HttpSession session, @RequestBody User tempUser) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
-
         user.game1Code = tempUser.game1Code;
         users.save(user);
+    }
+
+    @RequestMapping("/getLesson1Progress")
+    public User user2(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        User user2 = users.findOneByUsername(username);
+        return user2;
     }
 }
