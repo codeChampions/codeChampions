@@ -194,4 +194,21 @@ public class CodeChampionsController {
         User user2 = users.findOneByUsername(username);
         return user2;
     }
+
+    @RequestMapping("/putLesson1Progress")
+    public void putLesson1Progress(HttpSession session, @RequestBody User tempUser) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        user.lesson1Progress = tempUser.lesson1Progress;
+        users.save(user);
+    }
+
+    @RequestMapping("/incrementProgress")
+    public void incrementProgress(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        user.lesson1Progress++;
+        users.save(user);
+        System.out.println("Progress Incremented!");
+    }
 }
