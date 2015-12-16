@@ -20,8 +20,10 @@
       };
 
 
-      var sendReply = function(replyMessage){
-        console.log("send reply message");
+      var sendReply = function(replyMessage, replyId){
+        var obj = {messageText: replyMessage};
+        console.log(obj);
+        return $http.post(postUrl + '/' + replyId, obj);
       };
 
       var check = function(){

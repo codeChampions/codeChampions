@@ -66,9 +66,9 @@
       </div>
       <aside class="row replies" ng-show="replyMessage">
         <div class="col-xs-1"></div>
-        <form ng-submit="messageCtrl.reply(replyMessage.content, message.replyId)">
+        <form ng-submit="messageCtrl.sendReply(repMessage, message.id)">
           <div class="col-xs-8">
-            <input class="messageForm form-control" type="text" name="message" ng-model="replyMessage.content" placeholder="Enter reply" value="">
+            <input class="messageForm form-control" type="text" name="replymessage" ng-model="repMessage" placeholder="Enter reply" value="">
           </div>
           <div class="col-xs-1"></div>
           <div class="col-xs-1">
