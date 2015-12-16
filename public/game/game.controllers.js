@@ -17,14 +17,19 @@
       };
       if($location.url()==='/game'){
       vm.aceModel = '//Javascript goes here \n moveDown();';
+      vm.aceOriginal = '//Javascript goes here \n moveDown();';
       }
       else{
         vm.aceModel ='//edit using JavaScript\n // use this loop to move in the x-direction \n for(var x = 0; x < FILL_IN_VALUE; x++){ \n\n } \n //use this loop to move in the y-direction \n for(var y=0; y < FILL_IN_VALUE; y++){\n\n}';
+        vm.aceOriginal = '//edit using JavaScript\n // use this loop to move in the x-direction \n for(var x = 0; x < FILL_IN_VALUE; x++){ \n\n } \n //use this loop to move in the y-direction \n for(var y=0; y < FILL_IN_VALUE; y++){\n\n}';
       }
 
       vm.run = function(){
         //eval($scope.aceModel);
         GameService.run(vm.aceModel);
+      };
+      vm.resetAce = function(){
+        vm.aceModel = vm.aceOriginal;
       };
 
     });
