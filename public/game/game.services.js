@@ -98,9 +98,15 @@
 
       };
 
+      var game1Code = '/getGameCode';
+
+      var getCode = function() {
+        return $http.get(game1Code);
+      };
 
       return {
         run: run,
+        getCode: getCode
       };
     });
 

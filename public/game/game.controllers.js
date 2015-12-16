@@ -32,6 +32,16 @@
         vm.aceModel = vm.aceOriginal;
       };
 
+      vm.getCode = function(){
+        GameService.getCode().then(function(res){
+          console.log(res.data.game1Code);
+          vm.aceModel = res.data.game1Code;
+        });
+
+      };
+
+      vm.getCode();
+
     });
 
 
