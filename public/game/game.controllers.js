@@ -26,6 +26,7 @@
 
       vm.run = function(){
         //eval($scope.aceModel);
+        vm.putCode();
         GameService.run(vm.aceModel);
       };
       vm.resetAce = function(){
@@ -38,6 +39,10 @@
           vm.aceModel = res.data.game1Code;
         });
 
+      };
+
+      vm.putCode = function(){
+        GameService.putCode(vm.aceModel);
       };
 
       vm.getCode();

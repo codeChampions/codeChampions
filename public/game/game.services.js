@@ -104,9 +104,19 @@
         return $http.get(game1Code);
       };
 
+      var putGameCode = '/putGameCode';
+
+      var putCode = function(code) {
+        var obj = {
+          game1Code: code
+        };
+        return $http.post(putGameCode, obj);
+      };
+
       return {
         run: run,
-        getCode: getCode
+        getCode: getCode,
+        putCode: putCode
       };
     });
 
