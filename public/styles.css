@@ -33,6 +33,25 @@ body {
 .btn {
   font-size: 20px; }
 
+.student h2 {
+  font-size: 46px; }
+
+.student h3 {
+  font-size: 40px; }
+
+.student .col-md-3 {
+  background-color: white;
+  border: 1px solid white;
+  color: black;
+  margin-right: 5px;
+  text-align: center;
+  min-height: 200px;
+  border-radius: 5px;
+  margin-top: 100px; }
+
+.glyphicon {
+  font-size: 72px; }
+
 .nav h1 {
   float: left; }
 

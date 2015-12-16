@@ -4,19 +4,33 @@
     <button class="btn btn-profile">Profile</button>
     <hr>
   </div>
-  <div class="col-md-12">
-    <h2>Hello, {{user.name}}!</h2>
-    <section class="col-md-4 student-classrooms">
-      <h3>My Classrooms</h3>
-      <i class="glyphicon glyphicon-apple"></i>
-    </section>
-    <section class="col-md-4 student-lessons">
-      <h3>My Lessons</h3>
-      <i class="glyphicon glyphicon-tasks"></i>
-    </section>
-    <section class="col-md-4 student-stats">
-      <h3>My Stats</h3>
-      <i class="glyphicon glyphicon-stats"></i>
-    </section>
-  </div>
+  <section class="row">
+    <div class="student col-md-12">
+      <h2>Hello, {{userCtrl.currentUser}}!</h2>
+      <div class="col-md-1">
+      </div>
+      <section class="col-md-3 student-classrooms">
+        <h3>My Classrooms</h3>
+        <i class="glyphicon glyphicon-apple"></i>
+      </section>
+      <section ng-click="lessonOpen = !lessonOpen" class="col-md-3 student-lessons">
+        <h3>My Lessons</h3>
+        <i class="glyphicon glyphicon-tasks"></i>
+      </section>
+      <section class="col-md-3 student-stats">
+        <h3>My Stats</h3>
+        <i class="glyphicon glyphicon-stats"></i>
+      </section>
+      <div class="col-md-2">
+      </div>
+    </div>
+  </section>
+  <section ng-show="lessonOpen" class="row">
+    <div class="col-md-12">
+      <section class="col-md-8">
+        <h3>Lesson 1</h3><uib-progressbar animate="false" value="dynamic" type="success"><b>{{dynamic}}%</b></uib-progressbar>
+        <h3>Lesson 2</h3><uib-progressbar animate="false" value="dynamic" type="success"><b>{{dynamic}}%</b></uib-progressbar>
+      </section>
+    </div>
+  </section>
 </div>
