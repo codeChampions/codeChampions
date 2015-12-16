@@ -5,7 +5,6 @@ import com.codechampions.entities.User;
 import com.codechampions.services.MessageRepository;
 import com.codechampions.services.UserRepository;
 import com.codechampions.utils.PasswordHash;
-import org.hibernate.annotations.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -178,5 +177,14 @@ public class CodeChampionsController {
         else {
             return user;
         }
+    }
+
+    @RequestMapping("/putGameCode")
+    public void putGameCode(HttpSession session, @RequestBody User tempUser) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+
+        user.game1Code = tempUser.game1Code;
+        users.save(user);
     }
 }
