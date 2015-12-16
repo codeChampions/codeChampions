@@ -65,17 +65,19 @@
         </div>
       </div>
       <aside class="row replies" ng-show="replyMessage">
-        <div class="col-xs-1"></div>
-        <form ng-submit="messageCtrl.sendReply(repMessage, message.id)">
-          <div class="col-xs-8">
-            <input class="messageForm form-control" type="text" name="replymessage" ng-model="repMessage" placeholder="Enter reply" value="">
-          </div>
-          <div class="col-xs-1"></div>
-          <div class="col-xs-1">
+        <div class="col-xs-12">
+          <form ng-submit="messageCtrl.reply(replyMessage)">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-7 noPadding">
+              <input class="messageForm form-control" type="text" name="message" ng-model="replyMessage.content" placeholder="Enter reply" value="">
+            </div>
+            <div class="col-xs-1 minPadding">
             <input class="message-btn btn btn-danger" type="submit" name="submit-reply" value="Submit">
           </div>
         </form>
-      </aside>
+      </div>
+    </aside>
       <aside class="row" ng-if="message.replies.length > 0" ng-repeat="reply in message.replies">
         <div class="col-xs-12">
           <div class="col-xs-2">
