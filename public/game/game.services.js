@@ -77,6 +77,8 @@
         }
         setTimeout(function(){
         if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left){
+        //we succeeeded so we put update the progress
+        putProgress();
         var next = confirm("Go to next lesson?");
         if(next === true){
           $location.path('/for');
@@ -108,9 +110,13 @@
 
       var putCode = function(code) {
         var obj = {
-          game1Code: code
+          game1Code: code,
         };
         return $http.post(putGameCode, obj);
+      };
+      var incrProgressUrl = '/'
+      var putProgress = function(){
+        return $http.post(incrProgressUrl);
       };
 
       return {
