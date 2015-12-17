@@ -89,7 +89,11 @@ public class CodeChampionsController {
             response.sendError(403, "Username does not exist!");
         } else if (!PasswordHash.validatePassword(tempUser.password, user.password)) {
             response.sendError(405, "Wrong Password!");
-        } else {
+        }
+        //else if (session.getAttribute("username") != tempUser.username) {
+         //   response.sendError(405, "There is already an active session!");
+       // }
+        else {
             System.out.println("Success!");
             return user;
         }
