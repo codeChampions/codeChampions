@@ -20,8 +20,11 @@
             case 0:
               $location.path('/lesson');
               break;
+            case 1:
+              $location.path('/lesson1');
+              break;
             default: $location.path('/404');
-          };
+          }
         };
 
         vm.max = 100;
