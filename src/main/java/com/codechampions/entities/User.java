@@ -41,7 +41,7 @@ public class User {
    // public int progress;
 
     @Column
-    public userType userType;
+    public static userType userType;
 
 
     //Image Avatar field
