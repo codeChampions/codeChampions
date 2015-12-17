@@ -1,7 +1,6 @@
 package com.codechampions.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Jack on 12/9/15.
@@ -10,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
-    public enum userType {
+    public enum AccessType {
         ADMIN, TEACHER, STUDENT
     }
 
@@ -41,7 +40,7 @@ public class User {
    // public int progress;
 
     @Column
-    public static userType userType;
+    public AccessType accessType;
 
 
     //Image Avatar field
@@ -63,6 +62,10 @@ public class User {
         return password;
     }
 
+    public AccessType getAccessType() {
+        return accessType;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -73,5 +76,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setAccessType(AccessType accessType) {
+        this.accessType = accessType;
     }
 }
