@@ -27,7 +27,7 @@
         vm.max = 100;
 
   vm.progress = function() {
-    var value = vm.lesson1Progress / 3*100;
+    var value = Math.round(vm.lesson1Progress / 3*100);
     console.log(value);
     // var type;
 
