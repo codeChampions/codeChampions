@@ -1,9 +1,6 @@
 <div class="container">
-  <div class="nav">
-    <h1>Code Champions</h1>
-    <button ng-click="userCtrl.logout()" class="btn btn-logout">Logout</button>
-    <button class="btn btn-home">Home</button>
-    <hr>
+  <div ng-controller="UserController as userCtrl">
+    <header-direct logout="userCtrl.logout()"></header-direct>
   </div>
   <section class="row gameView">
     <aside class="notes col-xs-4"><b>BURIED TREASURE</b><br><br>Time to use your new coding skills to dig up some Treasure! <br><br>You are currently at position (0,0) and the treasure is at (150, -100). Move the character to the treasure by using the <br>moveLeft( ), <br>moveRight( ),<br> moveUp( ),<br> and moveDown( ) functions.<br>
