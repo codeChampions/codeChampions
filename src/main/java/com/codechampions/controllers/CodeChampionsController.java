@@ -37,7 +37,7 @@ public class CodeChampionsController {
             admin = new User();
             admin.username = "Admin";
             admin.password = PasswordHash.createHash("Admin");
-            admin.userType = User.userType.ADMIN;
+            admin.accessType = User.AccessType.ADMIN;
             admin.game1Code = "This is Admin's game 1 code!";
             admin.lesson1Progress = 0;
             users.save(admin);
@@ -71,7 +71,7 @@ public class CodeChampionsController {
             user.username = tempUser.username;
             user.password = PasswordHash.createHash(tempUser.password);
             user.email = tempUser.email;
-            user.userType = tempUser.userType;
+            user.accessType = tempUser.accessType;
             users.save(user);
             System.out.println("Success!");
             return user;
