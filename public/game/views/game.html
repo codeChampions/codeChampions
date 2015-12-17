@@ -1,5 +1,7 @@
 <div class="container">
-  <header-direct logout="userCtrl.logout()"></header-direct>
+  <div ng-controller="UserController as userCtrl">
+    <header-direct logout="userCtrl.logout()"></header-direct>
+  </div>
   <section class="row gameView">
     <aside class="notes col-xs-4"><b>BURIED TREASURE</b><br><br>Time to use your new coding skills to dig up some Treasure! <br><br>You are currently at position (0,0) and the treasure is at (150, -100). Move the character to the treasure by using the <br>moveLeft( ), <br>moveRight( ),<br> moveUp( ),<br> and moveDown( ) functions.<br>
       Each moves the character 50px in the indicated direction. Be quick. You only have 3 seconds to reach the destination and each move takes 0.5s.

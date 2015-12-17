@@ -1,5 +1,7 @@
 <div class="container">
-  <header-direct logout="userCtrl.logout()"></header-direct>
+  <div ng-controller="UserController as userCtrl">
+    <header-direct logout="userCtrl.logout()"></header-direct>
+  </div>
   <div class="lesson">
     <section class="col-xs-1"></section>
     <section class="video col-xs-5"><iframe src="https://www.youtube.com/embed/4J2rdLm5Z0k" frameborder="0" allowfullscreen></iframe>
