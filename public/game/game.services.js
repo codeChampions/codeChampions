@@ -114,7 +114,7 @@
         };
         return $http.post(putGameCode, obj);
       };
-      var incrProgressUrl = '/'
+      var incrProgressUrl = '/incrementProgress ';
       var putProgress = function(){
         return $http.post(incrProgressUrl);
       };
