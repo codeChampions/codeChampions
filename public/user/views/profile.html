@@ -1,10 +1,5 @@
 <div class="container">
-  <div class="nav">
-    <h1>Code Champions</h1>
-    <button ng-click="userCtrl.logout()" class="btn btn-logout">Logout</button>
-    <button class="btn btn-home">Home</button>
-    <hr>
-  </div>
+  <header-direct logout="userCtrl.logout()"></header-direct>
   <div class="profile-info">
     <aside class="col-md-3">
       <p class="image"><img ng-src=""></p>
