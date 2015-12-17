@@ -28,7 +28,7 @@ public class CodeChampionsController {
     @Autowired
     MessageRepository messages;
 
-    public String game1InitialCode = ("//Javascript goes here \\n moveDown();");
+    public String game1InitialCode = ("//Javascript goes here \n moveDown();");
 
     @PostConstruct
     public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException {
