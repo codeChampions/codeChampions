@@ -59,12 +59,13 @@ public class CodeChampionsController {
     }
 
     @RequestMapping(path = "/newUser", method = RequestMethod.POST)
-    public User createUser(HttpServletResponse response, @RequestBody User tempUser) throws Exception {
+    public User createUser(HttpServletResponse response, @RequestBody User tempUser, HttpSession session) throws Exception {
         if (tempUser.username == null || tempUser.password == null) {
             response.sendError(403, "Please enter both a username and password!");
         } else if (users.findOneByUsername(tempUser.username) != null) {
             response.sendError(404, "Username already exists");
         } else {
+            session.setAttribute("username", tempUser.username);
             User user = new User();
             user.username = tempUser.username;
             user.password = PasswordHash.createHash(tempUser.password);
