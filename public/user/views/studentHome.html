@@ -27,14 +27,14 @@
       <div class="col-md-2">
       </div>
       <div class="col-md-8">
-        <h3 ng-click="lessonCtrl.goToLesson1()">Lesson 1</h3><uib-progressbar animate="false" value="dynamic" type="success"><b>{{dynamic}}%</b></uib-progressbar>
+        <h3 ng-click="lessonCtrl.goToLesson1()">Lesson 1</h3><uib-progressbar animate="false" value="lessonCtrl.value" type="success"><b>{{lessonCtrl.dynamic}}%</b></uib-progressbar>
       </div>
     </aside>
     <aside class="col-md-12">
       <div class="col-md-2">
       </div>
       <div class="col-md-8">
-        <h3>Lesson 2</h3><uib-progressbar animate="false" value="dynamic" type="success"><b>{{dynamic}}%</b></uib-progressbar>
+        <h3>Lesson 2</h3><uib-progressbar animate="false" value="lessonCtrl.value" type="success"><b>{{dynamic}}%</b></uib-progressbar>
       </div>
     </aside>
   </section>
