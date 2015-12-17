@@ -33,6 +33,13 @@ body {
 .btn {
   font-size: 20px; }
 
+.progress {
+  display: inline-block;
+  width: 75%;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 50px; }
+
 .student h2 {
   font-size: 46px; }
 
@@ -51,6 +58,11 @@ body {
 
 .glyphicon {
   font-size: 72px; }
+
+.main-lessons h3 {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 10px; }
 
 .main-lessons .col-md-8 {
   height: 50px;
