@@ -11,6 +11,9 @@
       else if($location.url() === '/lesson'){
         vm.board = 3;
       }
+      else{
+        vm.board = 2;
+      }
       vm.currentUser = sessionStorage.getItem('username');
       vm.sendNewMessage = function(newMessage){
         angular.element(document).find('input[name="message"]').val("");
