@@ -1,6 +1,24 @@
 <div class="newUser">
   <h1>Create New User</h1>
-  <form ng-submit="newUserCtrl.createNewUser(newUserInfo)">
+  <button class="btn" ng-click="studentType = !studentType; newUserInfo.userType='STUDENT'">Student</button>
+  <button class="btn" ng-click="teacherType = !teacherType; newUserInfo.userType='TEACHER'">Teacher</button>
+  <form ng-if="!teacherType" ng-show="studentType" ng-submit="newUserCtrl.createNewUser(newUserInfo)">
+  <input class="form-control newUserInput" type="text" placeholder="Username" value="" name="username" ng-model="newUserInfo.username">
+  <!-- <input class="form-control" type="text" placeholder="Email" value="" name="email" ng-model="userInfo.email"> -->
+  <input class="form-control newUserInput" type="password" placeholder="Password" value="" name="password" ng-model="newUserInfo.password">
+  <input class="form-control newUserInput" type="email" placeholder="Email" value="" name="email" ng-model="newUserInfo.email">
+  <!-- <input class="form-control" type="" placeholder="Profile Image" value="" name="image" ng-model="userInfo.image">
+
+  <select class="form-control">
+   <option>HTML</option>
+   <option>JavaScript</option>
+   <option>Java</option>
+   <option>CSS</option>
+   <option>jQuery</option>
+  </select> -->
+  <input class="btn newUserInput" type="submit" name="submit" value="Start!">
+</form>
+  <form ng-if="!studentType" ng-show="teacherType" ng-submit="newUserCtrl.createNewUser(newUserInfo)">
   <input class="form-control newUserInput" type="text" placeholder="Username" value="" name="username" ng-model="newUserInfo.username">
   <!-- <input class="form-control" type="text" placeholder="Email" value="" name="email" ng-model="userInfo.email"> -->
   <input class="form-control newUserInput" type="password" placeholder="Password" value="" name="password" ng-model="newUserInfo.password">
