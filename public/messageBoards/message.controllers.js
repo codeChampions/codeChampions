@@ -5,6 +5,12 @@
     .module('message')
     .controller('MessageController', function($scope, $location, MessageService){
       var vm = this;
+      if($location.url() === '/game'){
+        vm.board = 1;
+      }
+      else if($location.url() === '/lesson'){
+        vm.board = 2;
+      }
       vm.currentUser = sessionStorage.getItem('username');
       vm.sendNewMessage = function(newMessage){
         angular.element(document).find('input[name="message"]').val("");
@@ -24,8 +30,8 @@
         console.log("in message controller");
         MessageService.check();
       };
-      vm.getMessages = function(){
-        MessageService.getMessages(1).then(function(res){
+      vm.getMessages = function(boardId){
+        MessageService.getMessages(boardId).then(function(res){
           vm.messages = res.data;
           _.each(vm.messages, function(currVal, idx, arr){
             MessageService.getMessages(currVal.id).then(function(res){
@@ -35,7 +41,7 @@
           console.log(vm.messages);
         });
     };
-    vm.getMessages();
+    vm.getMessages(vm.board);
     });
 
 }());
