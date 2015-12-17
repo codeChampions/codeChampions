@@ -6,7 +6,7 @@
       'ngRoute',
       'underscore',
       'ui.bootstrap',
-      'ui.ace',
+      'ui.ace', 
     ])
     .config(function($routeProvider){
       $routeProvider
