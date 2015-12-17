@@ -6,6 +6,7 @@
     .controller('UserController', function($scope, $location, UserService){
       var vm = this;
       vm.currentUser = sessionStorage.getItem('username');
+      vm.email = sessionStorage.getItem('email');
       vm.id = sessionStorage.getItem('id');
       vm.logout = function(){
         UserService.logout().then(function(){
