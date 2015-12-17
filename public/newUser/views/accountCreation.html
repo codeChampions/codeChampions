@@ -1,7 +1,7 @@
 <div class="newUser">
   <h1>Create New User</h1>
-  <button class="btn" ng-click="studentType = !studentType; newUserInfo.userType='STUDENT'">Student</button>
-  <button class="btn" ng-click="teacherType = !teacherType; newUserInfo.userType='TEACHER'">Teacher</button>
+  <button class="btn" ng-click="studentType = !studentType; newUserInfo.accessType='STUDENT'">Student</button>
+  <button class="btn" ng-click="teacherType = !teacherType; newUserInfo.accessType='TEACHER'">Teacher</button>
   <form ng-if="!teacherType" ng-show="studentType" ng-submit="newUserCtrl.createNewUser(newUserInfo)">
   <input class="form-control newUserInput" type="text" placeholder="Username" value="" name="username" ng-model="newUserInfo.username">
   <!-- <input class="form-control" type="text" placeholder="Email" value="" name="email" ng-model="userInfo.email"> -->
