@@ -12,7 +12,7 @@
           console.log("successfully made new user");
           sessionStorage.setItem('username', res.data.username);
           sessionStorage.setItem('id', res.data.id);
-          $location.path('/home');
+          $location.path('/student');
         }, function(res){
           alert("failed to make new user");
 
