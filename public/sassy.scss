@@ -49,6 +49,16 @@ body{
 
 // student page
 
+
+
+.progress {
+  display: inline-block;
+  width: 75%;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 50px;
+}
+
 .student {
   h2 {
     font-size: 46px;
@@ -73,6 +83,11 @@ body{
 }
 
 .main-lessons {
+  h3 {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
   .col-md-8 {
     height: 50px;
     background-color: white;
