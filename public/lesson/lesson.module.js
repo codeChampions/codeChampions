@@ -6,12 +6,16 @@
       'ngRoute',
       'underscore',
       'ui.bootstrap',
-      'ui.ace', 
+      'ui.ace',
     ])
     .config(function($routeProvider){
       $routeProvider
         .when('/lesson', {
           templateUrl: 'lesson/views/lesson.html',
+          controller: 'LessonController as lessonCtrl'
+        })
+        .when('/lesson1',{
+          templateUrl: 'lesson/views/lesson1.html',
           controller: 'LessonController as lessonCtrl'
         });
 
