@@ -9,13 +9,13 @@
         vm.board = 1;
       }
       else if($location.url() === '/lesson'){
-        vm.board = 2;
+        vm.board = 3;
       }
       vm.currentUser = sessionStorage.getItem('username');
       vm.sendNewMessage = function(newMessage){
         angular.element(document).find('input[name="message"]').val("");
-        MessageService.sendNewMessage(newMessage, vm.currentUser, 1).then(function(res){
-          vm.getMessages();
+        MessageService.sendNewMessage(newMessage, vm.currentUser, vm.board).then(function(res){
+          vm.getMessages(vm.board);
         });
       };
 
@@ -23,7 +23,7 @@
         console.log("replyID: " + replyId);
         angular.element(document).find('input[name="replymessage"]').val("");
         MessageService.sendReply(replyMessage, replyId).then(function(res){
-          vm.getMessages();
+          vm.getMessages(vm.board);
         });
       };
       vm.check = function(){
