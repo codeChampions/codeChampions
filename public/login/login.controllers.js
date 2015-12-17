@@ -11,6 +11,7 @@
             console.log(res);
             sessionStorage.setItem('username', res.data.username);
             sessionStorage.setItem('id', res.data.id);
+            sessionStorage.setItem('email', res.data.email);
             $location.path('/student');
           }, function(res){
             if(res.data.status === 405){

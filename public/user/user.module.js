@@ -18,7 +18,7 @@
           templateUrl: 'user/views/teacherHome.html',
           controller: 'UserController as userCtrl'
         })
-        .when('/home',{
+        .when('/profile',{
           templateUrl: 'user/views/profile.html',
           controller: 'UserController as userCtrl'
         });
