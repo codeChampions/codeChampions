@@ -11,5 +11,4 @@ import java.util.List;
  */
 public interface UserRepository extends PagingAndSortingRepository<User, Integer> {
     User findOneByUsername(String username);
-    List<User> findAllByAccessType(User.AccessType accessType);
 }
