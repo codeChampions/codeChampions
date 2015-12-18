@@ -257,4 +257,11 @@ public class CodeChampionsController {
     public List<Classroom> classrooms() {
         return (List<Classroom>) classrooms.findAll();
     }
+
+    @RequestMapping("/myClasses")
+    public List<Classroom> myClasses(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        return classrooms.findAllByOwner(user);
+    }
 }
