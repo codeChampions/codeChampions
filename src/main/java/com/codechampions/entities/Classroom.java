@@ -16,10 +16,12 @@ public class Classroom {
     @Column(nullable = false)
     public int id;
 
+    public String className;
+
     @ManyToOne
-    User teacherUser;
+    public User owner;
 
     @OneToMany
-    List<User> students;
+    List<User> classStudents;
 
 }

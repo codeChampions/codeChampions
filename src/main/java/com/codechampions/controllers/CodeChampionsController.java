@@ -1,7 +1,9 @@
 package com.codechampions.controllers;
 
+import com.codechampions.entities.Classroom;
 import com.codechampions.entities.Message;
 import com.codechampions.entities.User;
+import com.codechampions.services.ClassroomRepository;
 import com.codechampions.services.MessageRepository;
 import com.codechampions.services.UserRepository;
 import com.codechampions.utils.PasswordHash;
@@ -27,6 +29,8 @@ public class CodeChampionsController {
     UserRepository users;
     @Autowired
     MessageRepository messages;
+    @Autowired
+    ClassroomRepository classrooms;
 
     public String game1InitialCode = ("//Javascript goes here \n moveDown();");
 
@@ -219,8 +223,20 @@ public class CodeChampionsController {
         System.out.println("Progress Incremented!");
     }
 
-    @RequestMapping(path = "/getStudents", method = RequestMethod.GET)
-    public List<User> getStudents() {
-        return (List<User>) users.findAllByAccessType(User.AccessType.STUDENT);
+    @RequestMapping("/createClassroom")
+    public Classroom classroom (HttpSession session, HttpServletResponse response, @RequestBody Classroom tempClass) throws IOException {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+
+        if (user.accessType == User.AccessType.TEACHER) {
+            Classroom classroom = new Classroom();
+            classroom.className = tempClass.className;
+            classroom.owner = user;
+            classrooms.save(classroom);
+            return classroom;
+        } else {
+            response.sendError(403, "Only teachers can create a classroom");
+        }
+        return null;
     }
 }
