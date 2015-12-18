@@ -8,6 +8,7 @@
       vm.currentUser = sessionStorage.getItem('username');
       vm.email = sessionStorage.getItem('email');
       vm.id = sessionStorage.getItem('id');
+      vm.accessType=sessionStorage.getItem('userType');
       vm.logout = function(){
         UserService.logout().then(function(){
           $location.path('/');
@@ -26,6 +27,11 @@
 
       };
 
+      vm.createClassroom =function(name){
+        angular.element(document).find('input[name="className"]').val("");
+        UserService.createClassroom(name);
+
+      };
 
       });
 
