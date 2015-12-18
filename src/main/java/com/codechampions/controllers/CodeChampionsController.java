@@ -218,4 +218,9 @@ public class CodeChampionsController {
         users.save(user);
         System.out.println("Progress Incremented!");
     }
+
+    @RequestMapping(path = "/getStudents", method = RequestMethod.GET)
+    public List<User> getStudents() {
+        return (List<User>) users.findAllByAccessType(User.AccessType.STUDENT);
+    }
 }

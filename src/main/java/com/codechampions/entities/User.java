@@ -1,6 +1,7 @@
 package com.codechampions.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Created by Jack on 12/9/15.
@@ -44,10 +45,6 @@ public class User {
 
 
     //Image Avatar field
-
-    //user type (extend user class or as field?
-
-
 
 
     public int getId() {
