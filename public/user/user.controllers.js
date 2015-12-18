@@ -32,7 +32,21 @@
         UserService.createClassroom(name);
 
       };
+      vm.getClasses=function(){
+        UserService.getClasses().then(function(res){
+          console.log(res.data);
+          vm.classList = res.data;
+        });
+      };
+      vm.getClasses();
 
-      });
+
+      vm.addStudent= function(student, id){
+        UserService.addStudent(student, id).then(function(res){
+          console.log(res);
+        });
+      };
+
+    });
 
 }());
