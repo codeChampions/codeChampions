@@ -239,4 +239,17 @@ public class CodeChampionsController {
         }
         return null;
     }
+
+    @RequestMapping("/addStudent")
+    public void addStudent(HttpServletResponse response, @PathVariable("id") int id, @RequestBody User tempUser) throws IOException {
+        Classroom classroom = classrooms.findOne(id);
+        User user = users.findOne(tempUser.id);
+        if (user.accessType == User.AccessType.STUDENT) {
+            classroom.classStudents.add(user);
+            classrooms.save(classroom);
+        }
+        else {
+            response.sendError(403, "Only students can be added to a classroom");
+        }
+    }
 }

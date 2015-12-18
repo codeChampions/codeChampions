@@ -22,6 +22,6 @@ public class Classroom {
     public User owner;
 
     @OneToMany
-    List<User> classStudents;
+    public List<User> classStudents;
 
 }
