@@ -49,7 +49,9 @@ body{
 
 // student page
 
-
+.progress-bar {
+  color: black;
+}
 
 .progress {
   display: inline-block;
@@ -57,6 +59,7 @@ body{
   margin-top: 10px;
   margin-bottom: 0px;
   margin-left: 50px;
+  background-color: #A9A9A9;
 }
 
 .student {

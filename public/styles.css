@@ -33,12 +33,16 @@ body {
 .btn {
   font-size: 20px; }
 
+.progress-bar {
+  color: black; }
+
 .progress {
   display: inline-block;
   width: 75%;
   margin-top: 10px;
   margin-bottom: 0px;
-  margin-left: 50px; }
+  margin-left: 50px;
+  background-color: #A9A9A9; }
 
 .student h2 {
   font-size: 46px; }
