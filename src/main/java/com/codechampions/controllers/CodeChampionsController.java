@@ -243,7 +243,7 @@ public class CodeChampionsController {
     @RequestMapping("/addStudent/{id}")
     public void addStudent(HttpServletResponse response, @PathVariable("id") int id, @RequestBody User tempUser) throws IOException {
         Classroom classroom = classrooms.findOne(id);
-        User user = users.findOne(tempUser.id);
+        User user = users.findOneByUsername(tempUser.username);
         if (user.accessType == User.AccessType.STUDENT) {
             classroom.classStudents.add(user);
             classrooms.save(classroom);
