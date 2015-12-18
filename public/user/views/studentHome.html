@@ -6,6 +6,15 @@
       <h2>Hello, {{userCtrl.currentUser}}!</h2>
       <div class="col-md-1">
       </div>
+      <div ng-if="userCtrl.accessType === 'TEACHER'">
+      <button class="btn btn-primary" ng-click="createOpen = !createOpen">Make Classroom</button>
+        <div ng-show="createOpen">
+          <form ng-submit="userCtrl.createClassroom(className)">
+            <input name="className" ng-model="className" placeholder="Classroom Name" value="" type="text">
+            <input name="Submit" value="Submit" type="Submit">
+        </form>
+      </div>
+    </div>
       <section class="col-md-3 student-classrooms">
         <h3>My Classrooms</h3>
         <i class="glyphicon glyphicon-apple"></i>
