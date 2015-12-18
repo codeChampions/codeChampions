@@ -12,7 +12,8 @@
       'user',
       'lesson',
       'game',
-      'message'
+      'message',
+      'classroom'
     ])
     .config(function($routeProvider){
       $routeProvider
