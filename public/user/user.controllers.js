@@ -41,5 +41,10 @@
       vm.getClasses();
 
       });
+      vm.addStudent= function(student, id){
+        UserService.addStudent(student, id).then(function(res){
+          console.log(res);
+        });
+      };
 
 }());

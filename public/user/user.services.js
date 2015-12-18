@@ -8,6 +8,7 @@
       var editUrl = '/editUser/';
       var createClassUrl = '/createClassroom';
       var getClassUrl= '/myClasses';
+      var addStudentUrl = '/addStudent';
 
       var logout = function(){
         return $http.post(logoutUrl);
@@ -25,11 +26,15 @@
     var getClasses=function(){
       return $http.get(getClassUrl);
     };
+    var addStudent = function(student, id){
+      return $http.post(addStudentUrl + '/' + id, {username: student});
+    };
       return {
         logout: logout,
         edit: edit,
         createClassroom: createClassroom,
-        getClasses: getClasses
+        getClasses: getClasses,
+        addStudent: addStudent
       };
     });
 }());
