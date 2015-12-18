@@ -240,7 +240,7 @@ public class CodeChampionsController {
         return null;
     }
 
-    @RequestMapping("/addStudent")
+    @RequestMapping("/addStudent/{id}")
     public void addStudent(HttpServletResponse response, @PathVariable("id") int id, @RequestBody User tempUser) throws IOException {
         Classroom classroom = classrooms.findOne(id);
         User user = users.findOne(tempUser.id);
@@ -251,5 +251,17 @@ public class CodeChampionsController {
         else {
             response.sendError(403, "Only students can be added to a classroom");
         }
+    }
+
+    @RequestMapping("/classrooms")
+    public List<Classroom> classrooms() {
+        return (List<Classroom>) classrooms.findAll();
+    }
+
+    @RequestMapping("/myClasses")
+    public List<Classroom> myClasses(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        return classrooms.findAllByOwner(user);
     }
 }
