@@ -264,4 +264,10 @@ public class CodeChampionsController {
         User user = users.findOneByUsername(username);
         return classrooms.findAllByOwner(user);
     }
+
+    @RequestMapping("myClasses/{id}")
+    public Classroom myClass(@PathVariable("id") int id) {
+        Classroom classroom = classrooms.findOne(id);
+        return classroom;
+    }
 }
