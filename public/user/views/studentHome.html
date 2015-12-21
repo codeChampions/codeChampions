@@ -33,19 +33,20 @@
   </section>
   <section ng-show="classOpen" class="row main-lessons">
     <aside class="col-md-12" ng-repeat="class in userCtrl.classList">
-      <a href="#/classroom/{{userCtrl.classList.Id}}">
+      <a href="#/classroom/{{class.id}}">
       <div class="col-md-2">
       </div>
-      <div class="col-md-8" ng-click="userCtrl.goToClass()">
-        <h3>{{class.className}}</h3>
+      <div class="col-md-8">
+        <h3>{{class.className}}{{class.id}}</h3>
       </div>
+    </a>
       <div class="col-md-12">
         <form ng-submit="userCtrl.addStudent(studentName, class.id)">
           <input type="text" ng-model="studentName" placeholder="Student to add" value="">
           <input class="btn btn-primary" type="submit" value="submit">
         </form>
       </div>
-    </a>
+
     </aside>
   </section>
   <section ng-controller="LessonController as lessonCtrl" ng-show="lessonOpen" class="row main-lessons">

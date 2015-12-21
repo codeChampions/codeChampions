@@ -36,14 +36,15 @@
       };
       vm.getClasses=function(){
         UserService.getClasses().then(function(res){
-          console.log(res.data);
+          //console.log(res.data);
           vm.classList = res.data;
         });
       };
       vm.getClasses();
       if($routeParams.classId){
-        UserService.getSingleClass($routeParams.classId).success(function(singleClass){
-          vm.singleClass = singleClass;
+        UserService.getSingleClass($routeParams.classId).then(function(res){
+          vm.singleClass = res.data;
+
         });
       }
 
