@@ -3,7 +3,7 @@
 
   angular
     .module('user')
-    .controller('UserController', function($scope, $location, UserService){
+    .controller('UserController', function($scope, $location, $routeParams, UserService){
       var vm = this;
       vm.currentUser = sessionStorage.getItem('username');
       vm.email = sessionStorage.getItem('email');
@@ -14,6 +14,8 @@
           $location.path('/');
           sessionStorage.removeItem('username');
           sessionStorage.removeItem('id');
+          sessionStorage.removeItem('userType');
+          sessionStorage.removeItem('email');
         });
       };
 
@@ -34,12 +36,17 @@
       };
       vm.getClasses=function(){
         UserService.getClasses().then(function(res){
-          console.log(res.data);
+          //console.log(res.data);
           vm.classList = res.data;
         });
       };
       vm.getClasses();
+      if($routeParams.classId){
+        UserService.getSingleClass($routeParams.classId).then(function(res){
+          vm.singleClass = res.data;
 
+        });
+      }
 
       vm.addStudent= function(student, id){
         UserService.addStudent(student, id).then(function(res){

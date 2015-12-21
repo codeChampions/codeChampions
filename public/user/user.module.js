@@ -21,6 +21,10 @@
         .when('/profile',{
           templateUrl: 'user/views/profile.html',
           controller: 'UserController as userCtrl'
+        })
+        .when('/classroom/:classId',{
+          templateUrl: 'classrooms/views/classroom.html',
+          controller: 'UserController as userCtrl'
         });
     });
 

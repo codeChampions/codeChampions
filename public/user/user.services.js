@@ -29,12 +29,16 @@
     var addStudent = function(student, id){
       return $http.post(addStudentUrl + '/' + id, {username: student});
     };
+    var getSingleClass = function(classId){
+      return $http.get(getClassUrl +'/' + classId);
+    };
       return {
         logout: logout,
         edit: edit,
         createClassroom: createClassroom,
         getClasses: getClasses,
-        addStudent: addStudent
+        addStudent: addStudent,
+        getSingleClass: getSingleClass
       };
     });
 }());
