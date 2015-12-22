@@ -2,5 +2,9 @@
   <div ng-controller="UserController as userCtrl">
     <header-direct logout="userCtrl.logout()"></header-direct>
   </div>
-  <h1>Welcome to the classroom</h1>
+  <h1>Welcome to {{userCtrl.singleClass.className}}</h1>
 </div>
+<article ng-repeat="student in userCtrl.singleClass.classStudents">
+  <h3>{{student.username}}</h3>
+  <h5>Lesson 1 Progress: {{student.lesson1Progress}}</h5>
+</article>
