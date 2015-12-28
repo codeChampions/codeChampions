@@ -16,7 +16,6 @@
 
         vm.getClasses=function(){
           ClassService.getClasses().then(function(res){
-            //console.log(res.data);
             vm.classList = res.data;
           });
         };

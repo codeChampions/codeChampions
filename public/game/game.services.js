@@ -5,8 +5,8 @@
     .module('game')
     .factory('Game1Service', function($http, $location, _){
       var setGame = function(){
-        $('#x').css('left', '0px');
-        $('#x').css('top', '50px');
+        $('#x').css('left', '10px');
+        $('#x').css('top', '60px');
       };
 
       var posLeft = 0;
