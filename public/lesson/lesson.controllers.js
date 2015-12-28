@@ -62,7 +62,7 @@
               $location.path('/lesson1');
               break;
             case 2:
-              $location.path('/lesson2');
+              $location.path('/game');
               break;
             default: $location.path('/404');
           }

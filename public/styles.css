@@ -146,7 +146,8 @@ aside .edit {
     color: black;
     font-family: 'Ek Mukta', sans-serif;
     font-weight: bold;
-    font-size: 16px; }
+    font-size: 16px;
+    overflow-y: scroll; }
   .gameView .editor {
     height: 400px; }
   .gameView .gameBox {
@@ -158,6 +159,11 @@ aside .edit {
       background-color: #D32F2F;
       font-family: 'Anton', sans-serif;
       margin-top: 5px; }
+  .gameView #obstacle {
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 40px; }
   .gameView #char {
     position: absolute;
     z-index: 3; }
