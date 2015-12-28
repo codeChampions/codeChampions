@@ -3,7 +3,7 @@
 
   angular
     .module('game')
-    .controller('GameController', function($scope, $location, GameService, Game1Service, Game2Service){
+    .controller('GameController', function($scope, $location, GameService, Game1Service, Game2Service, GamePlayService){
         var vm = this;
         vm.loc = $location.url();
         vm.mode = 'Javascript';
@@ -21,6 +21,9 @@
             case ('/game'):
               GameService.setGame();
               break;
+              case ('/gamePlayground'):
+                  GamePlayService.setGame();
+                break;
             default:
 
           }
@@ -50,6 +53,9 @@
           case ('/game2'):
             Game2Service.run(vm.aceModel);
             break;
+          case ('/gamePlayground'):
+              GamePlayService.run(vm.aceModel);
+            break;
           default:
 
         }
@@ -78,6 +84,9 @@
             break;
           case ('/game2'):
               Game2Service.putCode(vm.aceModel);
+            break;
+          case ('/gamePlayground'):
+              console.log('sup super cool admin who is making a video or something');
             break;
           default:
 

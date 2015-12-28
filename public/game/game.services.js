@@ -389,6 +389,39 @@
         putCode: putCode,
         setGame: setGame
       };
+    })
+    .factory('GamePlayService', function($http, $location, _){
+
+      var moveLeft = function(){
+        $('#char').animate({left: "-=50"}, {duration: 500});
+      };
+
+      var moveRight = function(){
+        $('#char').animate({left: "+=50"}, {duration: 500});
+      };
+
+      var moveUp = function(){
+        $('#char').animate({top: "-=50"}, {duration: 500});
+      };
+
+      var moveDown = function(){
+        $('#char').animate({top: "+=50"}, {duration: 500});
+      };
+
+      var run = function(input){
+        eval(input);
+      };
+
+
+      var setGame = function(){
+        $('#char').css('left', '120px');
+        $('#char').css('top', '80px');
+      };
+      return {
+        run: run,
+        setGame: setGame
+      };
     });
+
 
 }());
