@@ -3,9 +3,34 @@
 
   angular
     .module('game')
-    .controller('GameController', function($scope, $location, GameService){
+    .controller('GameController', function($scope, $location, GameService, Game1Service, Game2Service, GamePlayService){
         var vm = this;
+        vm.loc = $location.url();
         vm.mode = 'Javascript';
+
+        //put everything in the correct starting position based on which game is being played
+        vm.setGame = function(){
+          console.log(vm.loc);
+          switch (vm.loc) {
+            case ('/game1'):
+              Game1Service.setGame();
+              break;
+            case ('/game2'):
+              Game2Service.setGame();
+              break;
+            case ('/game'):
+              GameService.setGame();
+              break;
+              case ('/gamePlayground'):
+                  GamePlayService.setGame();
+                break;
+            default:
+
+          }
+        };
+
+        vm.setGame();
+    //setting Ace Editor theme and modes
       vm.aceOption = {
         mode: vm.mode.toLowerCase(),
         theme: 'monokai',
@@ -15,19 +40,26 @@
           };
         }
       };
-      if($location.url()==='/game'){
-      vm.aceModel = '//Javascript goes here \n moveDown();';
-      vm.aceOriginal = '//Javascript goes here \n moveDown();';
-      }
-      else{
-        vm.aceModel ='//edit using JavaScript\n // use this loop to move in the x-direction \n for(var x = 0; x < FILL_IN_VALUE; x++){ \n\n } \n //use this loop to move in the y-direction \n for(var y=0; y < FILL_IN_VALUE; y++){\n\n}';
-        vm.aceOriginal = '//edit using JavaScript\n // use this loop to move in the x-direction \n for(var x = 0; x < FILL_IN_VALUE; x++){ \n\n } \n //use this loop to move in the y-direction \n for(var y=0; y < FILL_IN_VALUE; y++){\n\n}';
-      }
 
       vm.run = function(){
-        //eval($scope.aceModel);
         vm.putCode();
-        GameService.run(vm.aceModel);
+        switch (vm.loc) {
+          case ('/game'):
+            GameService.run(vm.aceModel);
+            break;
+          case ('/game1'):
+            Game1Service.run(vm.aceModel);
+            break;
+          case ('/game2'):
+            Game2Service.run(vm.aceModel);
+            break;
+          case ('/gamePlayground'):
+              GamePlayService.run(vm.aceModel);
+            break;
+          default:
+
+        }
+
       };
       vm.resetAce = function(){
         vm.aceModel = vm.aceOriginal;
@@ -43,7 +75,23 @@
       };
 
       vm.putCode = function(){
-        GameService.putCode(vm.aceModel);
+        switch (vm.loc) {
+          case ('/game'):
+              GameService.putCode(vm.aceModel);
+            break;
+          case ('/game1'):
+              Game1Service.putCode(vm.aceModel);
+            break;
+          case ('/game2'):
+              Game2Service.putCode(vm.aceModel);
+            break;
+          case ('/gamePlayground'):
+              console.log('sup super cool admin who is making a video or something');
+            break;
+          default:
+
+        }
+
       };
 
       vm.getCode();

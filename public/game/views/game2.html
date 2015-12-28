@@ -3,8 +3,9 @@
     <header-direct logout="userCtrl.logout()"></header-direct>
   </div>
   <section class="row gameView">
-    <aside class="notes col-xs-4"><b>BURIED TREASURE Part 3</b><br><br>This treasure won't be as easy to grab as the previous ones. Beware, a dastardly cactus obstacle stands in your way! <br><br>You are currently at position (0,0) and the treasure is at (150, -100) with the cactus blocking (50, 0). Move the character to the treasure by using the moveLeft( ), moveRight( ), moveUp( ), and moveDown( ) functions.<br>
-      Each moves the character 50px in the indicated direction. Be quick. You only have 3 seconds to reach the destination and each move takes 0.5s.<br><br>Remember that JavaScript will read one line at a time so order matters!
+    <aside class="notes col-xs-4"><b>BURIED TREASURE Part 2</b><br><br>Now time to enter your own code!<br><br>You are currently at position (0,0) and the treasure is at (100, 0). Move the character to the treasure by using the <br>moveLeft( ), <br>moveRight( ),<br> moveUp( ),<br> and moveDown( ) functions.<br>
+      Each moves the character 50px in the indicated direction. Be quick. You only have 1 second to reach the destination and each move takes 0.5s. <br><br>
+      Hit the 'Run' button above the game and gather your next treasure.
     </aside>
     <aside class="col-xs-4 editor">
       <div ui-ace="gameCtrl.aceOption" ng-model="gameCtrl.aceModel">stuff</div>
@@ -14,7 +15,6 @@
       <div id="field">
         <img id="char" class="char" src="../../images/terry.png">
         <div id="x">x</div>
-        <img id="obstacle" class="obstacle" src="../../images/cactaur.png">
       </div>
       <div id="error" class="alert alert-danger hidden" role="alert">
       </div>
@@ -28,7 +28,7 @@
       <div ng-show="hintOpen" class="hint-box col-xs-8">
         <div class="hintRow">
           <div class="col-xs-8">
-            The coordinates shown are in the x-y plane (x,y). You start off at 0 in the x-direction and 0 in the y-direction. You must get to 150 in the x-direction and -100 in the y-direction. Each move takes you 50 pixels, so divide the total amount you need to move in each direction by 50 to find out how many times to call each function, but remember to avoid the obstacle so choose the correct direction to start!
+            The coordinates shown are in the x-y plane (x,y). You start off at 0 in the x-direction and 0 in the y-direction. You must get to 100 in the x-direction and 0 in the y-direction. Each move takes you 50 pixels, so divide 100 by 50 to find your number of moves needed in the x-direction.
           </div>
           <div class="col-xs-4">
             <img src="../../images/xy.png">

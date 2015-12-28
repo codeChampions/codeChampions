@@ -6,7 +6,7 @@
       <h2>Hello, {{userCtrl.currentUser}}!</h2>
       <div class="col-md-1">
       </div>
-      <div ng-if="userCtrl.accessType === 'TEACHER'">
+      <!-- <div ng-if="userCtrl.accessType === 'TEACHER'">
       <button class="btn btn-primary" ng-click="createOpen = !createOpen">Make Classroom</button>
         <div ng-show="createOpen">
           <form ng-submit="userCtrl.createClassroom(className)">
@@ -14,7 +14,7 @@
             <input name="Submit" value="Submit" type="Submit">
         </form>
       </div>
-    </div>
+    </div> -->
       <section ng-click="classOpen = !classOpen" class="col-md-3 student-classrooms">
         <h3>My Classrooms</h3>
         <i class="glyphicon glyphicon-apple"></i>
@@ -31,18 +31,27 @@
       </div>
     </div>
   </section>
-  <section ng-show="classOpen" class="row main-lessons">
-    <aside class="col-md-12" ng-repeat="class in userCtrl.classList">
+  <section ng-controller="ClassController as classCtrl" ng-show="classOpen" class="row main-lessons">
+    <div ng-if="userCtrl.accessType === 'TEACHER'">
+    <button class="btn btn-primary" ng-click="createOpen = !createOpen">Make Classroom</button>
+      <div ng-show="createOpen">
+        <form ng-submit="classCtrl.createClassroom(className)">
+          <input class="classRoomInput" name="className" ng-model="className" placeholder="Classroom Name" value="" type="text">
+          <input name="Submit" value="Submit" type="Submit">
+      </form>
+    </div>
+  </div>
+    <aside class="col-md-12" ng-repeat="class in classCtrl.classList">
       <a href="#/classroom/{{class.id}}">
       <div class="col-md-2">
       </div>
       <div class="col-md-8">
-        <h3>{{class.className}}{{class.id}}</h3>
+        <h3>{{class.className}}</h3>
       </div>
     </a>
       <div class="col-md-12">
-        <form ng-submit="userCtrl.addStudent(studentName, class.id)">
-          <input type="text" ng-model="studentName" placeholder="Student to add" value="">
+        <form ng-submit="classCtrl.addStudent(studentName, class.id)">
+          <input  class="classRoomInput" name="studentName" type="text" ng-model="studentName" placeholder="Student to add" value="">
           <input class="btn btn-primary" type="submit" value="submit">
         </form>
       </div>
