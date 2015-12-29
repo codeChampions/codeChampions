@@ -81,7 +81,7 @@
           $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
         }
         setTimeout(function(){
-        if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left){
+        if($('#char').position().top === 50 && $('#char').position().left === 0){
         //we succeeeded so we put update the progress
         putProgress();
         var next = confirm("Go to next lesson?");
