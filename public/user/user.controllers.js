@@ -29,30 +29,6 @@
 
       };
 
-      vm.createClassroom =function(name){
-        angular.element(document).find('input[name="className"]').val("");
-        UserService.createClassroom(name);
-
-      };
-      vm.getClasses=function(){
-        UserService.getClasses().then(function(res){
-          //console.log(res.data);
-          vm.classList = res.data;
-        });
-      };
-      vm.getClasses();
-      if($routeParams.classId){
-        UserService.getSingleClass($routeParams.classId).then(function(res){
-          vm.singleClass = res.data;
-
-        });
-      }
-
-      vm.addStudent= function(student, id){
-        UserService.addStudent(student, id).then(function(res){
-          console.log(res);
-        });
-      };
 
     });
 

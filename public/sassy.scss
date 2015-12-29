@@ -205,6 +205,7 @@ aside {
     font-family: 'Ek Mukta', sans-serif;
     font-weight: bold;
     font-size: 16px;
+    overflow-y: scroll;
     }
   .editor{
     height: 400px;
@@ -221,6 +222,12 @@ aside {
     }
     }
 
+  #obstacle{
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 40px;
+  }
   #char {
     position: absolute;
     z-index: 3;}
@@ -328,4 +335,10 @@ aside {
 
 .replies {
   margin-left: 50px;
+}
+
+//classrooms
+
+.classRoomInput{
+  color: black;
 }

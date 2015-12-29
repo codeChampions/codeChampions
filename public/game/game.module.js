@@ -13,8 +13,19 @@
         .when('/game', {
           templateUrl: 'game/views/game.html',
           controller: 'GameController as gameCtrl'
+        })
+        .when('/game1', {
+          templateUrl: 'game/views/game1.html',
+          controller: 'GameController as gameCtrl'
+        })
+        .when('/game2', {
+          templateUrl: 'game/views/game2.html',
+          controller: 'GameController as gameCtrl'
+        })
+        .when('/gamePlayground', {
+          templateUrl: 'game/views/gametester.html',
+          controller: 'GameController as gameCtrl'
         });
-
     });
 
     angular
