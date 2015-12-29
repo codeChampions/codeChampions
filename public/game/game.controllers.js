@@ -71,7 +71,7 @@
             case ('/game1'):
               vm.aceModel = res.data.game1_1Code;
               break;
-            case ('/game1'):
+            case ('/game2'):
               vm.aceModel = res.data.game1_2Code;
               break;
             case ('/game'):
