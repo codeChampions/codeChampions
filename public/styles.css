@@ -33,12 +33,16 @@ body {
 .btn {
   font-size: 20px; }
 
+.progress-bar {
+  color: black; }
+
 .progress {
   display: inline-block;
   width: 75%;
   margin-top: 10px;
   margin-bottom: 0px;
-  margin-left: 50px; }
+  margin-left: 50px;
+  background-color: #A9A9A9; }
 
 .student h2 {
   font-size: 46px; }
@@ -251,4 +255,26 @@ aside .edit {
   margin-left: 50px; }
 
 .classRoomInput {
+  color: black; }
+
+.classroom-btn {
+  background-color: #D32F2F;
+  font-family: 'Anton', sans-serif;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white; }
+
+.submit {
+  background-color: #D32F2F;
+  font-family: 'Anton', sans-serif;
+  color: white; }
+
+.btn:hover {
+  color: white; }
+
+.btn:focus {
+  color: white; }
+
+.input {
+  height: 40px;
   color: black; }

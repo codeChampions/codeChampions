@@ -49,7 +49,9 @@ body{
 
 // student page
 
-
+.progress-bar {
+  color: black;
+}
 
 .progress {
   display: inline-block;
@@ -57,6 +59,7 @@ body{
   margin-top: 10px;
   margin-bottom: 0px;
   margin-left: 50px;
+  background-color: #A9A9A9;
 }
 
 .student {
@@ -337,5 +340,32 @@ aside {
 //classrooms
 
 .classRoomInput{
+  color: black;
+}
+
+.classroom-btn {
+  background-color: #D32F2F;
+  font-family:  'Anton', sans-serif;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.submit {
+  background-color: #D32F2F;
+  font-family:  'Anton', sans-serif;
+  color: white;
+}
+
+.btn:hover {
+  color: white;
+}
+
+.btn:focus {
+  color: white;
+}
+
+.input {
+  height: 40px;
   color: black;
 }

@@ -13,7 +13,7 @@
             sessionStorage.setItem('username', res.data.username);
             sessionStorage.setItem('id', res.data.id);
             sessionStorage.setItem('email', res.data.email);
-            $location.path('/student');
+            $location.path('/home');
           }, function(res){
             if(res.data.status === 405){
               alert("Wrong Password. Please try again");

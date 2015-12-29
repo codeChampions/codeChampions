@@ -2,9 +2,19 @@
   <div ng-controller="UserController as userCtrl">
     <header-direct logout="userCtrl.logout()"></header-direct>
   </div>
-  <h1>Welcome to {{userCtrl.singleClass.className}}</h1>
+  <h1>Welcome to {{classCtrl.singleClass.className}}</h1>
 </div>
-<article ng-repeat="student in userCtrl.singleClass.classStudents">
+<div class="col-md-12">
+  <div class="col-md-1"></div>
+  <form ng-submit="classCtrl.addStudent(studentName, classCtrl.singleClass.id)">
+    <input  class="classRoomInput input" name="studentName" type="text" ng-model="studentName" placeholder="Student to add" value="">
+    <input class="btn btn-primary submit" type="submit" value="submit">
+  </form>
+</div>
+<article ng-repeat="student in classCtrl.singleClass.classStudents">
   <h3>{{student.username}}</h3>
   <h5>Lesson 1 Progress: {{student.lesson1Progress}}</h5>
 </article>
+<div class="col-md-12">
+  <message-board></message-board>
+</div>

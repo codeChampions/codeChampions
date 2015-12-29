@@ -16,7 +16,7 @@
         })
         .when('/classroom/:classId',{
           templateUrl: 'classrooms/views/classroom.html',
-          controller: 'ClassController as userCtrl'
+          controller: 'ClassController as classCtrl'
         })
         .when('/makeClassroom', {
           templateUrl: 'classrooms/views/makeClassroom.html',
