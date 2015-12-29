@@ -119,9 +119,10 @@
         };
         return $http.post(putGameCode, obj);
       };
-      var incrProgressUrl = '/incrementProgress ';
+      var incrProgressUrl = '/incrementProgress/';
       var putProgress = function(){
-        return $http.post(incrProgressUrl);
+        var currentGame = '1';
+        return $http.post(incrProgressUrl + currentGame);
       };
 
       return{
@@ -247,9 +248,10 @@
         };
         return $http.post(putGameCode, obj);
       };
-      var incrProgressUrl = '/incrementProgress ';
+      var incrProgressUrl = '/incrementProgress/';
       var putProgress = function(){
-        return $http.post(incrProgressUrl);
+        var currentGame = "2";
+        return $http.post(incrProgressUrl + currentGame);
       };
 
       return{
@@ -375,9 +377,10 @@
         };
         return $http.post(putGameCode, obj);
       };
-      var incrProgressUrl = '/incrementProgress ';
+      var incrProgressUrl = '/incrementProgress/';
       var putProgress = function(){
-        return $http.post(incrProgressUrl);
+        var currentGame = "3";
+        return $http.post(incrProgressUrl + currentGame);
       };
       var setGame = function(){
         $('#x').css('left', '150px');
