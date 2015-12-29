@@ -3,16 +3,23 @@
 
   angular
     .module('message')
-    .controller('MessageController', function($scope, $location, MessageService){
+    .controller('MessageController', function($scope, $location, MessageService, ClassService, $routeParams){
       var vm = this;
       if($location.url() === '/game'){
         vm.board = 1;
+        vm.getMessages(vm.board);
       }
       else if($location.url() === '/lesson'){
         vm.board = 3;
+        vm.getMessages(vm.board);
       }
       else{
-        vm.board = 2;
+        ClassService.getSingleClass($routeParams.classId).then(function(res){
+          console.log(res.data.messageBoard.id);
+          vm.board = res.data.messageBoard.id;
+          vm.getMessages(vm.board);
+
+        });
       }
       vm.currentUser = sessionStorage.getItem('username');
       vm.sendNewMessage = function(newMessage){
@@ -44,7 +51,7 @@
           console.log(vm.messages);
         });
     };
-    vm.getMessages(vm.board);
+    //vm.getMessages(vm.board);
     });
 
 }());
