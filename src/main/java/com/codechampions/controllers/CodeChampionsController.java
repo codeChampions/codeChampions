@@ -232,6 +232,14 @@ public class CodeChampionsController {
             Classroom classroom = new Classroom();
             classroom.className = tempClass.className;
             classroom.owner = user;
+
+            Message newBoard = new Message();
+            newBoard.replyId = -1;
+            newBoard.messageText = String.format("%s Message Board", classroom.className);
+            newBoard.user = user;
+            messages.save(newBoard);
+
+            classroom.messageBoard = newBoard;
             classrooms.save(classroom);
             return classroom;
         } else {
