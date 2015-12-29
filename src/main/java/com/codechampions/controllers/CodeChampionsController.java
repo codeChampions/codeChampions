@@ -205,14 +205,16 @@ public class CodeChampionsController {
     public void putGameCode(HttpSession session, @RequestBody User tempUser) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
-        try {
+        if (tempUser.game1_1Code != null) {
             user.game1_1Code = tempUser.game1_1Code;
+        }
+        if (tempUser.game1_2Code != null) {
             user.game1_2Code = tempUser.game1_2Code;
+        }
+        if (tempUser.game1_3Code != null) {
             user.game1_3Code = tempUser.game1_3Code;
-            users.save(user);
         }
-        catch (Exception e) {
-        }
+        users.save(user);
     }
 
     @RequestMapping("/getLesson1Progress")
