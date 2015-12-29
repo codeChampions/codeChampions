@@ -115,7 +115,7 @@
 
       var putCode = function(code) {
         var obj = {
-          game1Code: code,
+          game1_1Code: code,
         };
         return $http.post(putGameCode, obj);
       };
@@ -244,7 +244,7 @@
 
       var putCode = function(code) {
         var obj = {
-          game1Code: code,
+          game1_2Code: code,
         };
         return $http.post(putGameCode, obj);
       };
@@ -373,7 +373,7 @@
 
       var putCode = function(code) {
         var obj = {
-          game1Code: code,
+          game1_3Code: code,
         };
         return $http.post(putGameCode, obj);
       };

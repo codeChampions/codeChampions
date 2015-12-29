@@ -67,8 +67,18 @@
 
       vm.getCode = function(){
         GameService.getCode().then(function(res){
-          console.log(res.data.game1Code);
-          vm.aceModel = res.data.game1Code;
+          switch (vm.loc){
+            case ('/game1'):
+              vm.aceModel = res.data.game1_1Code;
+              break;
+            case ('/game2'):
+              vm.aceModel = res.data.game1_2Code;
+              break;
+            case ('/game'):
+              vm.aceModel = res.data.game1_3Code;
+              break;
+          default:
+        }
           vm.lesson1Progress = res.data.lesson1Progress;
         });
 
