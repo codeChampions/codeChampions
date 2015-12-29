@@ -215,12 +215,17 @@ public class CodeChampionsController {
     }
 
     @RequestMapping("/incrementProgress")
-    public void incrementProgress(HttpSession session) {
+    public void incrementProgress(HttpSession session, int currentGame) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
-        user.lesson1Progress++;
-        users.save(user);
-        System.out.println("Progress Incremented!");
+        if (user.lesson1Progress < currentGame) {
+            user.lesson1Progress++;
+            users.save(user);
+            System.out.println("Progress Incremented!");
+        } else {
+            System.out.println("Game is completed!");
+        }
+
     }
 
     @RequestMapping("/createClassroom")
