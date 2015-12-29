@@ -278,3 +278,14 @@ aside .edit {
 .input {
   height: 40px;
   color: black; }
+
+.classroom-student {
+  background-color: white;
+  margin: 5px;
+  border-radius: 5px;
+  color: black;
+  clear: both;
+  padding: 5px; }
+
+.classroom form {
+  margin-bottom: 10px; }

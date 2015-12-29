@@ -34,6 +34,25 @@
           });
         };
 
+        // vm.getStatus = function(){
+        //   LessonService.getStatus().then(function(res){
+        //     vm.lesson1Progress = res.data.lesson1Progress;
+        //     console.log(vm.lesson1Progress);
+        //     vm.progress();
+        //   });
+        // };
+        // vm.getStatus();
+
+        // vm.max = 100;
+        //
+        // vm.progress = function() {
+        //   var value = Math.round(vm.lesson1Progress / 3*100);
+        //   console.log(value);
+        //
+        //
+        //   vm.dynamic = value;
+        //   // vm.type = type;
+        // };
     });
 
 
