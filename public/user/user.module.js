@@ -10,7 +10,7 @@
     ])
     .config(function($routeProvider){
       $routeProvider
-        .when('/student', {
+        .when('/home', {
           templateUrl: 'user/views/studentHome.html',
           controller: 'UserController as userCtrl'
         })

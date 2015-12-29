@@ -32,30 +32,25 @@
     </div>
   </section>
   <section ng-controller="ClassController as classCtrl" ng-show="classOpen" class="row main-lessons">
+    <div class="col-md-1"></div>
     <div ng-if="userCtrl.accessType === 'TEACHER'">
-    <button class="btn btn-primary" ng-click="createOpen = !createOpen">Make Classroom</button>
-      <div ng-show="createOpen">
-        <form ng-submit="classCtrl.createClassroom(className)">
-          <input class="classRoomInput" name="className" ng-model="className" placeholder="Classroom Name" value="" type="text">
-          <input name="Submit" value="Submit" type="Submit">
-      </form>
-    </div>
+      <button class="btn classroom-btn" ng-click="createOpen = !createOpen">Make Classroom</button>
+          <div ng-show="createOpen">
+            <div class="col-md-1"></div>
+            <form ng-submit="classCtrl.createClassroom(className)">
+              <input class="classRoomInput input" name="className" ng-model="className" placeholder="Classroom Name" value="" type="text">
+              <input class="submit btn btn-primary" name="Submit" value="Submit" type="Submit">
+            </form>
+        </div>
   </div>
     <aside class="col-md-12" ng-repeat="class in classCtrl.classList">
       <a href="#/classroom/{{class.id}}">
-      <div class="col-md-2">
-      </div>
-      <div class="col-md-8">
-        <h3>{{class.className}}</h3>
-      </div>
-    </a>
-      <div class="col-md-12">
-        <form ng-submit="classCtrl.addStudent(studentName, class.id)">
-          <input  class="classRoomInput" name="studentName" type="text" ng-model="studentName" placeholder="Student to add" value="">
-          <input class="btn btn-primary" type="submit" value="submit">
-        </form>
-      </div>
-
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+          <h3>{{class.className}}</h3>
+        </div>
+      </a>
     </aside>
   </section>
   <section ng-controller="LessonController as lessonCtrl" ng-show="lessonOpen" class="row main-lessons">

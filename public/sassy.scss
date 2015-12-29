@@ -342,3 +342,30 @@ aside {
 .classRoomInput{
   color: black;
 }
+
+.classroom-btn {
+  background-color: #D32F2F;
+  font-family:  'Anton', sans-serif;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.submit {
+  background-color: #D32F2F;
+  font-family:  'Anton', sans-serif;
+  color: white;
+}
+
+.btn:hover {
+  color: white;
+}
+
+.btn:focus {
+  color: white;
+}
+
+.input {
+  height: 40px;
+  color: black;
+}
