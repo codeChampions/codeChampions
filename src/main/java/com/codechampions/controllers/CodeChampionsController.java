@@ -32,7 +32,7 @@ public class CodeChampionsController {
     @Autowired
     ClassroomRepository classrooms;
 
-    public String game1InitialCode = ("//Javascript goes here \n moveDown();");
+    public String game1_1InitialCode = ("//Javascript goes here \n moveDown();");
 
     @PostConstruct
     public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException {
@@ -42,7 +42,7 @@ public class CodeChampionsController {
             admin.username = "Admin";
             admin.password = PasswordHash.createHash("Admin");
             admin.accessType = User.AccessType.ADMIN;
-            admin.game1Code = "This is Admin's game 1 code!";
+            admin.game1_1Code = "This is Admin's game 1 code!";
             admin.lesson1Progress = 0;
             users.save(admin);
         }
@@ -182,8 +182,16 @@ public class CodeChampionsController {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
 
-        if (user.game1Code == null) {
-            user.game1Code = game1InitialCode;
+        if (user.game1_1Code == null) {
+            user.game1_1Code = game1_1InitialCode;
+            return user;
+        }
+        if (user.game1_2Code == null) {
+            user.game1_2Code = game1_1InitialCode;
+            return user;
+        }
+        if (user.game1_3Code == null) {
+            user.game1_3Code = game1_1InitialCode;
             return user;
         }
         else {
@@ -195,7 +203,9 @@ public class CodeChampionsController {
     public void putGameCode(HttpSession session, @RequestBody User tempUser) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
-        user.game1Code = tempUser.game1Code;
+        user.game1_1Code = tempUser.game1_1Code;
+        user.game1_2Code = tempUser.game1_2Code;
+        user.game1_3Code = tempUser.game1_3Code;
         users.save(user);
     }
 
