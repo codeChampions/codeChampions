@@ -21,7 +21,10 @@ public class Classroom {
     @ManyToOne
     public User owner;
 
-    @OneToMany
+    @ManyToMany
     public List<User> classStudents;
+
+   @ManyToOne
+   public Message messageBoard;
 
 }
