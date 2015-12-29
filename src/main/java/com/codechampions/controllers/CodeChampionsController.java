@@ -33,6 +33,8 @@ public class CodeChampionsController {
     ClassroomRepository classrooms;
 
     public String game1_1InitialCode = ("//Javascript goes here \n moveDown();");
+    public String game1_2InitialCode = ("//Javascript goes here \n");
+    public String game1_3InitialCode = ("//Javascript goes here \n");
 
     @PostConstruct
     public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException {
@@ -187,11 +189,11 @@ public class CodeChampionsController {
             return user;
         }
         if (user.game1_2Code == null) {
-            user.game1_2Code = game1_1InitialCode;
+            user.game1_2Code = game1_2InitialCode;
             return user;
         }
         if (user.game1_3Code == null) {
-            user.game1_3Code = game1_1InitialCode;
+            user.game1_3Code = game1_3InitialCode;
             return user;
         }
         else {
@@ -203,10 +205,14 @@ public class CodeChampionsController {
     public void putGameCode(HttpSession session, @RequestBody User tempUser) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
-        user.game1_1Code = tempUser.game1_1Code;
-        user.game1_2Code = tempUser.game1_2Code;
-        user.game1_3Code = tempUser.game1_3Code;
-        users.save(user);
+        try {
+            user.game1_1Code = tempUser.game1_1Code;
+            user.game1_2Code = tempUser.game1_2Code;
+            user.game1_3Code = tempUser.game1_3Code;
+            users.save(user);
+        }
+        catch (Exception e) {
+        }
     }
 
     @RequestMapping("/getLesson1Progress")
