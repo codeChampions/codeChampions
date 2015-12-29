@@ -29,7 +29,13 @@ public class User {
     public String email;
 
     @Column
-    public String game1Code;
+    public String game1_1Code;
+
+    @Column
+    public String game1_2Code;
+
+    @Column
+    public String game1_3Code;
 
     @Column
     public int lesson1Progress;
