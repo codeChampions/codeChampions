@@ -11,13 +11,21 @@
     </form>
   </div>
   <article class="classroom-student" ng-repeat="student in classCtrl.singleClass.classStudents">
-    <div ng-click="showCode = !showCode">
+    <div class="student-progress" ng-click="showCode = !showCode">
       <h3>{{student.username}}</h3>
       <h5>Lesson 1 Progress: <uib-progressbar animate="false" value="student.lesson1Progress/3 * 100" type="success"><b>{{student.lesson1Progress/3 * 100 | number:0}}%</b></uib-progressbar></h5>
     </div>
-    <div ng-show="showCode">
+    <div class="student-progress" ng-show="showCode">
       <h4>Part 1</h4>
       <p>{{student.game1_1Code}}</p>
+    </div>
+    <div class="student-progress" ng-show="showCode">
+      <h4>Part 2</h4>
+      <p>{{student.game1_2Code}}</p>
+    </div>
+    <div class="student-progress" ng-show="showCode">
+      <h4>Part 3</h4>
+      <p>{{student.game1_3Code}}</p>
     </div>
   </article>
   <div class="col-md-12">

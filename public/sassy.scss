@@ -349,6 +349,13 @@ aside {
 
 //classrooms
 
+.student-progress {
+  border-bottom: 1px solid black;
+  p{
+    color: red;
+  }
+}
+
 .classRoomInput{
   color: black;
 }
