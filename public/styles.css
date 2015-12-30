@@ -75,6 +75,15 @@ body {
   margin-top: 10px;
   border-radius: 5px; }
 
+.main-lessons .col-md-6 {
+  height: 30px;
+  background-color: white;
+  color: black;
+  margin-top: 10px;
+  border-radius: 5px; }
+  .main-lessons .col-md-6 a {
+    color: black; }
+
 .nav h1 {
   float: left; }
 
