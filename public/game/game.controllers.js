@@ -3,8 +3,12 @@
 
   angular
     .module('game')
-    .controller('GameController', function($scope, $location, GameService, Game1Service, Game2Service, GamePlayService){
+    .controller('GameController', function($scope, $location, Game1_3Service, Game1_1Service, Game1_2Service, GamePlayService){
         var vm = this;
+        $scope.playerName = "My Name";
+        var playerName = "Me";
+        $scope.otherName = "Other";
+        var otherName = "Other";
         vm.loc = $location.url();
         vm.mode = 'Javascript';
 
@@ -12,18 +16,18 @@
         vm.setGame = function(){
           console.log(vm.loc);
           switch (vm.loc) {
-            case ('/game1'):
-              Game1Service.setGame();
+            case ('/game11'):
+              Game1_1Service.setGame();
               break;
-            case ('/game2'):
-              Game2Service.setGame();
+            case ('/game12'):
+              Game1_2Service.setGame();
               break;
-            case ('/game'):
-              GameService.setGame();
+            case ('/game13'):
+              Game1_3Service.setGame();
               break;
-              case ('/gamePlayground'):
-                  GamePlayService.setGame();
-                break;
+            case ('/gamePlayground'):
+              GamePlayService.setGame();
+              break;
             default:
 
           }
@@ -44,17 +48,29 @@
       vm.run = function(){
         vm.putCode();
         switch (vm.loc) {
-          case ('/game'):
-            GameService.run(vm.aceModel);
+          case ('/game13'):
+            Game1_3Service.run(vm.aceModel);
             break;
-          case ('/game1'):
-            Game1Service.run(vm.aceModel);
+          case ('/game11'):
+            Game1_1Service.run(vm.aceModel);
             break;
-          case ('/game2'):
-            Game2Service.run(vm.aceModel);
+          case ('/game12'):
+            Game1_2Service.run(vm.aceModel);
             break;
           case ('/gamePlayground'):
-              GamePlayService.run(vm.aceModel);
+              try{
+                eval(vm.aceModel);
+
+              }
+            finally{
+              console.log($scope.playerName);
+              if (playerName !==""){
+                $scope.playerName = playerName;
+              }
+              if (otherName !==""){
+                $scope.otherName = otherName;
+              }
+              GamePlayService.run(vm.aceModel);}
             break;
           default:
 
@@ -66,15 +82,15 @@
       };
 
       vm.getCode = function(){
-        GameService.getCode().then(function(res){
+        Game1_3Service.getCode().then(function(res){
           switch (vm.loc){
-            case ('/game1'):
+            case ('/game11'):
               vm.aceModel = res.data.game1_1Code;
               break;
-            case ('/game2'):
+            case ('/game12'):
               vm.aceModel = res.data.game1_2Code;
               break;
-            case ('/game'):
+            case ('/game13'):
               vm.aceModel = res.data.game1_3Code;
               break;
           default:
@@ -86,14 +102,14 @@
 
       vm.putCode = function(){
         switch (vm.loc) {
-          case ('/game'):
-              GameService.putCode(vm.aceModel);
+          case ('/game1_3'):
+              Game1_3Service.putCode(vm.aceModel);
             break;
-          case ('/game1'):
-              Game1Service.putCode(vm.aceModel);
+          case ('/game1_1'):
+              Game1_1Service.putCode(vm.aceModel);
             break;
-          case ('/game2'):
-              Game2Service.putCode(vm.aceModel);
+          case ('/game1_2'):
+              Game1_2Service.putCode(vm.aceModel);
             break;
           case ('/gamePlayground'):
               console.log('sup super cool admin who is making a video or something');

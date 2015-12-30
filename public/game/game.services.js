@@ -3,7 +3,7 @@
 
   angular
     .module('game')
-    .factory('Game1Service', function($http, $location, _){
+    .factory('Game1_1Service', function($http, $location, _){
       var setGame = function(){
         $('#x').css('left', '10px');
         $('#x').css('top', '60px');
@@ -86,7 +86,7 @@
         putProgress();
         var next = confirm("Go to next lesson?");
         if(next === true){
-          $location.path('/lesson1');
+          $location.path('/lesson12');
           resetGame();
         }
         else{
@@ -132,7 +132,7 @@
         run: run,
       };
     })
-    .factory('Game2Service', function($http, $location, _){
+    .factory('Game1_2Service', function($http, $location, _){
       var setGame = function(){
         $('#x').css('left', '100px');
         $('#x').css('top', '0px');
@@ -215,7 +215,7 @@
         putProgress();
         var next = confirm("Go to next lesson?");
         if(next === true){
-          $location.path('/game');
+          $location.path('/game13');
           resetGame();
         }
         else{
@@ -261,7 +261,7 @@
         run: run,
       };
     })
-    .factory('GameService', function($http, $location, _){
+    .factory('Game1_3Service', function($http, $location, _){
       var posLeft = 0;
       var posUp = 0;
       var left = 0;
