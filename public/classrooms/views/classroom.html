@@ -3,31 +3,33 @@
     <header-direct logout="userCtrl.logout()"></header-direct>
   </div>
   <h1>Welcome to {{classCtrl.singleClass.className}}</h1>
-  <div class="col-md-12">
-    <div class="col-md-1"></div>
-    <form ng-submit="classCtrl.addStudent(studentName, classCtrl.singleClass.id)">
-      <input  class="classRoomInput input" name="studentName" type="text" ng-model="studentName" placeholder="Student to add" value="">
-      <input class="btn btn-primary submit" type="submit" value="submit">
-    </form>
+  <div ng-if="classCtrl.singleClass.owner.username === classCtrl.username" class="teacher-view">
+    <div class="col-md-12">
+      <div class="col-md-1"></div>
+      <form ng-submit="classCtrl.addStudent(studentName, classCtrl.singleClass.id)">
+        <input  class="classRoomInput input" name="studentName" type="text" ng-model="studentName" placeholder="Student to add" value="">
+        <input class="btn btn-primary submit" type="submit" value="submit">
+      </form>
+    </div>
+    <article class="classroom-student" ng-repeat="student in classCtrl.singleClass.classStudents">
+      <div class="student-progress" ng-click="showCode = !showCode">
+        <h3>{{student.username}}</h3>
+        <h5>Lesson 1 Progress: <uib-progressbar animate="false" value="student.lesson1Progress/3 * 100" type="success"><b>{{student.lesson1Progress/3 * 100 | number:0}}%</b></uib-progressbar></h5>
+      </div>
+      <div class="student-progress" ng-show="showCode">
+        <h4>Part 1</h4>
+        <p>{{student.game1_1Code}}</p>
+      </div>
+      <div class="student-progress" ng-show="showCode">
+        <h4>Part 2</h4>
+        <p>{{student.game1_2Code}}</p>
+      </div>
+      <div class="student-progress" ng-show="showCode">
+        <h4>Part 3</h4>
+        <p>{{student.game1_3Code}}</p>
+      </div>
+    </article>
   </div>
-  <article class="classroom-student" ng-repeat="student in classCtrl.singleClass.classStudents">
-    <div class="student-progress" ng-click="showCode = !showCode">
-      <h3>{{student.username}}</h3>
-      <h5>Lesson 1 Progress: <uib-progressbar animate="false" value="student.lesson1Progress/3 * 100" type="success"><b>{{student.lesson1Progress/3 * 100 | number:0}}%</b></uib-progressbar></h5>
-    </div>
-    <div class="student-progress" ng-show="showCode">
-      <h4>Part 1</h4>
-      <p>{{student.game1_1Code}}</p>
-    </div>
-    <div class="student-progress" ng-show="showCode">
-      <h4>Part 2</h4>
-      <p>{{student.game1_2Code}}</p>
-    </div>
-    <div class="student-progress" ng-show="showCode">
-      <h4>Part 3</h4>
-      <p>{{student.game1_3Code}}</p>
-    </div>
-  </article>
   <div class="col-md-12">
     <message-board></message-board>
   </div>
