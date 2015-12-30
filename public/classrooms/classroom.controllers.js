@@ -20,17 +20,22 @@
           });
         };
         vm.getClasses();
-        if($routeParams.classId){
+
+        vm.getSingleClass=function(){
           ClassService.getSingleClass($routeParams.classId).then(function(res){
             vm.singleClass = res.data;
-
           });
+        };
+
+        if($routeParams.classId){
+          vm.getSingleClass();
         }
 
         vm.addStudent= function(student, id){
           angular.element(document).find('input[name="studentName"]').val("");
           ClassService.addStudent(student, id).then(function(res){
             console.log(res);
+            vm.getSingleClass();
           });
         };
 
