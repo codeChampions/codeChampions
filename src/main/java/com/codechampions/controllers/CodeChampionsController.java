@@ -323,7 +323,7 @@ public class CodeChampionsController {
     public void upload(HttpSession session, HttpServletResponse response, MultipartFile file) throws IOException {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
-        if ((user.accessType == User.AccessType.TEACHER) || (user.accessType == User.AccessType.ADMIN)) {
+       // if ((user.accessType == User.AccessType.TEACHER) || (user.accessType == User.AccessType.ADMIN)) {
             File f = File.createTempFile("file", file.getOriginalFilename(), new File("public"));
             FileOutputStream fos = new FileOutputStream(f);
             fos.write(file.getBytes());
@@ -334,7 +334,14 @@ public class CodeChampionsController {
             upload.uploadTime = LocalDateTime.now();
             upload.uploadUser = user;
             uploads.save(upload);
-        }
-        response.sendError(403, "Students can't upload images!");
+       // }
+       // response.sendError(403, "Students can't upload images!");
     }
+/*
+    @RequestMapping("/deleteUpload")
+    public void deleteUpload(HttpSession session, HttpServletResponse response, @RequestBody Upload tempUpload) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        if ((tempUpload.uploadUser == user) || ())
+    }*/
 }
