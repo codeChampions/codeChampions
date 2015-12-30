@@ -10,16 +10,16 @@
     ])
     .config(function($routeProvider){
       $routeProvider
-        .when('/game', {
-          templateUrl: 'game/views/game.html',
+        .when('/game11', {
+          templateUrl: 'game/views/game11.html',
           controller: 'GameController as gameCtrl'
         })
-        .when('/game1', {
-          templateUrl: 'game/views/game1.html',
+        .when('/game12', {
+          templateUrl: 'game/views/game12.html',
           controller: 'GameController as gameCtrl'
         })
-        .when('/game2', {
-          templateUrl: 'game/views/game2.html',
+        .when('/game13', {
+          templateUrl: 'game/views/game13.html',
           controller: 'GameController as gameCtrl'
         })
         .when('/gamePlayground', {

@@ -11,12 +11,12 @@
     .config(function($routeProvider, $sceDelegateProvider){
 
       $routeProvider
-        .when('/lesson', {
-          templateUrl: 'lesson/views/lesson.html',
+        .when('/lesson11', {
+          templateUrl: 'lesson/views/lesson11.html',
           controller: 'LessonController as lessonCtrl'
         })
-        .when('/lesson1',{
-          templateUrl: 'lesson/views/lesson1.html',
+        .when('/lesson12',{
+          templateUrl: 'lesson/views/lesson12.html',
           controller: 'LessonController as lessonCtrl'
         })
         .when('/lesson2',{
