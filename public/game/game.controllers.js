@@ -102,13 +102,13 @@
 
       vm.putCode = function(){
         switch (vm.loc) {
-          case ('/game1_3'):
+          case ('/game13'):
               Game1_3Service.putCode(vm.aceModel);
             break;
-          case ('/game1_1'):
+          case ('/game11'):
               Game1_1Service.putCode(vm.aceModel);
             break;
-          case ('/game1_2'):
+          case ('/game12'):
               Game1_2Service.putCode(vm.aceModel);
             break;
           case ('/gamePlayground'):
