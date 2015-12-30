@@ -1,22 +1,28 @@
 package com.codechampions.controllers;
 
 import com.codechampions.entities.Classroom;
+import com.codechampions.entities.Upload;
 import com.codechampions.entities.Message;
 import com.codechampions.entities.User;
 import com.codechampions.services.ClassroomRepository;
+import com.codechampions.services.UploadRepository;
 import com.codechampions.services.MessageRepository;
 import com.codechampions.services.UserRepository;
 import com.codechampions.utils.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +38,8 @@ public class CodeChampionsController {
     MessageRepository messages;
     @Autowired
     ClassroomRepository classrooms;
+    @Autowired
+    UploadRepository uploads;
 
     public String game1_1InitialCode = ("//Javascript goes here \n moveDown();");
     public String game1_2InitialCode = ("//Javascript goes here \n");
@@ -54,16 +62,11 @@ public class CodeChampionsController {
             Message message1 = new Message(2, -1, "Classroom Message Board", admin);
             Message message2 = new Message(3, -1, "Lesson Message Board", admin);
             Message message3 = new Message(4, 1, "Hello Game Board!", admin);
-            Message message4 = new Message(5, 2, "Hello Classroom Board!", admin);
-            Message message5 = new Message(6, 1, "Hey Game Board!", admin);
-            Message message6 = new Message(7, 6, "Whats Up! This is a reply to a reply", admin);
+
             messages.save(message);
             messages.save(message1);
             messages.save(message2);
             messages.save(message3);
-            messages.save(message4);
-            messages.save(message5);
-            messages.save(message6);
     }
 
     @RequestMapping(path = "/newUser", method = RequestMethod.POST)
@@ -309,5 +312,29 @@ public class CodeChampionsController {
     @RequestMapping("myClasses/{id}")
     public Classroom myClass(@PathVariable("id") int id) {
         return classrooms.findOne(id);
+    }
+
+    @RequestMapping("/uploads")
+    public List<Upload> files() {
+        return (List<Upload>) uploads.findAll();
+    }
+
+    @RequestMapping("/upload")
+    public void upload(HttpSession session, HttpServletResponse response, MultipartFile file) throws IOException {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        if ((user.accessType == User.AccessType.TEACHER) || (user.accessType == User.AccessType.ADMIN)) {
+            File f = File.createTempFile("file", file.getOriginalFilename(), new File("public"));
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(file.getBytes());
+
+            Upload upload = new Upload();
+            upload.fileName = file.getOriginalFilename();
+            upload.name = f.getName();
+            upload.uploadTime = LocalDateTime.now();
+            upload.uploadUser = user;
+            uploads.save(upload);
+        }
+        response.sendError(403, "Students can't upload images!");
     }
 }
