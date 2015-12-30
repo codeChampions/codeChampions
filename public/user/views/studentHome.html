@@ -57,8 +57,23 @@
     <aside class="col-md-12">
       <div class="col-md-2">
       </div>
-      <div class="col-md-8" ng-click="lessonCtrl.goToLesson1()">
+      <div class="col-md-8" ng-click="lessonCtrl.goToLesson1()" ng-click="">
         <h3>Lesson 1</h3><uib-progressbar animate="false" value="lessonCtrl.dynamic" type="success"><b>{{lessonCtrl.dynamic}}%</b></uib-progressbar>
+      </div>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-6">
+        <a href="#/lesson11"><h4>Part 1</h4></a>
+      </div>
+      <div class="col-md-4">
+      </div>
+      <div ng-if="lessonCtrl.lesson1Progress >= 1" class="col-md-6">
+        <a href="#/lesson12"><h4>Part 2</h4></a>
+      </div>
+      <div class="col-md-4">
+      </div>
+      <div ng-if="lessonCtrl.lesson1Progress >= 2" class="col-md-6">
+        <a href="#/game13"><h4>Part 3</h4></a>
       </div>
     </aside>
     <aside class="col-md-12">

@@ -56,13 +56,16 @@
         vm.goToLesson1 = function(){
           switch (vm.lesson1Progress) {
             case 0:
-              $location.path('/lesson');
+              $location.path('/lesson11');
               break;
             case 1:
-              $location.path('/lesson1');
+              $location.path('/lesson12');
               break;
             case 2:
-              $location.path('/game');
+              $location.path('/game13');
+              break;
+            case 3:
+              $location.path('/game13');
               break;
             default: $location.path('/404');
           }
