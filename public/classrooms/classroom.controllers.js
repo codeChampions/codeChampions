@@ -6,6 +6,9 @@
     .controller('ClassController', function($scope, $location, $routeParams, ClassService){
         var vm = this;
 
+        vm.username = sessionStorage.getItem("username");
+        console.log(vm.username);
+
         vm.createClassroom =function(name){
           angular.element(document).find('input[name="className"]').val("");
           ClassService.createClassroom(name).then(function(res){
@@ -20,44 +23,22 @@
           });
         };
         vm.getClasses();
-
-        vm.getSingleClass=function(){
+        if($routeParams.classId){
           ClassService.getSingleClass($routeParams.classId).then(function(res){
             vm.singleClass = res.data;
-          });
-        };
 
-        if($routeParams.classId){
-          vm.getSingleClass();
+          });
         }
 
         vm.addStudent= function(student, id){
           angular.element(document).find('input[name="studentName"]').val("");
           ClassService.addStudent(student, id).then(function(res){
             console.log(res);
-            vm.getSingleClass();
+
           });
         };
 
-        // vm.getStatus = function(){
-        //   LessonService.getStatus().then(function(res){
-        //     vm.lesson1Progress = res.data.lesson1Progress;
-        //     console.log(vm.lesson1Progress);
-        //     vm.progress();
-        //   });
-        // };
-        // vm.getStatus();
 
-        // vm.max = 100;
-        //
-        // vm.progress = function() {
-        //   var value = Math.round(vm.lesson1Progress / 3*100);
-        //   console.log(value);
-        //
-        //
-        //   vm.dynamic = value;
-        //   // vm.type = type;
-        // };
     });
 
 
