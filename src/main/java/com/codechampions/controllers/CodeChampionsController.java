@@ -343,6 +343,5 @@ public class CodeChampionsController {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
         if ((tempUpload.uploadUser == user) || ())
-        Random Comment
     }*/
 }
