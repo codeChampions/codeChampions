@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Jack on 12/9/15.
@@ -293,12 +294,20 @@ public class CodeChampionsController {
     public List<Classroom> myClasses(HttpSession session) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
+        if (user.accessType == User.AccessType.STUDENT) {
+            List<Classroom> studentClasses = (List<Classroom>) classrooms.findAll();
+            studentClasses = studentClasses.stream()
+                    .filter(x -> {
+                        return x.classStudents.contains(user);
+                    })
+                    .collect(Collectors.toList());
+            return studentClasses;
+        }
         return classrooms.findAllByOwner(user);
     }
 
     @RequestMapping("myClasses/{id}")
     public Classroom myClass(@PathVariable("id") int id) {
-        Classroom classroom = classrooms.findOne(id);
-        return classroom;
+        return classrooms.findOne(id);
     }
 }
