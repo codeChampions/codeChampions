@@ -325,8 +325,8 @@ public class CodeChampionsController {
         User user = users.findOneByUsername(username);
 
         Classroom classroom = classrooms.findOne(id);
-       // if ((user.accessType == User.AccessType.TEACHER) || (user.accessType == User.AccessType.ADMIN)) {
-            File notes = File.createTempFile("file", file.getOriginalFilename(), new File("public"));
+        if ((user.accessType == User.AccessType.TEACHER) || (user.accessType == User.AccessType.ADMIN)) {
+            File notes = File.createTempFile("file", file.getOriginalFilename(), new File("public/classNotes"));
             FileOutputStream fos = new FileOutputStream(notes);
             fos.write(file.getBytes());
 
@@ -337,9 +337,17 @@ public class CodeChampionsController {
             upload.uploadUser = user;
             upload.uploadClass = classroom;
             uploads.save(upload);
-            response.sendRedirect("/#/home");
-       // }
-       // response.sendError(403, "Students can't upload images!");
+            response.sendRedirect("/#/classroom/" + id);
+        }
+        else {
+            response.sendError(403, "Students can't upload images!");
+        }
+    }
+
+    @RequestMapping("/myUploads/{id}")
+    public List<Upload> myUploads(@PathVariable("id") int id) {
+        Classroom classroom = classrooms.findOne(id);
+        return uploads.findAllByUploadClass(classroom);
     }
 /*
     @RequestMapping("/deleteUpload")
