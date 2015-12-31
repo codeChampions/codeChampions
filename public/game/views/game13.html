@@ -37,56 +37,7 @@
       </div>
     </aside>
   </section>
-  <section class="row" ng-controller="MessageController as messageCtrl" id="messageBoard">
-    <h3>Message Board</h3>
-    <form ng-submit="messageCtrl.sendNewMessage(newMessage)">
-      <div class="col-xs-1">
-      </div>
-      <div class="col-xs-8 noPadding">
-        <input class="messageForm form-control" type="text" name="message" ng-model="newMessage" placeholder="Enter new comment/question" value="">
-      </div>
-      <div class="col-xs-12">
-        <div class="col-xs-1">
-        </div>
-        <div class="col-xs-1">
-          <input class="message-btn btn btn-danger" type="submit" name="submit" value="Submit">
-        </div>
-      </div>
-    </form>
-    <aside class="row messages" ng-repeat="message in messageCtrl.messages">
-      <div class="col-xs-1">
-      </div>
-      <div class="col-xs-8 mainMessage">
-        <p><strong>{{message.user.username}}</strong>: {{message.messageText}}</p>
-        <div class="col-xs-8">
-          <button ng-click="replyMessage = !replyMessage" class="message-btn btn btn-danger">Reply</button>
-        </div>
-      </div>
-      <aside class="row replies" ng-show="replyMessage">
-        <div class="col-xs-12">
-          <form ng-submit="messageCtrl.sendReply(repMessage, message.id)">
-            <div class="col-xs-1">
-            </div>
-            <div class="col-xs-7 noPadding">
-              <input class="messageForm form-control" type="text" name="replymessage" ng-model="repMessage" placeholder="Enter reply" value="">
-            </div>
-            <div class="col-xs-1 minPadding">
-            <input class="message-btn btn btn-danger" type="submit" name="submit-reply" value="Submit">
-          </div>
-        </form>
-      </div>
-    </aside>
-      <aside class="row" ng-if="message.replies.length > 0" ng-repeat="reply in message.replies">
-        <div class="col-xs-12">
-          <div class="col-xs-2">
-          </div>
-          <div class="col-xs-7 replyMessage">
-            <p><strong>{{reply.user.username}}</strong>: {{reply.messageText}}</p>
-          </div>
-          <div class="col-xs-3">
-          </div>
-        </div>
-      </aside>
-    </aside>
-  </section>
+  <div class="col-md-12">
+    <message-board></message-board>
+  </div>
 </div>
