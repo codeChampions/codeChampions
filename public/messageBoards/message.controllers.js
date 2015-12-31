@@ -17,12 +17,13 @@
           console.log(vm.messages);
         });
     };
-    
-      if($location.url() === '/game13'){
+    //use regular expressions to find what kind of page we are in to get the right message boards
+      if(/game/.test($location.url())){
+        console.log("you are in a game");
         vm.board = 1;
         vm.getMessages(vm.board);
       }
-      else if($location.url() === '/lesson'){
+      else if(/lesson/.test($location.url())){
         vm.board = 3;
         vm.getMessages(vm.board);
       }
