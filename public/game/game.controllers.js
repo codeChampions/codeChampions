@@ -57,6 +57,15 @@
           case ('/game12'):
             Game1_2Service.run(vm.aceModel);
             break;
+          case ('/game31'):
+            SpaceGame1Service.run(vm.aceModel);
+            break;
+          case ('/game32'):
+            SpaceGame2Service.run(vm.aceModel);
+            break;
+          case ('/game33'):
+            SpaceGame3Service.run(vm.aceModel);
+            break;
           case ('/gamePlayground'):
               try{
                 eval(vm.aceModel);
