@@ -13,8 +13,8 @@
       <div class="col-md-6"></div>
       <label class="col-md-2 btn" for="my-file-selector">
         <form class="col-md-2 btn" action="upload" enctype="multipart/form-data" method="post">
-          <input id="my-file-selector" type="file" style="display:none;">
-          <input type="number" value="{{classCtrl.singleClass.id}}" name="classId" style="display:none;">
+          <input id="my-file-selector" name="file" type="file" style="display:none;" value="">
+          <input type="number" value="{{classCtrl.singleClass.id}}" name="id" style="display:none;">
           Upload Notes
           <input type="submit">
         </form>
