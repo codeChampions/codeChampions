@@ -199,6 +199,8 @@ aside .edit {
     margin: 0 auto; }
   .gameView .hidden {
     display: none; }
+  .gameView #spaceGame, .gameView #spaceGame2, .gameView #spaceGame3 {
+    height: 400px; }
 
 .hintView .hint {
   background-color: #D32F2F;
