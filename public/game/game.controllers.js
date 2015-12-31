@@ -29,6 +29,7 @@
               GamePlayService.setGame();
               break;
             default:
+            console.log("nothing to set");
 
           }
         };
@@ -56,15 +57,6 @@
             break;
           case ('/game12'):
             Game1_2Service.run(vm.aceModel);
-            break;
-          case ('/game31'):
-            SpaceGame1Service.run(vm.aceModel);
-            break;
-          case ('/game32'):
-            SpaceGame2Service.run(vm.aceModel);
-            break;
-          case ('/game33'):
-            SpaceGame3Service.run(vm.aceModel);
             break;
           case ('/gamePlayground'):
               try{
@@ -103,6 +95,7 @@
               vm.aceModel = res.data.game1_3Code;
               break;
           default:
+            console.log("no code to get");
         }
           vm.lesson1Progress = res.data.lesson1Progress;
         });
@@ -124,6 +117,7 @@
               console.log('sup super cool admin who is making a video or something');
             break;
           default:
+            console.log("no code to put");
 
         }
 

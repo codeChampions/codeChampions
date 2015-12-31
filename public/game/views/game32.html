@@ -3,7 +3,7 @@
     <header-direct logout="userCtrl.logout()"></header-direct>
   </div>
   <section class="row gameView">
-    <aside class="notes col-xs-4">
+    <aside class="notes col-xs-3">
       <h3>GOALS</h3><p>If the Space Avenger is in position to shoot the alien, fire the laser.</p><p> If not, then put the Space Avenger in position.</p>
       To do this we will create an if/else statement:<br>
       <blockquote>if(scanForEnemy()) {<br>
@@ -12,13 +12,13 @@
           &nbsp;&nbsp;mobilizeRight();<br>
       }</blockquote>
     </aside>
-    <aside class="col-xs-4 editor">
-      <div ui-ace="gameCtrl.aceOption" ng-model="gameCtrl.aceModel">stuff</div>
+    <aside class="col-xs-3 editor">
+      <div ui-ace="space2Ctrl.aceOption" ng-model="space2Ctrl.aceModel">stuff</div>
     </aside>
-    <aside class="col-xs-4 gameBox">
-      <button class="run btn btn-danger" ng-click="gameCtrl.run()">Run</button><button class="run btn btn-danger" ng-click="gameCtrl.resetAce()">Reset</button><br>
-      <div id="game">
+    <aside class="col-xs-6">
+      <div id="spaceGame">
       </div>
+      <button class="run btn btn-danger" ng-click="space2Ctrl.run()">Run</button><button class="run btn btn-danger" ng-click="space2Ctrl.resetAce()">Reset</button><br>
       <div id="error" class="alert alert-danger hidden" role="alert">
       </div>
     </aside>

@@ -22,6 +22,18 @@
           templateUrl: 'game/views/game13.html',
           controller: 'GameController as gameCtrl'
         })
+        .when('/game31', {
+          templateUrl: 'game/views/game31.html',
+          controller: 'Space1Controller as space1Ctrl'
+        })
+        .when('/game32', {
+          templateUrl: 'game/views/game32.html',
+          controller: 'Space2Controller as space2Ctrl'
+        })
+        .when('/game33', {
+          templateUrl: 'game/views/game33.html',
+          controller: 'Space3Controller as space3Ctrl'
+        })
         .when('/gamePlayground', {
           templateUrl: 'game/views/gametester.html',
           controller: 'GameController as gameCtrl'
