@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-  .module('space')
+  .module('game')
   .factory('SpaceGame2Service', function($http, $location){
 
     var player;
