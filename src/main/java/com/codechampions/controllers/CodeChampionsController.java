@@ -320,20 +320,24 @@ public class CodeChampionsController {
     }
 
     @RequestMapping("/upload")
-    public void upload(HttpSession session, HttpServletResponse response, MultipartFile file) throws IOException {
+    public void upload(HttpSession session, HttpServletResponse response, MultipartFile file, int id) throws IOException {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
+
+        Classroom classroom = classrooms.findOne(id);
        // if ((user.accessType == User.AccessType.TEACHER) || (user.accessType == User.AccessType.ADMIN)) {
-            File f = File.createTempFile("file", file.getOriginalFilename(), new File("public"));
-            FileOutputStream fos = new FileOutputStream(f);
+            File notes = File.createTempFile("file", file.getOriginalFilename(), new File("public"));
+            FileOutputStream fos = new FileOutputStream(notes);
             fos.write(file.getBytes());
 
             Upload upload = new Upload();
             upload.fileName = file.getOriginalFilename();
-            upload.name = f.getName();
+            upload.name = notes.getName();
             upload.uploadTime = LocalDateTime.now();
             upload.uploadUser = user;
+            upload.uploadClass = classroom;
             uploads.save(upload);
+            response.sendRedirect("/#/home");
        // }
        // response.sendError(403, "Students can't upload images!");
     }
