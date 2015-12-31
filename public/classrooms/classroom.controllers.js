@@ -29,9 +29,18 @@
             vm.singleClass = res.data;
           });
         };
+        vm.getClassNotes = function(){
+          ClassService.getClassNotes($routeParams.classId).then(function(res){
+            console.log(res.data);
+            vm.notes = res.data;
+          });
+        };
+        
         if($routeParams.classId){
           vm.getSingleClass();
+          vm.getClassNotes();
         }
+
 
         vm.addStudent= function(student, id){
           angular.element(document).find('input[name="studentName"]').val("");

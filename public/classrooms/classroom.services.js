@@ -7,6 +7,7 @@
       var createClassUrl = '/createClassroom';
       var getClassUrl= '/myClasses';
       var addStudentUrl = '/addStudent';
+      var getNotesUrl = '/myUploads';
 
       var createClassroom = function(name){
         var obj = {className: name};
@@ -21,12 +22,15 @@
       var getSingleClass = function(classId){
         return $http.get(getClassUrl +'/' + classId);
       };
-
+      var getClassNotes = function(classId){
+        return $http.get(getNotesUrl + '/' + classId);
+      };
       return {
           createClassroom: createClassroom,
           getClasses: getClasses,
           addStudent: addStudent,
-          getSingleClass: getSingleClass
+          getSingleClass: getSingleClass,
+          getClassNotes: getClassNotes
         };
     });
 
