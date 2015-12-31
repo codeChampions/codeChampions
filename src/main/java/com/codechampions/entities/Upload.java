@@ -25,4 +25,7 @@ public class Upload {
 
     @ManyToOne
     public User uploadUser;
+
+    @ManyToOne
+    public Classroom uploadClass;
 }
