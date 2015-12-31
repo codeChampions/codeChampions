@@ -337,7 +337,7 @@ public class CodeChampionsController {
             upload.uploadUser = user;
             upload.uploadClass = classroom;
             uploads.save(upload);
-            response.sendRedirect("/#/home");
+            response.sendRedirect("/#/classroom/" + id);
        // }
        // response.sendError(403, "Students can't upload images!");
     }
