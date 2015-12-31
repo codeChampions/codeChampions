@@ -319,8 +319,8 @@ public class CodeChampionsController {
         return (List<Upload>) uploads.findAll();
     }
 
-    @RequestMapping("/upload/{id}")
-    public void upload(HttpSession session, HttpServletResponse response, MultipartFile file, @PathVariable("id") int id) throws IOException {
+    @RequestMapping("/upload")
+    public void upload(HttpSession session, HttpServletResponse response, MultipartFile file, int id) throws IOException {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
 
