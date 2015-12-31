@@ -5,7 +5,20 @@
     .module('message')
     .controller('MessageController', function($scope, $location, MessageService, ClassService, $routeParams){
       var vm = this;
-      if($location.url() === '/game'){
+
+      vm.getMessages = function(boardId){
+        MessageService.getMessages(boardId).then(function(res){
+          vm.messages = res.data;
+          _.each(vm.messages, function(currVal, idx, arr){
+            MessageService.getMessages(currVal.id).then(function(res){
+              arr[idx].replies=res.data;
+            });
+          });
+          console.log(vm.messages);
+        });
+    };
+    
+      if($location.url() === '/game13'){
         vm.board = 1;
         vm.getMessages(vm.board);
       }
@@ -40,17 +53,7 @@
         console.log("in message controller");
         MessageService.check();
       };
-      vm.getMessages = function(boardId){
-        MessageService.getMessages(boardId).then(function(res){
-          vm.messages = res.data;
-          _.each(vm.messages, function(currVal, idx, arr){
-            MessageService.getMessages(currVal.id).then(function(res){
-              arr[idx].replies=res.data;
-            });
-          });
-          console.log(vm.messages);
-        });
-    };
+
     //vm.getMessages(vm.board);
     });
 
