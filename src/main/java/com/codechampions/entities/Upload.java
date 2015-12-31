@@ -21,6 +21,9 @@ public class Upload {
     public String name;
 
     @Column
+    public String displayName;
+
+    @Column
     public LocalDateTime uploadTime;
 
     @ManyToOne

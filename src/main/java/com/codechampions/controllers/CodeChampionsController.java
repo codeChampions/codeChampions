@@ -320,7 +320,7 @@ public class CodeChampionsController {
     }
 
     @RequestMapping("/upload")
-    public void upload(HttpSession session, HttpServletResponse response, MultipartFile file, int id) throws IOException {
+    public void upload(HttpSession session, HttpServletResponse response, MultipartFile file, int id, String displayName) throws IOException {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
 
@@ -336,6 +336,7 @@ public class CodeChampionsController {
             upload.uploadTime = LocalDateTime.now();
             upload.uploadUser = user;
             upload.uploadClass = classroom;
+            upload.displayName = displayName;
             uploads.save(upload);
             response.sendRedirect("/#/classroom/" + id);
         }
