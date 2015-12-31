@@ -336,7 +336,12 @@ public class CodeChampionsController {
             upload.uploadTime = LocalDateTime.now();
             upload.uploadUser = user;
             upload.uploadClass = classroom;
-            upload.displayName = displayName;
+            if (displayName.length() < 1) {
+                upload.displayName = upload.fileName;
+            }
+            else {
+                upload.displayName = displayName;
+            }
             uploads.save(upload);
             response.sendRedirect("/#/classroom/" + id);
         }
