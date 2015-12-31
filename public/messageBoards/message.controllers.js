@@ -5,11 +5,25 @@
     .module('message')
     .controller('MessageController', function($scope, $location, MessageService, ClassService, $routeParams){
       var vm = this;
-      if($location.url() === '/game'){
+
+      vm.getMessages = function(boardId){
+        MessageService.getMessages(boardId).then(function(res){
+          vm.messages = res.data;
+          _.each(vm.messages, function(currVal, idx, arr){
+            MessageService.getMessages(currVal.id).then(function(res){
+              arr[idx].replies=res.data;
+            });
+          });
+          console.log(vm.messages);
+        });
+    };
+    //use regular expressions to find what kind of page we are in to get the right message boards
+      if(/game/.test($location.url())){
+        console.log("you are in a game");
         vm.board = 1;
         vm.getMessages(vm.board);
       }
-      else if($location.url() === '/lesson'){
+      else if(/lesson/.test($location.url())){
         vm.board = 3;
         vm.getMessages(vm.board);
       }
@@ -40,17 +54,7 @@
         console.log("in message controller");
         MessageService.check();
       };
-      vm.getMessages = function(boardId){
-        MessageService.getMessages(boardId).then(function(res){
-          vm.messages = res.data;
-          _.each(vm.messages, function(currVal, idx, arr){
-            MessageService.getMessages(currVal.id).then(function(res){
-              arr[idx].replies=res.data;
-            });
-          });
-          console.log(vm.messages);
-        });
-    };
+
     //vm.getMessages(vm.board);
     });
 
