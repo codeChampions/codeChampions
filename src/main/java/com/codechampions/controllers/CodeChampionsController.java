@@ -444,8 +444,8 @@ public class CodeChampionsController {
         if ((tempUpload.uploadUser == user) || ())
     }*/
 
-    @RequestMapping("/saveStats")
-    public Stat saveStats(HttpSession session) {
+    @RequestMapping("/myStats")
+    public Stat myStats(HttpSession session) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
         Stat stat = new Stat();

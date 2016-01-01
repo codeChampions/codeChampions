@@ -67,10 +67,6 @@ public class User {
     @Column
     public AccessType accessType;
 
-    @OneToOne
-    public Stat myStats;
-
-
     //Image Avatar field
 
 

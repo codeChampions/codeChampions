@@ -1,5 +1,7 @@
 package com.codechampions.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -14,6 +16,7 @@ public class Stat {
     public int id;
 
     @OneToOne
+    @JsonIgnore
     public User user;
 
     @Column
