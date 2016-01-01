@@ -25,7 +25,7 @@
               game.load.image('aliens', 'assets/ship (16).png', 40, 44);
               game.load.image('bullet', 'assets/projectile1.svg', 32, 32);
               game.load.image('kaboom', 'assets/exload01_2.png', 10, 10);
-          }
+          };
 
           var create = function() {
 
@@ -73,7 +73,7 @@
           // fireButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 
-          }
+        };
 
           var createAliens = function() {
 
@@ -98,7 +98,7 @@
 
               //  When the tween loops it calls descend
               // tween.onLoop.add(descend, this);
-          }
+          };
 
           var scanForEnemy = function(){
             console.log(aliens.x);
@@ -127,7 +127,8 @@
 
             aliens.y += 10;
 
-        }
+        };
+
         var firing = false;
         var fireLaser = function() {
 
@@ -148,7 +149,7 @@
            //}
 
 
-        }
+        };
 
     var collisionHandler = function(bullet, alien, explosion) {
 
@@ -163,7 +164,7 @@
 
            explosion.kill();
 
-         }
+         };
 
 
 
@@ -172,11 +173,11 @@
             //  Called if the bullet goes out of the screen
             bullet.kill();
 
-        }
+        };
 
       var moveLeft = function(){
         player.body.velocity.x = -150;
-      }
+      };
       var rightMove = false;
       var numRight = 0;
 
@@ -196,11 +197,11 @@
 
       var moveUp = function(){
         player.body.velocity.y = -150;
-      }
+      };
 
       var moveDown = function(){
          player.body.velocity.y = 150;
-      }
+      };
 
       var update = function() {
 
@@ -253,7 +254,7 @@
 
           game.physics.arcade.overlap(bullets, aliens, collisionHandler, null, this);
 
-        }
+        };
 
 
     var game = new Phaser.Game(600, 400, Phaser.AUTO, 'spaceGame', { preload: preload, create: create, createAliens: createAliens, setupInvader: setupInvader, update: update });
