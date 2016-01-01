@@ -13,7 +13,8 @@
       'lesson',
       'game',
       'message',
-      'classroom'
+      'classroom',
+      'stats'
     ])
     .config(function($routeProvider){
       $routeProvider

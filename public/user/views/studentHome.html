@@ -23,7 +23,7 @@
         <h3>My Lessons</h3>
         <i class="glyphicon glyphicon-tasks"></i>
       </section>
-      <section class="col-md-3 student-stats">
+      <section ng-click="statsOpen = !statsOpen" class="col-md-3 student-stats">
         <h3>My Stats</h3>
         <i class="glyphicon glyphicon-stats"></i>
       </section>
@@ -120,5 +120,16 @@
         <a href="#/lesson33"><h4>Part 3</h4></a>
       </div>
     </aside>
+  </section>
+  <section ng-controller="StatsController as statsCtrl" ng-show="statsOpen" class="row main-lessons">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-6">
+      <aside class="col-md-12">
+        <h3>Total Games Completed: </h3>
+        <h3>Total Lessons Completed: </h3>
+        <h3>Lines of Code Written: </h3>
+      </aside>
+    </div>
   </section>
 </div>
