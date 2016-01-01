@@ -271,7 +271,8 @@ aside .edit {
     color: red; }
 
 .classRoomInput {
-  color: black; }
+  color: black;
+  font-size: 12px; }
 
 .classroom-btn {
   background-color: #D32F2F;
@@ -305,3 +306,18 @@ aside .edit {
 
 .classroom form {
   margin-bottom: 10px; }
+
+.upload {
+  background-color: #D32F2F; }
+
+.teacher-notes {
+  background-color: white;
+  margin: 5px;
+  border-radius: 5px;
+  color: black;
+  clear: both;
+  padding: 5px;
+  font-size: 16px; }
+  .teacher-notes a {
+    color: black;
+    text-decoration: none; }

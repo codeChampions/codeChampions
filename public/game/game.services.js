@@ -4,11 +4,12 @@
   angular
     .module('game')
     .factory('Game1_1Service', function($http, $location, _){
+      //set up current game coordinates
       var setGame = function(){
         $('#x').css('left', '10px');
         $('#x').css('top', '60px');
       };
-
+      // initialize values
       var posLeft = 0;
       var posUp = 0;
       var left = 0;
@@ -17,6 +18,7 @@
       var down = 0;
       var numMoves =0;
 
+      //move the character left
       var moveLeft = function(){
         if(posLeft>0){
         $('#char').animate({left: "-=50"}, {duration: 500});
@@ -26,6 +28,7 @@
       }
       };
 
+      //move the character right
       var moveRight = function(){
         if(posLeft < 250){
         $('#char').animate({left: "+=50"}, {duration: 500});
@@ -34,7 +37,7 @@
         numMoves++;
       }
       };
-
+      //move the character up
       var moveUp = function(){
         if(posUp > 0){
         $('#char').animate({top: "-=50"}, {duration: 500});
@@ -43,7 +46,7 @@
         numMoves++;
       }
       };
-
+      //move the character down
       var moveDown = function(){
         if(posUp < 150){
         $('#char').animate({top: "+=50"}, {duration: 500});
@@ -52,6 +55,7 @@
         numMoves++;
       }
       };
+      //reset the game to initial values after running
       var resetGame = function(){
         $("#char").css('top', '0px');
         $("#char").css('left', '0px');
@@ -65,9 +69,9 @@
         $('#error').html("");
         $('#error').addClass('hidden');
       };
-
+      //run the code
       var run = function(input){
-
+        //look for errors
         try{
           eval(input);
           if(numMoves > 1) throw "You are using too many steps to get to the destination.";
@@ -76,41 +80,44 @@
           if(up > 0) throw "You do not need to move up!";
           if(left > 0) throw "You do not need to move left!";
         }
+        //send errors
         catch(err){
           $('#error').removeClass('hidden');
           $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
         }
         setTimeout(function(){
-        if($('#char').position().top === 50 && $('#char').position().left === 0){
-        //we succeeeded so we put update the progress
-        putProgress();
-        var next = confirm("Go to next lesson?");
-        if(next === true){
-          $location.path('/lesson12');
-          resetGame();
+        //winning condition
+          if($('#char').position().top === 50 && $('#char').position().left === 0){
+          //we succeeeded so we put update the progress
+          putProgress();
+          var next = confirm("Go to next lesson?");
+          if(next === true){
+            $location.path('/lesson12');
+            resetGame();
         }
+          else{
+            resetGame();
+      }
+
+      }
+        //losing condition
         else{
-        resetGame();
-      }
+          $('#char').stop();
+          alert("Sorry, try again");
+          console.log($('#char').position());
+          console.log($('#x').position());
+          resetGame();
 
-      }
-      else{
-        $('#char').stop();
-        alert("Sorry, try again");
-        console.log($('#char').position());
-        console.log($('#x').position());
-        resetGame();
-
-      }}, 600);
+        }}, 600);
 
       };
-
+      //route to grab code for game
       var game1Code = '/getGameCode';
 
       var getCode = function() {
         return $http.get(game1Code);
       };
-
+      // route to send updated code to be stored in the user object in the server
       var putGameCode = '/putGameCode';
 
       var putCode = function(code) {
@@ -119,7 +126,9 @@
         };
         return $http.post(putGameCode, obj);
       };
-      var incrProgressUrl = '/incrementProgress/';
+      // route to update progress in lesson 1
+      var incrProgressUrl = '/incrementProgress1/';
+
       var putProgress = function(){
         var currentGame = '1';
         return $http.post(incrProgressUrl + currentGame);
@@ -132,12 +141,14 @@
         run: run,
       };
     })
+    //Game 1 part 2
     .factory('Game1_2Service', function($http, $location, _){
+      //set up game 1 part 2
       var setGame = function(){
         $('#x').css('left', '100px');
         $('#x').css('top', '0px');
       };
-
+      //initialize values
       var posLeft = 0;
       var posUp = 0;
       var left = 0;
@@ -145,7 +156,7 @@
       var up = 0;
       var down = 0;
       var numMoves =0;
-
+      //move character left
       var moveLeft = function(){
         if(posLeft>0){
         $('#char').animate({left: "-=50"}, {duration: 500});
@@ -154,7 +165,7 @@
         numMoves++;
       }
       };
-
+      //move character right
       var moveRight = function(){
         if(posLeft < 250){
         $('#char').animate({left: "+=50"}, {duration: 500});
@@ -163,7 +174,7 @@
         numMoves++;
       }
       };
-
+      //move character up
       var moveUp = function(){
         if(posUp > 0){
         $('#char').animate({top: "-=50"}, {duration: 500});
@@ -172,7 +183,7 @@
         numMoves++;
       }
       };
-
+      //move character down
       var moveDown = function(){
         if(posUp < 150){
         $('#char').animate({top: "+=50"}, {duration: 500});
@@ -181,6 +192,7 @@
         numMoves++;
       }
       };
+      //reset game to initial state after running
       var resetGame = function(){
         $("#char").css('top', '0px');
         $("#char").css('left', '0px');
@@ -196,7 +208,7 @@
       };
 
       var run = function(input){
-
+        //run code and throw errors
         try{
           eval(input);
           if(numMoves > 2) throw "You are using too many steps to get to the destination.";
@@ -205,41 +217,44 @@
           if(up > 0) throw "You do not need to move up!";
           if(left > 0) throw "You do not need to move left!";
         }
+        //display errors
         catch(err){
           $('#error').removeClass('hidden');
           $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
         }
         setTimeout(function(){
-        if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left){
-        //we succeeeded so we put update the progress
-        putProgress();
-        var next = confirm("Go to next lesson?");
-        if(next === true){
-          $location.path('/game13');
+        //check winning condition
+          if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left){
+          //we succeeeded so we put update the progress
+          putProgress();
+          var next = confirm("Go to next lesson?");
+          if(next === true){
+            $location.path('/game13');
+            resetGame();
+          }
+          else{
           resetGame();
         }
-        else{
-        resetGame();
-      }
 
-      }
-      else{
-        $('#char').stop();
-        alert("Sorry, try again");
-        console.log($('#char').position());
-        console.log($('#x').position());
-        resetGame();
+        }
+        //set losing condition
+        else{
+          $('#char').stop();
+          alert("Sorry, try again");
+          console.log($('#char').position());
+          console.log($('#x').position());
+          resetGame();
 
       }}, 1200);
 
       };
-
+      //route to get game code
       var game1Code = '/getGameCode';
 
       var getCode = function() {
         return $http.get(game1Code);
       };
-
+      //route to update game code in user object on server
       var putGameCode = '/putGameCode';
 
       var putCode = function(code) {
@@ -248,7 +263,8 @@
         };
         return $http.post(putGameCode, obj);
       };
-      var incrProgressUrl = '/incrementProgress/';
+      //route to increment user's progress on server
+      var incrProgressUrl = '/incrementProgress1/';
       var putProgress = function(){
         var currentGame = "2";
         return $http.post(incrProgressUrl + currentGame);
@@ -261,6 +277,7 @@
         run: run,
       };
     })
+    //set up game 1_3
     .factory('Game1_3Service', function($http, $location, _){
       var posLeft = 0;
       var posUp = 0;
@@ -268,7 +285,7 @@
       var right = 0;
       var up = 0;
       var down = 0;
-      var numMoves =0;
+      var numMoves = 0;
 
       var moveLeft = function(){
         left++;
@@ -377,15 +394,18 @@
         };
         return $http.post(putGameCode, obj);
       };
-      var incrProgressUrl = '/incrementProgress/';
+
+      var incrProgressUrl = '/incrementProgress1/';
       var putProgress = function(){
         var currentGame = "3";
         return $http.post(incrProgressUrl + currentGame);
       };
+
       var setGame = function(){
         $('#x').css('left', '150px');
         $('#x').css('top', '100px');
       };
+
       return {
         run: run,
         getCode: getCode,
@@ -393,6 +413,7 @@
         setGame: setGame
       };
     })
+    //game playground for development
     .factory('GamePlayService', function($http, $location, _){
 
       var moveLeft = function(){
