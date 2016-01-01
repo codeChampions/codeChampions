@@ -8,10 +8,11 @@
 
       vm.getStats = function(){
         StatsService.getStats().then(function(res){
-          console.log(res);
+          vm.myStats=res.data;
         });
 
       };
+      vm.getStats();
 
 
     });
