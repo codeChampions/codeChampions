@@ -42,10 +42,12 @@
         onLoad: function(_ace){
           vm.modeChanged = function(){
             _ace.getSession().setMode("ace/mode/" + vm.mode.toLowerCase());
+
           };
         }
       };
 
+      // run the user's code
       vm.run = function(){
         vm.putCode();
         switch (vm.loc) {
@@ -78,10 +80,11 @@
         }
 
       };
+      //reset the editor
       vm.resetAce = function(){
         vm.aceModel = vm.aceOriginal;
       };
-
+      //grab the student's code and put it into the editor if they have played the game before
       vm.getCode = function(){
         Game1_3Service.getCode().then(function(res){
           switch (vm.loc){
@@ -101,7 +104,7 @@
         });
 
       };
-
+      //update the student's code in the user object in the server
       vm.putCode = function(){
         switch (vm.loc) {
           case ('/game13'):
@@ -114,6 +117,7 @@
               Game1_2Service.putCode(vm.aceModel);
             break;
           case ('/gamePlayground'):
+          //this is only accessible to admins for trial purposes
               console.log('sup super cool admin who is making a video or something');
             break;
           default:
