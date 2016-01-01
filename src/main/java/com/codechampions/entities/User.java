@@ -67,7 +67,6 @@ public class User {
     @Column
     public AccessType accessType;
 
-
     //Image Avatar field
 
 
