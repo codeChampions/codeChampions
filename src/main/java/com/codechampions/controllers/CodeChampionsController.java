@@ -44,6 +44,9 @@ public class CodeChampionsController {
     public String game1_1InitialCode = ("//Javascript goes here \n moveDown();");
     public String game1_2InitialCode = ("//Javascript goes here \n");
     public String game1_3InitialCode = ("//Javascript goes here \n");
+    public String game2_1InitialCode = ("//Javascript goes here \n");
+    public String game2_2InitialCode = ("//Javascript goes here \n");
+    public String game2_3InitialCode = ("//Javascript goes here \n");
 
     @PostConstruct
     public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException {
@@ -61,12 +64,10 @@ public class CodeChampionsController {
             Message message = new Message(1, -1, "Game Message Board", admin);
             Message message1 = new Message(2, -1, "Classroom Message Board", admin);
             Message message2 = new Message(3, -1, "Lesson Message Board", admin);
-            Message message3 = new Message(4, 1, "Hello Game Board!", admin);
 
             messages.save(message);
             messages.save(message1);
             messages.save(message2);
-            messages.save(message3);
     }
 
     @RequestMapping(path = "/newUser", method = RequestMethod.POST)
@@ -200,6 +201,18 @@ public class CodeChampionsController {
             user.game1_3Code = game1_3InitialCode;
             return user;
         }
+        if (user.game2_1Code == null) {
+            user.game2_1Code = game2_1InitialCode;
+            return user;
+        }
+        if (user.game2_2Code == null) {
+            user.game2_2Code = game2_2InitialCode;
+            return user;
+        }
+        if (user.game2_3Code == null) {
+            user.game2_3Code = game2_3InitialCode;
+            return user;
+        }
         else {
             return user;
         }
@@ -218,10 +231,19 @@ public class CodeChampionsController {
         if (tempUser.game1_3Code != null) {
             user.game1_3Code = tempUser.game1_3Code;
         }
+        if (tempUser.game2_1Code != null) {
+            user.game2_1Code = tempUser.game2_1Code;
+        }
+        if (tempUser.game2_2Code != null) {
+            user.game2_2Code = tempUser.game2_2Code;
+        }
+        if (tempUser.game2_3Code != null) {
+            user.game2_3Code = tempUser.game2_3Code;
+        }
         users.save(user);
     }
 
-    @RequestMapping("/getLesson1Progress")
+    @RequestMapping("/getLessonProgress")
     public User user2(HttpSession session) {
         String username = (String) session.getAttribute("username");
         User user2 = users.findOneByUsername(username);
@@ -236,8 +258,16 @@ public class CodeChampionsController {
         users.save(user);
     }
 
-    @RequestMapping("/incrementProgress/{id}")
-    public void incrementProgress(HttpSession session, @PathVariable("id") int id) {
+    @RequestMapping("/putLesson2Progress")
+    public void putLesson2Progress(HttpSession session, @RequestBody User tempUser) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        user.lesson2Progress = tempUser.lesson2Progress;
+        users.save(user);
+    }
+
+    @RequestMapping("/incrementProgress1/{id}")
+    public void incrementProgress1(HttpSession session, @PathVariable("id") int id) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
         if (user.lesson1Progress < id) {
@@ -247,7 +277,19 @@ public class CodeChampionsController {
         } else {
             System.out.println("Game is completed!");
         }
+    }
 
+    @RequestMapping("/incrementProgress2/{id}")
+    public void incrementProgress2(HttpSession session, @PathVariable("id") int id) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        if (user.lesson2Progress < id) {
+            user.lesson2Progress++;
+            users.save(user);
+            System.out.println("Progress Incremented!");
+        } else {
+            System.out.println("Game is completed!");
+        }
     }
 
     @RequestMapping("/createClassroom")

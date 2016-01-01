@@ -40,11 +40,17 @@ public class User {
     @Column
     public int lesson1Progress;
 
-   // @Column
-   // public String game2Code;
+    @Column
+    public String game2_1Code;
 
-   // @Column
-   // public int progress;
+    @Column
+    public String game2_2Code;
+
+    @Column
+    public String game2_3Code;
+
+    @Column
+    public int lesson2Progress;
 
     @Column
     public AccessType accessType;
