@@ -47,6 +47,9 @@ public class CodeChampionsController {
     public String game2_1InitialCode = ("//Javascript goes here \n");
     public String game2_2InitialCode = ("//Javascript goes here \n");
     public String game2_3InitialCode = ("//Javascript goes here \n");
+    public String game3_1InitialCode = ("//Javascript goes here \n");
+    public String game3_2InitialCode = ("//Javascript goes here \n");
+    public String game3_3InitialCode = ("//Javascript goes here \n");
 
     @PostConstruct
     public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException {
@@ -56,8 +59,6 @@ public class CodeChampionsController {
             admin.username = "Admin";
             admin.password = PasswordHash.createHash("Admin");
             admin.accessType = User.AccessType.ADMIN;
-            admin.game1_1Code = "This is Admin's game 1 code!";
-            admin.lesson1Progress = 0;
             users.save(admin);
         }
 
@@ -213,6 +214,18 @@ public class CodeChampionsController {
             user.game2_3Code = game2_3InitialCode;
             return user;
         }
+        if (user.game3_1Code == null) {
+            user.game3_1Code = game3_1InitialCode;
+            return user;
+        }
+        if (user.game3_2Code == null) {
+            user.game3_2Code = game3_2InitialCode;
+            return user;
+        }
+        if (user.game3_3Code == null) {
+            user.game3_3Code = game3_3InitialCode;
+            return user;
+        }
         else {
             return user;
         }
@@ -240,6 +253,15 @@ public class CodeChampionsController {
         if (tempUser.game2_3Code != null) {
             user.game2_3Code = tempUser.game2_3Code;
         }
+        if (tempUser.game3_1Code != null) {
+            user.game3_1Code = tempUser.game3_1Code;
+        }
+        if (tempUser.game3_2Code != null) {
+            user.game3_2Code = tempUser.game3_2Code;
+        }
+        if (tempUser.game3_3Code != null) {
+            user.game3_3Code = tempUser.game3_3Code;
+        }
         users.save(user);
     }
 
@@ -266,6 +288,14 @@ public class CodeChampionsController {
         users.save(user);
     }
 
+    @RequestMapping("/putLesson3Progress")
+    public void putLesson3Progress(HttpSession session, @RequestBody User tempUser) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        user.lesson3Progress = tempUser.lesson3Progress;
+        users.save(user);
+    }
+
     @RequestMapping("/incrementProgress1/{id}")
     public void incrementProgress1(HttpSession session, @PathVariable("id") int id) {
         String username = (String) session.getAttribute("username");
@@ -285,6 +315,19 @@ public class CodeChampionsController {
         User user = users.findOneByUsername(username);
         if (user.lesson2Progress < id) {
             user.lesson2Progress++;
+            users.save(user);
+            System.out.println("Progress Incremented!");
+        } else {
+            System.out.println("Game is completed!");
+        }
+    }
+
+    @RequestMapping("/incrementProgress3/{id}")
+    public void incrementProgress3(HttpSession session, @PathVariable("id") int id) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        if (user.lesson3Progress < id) {
+            user.lesson3Progress++;
             users.save(user);
             System.out.println("Progress Incremented!");
         } else {

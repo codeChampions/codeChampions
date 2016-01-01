@@ -53,6 +53,18 @@ public class User {
     public int lesson2Progress;
 
     @Column
+    public String game3_1Code;
+
+    @Column
+    public String game3_2Code;
+
+    @Column
+    public String game3_3Code;
+
+    @Column
+    public int lesson3Progress;
+
+    @Column
     public AccessType accessType;
 
 
