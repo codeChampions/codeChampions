@@ -5,7 +5,7 @@
     .module('lesson')
     .factory('LessonService', function($http, $location, _){
 
-      var statusUrl = '/getLesson1Progress';
+      var statusUrl = '/getLessonProgress';
 
       var getStatus = function(){
         return $http.get(statusUrl);
