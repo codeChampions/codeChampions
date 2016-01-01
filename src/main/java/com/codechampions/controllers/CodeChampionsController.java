@@ -450,7 +450,9 @@ public class CodeChampionsController {
             File diskFile = new File("public/classNotes", upload.name);
             diskFile.delete();
         }
-        response.sendError(403, "You can only delete uploads that you created!");
+        else {
+            response.sendError(403, "You can only delete uploads that you created!");
+        }
     }
 
     @RequestMapping("/myStats")
