@@ -35,7 +35,7 @@
             vm.notes = res.data;
           });
         };
-        
+
         if($routeParams.classId){
           vm.getSingleClass();
           vm.getClassNotes();
@@ -51,6 +51,11 @@
           });
         };
 
+        vm.deleteUpload = function(uploadId){
+          ClassService.deleteUpload(uploadId).then(function(res){
+            vm.getClassNotes();
+          });
+        };
 
     });
 
