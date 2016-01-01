@@ -265,11 +265,40 @@
 
         eval(input);
         setTimeout(function(){
-        try{
-          if (livingEnemies > 0) throw "You did not get the aliens!";
-      }
-      catch(err){
-        console.log(err);
+        try {
+            if (player.body.x <50) throw "You did not move correctly!";
+          // if (livingEnemies > 0) throw "You did not get the aliens!";
+        }
+        catch(err){
+          console.log(err);
+        }
+        finally {
+          //winning condition and what happens
+
+          if(player.body.x > 50){
+            //putProgress needs to go first
+            //confirm move to next lesson
+
+          var goTo = confirm("Congrats, you piloted the Space Avenger. Go to next lesson?");
+          if(goTo === true){
+            console.log("in if");
+            console.log($location.url());
+            game.destroy();
+            $location.path('/lesson32');
+            $location.replace('/lesson32');
+
+            //resetGame
+          }
+          else{
+            console.log("in else");
+            //resetGame
+          }
+        }
+        //losing condition and what happens
+        else{
+          alert("You failed to pilot the Space Avenger correctly. Try Again!")
+          //resetGame
+        }
       }
     },2000);
 
