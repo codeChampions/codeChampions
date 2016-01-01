@@ -442,11 +442,13 @@ public class CodeChampionsController {
     public void deleteUpload(HttpSession session, HttpServletResponse response, @RequestBody Upload tempUpload) throws IOException {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
-        if ((tempUpload.uploadUser == user) || (user.accessType == User.AccessType.ADMIN)) {
-            uploads.delete(tempUpload);
+        Upload upload = uploads.findOne(tempUpload.id);
 
-            File diskFike = new File("public/classNotes", tempUpload.name);
-            diskFike.delete();
+        if ((upload.uploadUser == user) || (user.accessType == User.AccessType.ADMIN)) {
+            uploads.delete(upload);
+
+            File diskFile = new File("public/classNotes", upload.name);
+            diskFile.delete();
         }
         response.sendError(403, "You can only delete uploads that you created!");
     }
