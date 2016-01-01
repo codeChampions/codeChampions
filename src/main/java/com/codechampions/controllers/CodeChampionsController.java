@@ -437,13 +437,19 @@ public class CodeChampionsController {
         Classroom classroom = classrooms.findOne(id);
         return uploads.findAllByUploadClass(classroom);
     }
-/*
+
     @RequestMapping("/deleteUpload")
-    public void deleteUpload(HttpSession session, HttpServletResponse response, @RequestBody Upload tempUpload) {
+    public void deleteUpload(HttpSession session, HttpServletResponse response, @RequestBody Upload tempUpload) throws IOException {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
-        if ((tempUpload.uploadUser == user) || ())
-    }*/
+        if ((tempUpload.uploadUser == user) || (user.accessType == User.AccessType.ADMIN)) {
+            uploads.delete(tempUpload);
+
+            File diskFike = new File("public/classNotes", tempUpload.name);
+            diskFike.delete();
+        }
+        response.sendError(403, "You can only delete uploads that you created!");
+    }
 
     @RequestMapping("/myStats")
     public Stat myStats(HttpSession session) {
