@@ -4,23 +4,16 @@
   </div>
   <h1>Welcome to {{classCtrl.singleClass.className}}</h1>
   <div ng-if="classCtrl.singleClass.owner.username === classCtrl.username" class="teacher-view">
-    <div class="col-md-12">
-      <div class="col-md-1"></div>
-      <form class="col-md-3" ng-submit="classCtrl.addStudent(studentName, classCtrl.singleClass.id)">
-        <input  class="classRoomInput input" name="studentName" type="text" ng-model="studentName" placeholder="Student to add" value="">
-        <input class="btn btn-primary submit" type="submit" value="submit">
-      </form>
-      <div class="col-md-6"></div>
-      <label class="col-md-2 btn" for="my-file-selector">
-        <form class="col-md-2 btn" action="upload" enctype="multipart/form-data" method="post">
-          <input id="my-file-selector" name="file" type="file" style="display:none;" value="">
-          <input name="displayName" class="classRoomInput input" type="text" placeholder="Name to Display" value="">
-          <input type="number" value="{{classCtrl.singleClass.id}}" name="id" style="display:none;">
-          Upload Notes
-          <input type="submit">
+    <section class="row">
+      <div class="col-md-12">
+        <div class="col-md-1"></div>
+        <form class="col-md-3" ng-submit="classCtrl.addStudent(studentName, classCtrl.singleClass.id)">
+          <input  class="classRoomInput input" name="studentName" type="text" ng-model="studentName" placeholder="Student to add" value="">
+          <input class="btn btn-primary submit" type="submit" value="submit">
         </form>
-      </label>
-    </div>
+        <div class="col-md-3"></div>
+      </div>
+    </section>
     <article class="classroom-student" ng-repeat="student in classCtrl.singleClass.classStudents">
       <div ng-click="showCode = !showCode">
         <h3>{{student.username}}</h3>
@@ -40,11 +33,21 @@
       </div>
     </article>
   </div>
-  <h2>Notes from Teacher</h2>
-  <article class="" ng-repeat="note in classCtrl.notes">
-    <a href="/classNotes/{{note.name}}">{{note.displayName}}</a>
-  </article>
-
+  <h2 class="col-md-3">Notes from Teacher</h2>
+  <label ng-if="classCtrl.singleClass.owner.username === classCtrl.username" class="col-md-2" for="my-file-selector">
+    <form class="col-md-2 btn" action="upload" enctype="multipart/form-data" method="post">
+      <input type="number" value="{{classCtrl.singleClass.id}}" name="id" style="display:none;">
+      <span ng-hide="" ng-click="uploadNotes = !uploadNotes" class="btn upload">Upload Notes</span>
+      <input ng-show="uploadNotes" id="my-file-selector" name="file" type="file" style="display:none;" value="">
+      <input ng-show="uploadNotes" name="displayName" class="classRoomInput input" type="text" placeholder="Name to Display" value="">
+      <input ng-show="uploadNotes" class="btn submit" type="submit">
+    </form>
+  </label>
+  <section class="col-md-5 teacher-notes">
+    <article ng-repeat="note in classCtrl.notes">
+      <a href="/classNotes/{{note.name}}">&#8226 {{note.displayName}}</a>
+    </article>
+  </section>
   <div class="col-md-12">
     <message-board></message-board>
   </div>
