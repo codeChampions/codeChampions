@@ -7,6 +7,7 @@
     var vm = this;
     vm.loc = $location.url();
     vm.mode = 'JavaScript';
+    vm.finished = false;
     vm.aceOption = {
         mode: vm.mode.toLowerCase(),
         theme: 'monokai',
@@ -17,8 +18,7 @@
         }
       };
       vm.run = function(){
-
-          SpaceGame1Service.run(vm.aceModel);
+        SpaceGame1Service.run(vm.aceModel);
       };
 
 
