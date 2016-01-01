@@ -45,7 +45,7 @@
   </label>
   <section class="col-md-5 teacher-notes">
     <article ng-repeat="note in classCtrl.notes">
-      <a href="/classNotes/{{note.name}}">&#8226 {{note.displayName}}</a>
+      <a href="/classNotes/{{note.name}}">&#8226 {{note.displayName}}</a><button class="btn btn-danger" ng-click="classCtrl.deleteUpload(note.id)">Delete</button>
     </article>
   </section>
   <div class="col-md-12">

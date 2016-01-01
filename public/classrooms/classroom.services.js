@@ -8,6 +8,7 @@
       var getClassUrl= '/myClasses';
       var addStudentUrl = '/addStudent';
       var getNotesUrl = '/myUploads';
+      var deleteUpUrl = '/deleteUpload';
 
       var createClassroom = function(name){
         var obj = {className: name};
@@ -25,12 +26,17 @@
       var getClassNotes = function(classId){
         return $http.get(getNotesUrl + '/' + classId);
       };
+      var deleteUpload = function(uploadId){
+        var obj={id: uploadId};
+        return $http.post(deleteUpUrl, obj);
+      };
       return {
           createClassroom: createClassroom,
           getClasses: getClasses,
           addStudent: addStudent,
           getSingleClass: getSingleClass,
-          getClassNotes: getClassNotes
+          getClassNotes: getClassNotes,
+          deleteUpload: deleteUpload
         };
     });
 
