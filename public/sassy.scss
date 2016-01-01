@@ -360,6 +360,7 @@ aside {
 
 .classRoomInput{
   color: black;
+  font-size: 12px;
 }
 
 .classroom-btn {
@@ -400,4 +401,22 @@ aside {
 
 .classroom form {
   margin-bottom: 10px;
+}
+
+.upload {
+  background-color: #D32F2F;
+}
+
+.teacher-notes {
+  background-color: white;
+  margin: 5px;
+  border-radius: 5px;
+  color: black;
+  clear: both;
+  padding: 5px;
+  font-size: 16px;
+  a {
+    color: black;
+    text-decoration: none;
+  }
 }
