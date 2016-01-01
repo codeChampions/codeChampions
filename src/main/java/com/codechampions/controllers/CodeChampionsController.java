@@ -1,13 +1,7 @@
 package com.codechampions.controllers;
 
-import com.codechampions.entities.Classroom;
-import com.codechampions.entities.Upload;
-import com.codechampions.entities.Message;
-import com.codechampions.entities.User;
-import com.codechampions.services.ClassroomRepository;
-import com.codechampions.services.UploadRepository;
-import com.codechampions.services.MessageRepository;
-import com.codechampions.services.UserRepository;
+import com.codechampions.entities.*;
+import com.codechampions.services.*;
 import com.codechampions.utils.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +34,8 @@ public class CodeChampionsController {
     ClassroomRepository classrooms;
     @Autowired
     UploadRepository uploads;
+    @Autowired
+    StatRepository stats;
 
     public String game1_1InitialCode = ("//Javascript goes here \n moveDown();");
     public String game1_2InitialCode = ("//Javascript goes here \n");
@@ -447,4 +443,24 @@ public class CodeChampionsController {
         User user = users.findOneByUsername(username);
         if ((tempUpload.uploadUser == user) || ())
     }*/
+
+    @RequestMapping("/saveStats")
+    public Stat saveStats(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        Stat stat = new Stat();
+        stat.user = user;
+        if (user.lesson1Progress == 3) {
+            stat.lessonsFinished++;
+        }
+        if (user.lesson2Progress == 3) {
+            stat.lessonsFinished++;
+        }
+        if (user.lesson3Progress == 3) {
+            stat.lessonsFinished++;
+        }
+        stat.gamesFinished = user.lesson1Progress + user.lesson2Progress + user.lesson3Progress;
+        stats.save(stat);
+        return stat;
+    }
 }
