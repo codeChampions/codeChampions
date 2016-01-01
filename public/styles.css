@@ -223,6 +223,9 @@ aside .edit {
   height: 140px;
   text-align: center; }
 
+.stats {
+  background-color: white; }
+
 .minPadding {
   padding-left: 5px; }
 
