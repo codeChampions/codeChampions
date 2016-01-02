@@ -62,6 +62,7 @@
         }
         setTimeout(function(){
           if(animal1.toLowerCase() ==="senor bacon" && animal2.toLowerCase() ==="pascal the penguin" && animal3.toLowerCase() ==="owlie" && animal4.toLowerCase() ==="thomas the turtle"){
+            putProgress();
             var moveOn = confirm("Congrats, would you like to go to the next lesson?");
             if(moveOn === true){
               console.log('in move on');

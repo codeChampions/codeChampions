@@ -92,7 +92,7 @@
           case ('/game21'):
               Game2_1Service.putCode(vm.aceModel);
             break;
-          case ('/game12'):
+          case ('/game22'):
               Game2_2Service.putCode(vm.aceModel);
             break;
           default:
