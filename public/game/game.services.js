@@ -361,7 +361,7 @@
         putProgress();
         var next = confirm("Go to next lesson?");
         if(next === true){
-          $location.path('/lesson1');
+          $location.path('/lesson21');
           resetGame();
         }
         else{

@@ -259,6 +259,36 @@ aside {
     overflow-y: hidden;
     border: 1px solid gray; }
 
+  #field23 {
+    position: relative;
+    margin: 10px auto;
+    background-image: url('../../images/dungeonwall.jpg');
+    width: 85%;
+    height: 235px;
+    overflow-y: hidden;
+    border: 1px solid gray; }
+
+  .dungeonDoor{
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .dungeonNoRight{
+    margin-left: 2px;
+    margin-right: 0px;
+  }
+  .dungeonRow{
+    margin-top:50px;
+
+  }
+  .door{
+      width: 60px;
+      height: 100px;
+  }
+  .behindDoor{
+    padding-top: 30px;
+    width: 55px;
+  }
   .zooText {
     text-align: center;
     color: white;

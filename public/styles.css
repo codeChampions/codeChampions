@@ -195,6 +195,28 @@ aside .edit {
     height: 235px;
     overflow-y: hidden;
     border: 1px solid gray; }
+  .gameView #field23 {
+    position: relative;
+    margin: 10px auto;
+    background-image: url("../../images/dungeonwall.jpg");
+    width: 85%;
+    height: 235px;
+    overflow-y: hidden;
+    border: 1px solid gray; }
+  .gameView .dungeonDoor {
+    margin-left: 2px;
+    margin-right: 2px; }
+  .gameView .dungeonNoRight {
+    margin-left: 2px;
+    margin-right: 0px; }
+  .gameView .dungeonRow {
+    margin-top: 50px; }
+  .gameView .door {
+    width: 60px;
+    height: 100px; }
+  .gameView .behindDoor {
+    padding-top: 30px;
+    width: 55px; }
   .gameView .zooText {
     text-align: center;
     color: white; }

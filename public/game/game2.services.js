@@ -109,10 +109,64 @@
       };
     })
     //set up game 2_3
-    .factory('Game2_3Service', function($http, $location, _){
+    .factory('Game2_3Service', function($http, $window, $location, _){
+
+      var doors=[];
+      var treasures = 0;
+
+      var openDoor = function(door){
+        $('#door'+door).addClass('hidden');
+        $('#behindDoor'+door).removeClass('hidden');
+        doors.push(door);
+        if(door === 1 || door === 4){
+          treasures++;
+        }
+        console.log(doors);
+      };
+
+      var resetGame = function(){
+        for(var i=0; i<5; i++){
+          $('#door'+i).removeClass('hidden');
+          $('#behindDoor'+i).addClass('hidden');
+        }
+        doors=[];
+      };
 
       var run = function(input){
-        console.log("running");
+        try{
+          eval(input);
+          if(doors ===[]) throw "You need to select a door";
+          if(doors.length !=2) throw "You need to search two rooms.";
+          if(!_.contains(doors, 1)) throw "you visited the wrong room";
+          if(!_.contains(doors, 4)) throw "you visited the wrong room";
+        }
+        catch(err){
+          $('#error').removeClass('hidden');
+          $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
+        }
+        setTimeout(function(){
+          console.log("doors " + doors);
+          console.log("treasures: " + treasures);
+          if(doors.length === 2 && treasures === 2 && _.contains(doors, 1) && _.contains(doors, 4)){
+            putProgress();
+            var moveOn = confirm("Congrats, would you like to go to the next lesson?");
+            if(moveOn === true){
+              console.log('in move on');
+              $window.location.assign('#/lesson31');
+              resetGame();
+            }
+            else{
+              console.log('why not?');
+              resetGame();
+            }
+          }
+          else{
+            alert("Sorry, try again");
+            $('#error').html("");
+            $('#error').addClass('hidden');
+            resetGame();
+          }
+        }, 1500);
       };
 
       var game1Code = '/getGameCode';
