@@ -3,7 +3,7 @@
 
   angular
   .module('game')
-  .factory('SpaceGame1Service', function($http, $location){
+  .factory('SpaceGame1Service', function($http, $location, $window){
 
     var player;
           var aliens;
@@ -284,8 +284,9 @@
             console.log("in if");
             console.log($location.url());
             game.destroy();
-            $location.path('/lesson32');
-            $location.replace('/lesson32');
+            $window.location.assign('#/lesson32');
+            // $location.path('/lesson32');
+            // $location.replace('/lesson32');
 
             //resetGame
           }

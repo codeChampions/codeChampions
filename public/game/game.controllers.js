@@ -63,7 +63,6 @@
           case ('/gamePlayground'):
               try{
                 eval(vm.aceModel);
-
               }
             finally{
               console.log($scope.playerName);

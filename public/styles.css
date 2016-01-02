@@ -187,6 +187,19 @@ aside .edit {
     width: 85%;
     height: 235px;
     border: 1px solid gray; }
+  .gameView #field22 {
+    position: relative;
+    margin: 10px auto;
+    background-image: url("../../images/grass.png");
+    width: 85%;
+    height: 235px;
+    overflow-y: hidden;
+    border: 1px solid gray; }
+  .gameView .zooText {
+    text-align: center;
+    color: white; }
+  .gameView .zooRow {
+    margin-bottom: 10px; }
   .gameView #x {
     position: absolute;
     top: 100px;
