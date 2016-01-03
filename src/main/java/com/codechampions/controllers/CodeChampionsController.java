@@ -190,43 +190,32 @@ public class CodeChampionsController {
 
         if (user.game1_1Code == null) {
             user.game1_1Code = game1_1InitialCode;
-            return user;
         }
         if (user.game1_2Code == null) {
             user.game1_2Code = game1_2InitialCode;
-            return user;
         }
         if (user.game1_3Code == null) {
             user.game1_3Code = game1_3InitialCode;
-            return user;
         }
         if (user.game2_1Code == null) {
             user.game2_1Code = game2_1InitialCode;
-            return user;
         }
         if (user.game2_2Code == null) {
             user.game2_2Code = game2_2InitialCode;
-            return user;
         }
         if (user.game2_3Code == null) {
             user.game2_3Code = game2_3InitialCode;
-            return user;
         }
         if (user.game3_1Code == null) {
             user.game3_1Code = game3_1InitialCode;
-            return user;
         }
         if (user.game3_2Code == null) {
             user.game3_2Code = game3_2InitialCode;
-            return user;
         }
         if (user.game3_3Code == null) {
             user.game3_3Code = game3_3InitialCode;
-            return user;
         }
-        else {
             return user;
-        }
     }
 
     @RequestMapping("/putGameCode")
