@@ -49,6 +49,10 @@
         .when('/gamePlayground', {
           templateUrl: 'game/views/gametester.html',
           controller: 'GameController as gameCtrl'
+        })
+        .when('/phaserPlayground',{
+          templateUrl: 'game/views/phaserTester.html',
+          controller: 'SpacePlayController as spacePCtrl'
         });
     });
 

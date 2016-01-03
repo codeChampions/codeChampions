@@ -187,6 +187,13 @@ aside .edit {
     width: 85%;
     height: 235px;
     border: 1px solid gray; }
+  .gameView #fieldPlay {
+    position: relative;
+    margin: 10px auto;
+    padding: 10px;
+    width: 85%;
+    height: 235px;
+    border: 1px solid gray; }
   .gameView #field22 {
     position: relative;
     margin: 10px auto;
@@ -203,6 +210,9 @@ aside .edit {
     height: 235px;
     overflow-y: hidden;
     border: 1px solid gray; }
+  .gameView .playgroundSpan {
+    font-size: 16px;
+    color: red; }
   .gameView .dungeonDoor {
     margin-left: 2px;
     margin-right: 2px; }
@@ -236,6 +246,9 @@ aside .edit {
     display: none; }
   .gameView #spaceGame, .gameView #spaceGame2, .gameView #spaceGame3 {
     height: 400px; }
+
+.phaserPlayNotes {
+  font-size: 12px; }
 
 .hintView .hint {
   background-color: #D32F2F;
