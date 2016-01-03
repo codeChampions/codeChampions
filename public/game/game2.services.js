@@ -130,6 +130,7 @@
           $('#behindDoor'+i).addClass('hidden');
         }
         doors=[];
+        treasures = 0;
       };
 
       var run = function(input){
