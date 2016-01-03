@@ -415,6 +415,8 @@ aside {
 
 //classrooms
 
+
+
 .student-progress {
   border-top: 1px solid black;
   p{
@@ -479,8 +481,20 @@ aside {
   clear: both;
   padding: 5px;
   font-size: 16px;
+  article{
+    margin-bottom: 10px;
+    clear: both;
+  }
   a {
     color: black;
     text-decoration: none;
+
+  }
+  .delete {
+    background-color: #D32F2F;
+    font-family:  'Anton', sans-serif;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 14px;
   }
 }
