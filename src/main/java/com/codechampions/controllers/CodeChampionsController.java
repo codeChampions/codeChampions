@@ -475,12 +475,11 @@ public class CodeChampionsController {
 
         String totalLines = user.game1_1Code + ("\n") + user.game1_2Code + ("\n") + user.game1_3Code + ("\n") +user.game2_1Code + ("\n") + user.game2_2Code + ("\n") + user.game2_3Code + ("\n") + user.game3_1Code + ("\n") + user.game3_2Code + ("\n") + user.game3_3Code;
         String[] lines = totalLines.split("\n");
-
         List<String> linesList = Arrays.asList(lines);
 
         List<String> filteredList =  linesList.stream()
                 .filter(x ->  {
-                    return ((!linesList.contains(x == null)) && (!linesList.contains(x.startsWith("//"))));
+                    return ((linesList.remove(x == null)) && (!linesList.contains(x.startsWith("//"))));
                 })
                 .collect(Collectors.toList());
         System.out.println(filteredList);
