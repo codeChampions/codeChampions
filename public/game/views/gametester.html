@@ -1,20 +1,44 @@
+<!-- this is a playground for admins to try new games or make videos for lessons -->
 <div class="container">
   <div ng-controller="UserController as userCtrl">
     <header-direct logout="userCtrl.logout()"></header-direct>
   </div>
   <section class="row gameView">
-    <aside class="notes col-xs-4"><b>BURIED TREASURE Part 3</b><br><br>This treasure won't be as easy to grab as the previous ones. Beware, a dastardly cactus obstacle stands in your way! <br><br>You are currently at position (0,0) and the treasure is at (150, -100) with the cactus blocking (50, 0). Move the character to the treasure by using the moveLeft( ), moveRight( ), moveUp( ), and moveDown( ) functions.<br>
-      Each moves the character 50px in the indicated direction. Be quick. You only have 3 seconds to reach the destination and each move takes 0.5s.<br><br>Remember that JavaScript will read one line at a time so order matters!
+    <aside class="notes col-xs-4"><b>Variables!</b><br><br>
+      Variables act as a way to store values for later use. You can declare a new variable by saying:
+      <blockquote>
+       var varName = VALUE;
+     </blockquote>
+        Then call it by varName. You can also reassign the value by saying
+      <blockquote>
+        varName = NEWVALUE.
+      </blockquote>
     </aside>
     <aside class="col-xs-4 editor">
       <div ui-ace="gameCtrl.aceOption" ng-model="gameCtrl.aceModel">stuff</div>
     </aside>
     <aside class="col-xs-4 gameBox">
       <button class="run btn btn-danger" ng-click="gameCtrl.run()">Run</button><button class="run btn btn-danger" ng-click="gameCtrl.resetAce()">Reset</button><br>
-      <div id="field">
-        <img id="char" class="char" src="../../images/terry.png">
-        <h5>{{playerName}}</h5>
-        <h5>{{otherName}}</h5>
+      <div id="fieldPlay">
+        <img src="../../images/castledoors.png">
+        <h4>doorOpen = <span class="playgroundSpan">{{gameCtrl.openDoor}}</span></h4>
+        <h4>doorClosed = <span class="playgroundSpan">{{gameCtrl.closedDoor}}</span></h4>
+        <!-- <img src= "../../images/terry.png"> = <span class="playgroundSpan">{{gameCtrl.characterName}}</span><br>
+        <img src = "../../images/pig.png"> = <span class="playgroundSpan">{{gameCtrl.character2Name}}</span> -->
+        <!-- <img src = "../../images/penguin.png">&nbsp;
+        <img src = "../../images/owl.png">&nbsp;
+        <img src = "../../images/turtle.png">&nbsp; -->
+        <!-- <br><br>
+        <h4> pets = <span class="playgroundSpan">{{gameCtrl.array}}</span></h4>
+        <h4> pets[0] = <span class="playgroundSpan">{{gameCtrl.array[0]}}</span></h4>
+        <h4> pets[2] = <span class="playgroundSpan">{{gameCtrl.array[2]}}</span></h4>
+        <h4> pets.length = <span class="playgroundSpan">{{gameCtrl.arrlength}}</span></h4> -->
+        <!-- <h4>X = <span class="playgroundSpan">{{gameCtrl.x}}</span></h4>
+        <h4>X + 2 = <span class="playgroundSpan">{{gameCtrl.xAns}}</span></h4>
+        <h4>Y = <span class="playgroundSpan">{{gameCtrl.y}}</span></h4>
+        <h4>Y + 4 = <span class="playgroundSpan">{{gameCtrl.yAns}}</span></h4>
+        <h4>Z = <span class="playgroundSpan">{{gameCtrl.z}}</span></h4>
+        <h4>Z + 1 = <span class="playgroundSpan">{{gameCtrl.zAns}}</span></h4> -->
       </div>
       <div id="error" class="alert alert-danger hidden" role="alert">
       </div>

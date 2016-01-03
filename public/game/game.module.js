@@ -22,6 +22,18 @@
           templateUrl: 'game/views/game13.html',
           controller: 'GameController as gameCtrl'
         })
+        .when('/game21', {
+          templateUrl: 'game/views/game21.html',
+          controller: 'Game2Controller as game2Ctrl'
+        })
+        .when('/game22', {
+          templateUrl: 'game/views/game22.html',
+          controller: 'Game2Controller as game2Ctrl'
+        })
+        .when('/game23', {
+          templateUrl: 'game/views/game23.html',
+          controller: 'Game2Controller as game2Ctrl'
+        })
         .when('/game31', {
           templateUrl: 'game/views/game31.html',
           controller: 'Space1Controller as space1Ctrl'
@@ -37,6 +49,10 @@
         .when('/gamePlayground', {
           templateUrl: 'game/views/gametester.html',
           controller: 'GameController as gameCtrl'
+        })
+        .when('/phaserPlayground',{
+          templateUrl: 'game/views/phaserTester.html',
+          controller: 'SpacePlayController as spacePCtrl'
         });
     });
 

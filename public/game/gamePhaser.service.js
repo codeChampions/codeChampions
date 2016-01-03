@@ -3,7 +3,7 @@
 
   angular
   .module('game')
-  .factory('SpaceGame1Service', function($http, $location, $window){
+  .factory('SpacePlayService', function($http, $location){
 
     var player;
           var aliens;
@@ -128,7 +128,6 @@
             aliens.y += 10;
 
         };
-
         var firing = false;
         var fireLaser = function() {
 
@@ -178,6 +177,7 @@
       var moveLeft = function(){
         player.body.velocity.x = -150;
       };
+
       var rightMove = false;
       var numRight = 0;
 
@@ -194,13 +194,19 @@
         }, 1000);
 
     };
-
+    var upMove = false;
+    var numUp = 0;
       var moveUp = function(){
-        player.body.velocity.y = -150;
+        //player.body.velocity.y = -150;
+        upMove = true;
+        numUp++;
+
       };
 
-      var moveDown = function(){
-         player.body.velocity.y = 150;
+      var jetUpwards = function(){
+         //player.body.velocity.y = 150;
+         upMove = true;
+         numUp++;
       };
 
       var update = function() {
@@ -221,36 +227,15 @@
             rightMove = false;
             numRight= 0;
            }
-          // else if (cursors.right.isDown)
-          // {
-          //     //  Move to the right
-          //     player.body.velocity.x = 150;
-          //
-          //     // player.animations.play('right', 10, true);
-          // }
-          //
-          // else if (cursors.up.isDown)
-          // {
-          //    //  Move to the Up
-          //    player.body.velocity.y = -150;
-          //
-          //   //  player.animations.play('up', 10, true);
-          // }
-          //
-          //    else if (cursors.down.isDown)
-          // {
-          //    //  Move to the Down
-          //    player.body.velocity.y = 150;
-          //
-          //   //  player.animations.play('down', 10, true);
-          // }
+           if (upMove)
+            {
+               //  Move to the left
+              player.body.velocity.y = -40000*numUp;
 
-          // if (fireButton.isDown)
-          //      {
-          //          fireLaser();
-          //      }
-
-
+             player.animations.play('up', 10, true);
+             upMove = false;
+             numUp= 0;
+            }
 
           game.physics.arcade.overlap(bullets, aliens, collisionHandler, null, this);
 
@@ -261,47 +246,7 @@
 
         var run = function(input){
 
-        console.log("starting " + player.body.x);
-
         eval(input);
-        setTimeout(function(){
-        try {
-            if (player.body.x <50) throw "You did not move correctly!";
-          // if (livingEnemies > 0) throw "You did not get the aliens!";
-        }
-        catch(err){
-          console.log(err);
-        }
-        finally {
-          //winning condition and what happens
-
-          if(player.body.x > 50){
-            //putProgress needs to go first
-            //confirm move to next lesson
-
-          var goTo = confirm("Congrats, you piloted the Space Avenger. Go to next lesson?");
-          if(goTo === true){
-            console.log("in if");
-            console.log($location.url());
-            game.destroy();
-            $window.location.assign('#/lesson32');
-            // $location.path('/lesson32');
-            // $location.replace('/lesson32');
-
-            //resetGame
-          }
-          else{
-            console.log("in else");
-            //resetGame
-          }
-        }
-        //losing condition and what happens
-        else{
-          alert("You failed to pilot the Space Avenger correctly. Try Again!")
-          //resetGame
-        }
-      }
-    },2000);
 
     };
 

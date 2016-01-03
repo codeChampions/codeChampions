@@ -207,6 +207,32 @@
       // vm.getCode();
 
 
+  })
+  .controller('SpacePlayController', function($scope, $location, SpacePlayService){
+    var vm = this;
+    vm.loc = $location.url();
+    vm.mode = 'JavaScript';
+    vm.aceOption = {
+        mode: vm.mode.toLowerCase(),
+        theme: 'monokai',
+        onLoad: function(_ace){
+          vm.modeChanged = function(){
+            _ace.getSession().setMode("ace/mode/" + vm.mode.toLowerCase());
+          };
+        }
+      };
+      vm.run = function(){
+
+          SpacePlayService.run(vm.aceModel);
+      };
+
+
+      vm.resetAce = function(){
+        vm.aceModel = vm.aceOriginal;
+      };
+
+
+
   });
 
 

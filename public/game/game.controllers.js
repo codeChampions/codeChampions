@@ -5,10 +5,6 @@
     .module('game')
     .controller('GameController', function($scope, $location, Game1_3Service, Game1_1Service, Game1_2Service, GamePlayService){
         var vm = this;
-        $scope.playerName = "My Name";
-        var playerName = "Me";
-        $scope.otherName = "Other";
-        var otherName = "Other";
         vm.loc = $location.url();
         vm.mode = 'Javascript';
 
@@ -26,6 +22,18 @@
               Game1_3Service.setGame();
               break;
             case ('/gamePlayground'):
+              vm.x = "";
+              vm.y = "";
+              vm.z = "";
+              vm.xAns = "";
+              vm.yAns = "";
+              vm.zAns = "";
+              vm.characterName = "";
+              vm.character2Name = "";
+              vm.openDoor = "";
+              vm.closedDoor = "";
+              vm.array = [];
+              vm.arrlength = "";
               GamePlayService.setGame();
               break;
             default:
@@ -61,19 +69,28 @@
             Game1_2Service.run(vm.aceModel);
             break;
           case ('/gamePlayground'):
-              try{
+            var x="";
+            var y="";
+            var z="";
+            var personName ="";
+            var animalName = "";
+            var doorOpen;
+            var doorClosed;
+            var pets = "";
                 eval(vm.aceModel);
+                // vm.array = pets;
+                // vm.arrlength = vm.array.length;
+                vm.openDoor = doorOpen;
+                vm.closedDoor = doorClosed;
+                // vm.characterName = personName;
+                // vm.character2Name = animalName;
+                // vm.x = x;
+                // vm.y = y;
+                // vm.z = z;
+                // vm.xAns = x+2;
+                // vm.yAns = y+4;
+                // vm.zAns = z+1;
 
-              }
-            finally{
-              console.log($scope.playerName);
-              if (playerName !==""){
-                $scope.playerName = playerName;
-              }
-              if (otherName !==""){
-                $scope.otherName = otherName;
-              }
-              GamePlayService.run(vm.aceModel);}
             break;
           default:
 

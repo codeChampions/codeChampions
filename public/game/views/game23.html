@@ -1,0 +1,65 @@
+<div class="container">
+  <div ng-controller="UserController as userCtrl">
+    <header-direct logout="userCtrl.logout()"></header-direct>
+  </div>
+  <section class="row gameView">
+    <aside class="notes col-xs-4"><b>ARRAY DUNGEON</b><br><br>You are searching the Array Dungeon for treasure.<br><br>
+      Dungeon doors are numbered like array indices. Your treasure map tells you that you need to open the second and fifth doors.<br><br>
+      Use the openDoor()function with the index of the door you want to open as a parameter (i.e. openDoor(0) to open door number 0) to search the right rooms.
+      Be careful, because opening the wrong one will lead you straight to a dungeon monster!
+    </aside>
+    <aside class="col-xs-4 editor">
+      <div ui-ace="game2Ctrl.aceOption" ng-model="game2Ctrl.aceModel">stuff</div>
+    </aside>
+    <aside class="col-xs-4 gameBox">
+      <button class="run btn btn-danger" ng-click="game2Ctrl.run()">Run</button><button class="run btn btn-danger" ng-click="game2Ctrl.resetAce()">Reset</button><br>
+      <div id="field23">
+        <div class="row dungeonRow">
+          <div class="col-xs-2 dungeonDoor">
+            <img class="door" id="door0" src="../../images/castledoors.png">
+            <img id="behindDoor0" class="behindDoor hidden" src="../../images/monster.png">
+          </div>
+          <div class="col-xs-2 dungeonDoor">
+            <img id="door1" src="../../images/castledoors.png">
+            <img id="behindDoor1" class="behindDoor hidden" src="../../images/treasure.png">
+          </div>
+          <div class="col-xs-2 dungeonDoor">
+            <img class="door" id="door2" src="../../images/castledoors.png">
+            <img id="behindDoor2" class="behindDoor hidden" src="../../images/monster1.png">
+          </div>
+          <div class="col-xs-2 dungeonDoor">
+            <img class="door" id="door3" src="../../images/castledoors.png">
+            <img id="behindDoor3" class="behindDoor hidden" src="../../images/monster2.png">
+          </div>
+          <div class="col-xs-2 dungeonNoRight">
+            <img class="door" id="door4" src="../../images/castledoors.png">
+            <img id="behindDoor4" class="behindDoor hidden" src="../../images/treasure.png">
+          </div>
+        </div>
+
+      </div>
+      <div id="error" class="alert alert-danger hidden" role="alert">
+      </div>
+    </aside>
+  </section>
+  <section class="row hintView">
+    <aside class="col-xs-12">
+      <div class="col-xs-1">
+        <button ng-click="hintOpen = !hintOpen" class="hint btn btn-danger">Hint</button>
+      </div>
+      <div ng-show="hintOpen" class="hint-box col-xs-8">
+        <div class="hintRow">
+          <div class="col-xs-8">
+            Remember, array's begin at index 0, so the first item is array[0] and the third item would be array[2]. Also, the openDoor() function only takes a single paramter, so make sure you call it the correct number of times.
+          </div>
+          <div class="col-xs-4">
+
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+  <div class="col-md-12">
+    <message-board></message-board>
+  </div>
+</div>

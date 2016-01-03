@@ -250,6 +250,64 @@ aside {
     height: 235px;
     border: 1px solid gray; }
 
+  #fieldPlay {
+    position: relative;
+    margin: 10px auto;
+    padding:10px;
+    width: 85%;
+    height: 235px;
+    border: 1px solid gray; }
+
+  #field22 {
+    position: relative;
+    margin: 10px auto;
+    background-image: url('../../images/grass.png');
+    width: 85%;
+    height: 235px;
+    overflow-y: hidden;
+    border: 1px solid gray; }
+
+  #field23 {
+    position: relative;
+    margin: 10px auto;
+    background-image: url('../../images/dungeonwall.jpg');
+    width: 85%;
+    height: 235px;
+    overflow-y: hidden;
+    border: 1px solid gray; }
+
+  .playgroundSpan{
+    font-size: 16px;
+    color: red;
+  }
+  .dungeonDoor{
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .dungeonNoRight{
+    margin-left: 2px;
+    margin-right: 0px;
+  }
+  .dungeonRow{
+    margin-top:50px;
+
+  }
+  .door{
+      width: 60px;
+      height: 100px;
+  }
+  .behindDoor{
+    padding-top: 30px;
+    width: 55px;
+  }
+  .zooText {
+    text-align: center;
+    color: white;
+  }
+  .zooRow{
+    margin-bottom: 10px;
+  }
   #x {
     position: absolute;
     top: 100px;
@@ -269,7 +327,9 @@ aside {
     height: 400px;
   }
 }
-
+  .phaserPlayNotes{
+    font-size:12px;
+  }
 .hintView {
   .hint {
     background-color: #D32F2F;
