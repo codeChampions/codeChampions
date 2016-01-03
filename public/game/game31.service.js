@@ -259,57 +259,84 @@
 
     var game = new Phaser.Game(600, 400, Phaser.AUTO, 'spaceGame', { preload: preload, create: create, createAliens: createAliens, setupInvader: setupInvader, update: update });
 
+        var resetGame = function(){
+          player.body.x = 32;
+          $('#error').html("");
+          $('#error').addClass('hidden');
+        };
+
+
         var run = function(input){
 
-        console.log("starting " + player.body.x);
+              console.log("starting " + player.body.x);
 
-        eval(input);
-        setTimeout(function(){
-        try {
-            if (player.body.x <50) throw "You did not move correctly!";
-          // if (livingEnemies > 0) throw "You did not get the aliens!";
-        }
-        catch(err){
-          console.log(err);
-        }
-        finally {
-          //winning condition and what happens
+              eval(input);
+              setTimeout(function(){
+              try {
+                  if (player.body.x <50) throw "You did not move correctly!";
+                // if (livingEnemies > 0) throw "You did not get the aliens!";
+              }
+              catch(err){
+                console.log(err);
+              }
+              finally {
+                //winning condition and what happens
 
-          if(player.body.x > 50){
-            //putProgress needs to go first
-            //confirm move to next lesson
+                if(player.body.x > 50){
+                  putProgress();
+                  //confirm move to next lesson
 
-          var goTo = confirm("Congrats, you piloted the Space Avenger. Go to next lesson?");
-          if(goTo === true){
-            console.log("in if");
-            console.log($location.url());
-            game.destroy();
-            $window.location.assign('#/lesson32');
-            // $location.path('/lesson32');
-            // $location.replace('/lesson32');
+                var goTo = confirm("Congrats, you piloted the Space Avenger. Go to next lesson?");
+                if(goTo === true){
+                  console.log("in if");
+                  console.log($location.url());
+                  game.destroy();
+                  $window.location.assign('#/lesson32');
+                  resetGame();
+                }
+                else{
+                  console.log("in else");
+                  resetGame();
+                }
+              }
+              //losing condition and what happens
+              else{
+                alert("You failed to pilot the Space Avenger correctly. Try Again!")
+                resetGame();
+              }
+            }
+          },2000);
 
-            //resetGame
-          }
-          else{
-            console.log("in else");
-            //resetGame
-          }
-        }
-        //losing condition and what happens
-        else{
-          alert("You failed to pilot the Space Avenger correctly. Try Again!")
-          //resetGame
-        }
-      }
-    },2000);
+        };
 
+    var game3Code = '/getGameCode';
+
+    var getCode = function() {
+      return $http.get(game3Code);
+    };
+    //route to update game code in user object on server
+    var putGameCode = '/putGameCode';
+
+    var putCode = function(code) {
+      var obj = {
+        game3_1Code: code,
+      };
+      return $http.post(putGameCode, obj);
+    };
+    //route to increment user's progress on server
+    var incrProgressUrl = '/incrementProgress3/';
+    var putProgress = function(){
+      var currentGame = "1";
+      return $http.post(incrProgressUrl + currentGame);
     };
 
 
 
 
     return {
-      run: run
+      run: run,
+      getCode: getCode,
+      putCode: putCode
     };
 });
 
