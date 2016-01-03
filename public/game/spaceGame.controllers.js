@@ -18,6 +18,7 @@
         }
       };
       vm.run = function(){
+        vm.putCode();
         SpaceGame1Service.run(vm.aceModel);
       };
 
@@ -26,48 +27,17 @@
         vm.aceModel = vm.aceOriginal;
       };
 
-      // vm.getCode = function(){
-      //   Game1_3Service.getCode().then(function(res){
-      //     switch (vm.loc){
-      //       case ('/game11'):
-      //         vm.aceModel = res.data.game1_1Code;
-      //         break;
-      //       case ('/game12'):
-      //         vm.aceModel = res.data.game1_2Code;
-      //         break;
-      //       case ('/game13'):
-      //         vm.aceModel = res.data.game1_3Code;
-      //         break;
-      //     default:
-      //       console.log("no code to get");
-      //   }
-      //     vm.lesson1Progress = res.data.lesson1Progress;
-      //   });
-      //
-      // };
-
-      vm.putCode = function(){
-        switch (vm.loc) {
-          case ('/game13'):
-              Game1_3Service.putCode(vm.aceModel);
-            break;
-          case ('/game11'):
-              Game1_1Service.putCode(vm.aceModel);
-            break;
-          case ('/game12'):
-              Game1_2Service.putCode(vm.aceModel);
-            break;
-          case ('/gamePlayground'):
-              console.log('sup super cool admin who is making a video or something');
-            break;
-          default:
-            console.log("no code to put");
-
-        }
-
+      vm.getCode = function(){
+        SpaceGame1Service.getCode().then(function(res){
+              vm.aceModel = res.data.game3_1Code;
+            })
       };
 
-      // vm.getCode();
+      vm.putCode = function(){
+        SpaceGame1Service.putCode(vm.aceModel);
+      };
+
+      vm.getCode();
 
 
   })
@@ -86,7 +56,7 @@
         }
       };
       vm.run = function(){
-
+          vm.putCode();
           SpaceGame2Service.run(vm.aceModel);
       };
 
@@ -94,48 +64,17 @@
         vm.aceModel = vm.aceOriginal;
       };
 
-      // vm.getCode = function(){
-      //   Game1_3Service.getCode().then(function(res){
-      //     switch (vm.loc){
-      //       case ('/game11'):
-      //         vm.aceModel = res.data.game1_1Code;
-      //         break;
-      //       case ('/game12'):
-      //         vm.aceModel = res.data.game1_2Code;
-      //         break;
-      //       case ('/game13'):
-      //         vm.aceModel = res.data.game1_3Code;
-      //         break;
-      //     default:
-      //       console.log("no code to get");
-      //   }
-      //     vm.lesson1Progress = res.data.lesson1Progress;
-      //   });
-      //
-      // };
-
-      vm.putCode = function(){
-        switch (vm.loc) {
-          case ('/game13'):
-              Game1_3Service.putCode(vm.aceModel);
-            break;
-          case ('/game11'):
-              Game1_1Service.putCode(vm.aceModel);
-            break;
-          case ('/game12'):
-              Game1_2Service.putCode(vm.aceModel);
-            break;
-          case ('/gamePlayground'):
-              console.log('sup super cool admin who is making a video or something');
-            break;
-          default:
-            console.log("no code to put");
-
-        }
-
+      vm.getCode = function(){
+        SpaceGame2Service.getCode().then(function(res){
+              vm.aceModel = res.data.game3_2Code;
+            })
       };
 
-      // vm.getCode();
+      vm.putCode = function(){
+        SpaceGame2Service.putCode(vm.aceModel);
+      };
+
+      vm.getCode();
 
 
   })
@@ -154,7 +93,7 @@
         }
       };
       vm.run = function(){
-
+          vm.putCode();
           SpaceGame3Service.run(vm.aceModel);
       };
 
@@ -163,45 +102,14 @@
         vm.aceModel = vm.aceOriginal;
       };
 
-      // vm.getCode = function(){
-      //   Game1_3Service.getCode().then(function(res){
-      //     switch (vm.loc){
-      //       case ('/game11'):
-      //         vm.aceModel = res.data.game1_1Code;
-      //         break;
-      //       case ('/game12'):
-      //         vm.aceModel = res.data.game1_2Code;
-      //         break;
-      //       case ('/game13'):
-      //         vm.aceModel = res.data.game1_3Code;
-      //         break;
-      //     default:
-      //       console.log("no code to get");
-      //   }
-      //     vm.lesson1Progress = res.data.lesson1Progress;
-      //   });
-      //
-      // };
+      vm.getCode = function(){
+        SpaceGame3Service.getCode().then(function(res){
+              vm.aceModel = res.data.game3_3Code;
+            })
+      };
 
       vm.putCode = function(){
-        switch (vm.loc) {
-          case ('/game13'):
-              Game1_3Service.putCode(vm.aceModel);
-            break;
-          case ('/game11'):
-              Game1_1Service.putCode(vm.aceModel);
-            break;
-          case ('/game12'):
-              Game1_2Service.putCode(vm.aceModel);
-            break;
-          case ('/gamePlayground'):
-              console.log('sup super cool admin who is making a video or something');
-            break;
-          default:
-            console.log("no code to put");
-
-        }
-
+        SpaceGame3Service.putCode(vm.aceModel);
       };
 
       // vm.getCode();
