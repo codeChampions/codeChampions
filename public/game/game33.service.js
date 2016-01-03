@@ -33,7 +33,7 @@
 
           game.add.sprite(0, 0, 'sky');
 
-          player = game.add.sprite(300, game.world.height - 150, 'ship');
+          player = game.add.sprite(225, game.world.height - 150, 'ship');
 
           game.physics.arcade.enable(player);
 
@@ -90,7 +90,7 @@
                   }
               }
 
-              aliens.x = 250;
+              aliens.x = 50;
               aliens.y = 80;
 
               //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
@@ -307,7 +307,7 @@
           }
           else{
             console.log("in else");
-            
+
             resetGame();
           }
         }

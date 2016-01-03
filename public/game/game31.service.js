@@ -274,6 +274,7 @@
               setTimeout(function(){
               try {
                   if (player.body.x <50) throw "You did not move correctly!";
+                  if (!/if(livingEnemies)/.test(input)) throw "You forgot to check for enemies";
                 // if (livingEnemies > 0) throw "You did not get the aliens!";
               }
               catch(err){
@@ -282,7 +283,7 @@
               finally {
                 //winning condition and what happens
 
-                if(player.body.x > 50){
+                if(player.body.x > 50 && /if(livingEnemies)/.test(input)){
                   putProgress();
                   //confirm move to next lesson
 
