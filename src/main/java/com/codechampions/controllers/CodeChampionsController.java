@@ -19,7 +19,6 @@ import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 /**
@@ -60,13 +59,39 @@ public class CodeChampionsController {
             users.save(admin);
         }
 
-            Message message = new Message(1, -1, "Game Message Board", admin);
-            Message message1 = new Message(2, -1, "Classroom Message Board", admin);
-            Message message2 = new Message(3, -1, "Lesson Message Board", admin);
+            Message message1 = new Message(1, -1, "Lesson11 Message Board", admin);
+            Message message2 = new Message(2, -1, "Game11 Message Board", admin);
+            Message message3 = new Message(3, -1, "Lesson12 Message Board", admin);
+            Message message4 = new Message(4, -1, "Game12 Message Board", admin);
+            Message message5 = new Message(5, -1, "Game13 Message Board", admin);
+            Message message6 = new Message(6, -1, "Lesson21 Message Board", admin);
+            Message message7 = new Message(7, -1, "Game21 Message Board", admin);
+            Message message8 = new Message(8, -1, "Game22 Message Board", admin);
+            Message message9 = new Message(9, -1, "Lesson22 Message Board", admin);
+            Message message10 = new Message(10, -1, "Game23 Message Board", admin);
+            Message message11 = new Message(11, -1, "Lesson31 Message Board", admin);
+            Message message12 = new Message(12, -1, "Game31 Message Board", admin);
+            Message message13 = new Message(13, -1, "Lesson32 Message Board", admin);
+            Message message14 = new Message(14, -1, "Game32 Message Board", admin);
+            Message message15 = new Message(15, -1, "Lesson33 Message Board", admin);
+            Message message16 = new Message(16, -1, "Game33 Message Board", admin);
 
-            messages.save(message);
             messages.save(message1);
             messages.save(message2);
+            messages.save(message3);
+            messages.save(message4);
+            messages.save(message5);
+            messages.save(message6);
+            messages.save(message7);
+            messages.save(message8);
+            messages.save(message9);
+            messages.save(message10);
+            messages.save(message11);
+            messages.save(message12);
+            messages.save(message13);
+            messages.save(message14);
+            messages.save(message15);
+            messages.save(message16);
     }
 
     @RequestMapping(path = "/newUser", method = RequestMethod.POST)
@@ -468,7 +493,7 @@ public class CodeChampionsController {
 
         List<String> filteredList =  linesList.stream()
                 .filter(x ->  {
-                    return ((linesList.remove(x == null)) && (!linesList.contains(x.startsWith("//"))));
+                    return ((linesList.remove(x.equals(null))) && (!linesList.remove(x.startsWith("//"))));
                 })
                 .collect(Collectors.toList());
         System.out.println(filteredList);
