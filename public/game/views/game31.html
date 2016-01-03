@@ -4,7 +4,7 @@
   </div>
   <section class="row gameView">
     <aside class="notes col-xs-3">
-      <h3>GOALS</h3><br><br>If there is a living enemy, move the Space Avenger to the right.<br> In order to do this we will make an if statement<br>
+      <h3>GOALS</h3><br><br>If there is a living enemy, move the Space Avenger to the right.<br> In order to do this we will make an if statement:<br>
       <blockquote>if(livingEnemies){<br>
         mobilizeRight();<br>
       }</blockquote>
@@ -15,7 +15,7 @@
     <aside class="col-xs-6">
       <div id="spaceGame">
       </div>
-      <button class="run btn btn-danger" ng-click="space1Ctrl.run()">Run</button><button class="run btn btn-danger" ng-click="space1Ctrl.resetAce()">Reset</button><br>
+      <button class="run btn" ng-click="space1Ctrl.run()">Run</button><button class="run btn" ng-click="space1Ctrl.resetAce()">Reset</button><br>
       <div id="error" class="alert alert-danger hidden" role="alert">
       </div>
     </aside>
@@ -28,10 +28,7 @@
       <div ng-show="hintOpen" class="hint-box col-xs-8">
         <div class="hintRow">
           <div class="col-xs-8">
-            The coordinates shown are in the x-y plane (x,y). You start off at 0 in the x-direction and 0 in the y-direction. You must get to 0 in the x-direction and -50 in the y-direction. Each move takes you 50 pixels, so hit run and move on down to the treasure.
-          </div>
-          <div class="col-xs-4">
-            <img src="../../images/xy.png">
+            The Space Avenger needs to be in position to destroy the alien. In order to do that, you need to move the spaceship to the right. Make sure you are inputing each variable and function in the right order.
           </div>
         </div>
       </div>

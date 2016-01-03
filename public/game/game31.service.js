@@ -289,14 +289,16 @@
                 var goTo = confirm("Congrats, you piloted the Space Avenger. Go to next lesson?");
                 if(goTo === true){
                   console.log("in if");
+                  console.log(game.state);
                   console.log($location.url());
+                  game.state.restart(false,true);
                   game.destroy();
                   $window.location.assign('#/lesson32');
                   resetGame();
                 }
                 else{
                   console.log("in else");
-                  game.state.restart();
+
                 }
               }
               //losing condition and what happens

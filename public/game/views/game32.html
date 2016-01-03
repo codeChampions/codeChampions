@@ -18,7 +18,7 @@
     <aside class="col-xs-6">
       <div id="spaceGame">
       </div>
-      <button class="run btn btn-danger" ng-click="space2Ctrl.run()">Run</button><button class="run btn btn-danger" ng-click="space2Ctrl.resetAce()">Reset</button><br>
+      <button class="run btn submit" ng-click="space2Ctrl.run()">Run</button><button class="run btn submit" ng-click="space2Ctrl.resetAce()">Reset</button><br>
       <div id="error" class="alert alert-danger hidden" role="alert">
       </div>
     </aside>
@@ -31,10 +31,7 @@
       <div ng-show="hintOpen" class="hint-box col-xs-8">
         <div class="hintRow">
           <div class="col-xs-8">
-            The coordinates shown are in the x-y plane (x,y). You start off at 0 in the x-direction and 0 in the y-direction. You must get to 0 in the x-direction and -50 in the y-direction. Each move takes you 50 pixels, so hit run and move on down to the treasure.
-          </div>
-          <div class="col-xs-4">
-            <img src="../../images/xy.png">
+            The "scanForEnemy" function is checking the location of the enemy to see if the Space Avenger is in range to destroy it. If it isn't, the spaceship needs to move in position. Make sure your functions are spelled correctly!
           </div>
         </div>
       </div>

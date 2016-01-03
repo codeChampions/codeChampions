@@ -33,7 +33,7 @@
 
           game.add.sprite(0, 0, 'sky');
 
-          player = game.add.sprite(32, game.world.height - 150, 'ship');
+          player = game.add.sprite(300, game.world.height - 150, 'ship');
 
           game.physics.arcade.enable(player);
 
@@ -187,13 +187,21 @@
           numRight++;
       };
 
-      var attack = function(){
+      var attackRight = function(){
         mobilizeRight();
         setTimeout(function(){
           fireLaser();
         }, 1000);
 
     };
+
+    var attackRight = function(){
+      moveLeft();
+      setTimeout(function(){
+        fireLaser();
+      }, 1000);
+
+  };
 
       var moveUp = function(){
         player.body.velocity.y = -150;
@@ -270,9 +278,13 @@
         console.log("starting " + player.body.x);
 
         eval(input);
+
         setTimeout(function(){
         try {
             if (player.body.x <50) throw "You did not move correctly!";
+            if (fireLaser()) throw "You were supposed to pilot the Space Avenger!";
+            if (player.body.x < 50) throw "You did not move correctly!";
+            if (livingEnemies > 0) throw "You did not get the aliens!";
           // if (livingEnemies > 0) throw "You did not get the aliens!";
         }
         catch(err){
@@ -295,6 +307,7 @@
           }
           else{
             console.log("in else");
+            
             resetGame();
           }
         }

@@ -274,6 +274,7 @@
           setTimeout(function(){
           try {
               if (player.body.x <50) throw "You did not move correctly!";
+              if (fireLaser()) throw "You were supposed to pilot the Space Avenger!";
             // if (livingEnemies > 0) throw "You did not get the aliens!";
           }
           catch(err){
