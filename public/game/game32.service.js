@@ -292,20 +292,17 @@
               console.log($location.url());
               game.destroy();
               $window.location.assign('#/lesson33');
-              // $location.path('/lesson32');
-              // $location.replace('/lesson32');
-
-              //resetGame
+              resetGame();
             }
             else{
               console.log("in else");
-              //resetGame
+              resetGame();
             }
           }
           //losing condition and what happens
           else{
             alert("You failed to pilot the Space Avenger correctly. Try Again!")
-            //resetGame
+            resetGame();
           }
         }
       },2000);
