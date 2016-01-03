@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -471,16 +472,22 @@ public class CodeChampionsController {
             stat.lessonsFinished++;
         }
         stat.gamesFinished = user.lesson1Progress + user.lesson2Progress + user.lesson3Progress;
-/*
-        Scanner scanner = new Scanner(user.game1_3Code);
-        scanner.nextLine();
-        while (scanner.hasNext()) {
-            String game13code = scanner.next();
-            String[] lines = game13code.split("\n");
-            int linesInt = lines.length;
-            System.out.println(linesInt);
-            stat.linesCoded = linesInt;
-        }*/
+
+        String totalLines = user.game1_1Code + ("\n") + user.game1_2Code + ("\n") + user.game1_3Code + ("\n") +user.game2_1Code + ("\n") + user.game2_2Code + ("\n") + user.game2_3Code + ("\n") + user.game3_1Code + ("\n") + user.game3_2Code + ("\n") + user.game3_3Code;
+        String[] lines = totalLines.split("\n");
+
+        List<String> linesList = Arrays.asList(lines);
+
+        List<String> filteredList =  linesList.stream()
+                .filter(x ->  {
+                    return ((!linesList.contains(x == null)) && (!linesList.contains(x.startsWith("//"))));
+                })
+                .collect(Collectors.toList());
+        System.out.println(filteredList);
+
+        int linesInt = filteredList.size();
+        System.out.println(linesInt);
+        stat.linesCoded = linesInt;
         stats.save(stat);
         return stat;
     }
