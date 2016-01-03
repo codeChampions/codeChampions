@@ -40,10 +40,10 @@
               $location.path('/lesson21');
               break;
             case 1:
-              $location.path('/lesson22');
+              $location.path('/game22');
               break;
             case 2:
-              $location.path('/game23');
+              $location.path('/lesson22');
               break;
             case 3:
               $location.path('/game23');
@@ -73,12 +73,24 @@
         vm.max = 100;
 
   vm.progress = function() {
-    var value = Math.round(vm.lesson1Progress / 3*100);
-    console.log(value);
+    var value1 = Math.round(vm.lesson1Progress / 3*100);
+    console.log(value1);
 
 
-    vm.dynamic = value;
-    // vm.type = type;
+    vm.dynamic1 = value1;
+
+    var value2 = Math.round(vm.lesson2Progress / 3*100);
+    console.log(value2);
+
+
+    vm.dynamic2 = value2;
+
+    var value3 = Math.round(vm.lesson3Progress / 3*100);
+    console.log(value3);
+
+
+    vm.dynamic3 = value3;
+
   };
 
     });

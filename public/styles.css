@@ -369,6 +369,15 @@ aside .edit {
   clear: both;
   padding: 5px;
   font-size: 16px; }
+  .teacher-notes article {
+    margin-bottom: 10px;
+    clear: both; }
   .teacher-notes a {
     color: black;
     text-decoration: none; }
+  .teacher-notes .delete {
+    background-color: #D32F2F;
+    font-family: 'Anton', sans-serif;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 14px; }

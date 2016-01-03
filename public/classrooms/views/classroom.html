@@ -5,37 +5,67 @@
   <h1>Welcome to {{classCtrl.singleClass.className}}</h1>
   <div ng-if="classCtrl.singleClass.owner.username === classCtrl.username" class="teacher-view">
     <section class="row">
-      <div class="col-md-12">
-        <div class="col-md-1"></div>
-        <form class="col-md-3" ng-submit="classCtrl.addStudent(studentName, classCtrl.singleClass.id)">
+      <div class="col-xs-12">
+        <div class="col-xs-1"></div>
+        <form class="col-xs-3" ng-submit="classCtrl.addStudent(studentName, classCtrl.singleClass.id)">
           <input  class="classRoomInput input" name="studentName" type="text" ng-model="studentName" placeholder="Student to add" value="">
           <input class="btn btn-primary submit" type="submit" value="submit">
         </form>
-        <div class="col-md-3"></div>
+        <div class="col-xs-3"></div>
       </div>
     </section>
     <article class="classroom-student" ng-repeat="student in classCtrl.singleClass.classStudents">
-      <div ng-click="showCode = !showCode">
-        <h3>{{student.username}}</h3>
-        <h5>Lesson 1 Progress: <uib-progressbar animate="false" value="student.lesson1Progress/3 * 100" type="success"><b>{{student.lesson1Progress/3 * 100 | number:0}}%</b></uib-progressbar></h5>
+      <h3 ng-click="showStudent = !showStudent">{{student.username}}</h3>
+      <div ng-show="showStudent" ng-click="show1Code = !show1Code">
+        <h4>Lesson 1 Progress: <uib-progressbar animate="false" value="student.lesson1Progress/3 * 100" type="success"><b>{{student.lesson1Progress/3 * 100 | number:0}}%</b></uib-progressbar></h4>
       </div>
-      <div class="student-progress" ng-show="showCode">
-        <h4>Part 1</h4>
+      <div class="student-progress" ng-show="show1Code">
+        <h5>Part 1</h5>
         <p>{{student.game1_1Code}}</p>
       </div>
-      <div class="student-progress" ng-show="showCode">
-        <h4>Part 2</h4>
+      <div class="student-progress" ng-show="show1Code">
+        <h5>Part 2</h5>
         <p>{{student.game1_2Code}}</p>
       </div>
-      <div class="student-progress" ng-show="showCode">
-        <h4>Part 3</h4>
+      <div class="student-progress" ng-show="show1Code">
+        <h5>Part 3</h5>
         <p>{{student.game1_3Code}}</p>
+      </div>
+      <div ng-show="showStudent" ng-click="show2Code = !show2Code">
+        <h4>Lesson 2 Progress: <uib-progressbar animate="false" value="student.lesson2Progress/3 * 100" type="success"><b>{{student.lesson2Progress/3 * 100 | number:0}}%</b></uib-progressbar></h4>
+      </div>
+      <div class="student-progress" ng-show="show2Code">
+        <h5>Part 1</h5>
+        <p>{{student.game2_1Code}}</p>
+      </div>
+      <div class="student-progress" ng-show="show2Code">
+        <h5>Part 2</h5>
+        <p>{{student.game2_2Code}}</p>
+      </div>
+      <div class="student-progress" ng-show="show2Code">
+        <h5>Part 3</h5>
+        <p>{{student.game2_3Code}}</p>
+      </div>
+      <div ng-show="showStudent" ng-click="show3Code = !show3Code">
+        <h4>Lesson 3 Progress: <uib-progressbar animate="false" value="student.lesson3Progress/3 * 100" type="success"><b>{{student.lesson3Progress/3 * 100 | number:0}}%</b></uib-progressbar></h4>
+      </div>
+      <div class="student-progress" ng-show="show3Code">
+        <h5>Part 1</h5>
+        <p>{{student.game3_1Code}}</p>
+      </div>
+      <div class="student-progress" ng-show="show3Code">
+        <h5>Part 2</h5>
+        <p>{{student.game3_2Code}}</p>
+      </div>
+      <div class="student-progress" ng-show="show3Code">
+        <h5>Part 3</h5>
+        <p>{{student.game3_3Code}}</p>
       </div>
     </article>
   </div>
-  <h2 class="col-md-3">Notes from Teacher</h2>
-  <label ng-if="classCtrl.singleClass.owner.username === classCtrl.username" class="col-md-2" for="my-file-selector">
-    <form class="col-md-2 btn" action="upload" enctype="multipart/form-data" method="post">
+  <h2 class="col-xs-3">Notes from Teacher</h2>
+  <label ng-if="classCtrl.singleClass.owner.username === classCtrl.username" class="col-xs-2" for="my-file-selector">
+    <form class="col-xs-2 btn" action="upload" enctype="multipart/form-data" method="post">
       <input type="number" value="{{classCtrl.singleClass.id}}" name="id" style="display:none;">
       <span ng-hide="" ng-click="uploadNotes = !uploadNotes" class="btn upload">Upload Notes</span>
       <input ng-show="uploadNotes" id="my-file-selector" name="file" type="file" style="display:none;" value="">
@@ -43,12 +73,12 @@
       <input ng-show="uploadNotes" class="btn submit" type="submit">
     </form>
   </label>
-  <section class="col-md-5 teacher-notes">
+  <section ng-if="classCtrl.notes.length >= 1" class="col-xs-5 teacher-notes">
     <article ng-repeat="note in classCtrl.notes">
-      <a href="/classNotes/{{note.name}}">&#8226 {{note.displayName}}</a><button class="btn btn-danger" ng-click="classCtrl.deleteUpload(note.id)">Delete</button>
+      <a class="col-xs-5" href="/classNotes/{{note.name}}">&#8226 {{note.displayName}}</a><div class="col-xs-4"></div><button ng-if="classCtrl.singleClass.owner.username === classCtrl.username" class="btn col-xs-2 delete" ng-click="classCtrl.deleteUpload(note.id)">Delete</button>
     </article>
   </section>
-  <div class="col-md-12">
+  <div class="col-xs-12">
     <message-board></message-board>
   </div>
 </div>
