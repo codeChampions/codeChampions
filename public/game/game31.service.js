@@ -274,6 +274,7 @@
               setTimeout(function(){
               try {
                   if (player.body.x <50) throw "You did not move correctly!";
+                  if (!/if(livingEnemies)/.test(input)) throw "You forgot to check for enemies";
                 // if (livingEnemies > 0) throw "You did not get the aliens!";
               }
               catch(err){
@@ -282,21 +283,23 @@
               finally {
                 //winning condition and what happens
 
-                if(player.body.x > 50){
+                if(player.body.x > 50 && /if(livingEnemies)/.test(input)){
                   putProgress();
                   //confirm move to next lesson
 
                 var goTo = confirm("Congrats, you piloted the Space Avenger. Go to next lesson?");
                 if(goTo === true){
                   console.log("in if");
+                  console.log(game.state);
                   console.log($location.url());
+                  game.state.restart(false,true);
                   game.destroy();
                   $window.location.assign('#/lesson32');
                   resetGame();
                 }
                 else{
                   console.log("in else");
-                  resetGame();
+
                 }
               }
               //losing condition and what happens

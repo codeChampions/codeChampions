@@ -128,7 +128,9 @@
             aliens.y += 10;
 
         };
+
         var firing = false;
+        var shotsFired = 0;
         var fireLaser = function() {
 
            //  To avoid them being allowed to fire too fast we set a time limit
@@ -144,6 +146,7 @@
                    bullet.body.velocity.y = -400;
                    bulletTime = game.time.now + 200;
                    firing = true;
+                   shotsFired++;
                }
            //}
 
@@ -274,6 +277,9 @@
           setTimeout(function(){
           try {
               if (player.body.x <50) throw "You did not move correctly!";
+              if (shotsFired > 0) throw "You were supposed to pilot the Space Avenger!";
+
+              if (!/else/.test(input)) throw "You don't have an else statement!";
             // if (livingEnemies > 0) throw "You did not get the aliens!";
           }
           catch(err){
@@ -282,7 +288,7 @@
           finally {
             //winning condition and what happens
 
-            if(player.body.x > 50){
+            if(player.body.x > 50 && shotsFired === 0 && /else/.test(input)) {
               putProgress();
               //confirm move to next lesson
 
