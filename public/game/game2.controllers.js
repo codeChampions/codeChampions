@@ -75,11 +75,12 @@
               break;
             case ('/game23'):
               vm.aceModel = res.data.game2_3Code;
+              console.log(res.data);
               break;
           default:
             console.log("no code to get");
         }
-          vm.lesson1Progress = res.data.lesson1Progress;
+          // vm.lesson1Progress = res.data.lesson1Progress;
         });
 
       };
