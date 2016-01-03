@@ -296,7 +296,7 @@
                 }
                 else{
                   console.log("in else");
-                  resetGame();
+                  game.state.restart();
                 }
               }
               //losing condition and what happens
