@@ -1,6 +1,7 @@
 package com.codechampions.entities;
 
 import com.codechampions.entities.User.AccessType;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,17 +15,22 @@ public class Classroom {
     @Id
     @GeneratedValue
     @Column(nullable = false)
+    @JsonView(View.userSummarywithClassrooms.class)
     public int id;
 
+    @Column(nullable = false)
+    @JsonView(View.userSummarywithClassrooms.class)
     public String className;
 
     @ManyToOne
+    @JsonView(View.userSummarywithClassrooms.class)
     public User owner;
 
     @ManyToMany
+    @JsonView(View.userSummarywithClassrooms.class)
     public List<User> classStudents;
 
-   @ManyToOne
-   public Message messageBoard;
-
+    @ManyToOne
+    @JsonView(View.userSummarywithClassrooms.class)
+    public Message messageBoard;
 }
