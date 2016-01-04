@@ -42,11 +42,11 @@ public class CodeChampionsController {
     public String game1_2InitialCode = ("//Javascript goes here \n");
     public String game1_3InitialCode = ("//Javascript goes here \n");
     public String game2_1InitialCode = ("animal1 = \"PUT_NAME_HERE\";\nanimal2=\nanimal3=\nanimal4=");
-    public String game2_2InitialCode = ("//Javascript goes here \n");
+    public String game2_2InitialCode = ("//Strings\ngreeting = \"\";\n//Numbers\nx=\ny=\n//Boolean\nidFriendly=");
     public String game2_3InitialCode = ("openDoor(PUT_NUMBER_HERE);");
     public String game3_1InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_FUNCTION_HERE\n}\n");
     public String game3_2InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_IF_CODE_HERE\n}\nelse{\nPUT_ELSE_CODE_HERE\n}\n");
-    public String game3_3InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_IF_CODE_HERE\n}\nelse{\nPUT_ELSE_CODE_HERE\n}");
+    public String game3_3InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_IF_CODE_HERE\n}\nelse if(PUT_ELSE_IF_CONDITION){\nPUT_ELSE_IF_CODE_HERE\n}\nelse{\nPUT_ELSE_CODE_HERE\n}");
 
     @PostConstruct
     public void init() throws InvalidKeySpecException, NoSuchAlgorithmException, FileNotFoundException {
@@ -127,9 +127,6 @@ public class CodeChampionsController {
         } else if (!PasswordHash.validatePassword(tempUser.password, user.password)) {
             response.sendError(405, "Wrong Password!");
         }
-        //else if (session.getAttribute("username") != tempUser.username) {
-         //   response.sendError(405, "There is already an active session!");
-       // }
         else {
             System.out.println("Success!");
             return user;
