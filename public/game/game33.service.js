@@ -129,6 +129,7 @@
 
         };
         var firing = false;
+        var shotsFired = 0;
         var fireLaser = function() {
 
            //  To avoid them being allowed to fire too fast we set a time limit
@@ -144,6 +145,7 @@
                    bullet.body.velocity.y = -400;
                    bulletTime = game.time.now + 200;
                    firing = true;
+                   shotsFired++;
                }
            //}
 
@@ -195,7 +197,7 @@
 
     };
 
-    var attackRight = function(){
+    var attackLeft = function(){
       moveLeft();
       setTimeout(function(){
         fireLaser();
@@ -281,11 +283,11 @@
 
         setTimeout(function(){
         try {
-            if (player.body.x <50) throw "You did not move correctly!";
-            if (fireLaser()) throw "You were supposed to pilot the Space Avenger!";
-            if (player.body.x < 50) throw "You did not move correctly!";
+            if (player.body.x < 300) throw "You did not move correctly!";
+            if (!/else if{attackRight();}/.test(input)) throw "You forgot the else if statement!";
+            if (!/if(livingEnemies)/.test(input)) throw "You forgot to check for enemies!";
             if (livingEnemies > 0) throw "You did not get the aliens!";
-          // if (livingEnemies > 0) throw "You did not get the aliens!";
+            if (shotsFired > 0) throw "You did not get the aliens!";
         }
         catch(err){
           console.log(err);
@@ -293,7 +295,7 @@
         finally {
           //winning condition and what happens
 
-          if(player.body.x > 50){
+          if(player.body.x > 50 && /else if{attackRight();}/.test(input) && /if(livingEnemies)/.test(input) && livingEnemies === 0 && shotsFired < 0  ){
             putProgress();
             //confirm move to next lesson
 
