@@ -3,7 +3,7 @@
 
   angular
   .module('game')
-  .factory('SpaceGame2Service', function($http, $location){
+  .factory('SpaceGame2Service', function($http, $location, $window){
 
     var player;
           var aliens;
@@ -283,6 +283,8 @@
           }
           catch(err){
             console.log(err);
+            $('#error').removeClass('hidden');
+            $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
           }
           finally {
             //winning condition and what happens

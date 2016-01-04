@@ -104,15 +104,16 @@
 
       vm.getCode = function(){
         SpaceGame3Service.getCode().then(function(res){
+          console.log(res.data.game3_3Code);
               vm.aceModel = res.data.game3_3Code;
-            })
+            });
       };
 
       vm.putCode = function(){
         SpaceGame3Service.putCode(vm.aceModel);
       };
 
-      // vm.getCode();
+      vm.getCode();
 
 
   })

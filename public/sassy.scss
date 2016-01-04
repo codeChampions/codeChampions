@@ -158,18 +158,27 @@ aside {
 
 // lesson page
 
+.modal-content iframe{
+       margin: 0 auto;
+       display: block;
+   }
+
 .lesson {
   margin-left: auto;
   margin-right: auto;
   .video {
-    background-color: white;
-    border: 1px solid black;
-    height: 400px;
     margin-right: 10px;
     iframe{
-      margin-top:120px;
+      margin-top:50px;
       width: 100%;
     }
+    .cancel {
+      color: black;
+      background-color: white;
+    }
+  }
+  .lessonNotes{
+    padding: 15px;
   }
   .notes {
     background-color: white;
@@ -179,6 +188,11 @@ aside {
     color: black;
     font-family: 'Ek Mukta', sans-serif;
     font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 10px;
+    margin-top: 50px;
     img{
       width: 100%;
       margin: 0 auto;
@@ -189,15 +203,14 @@ aside {
       font-size: 12px;
     }
   }
-  p {
-    .next {
-      float: right;
-      margin-right: 5px;
-      margin-top: 10px;
-      background-color: #D32F2F;
-      color: white;
-    }
-  }
+}
+
+.next {
+  float: right;
+  margin-right: 5px;
+  margin-top: 10px;
+  background-color: #D32F2F;
+  color: white;
 }
 
 // game page
@@ -367,6 +380,9 @@ aside {
   #error{
     width: 85%;
     margin: 0 auto;
+    .glyphicon-exclamation-sign {
+      font-size: 20px;
+    }
   }
   .hidden{
     display: none;
@@ -390,9 +406,10 @@ aside {
     background-color: white;
     font-family: 'Ek Mukta', sans-serif;
     color: black;
-    height: 150px;
+    max-height: 150px;
     border: 1px solid black;
     margin-bottom: 50px;
+    padding-bottom: 10px;
   }
   .hintRow{
     padding-top: 6px;
