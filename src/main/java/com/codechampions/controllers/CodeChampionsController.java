@@ -3,6 +3,7 @@ package com.codechampions.controllers;
 import com.codechampions.entities.*;
 import com.codechampions.services.*;
 import com.codechampions.utils.PasswordHash;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,7 +42,7 @@ public class CodeChampionsController {
     public String game1_1InitialCode = ("//Javascript goes here \n moveDown();");
     public String game1_2InitialCode = ("//Javascript goes here \n");
     public String game1_3InitialCode = ("//Javascript goes here \n");
-    public String game2_1InitialCode = ("animal1 = \"PUT_NAME_HERE\";\nanimal2=\nanimal3=\nanimal4=");
+    public String game2_1InitialCode = ("animal1 = \"PUT_NAME_HERE\";\nanimal2 = \nanimal3 = \nanimal4 = ");
     public String game2_2InitialCode = ("//Strings\ngreeting = \"\";\n//Numbers\nx=\ny=\n//Boolean\nidFriendly=");
     public String game2_3InitialCode = ("openDoor(PUT_NUMBER_HERE);");
     public String game3_1InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_FUNCTION_HERE\n}\n");
@@ -140,6 +141,7 @@ public class CodeChampionsController {
         System.out.println("Successfully Logged Out!");
     }
 
+    @JsonView(View.userSummary.class)
     @RequestMapping("/users")
     public List<User> users() {
         return (List<User>) users.findAll();
@@ -160,24 +162,10 @@ public class CodeChampionsController {
         }
     }
 
+    @JsonView(View.userSummaryWithMessages.class)
     @RequestMapping("/messages")
     public List<Message> messages() {
         return (List<Message>) messages.findAll();
-    }
-
-    @RequestMapping("/showGameBoard")
-        public Message gameMessage() {
-            return messages.findOne(1);
-        }
-
-    @RequestMapping("/showClassroomBoard")
-    public Message classroomMessage() {
-        return messages.findOne(2);
-    }
-
-    @RequestMapping("/showLessonBoard")
-    public Message lessonMessage() {
-        return messages.findOne(3);
     }
 
     @RequestMapping("/showReplies/{id}")
@@ -237,7 +225,7 @@ public class CodeChampionsController {
         if (user.game3_3Code == null) {
             user.game3_3Code = game3_3InitialCode;
         }
-            return user;
+        return user;
     }
 
     @RequestMapping("/putGameCode")
@@ -382,6 +370,7 @@ public class CodeChampionsController {
         }
     }
 
+    @JsonView(View.userSummarywithClassrooms.class)
     @RequestMapping("/classrooms")
     public List<Classroom> classrooms() {
         return (List<Classroom>) classrooms.findAll();

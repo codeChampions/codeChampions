@@ -1,7 +1,9 @@
 package com.codechampions.entities;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,12 +22,12 @@ public class User {
     @Id
     @GeneratedValue
     @Column(nullable = false)
+    @JsonView(View.userSummary.class)
     public int id;
 
     @Column(nullable = false)
-
+    @JsonView(View.userSummary.class)
     public String username;
-
 
     @Column(nullable = false)
     public String password;
@@ -70,6 +72,7 @@ public class User {
     public int lesson3Progress;
 
     @Column
+    @JsonView(View.userSummary.class)
     public AccessType accessType;
 
     //Image Avatar field
