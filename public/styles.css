@@ -3,6 +3,10 @@ body {
   font-family: 'Anton', sans-serif;
   color: white; }
 
+@font-face {
+  font-family: 'Eraser';
+  src: url("../eraser/EraserRegular.ttf"); }
+
 #login {
   text-align: center;
   height: 600px; }
@@ -199,10 +203,20 @@ aside .edit {
     width: 85%;
     height: 235px;
     border: 1px solid gray; }
-  .gameView #field22 {
+  .gameView #field21 {
     position: relative;
     margin: 10px auto;
     background-image: url("../../images/grass.png");
+    width: 85%;
+    height: 235px;
+    overflow-y: hidden;
+    border: 1px solid gray; }
+  .gameView #field22 {
+    font-family: 'Eraser';
+    color: white;
+    position: relative;
+    margin: 10px auto;
+    background-image: url("../../images/retrographic_texture21_02.png");
     width: 85%;
     height: 235px;
     overflow-y: hidden;
@@ -237,6 +251,22 @@ aside .edit {
     color: white; }
   .gameView .zooRow {
     margin-bottom: 10px; }
+  .gameView .chalkboard {
+    font-weight: normal; }
+    .gameView .chalkboard strong {
+      font-size: 20px; }
+  .gameView .greeting {
+    border-bottom: 1px solid black;
+    font-size: 26px; }
+    .gameView .greeting .greet {
+      padding-left: 0px;
+      padding-right: 0px;
+      text-align: center; }
+  .gameView .varRow {
+    border-bottom: 1px solid black;
+    font-size: 20px; }
+  .gameView .ghostRow {
+    font-size: 20px; }
   .gameView #x {
     position: absolute;
     top: 100px;

@@ -3,7 +3,7 @@
 
   angular
   .module('game')
-  .factory('SpaceGame3Service', function($http, $location){
+  .factory('SpaceGame3Service', function($http, $location, $window){
 
     var player;
           var aliens;
@@ -105,6 +105,34 @@
             var alienPos = aliens.x;
             var playerPos = player.body.x;
             if(alienPos + 20 >= playerPos && alienPos -20 <= playerPos){
+              console.log("scanForEnemy", true);
+              return true;
+            }
+            else{
+              console.log(false);
+              return false;
+            }
+          };
+
+          var scanRight = function(){
+            console.log(aliens.x);
+            var alienPos = aliens.x;
+            var playerPos = player.body.x;
+            if(alienPos > playerPos - 25){
+              console.log(true);
+              return true;
+            }
+            else{
+              console.log(false);
+              return false;
+            }
+          };
+
+          var scanLeft = function(){
+            console.log(aliens.x);
+            var alienPos = aliens.x;
+            var playerPos = player.body.x;
+            if(alienPos < playerPos - 25){
               console.log(true);
               return true;
             }
@@ -129,6 +157,7 @@
 
         };
         var firing = false;
+        var shotsFired = 0;
         var fireLaser = function() {
 
            //  To avoid them being allowed to fire too fast we set a time limit
@@ -144,6 +173,7 @@
                    bullet.body.velocity.y = -400;
                    bulletTime = game.time.now + 200;
                    firing = true;
+                   shotsFired++;
                }
            //}
 
@@ -173,9 +203,12 @@
             bullet.kill();
 
         };
-
+        var leftMove = false;
+        var numLeft = 0;
       var moveLeft = function(){
-        player.body.velocity.x = -150;
+        // player.body.velocity.x = -150;
+        leftMove = true;
+        numLeft++;
       };
 
       var rightMove = false;
@@ -195,7 +228,7 @@
 
     };
 
-    var attackRight = function(){
+    var attackLeft = function(){
       moveLeft();
       setTimeout(function(){
         fireLaser();
@@ -214,7 +247,7 @@
       var update = function() {
 
           player.body.velocity.x = 0;
-         player.body.velocity.y = 0;
+          player.body.velocity.y = 0;
         //  console.log("updating");
 
           if (rightMove)
@@ -229,36 +262,18 @@
             rightMove = false;
             numRight= 0;
            }
-          // else if (cursors.right.isDown)
-          // {
-          //     //  Move to the right
-          //     player.body.velocity.x = 150;
-          //
-          //     // player.animations.play('right', 10, true);
-          // }
-          //
-          // else if (cursors.up.isDown)
-          // {
-          //    //  Move to the Up
-          //    player.body.velocity.y = -150;
-          //
-          //   //  player.animations.play('up', 10, true);
-          // }
-          //
-          //    else if (cursors.down.isDown)
-          // {
-          //    //  Move to the Down
-          //    player.body.velocity.y = 150;
-          //
-          //   //  player.animations.play('down', 10, true);
-          // }
+           if (leftMove)
+            {
+               //  Move to the left
+               console.log(numLeft);
+              player.body.velocity.x = -40000*numLeft;
+              console.log(numLeft);
+              console.log("once moved" + player.body.x);
 
-          // if (fireButton.isDown)
-          //      {
-          //          fireLaser();
-          //      }
-
-
+             player.animations.play('left', 10, true);
+             leftMove = false;
+             numLeft= 0;
+            }
 
           game.physics.arcade.overlap(bullets, aliens, collisionHandler, null, this);
 
@@ -281,11 +296,9 @@
 
         setTimeout(function(){
         try {
-            if (player.body.x <50) throw "You did not move correctly!";
-            if (fireLaser()) throw "You were supposed to pilot the Space Avenger!";
-            if (player.body.x < 50) throw "You did not move correctly!";
+            if (player.body.x > 400) throw "You did not move correctly!";
             if (livingEnemies > 0) throw "You did not get the aliens!";
-          // if (livingEnemies > 0) throw "You did not get the aliens!";
+            if (shotsFired === 0) throw "You did not shoot the aliens!";
         }
         catch(err){
           console.log(err);
@@ -293,7 +306,7 @@
         finally {
           //winning condition and what happens
 
-          if(player.body.x > 50){
+          if(player.body.x < 200 && livingEnemies === 0 && shotsFired > 0  ){
             putProgress();
             //confirm move to next lesson
 

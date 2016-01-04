@@ -5,7 +5,11 @@
     .module('game')
     .controller('Game2Controller', function($scope, $location, Game1_3Service, Game2_3Service, Game2_1Service, Game2_2Service){
         var vm = this;
-        vm.animals={
+        vm.loc = $location.url();
+        vm.mode = 'Javascript';
+
+        if (vm.loc === "/game21") {
+          vm.animals={
           pig: "animal1",
           penguin: "animal2",
           owl: "animal3",
@@ -15,8 +19,24 @@
         var animal2 = "";
         var animal3 = "";
         var animal4 ="";
-        vm.loc = $location.url();
-        vm.mode = 'Javascript';
+
+      }
+
+      if (vm.loc === "/game22")  {
+        vm.game22Ans={
+          myGreeting: "Welcome",
+          xVal: "",
+          yVal: "",
+          ansVal: "",
+          friendly: ""
+        };
+
+        var greeting = "";
+        var x = "";
+        var y = "";
+        var ans = "";
+        var isFriendly = "";
+      }
 
 
     //setting Ace Editor theme and modes
@@ -48,18 +68,19 @@
               owl: animal3,
               turtle: animal4
             };
-            
+
             Game2_1Service.run(vm.aceModel);
 
             break;
           case ('/game22'):
               eval(vm.aceModel);
 
-              vm.animals={
-                pig: animal1,
-                penguin: animal2,
-                owl: animal3,
-                turtle: animal4
+              vm.game22Ans={
+                myGreeting: greeting,
+                xVal: x,
+                yVal: y,
+                ansVal: x + y,
+                friendly: isFriendly
               };
             Game2_2Service.run(vm.aceModel);
 

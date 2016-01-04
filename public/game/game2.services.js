@@ -31,7 +31,7 @@
             var moveOn = confirm("Congrats, would you like to go to the next lesson?");
             if(moveOn === true){
               console.log('in move on');
-              $window.location.assign('#/lesson22');
+              $window.location.assign('#/game22');
             }
             else{
               console.log('why not?');
@@ -76,29 +76,25 @@
     //Game 2 part 2
     .factory('Game2_2Service', function($http, $window, $location, _){
 
-      var animal1="";
-      var animal2="";
-      var animal3="";
-      var animal4="";
-
       var run = function(input){
-        var animal1="";
-        var animal2="";
-        var animal3="";
-        var animal4="";
+        var greeting="";
+        var x="";
+        var y="";
+        var isFriendly="";
         try{
           eval(input);
-          if (animal1.toLowerCase() !="senor bacon") throw "animal1 is not named correctly!";
-          if (animal2.toLowerCase() !="pascal the penguin") throw "animal2 is not named correctly!";
-          if (animal3.toLowerCase() !="owlie") throw "animal3 is not named correctly!";
-          if (animal4.toLowerCase() !="thomas the turtle") throw "animal4 is not named correctly!";
+          if (greeting.toLowerCase() !="good morning") throw "greeting is not correct!";
+          if (typeof x != "number") throw "x must be a number not a string!";
+          if (typeof y != "number") throw "y must be a number not a string!";
+          if ((x + y) != 5) throw "your numbers don't add up to 5!";
+          if (isFriendly != true) throw "Doesn't the ghost look nice?"
         }
         catch(err){
           $('#error').removeClass('hidden');
           $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
         }
         setTimeout(function(){
-          if(animal1.toLowerCase() ==="senor bacon" && animal2.toLowerCase() ==="pascal the penguin" && animal3.toLowerCase() ==="owlie" && animal4.toLowerCase() ==="thomas the turtle"){
+          if(greeting.toLowerCase() === "good morning" && (x + y) === 5 && typeof x === "number" && typeof y === "number" && isFriendly === true){
             putProgress();
             var moveOn = confirm("Congrats, would you like to go to the next lesson?");
             if(moveOn === true){

@@ -3,9 +3,13 @@
     <header-direct logout="userCtrl.logout()"></header-direct>
   </div>
   <section class="row gameView">
-    <aside class="notes col-xs-4"><b>ZOO ANIMALS</b><br><br>The zookeeper needs help keeping track of all the animals.<br><br>
-      Name all the animals accordingly by declaring variables to equal the right name for each of the 4 animals. You naming options are:<br>
-      "Pascal the Penguin", "Owlie", "Senor Bacon", and "Thomas the Turtle"
+    <aside class="notes chalkboard col-xs-4"><b>Chalkboard Takeover</b><br><br>The chalkboard needs its values to be corrected.<br><br>
+      Type in the correct value for each:<br>
+      <ol>
+        <li>Change the value of greeting from <strong>"Welcome"</strong> to <strong>"good morning"</strong></li>
+        <li>Set the values of <strong>x</strong> and <strong>y</strong> to be any two numbers that equal <strong>5</strong> when added together</li>
+        <li>Evaluate whether or not the ghost <strong>isFriendly</strong> by answering <strong>true</strong> or <strong>false</strong></li>
+      </ol>
     </aside>
     <aside class="col-xs-4 editor">
       <div ui-ace="game2Ctrl.aceOption" ng-model="game2Ctrl.aceModel">stuff</div>
@@ -13,48 +17,28 @@
     <aside class="col-xs-4 gameBox">
       <button class="run btn btn-danger" ng-click="game2Ctrl.run()">Run</button><button class="run btn btn-danger" ng-click="game2Ctrl.resetAce()">Reset</button><br>
       <div id="field22">
-        <div class="row">
-          <div class="col-xs-1"></div>
-          <div class="col-xs-6 zooText">{{game2Ctrl.animals.pig}}</div>
-        </div>
-        <div class="row zooRow">
+        <div class="row greeting">
           <div class="col-xs-2"></div>
-          <div class="col-xs-4">
-            <img id="char" class="char" src="../../images/pig.png">
-          </div>
+          <div class="greet col-xs-8">{{game2Ctrl.game22Ans.myGreeting}}</div>
         </div>
-          <div class="row">
-            <div class="col-xs-6"></div>
-            <div class="col-xs-6 zooText">{{game2Ctrl.animals.penguin}}</div>
+        <div class="row varRow">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-4">x = {{game2Ctrl.game22Ans.xVal}}</div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-4">y = {{game2Ctrl.game22Ans.yVal}}</div>
+        </div>
+        <div class="row varRow">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-6"> x + y = {{game2Ctrl.game22Ans.ansVal}}</div>
+          <div class="col-xs-3"></div>
+        </div>
+        <div class="row ghostRow">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-6">
+            <img src="../../images/ghost.png"> isFriendly = {{game2Ctrl.game22Ans.friendly}}
           </div>
-          <div class="row zooRow">
-            <div class="col-xs-6"></div>
-            <div class="col-xs-4">
-              <img id="char" class="char" src="../../images/penguin.png">
-            </div>
-          </div>
-          <br>
-          <br>
-          <div class="row">
-            <div class="col-xs-1"></div>
-            <div class="col-xs-6 zooText">{{game2Ctrl.animals.owl}}</div>
-          </div>
-          <div class="row zooRow">
-            <div class="col-xs-1"></div>
-            <div class="col-xs-4">
-              <img id="char" class="char" src="../../images/owl.png">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-5"></div>
-            <div class="col-xs-6 zooText">{{game2Ctrl.animals.turtle}}</div>
-          </div>
-          <div class="row zooRow">
-            <div class="col-xs-5"></div>
-            <div class="col-xs-4">
-              <img id="char" class="char" src="../../images/turtle.png">
-            </div>
-          </div>
+          <div class="col-xs-3"></div>
+        </div>
       </div>
       <div id="error" class="alert alert-danger hidden" role="alert">
       </div>
