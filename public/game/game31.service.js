@@ -273,17 +273,19 @@
               eval(input);
               setTimeout(function(){
               try {
-                  if (player.body.x <50) throw "You did not move correctly!";
-                  if (!/if(livingEnemies)/.test(input)) throw "You forgot to check for enemies";
+                  if (player.body.x < 50) throw "You did not move correctly!";
+                  if (!livingEnemies > 0) throw "You forgot to check for enemies";
                 // if (livingEnemies > 0) throw "You did not get the aliens!";
               }
               catch(err){
                 console.log(err);
+                $('#error').removeClass('hidden');
+                $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
               }
               finally {
                 //winning condition and what happens
 
-                if(player.body.x > 50 && /if(livingEnemies)/.test(input)){
+                if(player.body.x > 50 && livingEnemies > 0){
                   putProgress();
                   //confirm move to next lesson
 

@@ -3,58 +3,67 @@
     <header-direct logout="userCtrl.logout()"></header-direct>
   </div>
   <div class="lesson">
-    <section class="col-xs-1"></section>
-    <section class="video col-xs-5"><iframe src="https://www.youtube.com/embed/CnFiRIkDtAc" frameborder="0" allowfullscreen></iframe>
+    <section class="video" ng-hide="showNotes">
+        <div class="modal-body">
+            <iframe id="cartoonVideo" width="800" height="400" src="https://www.youtube.com/embed/CnFiRIkDtAc" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="modal-footer">
+            <button class="btn submit" type="button" ng-click="showNotes = !showNotes">Show Notes</button>
+            <a href="#/game22"><button class="submit btn">Game On</button></a>
+        </div>
     </section>
-    <section class="notes col-xs-5">
-      <h3>Arrays</h3>
+    <section class="col-xs-2"></section>
+    <section ng-show="showNotes" class="lesson col-xs-8">
+      <div class="notes">
+        <h3>Arrays</h3>
 
-      <p>An Array in Javascript is a special type of variable that can hold more than one piece of data.  Say you have a list of animals: cat, dog, horse, and snake.  You can put these all into an array called animals that you can reference as a <<strong>collection</strong> or you can reference each piece of data inside of the array.</p>
+        <p>An Array in Javascript is a special type of variable that can hold more than one piece of data.  Say you have a list of animals: cat, dog, horse, and snake.  You can put these all into an array called animals that you can reference as a <<strong>collection</strong> or you can reference each piece of data inside of the array.</p>
 
-      <p>You can create an array the same way you would create a regular variable.  The only difference is you will have multiple primitives, surrounded by brackets and separated by commas.  Let’s look at an example:</p>
-      <blockquote>
-        <strong>var animals</strong> = [“cat”, “dog”, “horse”, “snake”];
-      </blockquote>
+        <p>You can create an array the same way you would create a regular variable.  The only difference is you will have multiple primitives, surrounded by brackets and separated by commas.  Let’s look at an example:</p>
+        <blockquote>
+          <strong>var animals</strong> = [“cat”, “dog”, “horse”, “snake”];
+        </blockquote>
 
-      <p>As you can see, we now have one variable called animals, that contains four pieces of data.  There are many things we can do with an array, but we will only look at a few right now.</p>
+        <p>As you can see, we now have one variable called animals, that contains four pieces of data.  There are many things we can do with an array, but we will only look at a few right now.</p>
 
-      <p>Every array has an <strong>index</strong>.  The index automatically assigns a number to each piece of data inside the array.  However, arrays are tricky because they use something called a <strong>zero-based index</strong>.  This means that the first number in the index is not 1, it is 0.  So, the index for our animals array would look like this:</p>
-      <blockquote>
-        “cat” = index 0<br>
-        “dog” = index 1<br>
-        “horse” = index 2<br>
-        “snake” = index 3<br>
-      </blockquote>
+        <p>Every array has an <strong>index</strong>.  The index automatically assigns a number to each piece of data inside the array.  However, arrays are tricky because they use something called a <strong>zero-based index</strong>.  This means that the first number in the index is not 1, it is 0.  So, the index for our animals array would look like this:</p>
+        <blockquote>
+          “cat” = index 0<br>
+          “dog” = index 1<br>
+          “horse” = index 2<br>
+          “snake” = index 3<br>
+        </blockquote>
 
-      <p>We can use the index to reference pieces of data inside of the array.  For example, we can create a new variable from our array:</p>
-      <blockquote>
-      <strong>var newDog</strong> = animals[1];<br><br>
+        <p>We can use the index to reference pieces of data inside of the array.  For example, we can create a new variable from our array:</p>
+        <blockquote>
+        <strong>var newDog</strong> = animals[1];<br><br>
 
-      result:<br>
-      <strong>var newDog</strong> = “dog”
-      </blockquote>
-
-      <p>Another thing we can do with our array is check how many pieces of data it contains by measuring it’s length.  We can make a number variable by measuring the length of the array:</p>
-      <blockquote>
-        <strong>var length</strong> = animals.length()<br>
-        <br>
         result:<br>
-        <strong>var length</strong> = 4<br>
-      </blockquote>
+        <strong>var newDog</strong> = “dog”
+        </blockquote>
 
-      <p>This is another example of how the zero-based index is tricky!  Remember, our index range is 0-3, but our index length is 4.</p>
+        <p>Another thing we can do with our array is check how many pieces of data it contains by measuring it’s length.  We can make a number variable by measuring the length of the array:</p>
+        <blockquote>
+          <strong>var length</strong> = animals.length()<br>
+          <br>
+          result:<br>
+          <strong>var length</strong> = 4<br>
+        </blockquote>
 
-      <p>One of the coolest things about arrays are that they can contain different types of data.  So, you can have an array that has a string and a number.  For example:</p>
-      <blockquote>
-      <strong>var myBirthday</strong> = [“September”, 15, 1992];
-      </blockquote>
+        <p>This is another example of how the zero-based index is tricky!  Remember, our index range is 0-3, but our index length is 4.</p>
 
-      <p>In this example, “September” is a string and 15 and 1992 are both numbers.</p>
+        <p>One of the coolest things about arrays are that they can contain different types of data.  So, you can have an array that has a string and a number.  For example:</p>
+        <blockquote>
+        <strong>var myBirthday</strong> = [“September”, 15, 1992];
+        </blockquote>
 
-      <p>You can click “Game On” to get some practice with Arrays.  Have fun and keep coding!</p>
+        <p>In this example, “September” is a string and 15 and 1992 are both numbers.</p>
+
+        <p>You can click “Game On” to get some practice with Arrays.  Have fun and keep coding!</p>
+      </div>
     </section>
     <section class="col-xs-1"></section>
-    <p class="col-md-12"><a href="#/game23"><button class="next btn">Game On</button></a></p>
+    <p class="col-md-12"><a href="#/game22"><button ng-show="showNotes" class="next btn">Game On</button></a><button class="btn next" type="button" ng-show="showNotes" ng-click="showNotes = !showNotes">Watch Video</button></p>
   </div>
   <div class="col-md-12">
     <message-board></message-board>
