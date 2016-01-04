@@ -8,13 +8,53 @@
       "Pascal the Penguin", "Owlie", "Senor Bacon", and "Thomas the Turtle"
     </aside>
     <aside class="col-xs-4 editor">
-      <div ui-ace="gameCtrl.aceOption" ng-model="gameCtrl.aceModel">stuff</div>
+      <div ui-ace="game2Ctrl.aceOption" ng-model="game2Ctrl.aceModel">stuff</div>
     </aside>
     <aside class="col-xs-4 gameBox">
-      <button class="run btn btn-danger" ng-click="gameCtrl.run()">Run</button><button class="run btn btn-danger" ng-click="gameCtrl.resetAce()">Reset</button><br>
+      <button class="run btn btn-danger" ng-click="game2Ctrl.run()">Run</button><button class="run btn btn-danger" ng-click="game2Ctrl.resetAce()">Reset</button><br>
       <div id="field22">
-        <img id="char" class="char" src="../../images/terry.png">
-        <div id="x">x</div>
+        <div class="row">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-6 zooText">{{game2Ctrl.animals.pig}}</div>
+        </div>
+        <div class="row zooRow">
+          <div class="col-xs-2"></div>
+          <div class="col-xs-4">
+            <img id="char" class="char" src="../../images/pig.png">
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-xs-6"></div>
+            <div class="col-xs-6 zooText">{{game2Ctrl.animals.penguin}}</div>
+          </div>
+          <div class="row zooRow">
+            <div class="col-xs-6"></div>
+            <div class="col-xs-4">
+              <img id="char" class="char" src="../../images/penguin.png">
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-6 zooText">{{game2Ctrl.animals.owl}}</div>
+          </div>
+          <div class="row zooRow">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-4">
+              <img id="char" class="char" src="../../images/owl.png">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-5"></div>
+            <div class="col-xs-6 zooText">{{game2Ctrl.animals.turtle}}</div>
+          </div>
+          <div class="row zooRow">
+            <div class="col-xs-5"></div>
+            <div class="col-xs-4">
+              <img id="char" class="char" src="../../images/turtle.png">
+            </div>
+          </div>
       </div>
       <div id="error" class="alert alert-danger hidden" role="alert">
       </div>
@@ -28,7 +68,7 @@
       <div ng-show="hintOpen" class="hint-box col-xs-8">
         <div class="hintRow">
           <div class="col-xs-8">
-            You can declare the name of the first animal  by saying <b>var animal1<b> = "Name";. Do this for all the animals (animal1, animal2, animal3, and animal4).
+            You can declare the name of the first animal by saying <b>var animal1<b> = "Name"; where "Name" is a string. Do this for all the animals (animal1, animal2, animal3, and animal4). Since these variables have already been delcared in the game, you just need to reassign the value by saying animal1="Name";
           </div>
           <div class="col-xs-4">
 

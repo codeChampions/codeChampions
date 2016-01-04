@@ -39,7 +39,18 @@
             Game2_3Service.run(vm.aceModel);
             break;
           case ('/game21'):
+
+            eval(vm.aceModel);
+
+            vm.animals={
+              pig: animal1,
+              penguin: animal2,
+              owl: animal3,
+              turtle: animal4
+            };
+            
             Game2_1Service.run(vm.aceModel);
+
             break;
           case ('/game22'):
               eval(vm.aceModel);
