@@ -3,6 +3,7 @@ package com.codechampions.controllers;
 import com.codechampions.entities.*;
 import com.codechampions.services.*;
 import com.codechampions.utils.PasswordHash;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,7 +42,7 @@ public class CodeChampionsController {
     public String game1_1InitialCode = ("//Javascript goes here \n moveDown();");
     public String game1_2InitialCode = ("//Javascript goes here \n");
     public String game1_3InitialCode = ("//Javascript goes here \n");
-    public String game2_1InitialCode = ("animal1 = \"PUT_NAME_HERE\";\nanimal2=\nanimal3=\nanimal4=");
+    public String game2_1InitialCode = ("animal1 = \"PUT_NAME_HERE\";\nanimal2 = \nanimal3 = \nanimal4 = ");
     public String game2_2InitialCode = ("//Strings\ngreeting = \"\";\n//Numbers\nx=\ny=\n//Boolean\nidFriendly=");
     public String game2_3InitialCode = ("openDoor(PUT_NUMBER_HERE);");
     public String game3_1InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_FUNCTION_HERE\n}\n");
@@ -57,6 +58,54 @@ public class CodeChampionsController {
             admin.password = PasswordHash.createHash("Admin");
             admin.accessType = User.AccessType.ADMIN;
             users.save(admin);
+
+            User jack = new User();
+            jack.username = "Jack";
+            jack.password = PasswordHash.createHash("Jack");
+            jack.accessType = User.AccessType.TEACHER;
+            users.save(jack);
+
+            User terry = new User();
+            terry.username = "Terry";
+            terry.password = PasswordHash.createHash("Terry");
+            terry.accessType = User.AccessType.TEACHER;
+            users.save(terry);
+
+            User kelleeMorgan = new User();
+            kelleeMorgan.username = "Kellee-Morgan";
+            kelleeMorgan.password = PasswordHash.createHash("Kellee-Morgan");
+            kelleeMorgan.accessType = User.AccessType.TEACHER;
+            users.save(kelleeMorgan);
+
+            User calvin = new User();
+            calvin.username = "Calvin";
+            calvin.password = PasswordHash.createHash("Calvin");
+            calvin.accessType = User.AccessType.STUDENT;
+            users.save(calvin);
+
+            User nathan = new User();
+            nathan.username = "Nathan";
+            nathan.password = PasswordHash.createHash("Nathan");
+            nathan.accessType = User.AccessType.STUDENT;
+            users.save(nathan);
+
+            User zach = new User();
+            zach.username = "Zach";
+            zach.password = PasswordHash.createHash("Zach");
+            zach.accessType = User.AccessType.STUDENT;
+            users.save(zach);
+
+            User betsy = new User();
+            betsy.username = "Betsy";
+            betsy.password = PasswordHash.createHash("Betsy");
+            betsy.accessType = User.AccessType.STUDENT;
+            users.save(betsy);
+
+            User katie = new User();
+            katie.username = "Katie";
+            katie.password = PasswordHash.createHash("Katie");
+            katie.accessType = User.AccessType.STUDENT;
+            users.save(katie);
         }
 
             Message message1 = new Message(1, -1, "Lesson11 Message Board", admin);
@@ -107,6 +156,13 @@ public class CodeChampionsController {
             user.password = PasswordHash.createHash(tempUser.password);
             user.email = tempUser.email;
             user.accessType = tempUser.accessType;
+            if (tempUser.avatar == null) {
+                user.avatar = "cat.png";
+            }
+            else {
+                user.avatar = tempUser.avatar;
+            }
+
             users.save(user);
             System.out.println("Success!");
             return user;
@@ -140,6 +196,7 @@ public class CodeChampionsController {
         System.out.println("Successfully Logged Out!");
     }
 
+    @JsonView(View.userSummary.class)
     @RequestMapping("/users")
     public List<User> users() {
         return (List<User>) users.findAll();
@@ -160,24 +217,10 @@ public class CodeChampionsController {
         }
     }
 
+    @JsonView(View.userSummaryWithMessages.class)
     @RequestMapping("/messages")
     public List<Message> messages() {
         return (List<Message>) messages.findAll();
-    }
-
-    @RequestMapping("/showGameBoard")
-        public Message gameMessage() {
-            return messages.findOne(1);
-        }
-
-    @RequestMapping("/showClassroomBoard")
-    public Message classroomMessage() {
-        return messages.findOne(2);
-    }
-
-    @RequestMapping("/showLessonBoard")
-    public Message lessonMessage() {
-        return messages.findOne(3);
     }
 
     @RequestMapping("/showReplies/{id}")
@@ -237,7 +280,7 @@ public class CodeChampionsController {
         if (user.game3_3Code == null) {
             user.game3_3Code = game3_3InitialCode;
         }
-            return user;
+        return user;
     }
 
     @RequestMapping("/putGameCode")
@@ -382,6 +425,7 @@ public class CodeChampionsController {
         }
     }
 
+    @JsonView(View.userSummarywithClassrooms.class)
     @RequestMapping("/classrooms")
     public List<Classroom> classrooms() {
         return (List<Classroom>) classrooms.findAll();

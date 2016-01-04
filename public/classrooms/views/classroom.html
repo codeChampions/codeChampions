@@ -75,7 +75,7 @@
   </label>
   <section ng-if="classCtrl.notes.length >= 1" class="col-xs-5 teacher-notes">
     <article ng-repeat="note in classCtrl.notes">
-      <a class="col-xs-5" href="/classNotes/{{note.name}}">&#8226 {{note.displayName}}</a><div class="col-xs-4"></div><button ng-if="classCtrl.singleClass.owner.username === classCtrl.username" class="btn col-xs-2 delete" ng-click="classCtrl.deleteUpload(note.id)">Delete</button>
+      <a class="col-xs-7" href="/classNotes/{{note.name}}">&#8226 {{note.displayName}} - {{note.uploadTime.month}} {{note.uploadTime.dayOfMonth}}, {{note.uploadTime.year}}</a><div class="col-xs-2"></div><button ng-if="classCtrl.singleClass.owner.username === classCtrl.username" class="btn col-xs-2 delete" ng-click="classCtrl.deleteUpload(note.id)">Delete</button>
     </article>
   </section>
   <div class="col-xs-12">

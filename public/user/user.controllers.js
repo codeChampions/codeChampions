@@ -9,12 +9,14 @@
       vm.email = sessionStorage.getItem('email');
       vm.id = sessionStorage.getItem('id');
       vm.accessType=sessionStorage.getItem('userType');
+      vm.avatar = sessionStorage.getItem('avatar');
       vm.logout = function(){
         UserService.logout().then(function(){
           $location.path('/');
           sessionStorage.removeItem('username');
           sessionStorage.removeItem('id');
           sessionStorage.removeItem('userType');
+          sessionStorage.removeItem('avatar');
           sessionStorage.removeItem('email');
         });
       };
