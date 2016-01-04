@@ -13,7 +13,7 @@
           sessionStorage.setItem('userType', res.data.accessType);
           sessionStorage.setItem('username', res.data.username);
           sessionStorage.setItem('id', res.data.id);
-          sessionStorage.setItem('email', res.data.email);
+          // sessionStorage.setItem('email', res.data.email);
           $location.path('/home');
         }, function(res){
           alert("failed to make new user");
