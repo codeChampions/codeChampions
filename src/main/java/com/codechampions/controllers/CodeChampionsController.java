@@ -41,8 +41,8 @@ public class CodeChampionsController {
     public String game1_1InitialCode = ("//Javascript goes here \n moveDown();");
     public String game1_2InitialCode = ("//Javascript goes here \n");
     public String game1_3InitialCode = ("//Javascript goes here \n");
-    public String game2_1InitialCode = ("//Javascript goes here \n");
-    public String game2_2InitialCode = ("animal1 = \"PUT_NAME_HERE\";\nanimal2=\nanimal3=\nanimal4=");
+    public String game2_1InitialCode = ("animal1 = \"PUT_NAME_HERE\";\nanimal2=\nanimal3=\nanimal4=");
+    public String game2_2InitialCode = ("//Javascript goes here \n");
     public String game2_3InitialCode = ("openDoor(PUT_NUMBER_HERE);");
     public String game3_1InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_FUNCTION_HERE\n}\n");
     public String game3_2InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_IF_CODE_HERE\n}\nelse{\nPUT_ELSE_CODE_HERE\n}\n");
@@ -487,19 +487,16 @@ public class CodeChampionsController {
         }
         stat.gamesFinished = user.lesson1Progress + user.lesson2Progress + user.lesson3Progress;
 
-        String totalLines = user.game1_1Code + ("\n") + user.game1_2Code + ("\n") + user.game1_3Code + ("\n") +user.game2_1Code + ("\n") + user.game2_2Code + ("\n") + user.game2_3Code + ("\n") + user.game3_1Code + ("\n") + user.game3_2Code + ("\n") + user.game3_3Code;
+        String totalLines = (user.game1_1Code + "\n") + (user.game1_2Code + "\n") + (user.game1_3Code + "\n") + (user.game2_1Code + "\n") + (user.game2_2Code + "\n") + (user.game2_3Code + "\n") + (user.game3_1Code + "\n") + (user.game3_2Code + "\n") + user.game3_3Code;
         String[] lines = totalLines.split("\n");
         List<String> linesList = Arrays.asList(lines);
-
         List<String> filteredList =  linesList.stream()
                 .filter(x ->  {
-                    return ((linesList.remove(x.equals(null))) && (!linesList.remove(x.startsWith("//"))));
+                    return !x.equals("null") && !x.startsWith("//");
                 })
                 .collect(Collectors.toList());
-        System.out.println(filteredList);
 
         int linesInt = filteredList.size();
-        System.out.println(linesInt);
         stat.linesCoded = linesInt;
         stats.save(stat);
         return stat;
