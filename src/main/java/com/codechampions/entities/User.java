@@ -75,7 +75,8 @@ public class User {
     @JsonView(View.userSummary.class)
     public AccessType accessType;
 
-    //Image Avatar field
+    @Column
+    public String avatar;
 
 
     public int getId() {

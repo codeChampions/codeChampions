@@ -58,6 +58,54 @@ public class CodeChampionsController {
             admin.password = PasswordHash.createHash("Admin");
             admin.accessType = User.AccessType.ADMIN;
             users.save(admin);
+
+            User jack = new User();
+            jack.username = "Jack";
+            jack.password = PasswordHash.createHash("Jack");
+            jack.accessType = User.AccessType.TEACHER;
+            users.save(jack);
+
+            User terry = new User();
+            terry.username = "Terry";
+            terry.password = PasswordHash.createHash("Terry");
+            terry.accessType = User.AccessType.TEACHER;
+            users.save(terry);
+
+            User kelleeMorgan = new User();
+            kelleeMorgan.username = "Kellee-Morgan";
+            kelleeMorgan.password = PasswordHash.createHash("Kellee-Morgan");
+            kelleeMorgan.accessType = User.AccessType.TEACHER;
+            users.save(kelleeMorgan);
+
+            User calvin = new User();
+            calvin.username = "Calvin";
+            calvin.password = PasswordHash.createHash("Calvin");
+            calvin.accessType = User.AccessType.STUDENT;
+            users.save(calvin);
+
+            User nathan = new User();
+            nathan.username = "Nathan";
+            nathan.password = PasswordHash.createHash("Nathan");
+            nathan.accessType = User.AccessType.STUDENT;
+            users.save(nathan);
+
+            User zach = new User();
+            zach.username = "Zach";
+            zach.password = PasswordHash.createHash("Zach");
+            zach.accessType = User.AccessType.STUDENT;
+            users.save(zach);
+
+            User betsy = new User();
+            betsy.username = "Betsy";
+            betsy.password = PasswordHash.createHash("Betsy");
+            betsy.accessType = User.AccessType.STUDENT;
+            users.save(betsy);
+
+            User katie = new User();
+            katie.username = "Katie";
+            katie.password = PasswordHash.createHash("Katie");
+            katie.accessType = User.AccessType.STUDENT;
+            users.save(katie);
         }
 
             Message message1 = new Message(1, -1, "Lesson11 Message Board", admin);
@@ -108,6 +156,13 @@ public class CodeChampionsController {
             user.password = PasswordHash.createHash(tempUser.password);
             user.email = tempUser.email;
             user.accessType = tempUser.accessType;
+            if (tempUser.avatar == null) {
+                user.avatar = "cat.png";
+            }
+            else {
+                user.avatar = tempUser.avatar;
+            }
+
             users.save(user);
             System.out.println("Success!");
             return user;
