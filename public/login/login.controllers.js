@@ -12,6 +12,7 @@
             sessionStorage.setItem('userType', res.data.accessType);
             sessionStorage.setItem('username', res.data.username);
             sessionStorage.setItem('id', res.data.id);
+            sessionStorage.setItem('avatar', res.data.avatar);
             // sessionStorage.setItem('email', res.data.email);
             $location.path('/home');
           }, function(res){
