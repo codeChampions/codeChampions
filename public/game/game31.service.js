@@ -279,6 +279,8 @@
               }
               catch(err){
                 console.log(err);
+                $('#error').removeClass('hidden');
+                $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
               }
               finally {
                 //winning condition and what happens

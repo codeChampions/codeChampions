@@ -13,7 +13,7 @@
       <div id="spaceGame">
       </div>
       <button class="run btn" ng-click="space1Ctrl.run()">Run</button><button class="run btn" ng-click="space1Ctrl.resetAce()">Reset</button><br>
-      <div id="error" class="alert alert-danger hidden" role="alert">
+      <br><div id="error" class="alert alert-danger hidden" role="alert">
       </div>
     </aside>
   </section>
@@ -22,11 +22,9 @@
       <div class="col-xs-1">
         <button ng-click="hintOpen = !hintOpen" class="hint btn btn-danger">Hint</button>
       </div>
-      <div ng-show="hintOpen" class="hint-box col-xs-8">
+      <div ng-show="hintOpen" class="hint-box col-xs-5">
         <div class="hintRow">
-          <div class="col-xs-8">
             The Space Avenger needs to be in position to destroy the alien. In order to do that, you need to move the spaceship to the right. Make sure you are inputing each variable and function in the right order.
-          </div>
         </div>
       </div>
     </aside>
