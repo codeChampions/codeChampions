@@ -4,15 +4,8 @@
   </div>
   <section class="row gameView">
     <aside class="notes col-xs-3">
-      <h3>GOALS</h3><p>If the Space Avenger is in position to shoot the alien, fire the laser.</p><p> If not, then put the Space Avenger in position and attack depending on if the avenger needs to move to the left or to the right.</p>
-      To do this we will create an if/elseif/else statement:<br>
-      <blockquote>if(scanForEnemy()) {<br>
-         &nbsp;&nbsp;fireLaser();<br>
-      } else if(scanLeft()) {<br>
-          &nbsp;&nbsp;attackLeft();<br>
-        } else {<br>
-          &nbsp;&nbsp;attackRight();<br>
-      }</blockquote>
+      <h3>GOALS</h3><p>Destroy the alien.</p><p>First, scanForEnemy(). If the Space Avenger is in position to shoot the alien, fire the laser.</p><p> If not scanLeft() for enemy, then attackLeft() to put the Space Avenger in position and attack.</p><p> If the enemy is to the right then attackRight().</p>
+      <p>To do this we will create an if/else if/else statement using the functions scanForEnemy(), fireLaser(), scanLeft(), attackLeft() and attackRight().</p>
     </aside>
     <aside class="col-xs-3 editor">
       <div ui-ace="space3Ctrl.aceOption" ng-model="space3Ctrl.aceModel">stuff</div>

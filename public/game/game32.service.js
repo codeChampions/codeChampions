@@ -3,7 +3,7 @@
 
   angular
   .module('game')
-  .factory('SpaceGame2Service', function($http, $location){
+  .factory('SpaceGame2Service', function($http, $location, $window){
 
     var player;
           var aliens;
