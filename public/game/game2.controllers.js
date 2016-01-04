@@ -28,14 +28,14 @@
           xVal: "",
           yVal: "",
           ansVal: "",
-          alive: ""
+          friendly: ""
         };
 
         var greeting = "";
         var x = "";
         var y = "";
         var ans = "";
-        var isAlive = "";
+        var isFriendly = "";
       }
 
 
@@ -80,7 +80,7 @@
                 xVal: x,
                 yVal: y,
                 ansVal: x + y,
-                alive: isAlive
+                friendly: isFriendly
               };
             Game2_2Service.run(vm.aceModel);
 

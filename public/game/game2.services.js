@@ -80,21 +80,21 @@
         var greeting="";
         var x="";
         var y="";
-        var isAlive="";
+        var isFriendly="";
         try{
           eval(input);
           if (greeting.toLowerCase() !="good morning") throw "greeting is not correct!";
           if (typeof x != "number") throw "x must be a number not a string!";
           if (typeof y != "number") throw "y must be a number not a string!";
           if ((x + y) != 5) throw "your numbers don't add up to 5!";
-          if (isAlive != false) throw "is the ghost really alive?"
+          if (isFriendly != true) throw "Doesn't the ghost look nice?"
         }
         catch(err){
           $('#error').removeClass('hidden');
           $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
         }
         setTimeout(function(){
-          if(greeting.toLowerCase() === "good morning" && (x + y) === 5 && typeof x === "number" && typeof y === "number" && isAlive === false){
+          if(greeting.toLowerCase() === "good morning" && (x + y) === 5 && typeof x === "number" && typeof y === "number" && isFriendly === true){
             putProgress();
             var moveOn = confirm("Congrats, would you like to go to the next lesson?");
             if(moveOn === true){
