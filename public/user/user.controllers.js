@@ -6,7 +6,7 @@
     .controller('UserController', function($scope, $location, $routeParams, UserService){
       var vm = this;
       vm.currentUser = sessionStorage.getItem('username');
-      // vm.email = sessionStorage.getItem('email');
+      vm.email = sessionStorage.getItem('email');
       vm.id = sessionStorage.getItem('id');
       vm.accessType=sessionStorage.getItem('userType');
       vm.avatar = sessionStorage.getItem('avatar');
@@ -17,7 +17,7 @@
           sessionStorage.removeItem('id');
           sessionStorage.removeItem('userType');
           sessionStorage.removeItem('avatar');
-          // sessionStorage.removeItem('email');
+          sessionStorage.removeItem('email');
         });
       };
 
