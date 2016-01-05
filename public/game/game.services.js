@@ -109,7 +109,7 @@
           $('#runButton').addClass('hidden');
           $('#nextLessonButton').removeClass('hidden');
           $('#gameSuccess').removeClass('hidden');
-          $('#gameSuccess').html('Well Done! Click Next to go to the next lesson!');
+          $('#gameSuccess').html('Well Done, Code Champion!');
 
         }
         //losing condition
@@ -255,7 +255,7 @@
           $('#runButton').addClass('hidden');
           $('#nextLessonButton').removeClass('hidden');
           $('#gameSuccess').removeClass('hidden');
-          $('#gameSuccess').html('Well Done! Click Next to go to the next lesson!');
+          $('#gameSuccess').html('Well Done, Code Champion!');
         }
         //set losing condition
         else{
@@ -396,7 +396,7 @@
         $('#runButton').addClass('hidden');
         $('#nextLessonButton').removeClass('hidden');
         $('#gameSuccess').removeClass('hidden');
-        $('#gameSuccess').html('Well Done! Click Next to go to the next lesson!');
+        $('#gameSuccess').html('Well Done, Code Champion!');
 
       }
       else{

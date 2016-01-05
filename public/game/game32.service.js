@@ -5,6 +5,9 @@
   .module('game')
   .factory('SpaceGame2Service', function($http, $location, $window, _){
 
+    var winner = new Audio('../../sounds/winner.m4a');
+    var tryAgain = new Audio('../../sounds/tryagain.m4a');
+
     var player;
           var aliens;
           var bullets;
@@ -223,7 +226,7 @@
         var game;
         var gameSet = function(){
             game = new Phaser.Game(600, 400, Phaser.AUTO, 'spaceGame', { preload: preload, create: create, createAliens: createAliens, setupInvader: setupInvader, update: update });
-        }
+        };
         gameSet();
 
         var resetGame = function(){
@@ -266,14 +269,16 @@
 
             if(player.body.x > 50 && shotsFired === 0 && /else/.test(input)) {
               putProgress();
+              winner.play();
               $('#runButton').addClass('hidden');
               $('#nextLessonButton').removeClass('hidden');
               $('#gameSuccess').removeClass('hidden');
-              $('#gameSuccess').html('Well Done! Click Next to go to the next lesson!');
+              $('#gameSuccess').html('Well Done, Code Champion!');
               //confirm move to next lesson
           }
           //losing condition and what happens
           else{
+            tryAgain.play();
             $('#runButton').addClass('hidden');
             $('#resetButton').removeClass('hidden');
           }

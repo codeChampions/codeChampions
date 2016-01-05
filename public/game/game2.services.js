@@ -49,7 +49,7 @@
             $('#runButton').addClass('hidden');
             $('#nextLessonButton').removeClass('hidden');
             $('#gameSuccess').removeClass('hidden');
-            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done! Click Next to go to the next lesson!');
+            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done, Code Champion!');
           }
           else{
             tryAgain.play();
@@ -131,7 +131,7 @@
             $('#runButton').addClass('hidden');
             $('#nextLessonButton').removeClass('hidden');
             $('#gameSuccess').removeClass('hidden');
-            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done! Click Next to go to the next lesson!');
+            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done, Code Champion!');
           }
           else{
             tryAgain.play();
@@ -230,7 +230,7 @@
             $('#runButton').addClass('hidden');
             $('#nextLessonButton').removeClass('hidden');
             $('#gameSuccess').removeClass('hidden');
-            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done! Click Next to go to the next lesson!');
+            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done, Code Champion!');
           }
           else{
             tryAgain.play();
