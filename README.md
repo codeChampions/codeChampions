@@ -1,7 +1,9 @@
 #Code Champions
 
 Terry Kennair
+
 Jack Neligan
+
 Kellee-Morgan Witherspoon
 
 Coding education app aimed at middle/high school students that provides an intermediate alternative between block based learning sites (i.e. Scratch) and dry code only sites (i.e. Code Academy). Teachers can create classrooms and monitor students’ progress in mini-games and an overarching game weighted by total progress.
@@ -9,24 +11,38 @@ Coding education app aimed at middle/high school students that provides an inter
 ###Technologies:
 
 *Angular
+
 *UI Router
+
 *HTML/CSS
+
 *JavaScript
+
 *Canvas/PhaserJs
+
 *LibGDX (+ GWT)
+
 *H2 + Spring (Mongo)
+
 *Piskel, Sprites
+
 *Ace Editor (Code Mirror)
+
 *Photoshop
 
 ###Features (MVP):
 
 *User Authentication (Admin, Teacher, Student) and Account Creation
 *Progress Tracking
+
 *Classrooms
+
 *Multiple Lessons (Text-based/Video)
+
 *Minimum 2 games
+
 *Code Editor (JavaScript)
+
 *Message Boards
 
 ###Roadmap:
@@ -45,7 +61,7 @@ Coding education app aimed at middle/high school students that provides an inter
 
 ###User Stories
 
-Name: User Authentication and Account Creation
+####Name: User Authentication and Account Creation
 
 Size: Medium
 
@@ -68,7 +84,7 @@ Acceptance:
 
 
 
-Name: Profile Editing/Deleting
+####Name: Profile Editing/Deleting
 
 Size: Small
 
@@ -83,7 +99,7 @@ Acceptance:
 *If a username is changed, the old username will become available again.
 
 
-Name: Progress Tracking
+####Name: Progress Tracking
 
 Size: Medium
 
@@ -103,7 +119,7 @@ Acceptance:
 
 
 
-Name: Classrooms
+####Name: Classrooms
 
 Size: Medium
 
@@ -122,7 +138,7 @@ Acceptance:
 
 
 
-Name: Multiple Lessons
+####Name: Multiple Lessons
 
 Size: Large
 
@@ -140,7 +156,7 @@ Acceptance:
 *Lessons have links to additional information for students seeking to further their knowledge of a topic.
 
 
-Name: Multiple Games
+####Name: Multiple Games
 
 Size: Large
 
