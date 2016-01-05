@@ -217,6 +217,10 @@ aside .edit {
     font-family: 'Anton', sans-serif;
     margin-top: 5px;
     margin-right: 1px; }
+  .gameView .gameButton {
+    font-family: 'Anton', sans-serif;
+    margin-top: 5px;
+    margin-right: 1px; }
   .gameView #obstacle {
     position: absolute;
     z-index: 2;

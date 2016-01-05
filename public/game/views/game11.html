@@ -10,9 +10,9 @@
       <div ui-ace="gameCtrl.aceOption" ng-model="gameCtrl.aceModel">stuff</div>
     </aside>
     <aside class="col-xs-4 gameBox">
-      <button id="runButton" class="run btn btn-danger" ng-click="gameCtrl.run()">Run</button>
-      <button id="resetButton" class="run btn btn-danger hidden" ng-click="gameCtrl.resetGame()">Reset</button>
-      <button id="nextLessonButton" class="btn btn-success hidden" ng-click="gameCtrl.goNext()">Next!</button>
+      <button id="runButton" class="gameButton btn btn-primary" ng-click="gameCtrl.run()">Run</button>
+      <button id="resetButton" class="gameButton btn btn-danger hidden" ng-click="gameCtrl.resetGame()">Reset</button>
+      <button id="nextLessonButton" class="gameButton btn btn-success hidden" ng-click="gameCtrl.goNext()">Next!</button>
       <div id="field">
         <img id="char" class="char" src="../../images/terry.png">
         <div id="x">x</div>
