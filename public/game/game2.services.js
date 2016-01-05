@@ -4,10 +4,27 @@
   angular
     .module('game')
     .factory('Game2_1Service', function($http, $window, $location, _){
+
+      var winner = new Audio('../../sounds/winner.m4a');
+      var tryAgain = new Audio('../../sounds/tryagain.m4a');
+
       var animal1="";
       var animal2="";
       var animal3="";
       var animal4="";
+
+      var goNext = function(){
+        $location.path('/game22');
+        resetGame();
+      };
+
+      var resetGame = function(){
+        $('#error').html("");
+        $('#error').addClass('hidden');
+        $('#runButton').removeClass('hidden');
+        $('#resetButton').addClass('hidden');
+        $('#nextLessonButton').addClass('hidden');
+      };
 
       var run = function(input){
         var animal1="";
@@ -28,19 +45,16 @@
         setTimeout(function(){
           if(animal1.toLowerCase() ==="senor bacon" && animal2.toLowerCase() ==="pascal the penguin" && animal3.toLowerCase() ==="owlie" && animal4.toLowerCase() ==="thomas the turtle"){
             putProgress();
-            var moveOn = confirm("Congrats, would you like to go to the next lesson?");
-            if(moveOn === true){
-              console.log('in move on');
-              $window.location.assign('#/game22');
-            }
-            else{
-              console.log('why not?');
-            }
+            winner.play();
+            $('#runButton').addClass('hidden');
+            $('#nextLessonButton').removeClass('hidden');
+            $('#gameSuccess').removeClass('hidden');
+            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done! Click Next to go to the next lesson!');
           }
           else{
-            alert("Sorry, try again");
-            $('#error').html("");
-            $('#error').addClass('hidden');
+            tryAgain.play();
+            $('#runButton').addClass('hidden');
+            $('#resetButton').removeClass('hidden');
           }
         }, 1000);
       };
@@ -71,10 +85,27 @@
         run: run,
         getCode: getCode,
         putCode: putCode,
+        goNext: goNext,
+        resetGame: resetGame
       };
     })
     //Game 2 part 2
     .factory('Game2_2Service', function($http, $window, $location, _){
+
+      var winner = new Audio('../../sounds/winner.m4a');
+      var tryAgain = new Audio('../../sounds/tryagain.m4a');
+
+      var goNext = function(){
+        $location.path('/lesson22');
+        resetGame();
+      };
+      var resetGame = function(){
+        $('#error').html("");
+        $('#error').addClass('hidden');
+        $('#runButton').removeClass('hidden');
+        $('#resetButton').addClass('hidden');
+        $('#nextLessonButton').addClass('hidden');
+      };
 
       var run = function(input){
         var greeting="";
@@ -96,19 +127,16 @@
         setTimeout(function(){
           if(greeting.toLowerCase() === "good morning" && (x + y) === 5 && typeof x === "number" && typeof y === "number" && isFriendly === true){
             putProgress();
-            var moveOn = confirm("Congrats, would you like to go to the next lesson?");
-            if(moveOn === true){
-              console.log('in move on');
-              $window.location.assign('#/lesson22');
-            }
-            else{
-              console.log('why not?');
-            }
+            winner.play();
+            $('#runButton').addClass('hidden');
+            $('#nextLessonButton').removeClass('hidden');
+            $('#gameSuccess').removeClass('hidden');
+            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done! Click Next to go to the next lesson!');
           }
           else{
-            alert("Sorry, try again");
-            $('#error').html("");
-            $('#error').addClass('hidden');
+            tryAgain.play();
+            $('#runButton').addClass('hidden');
+            $('#resetButton').removeClass('hidden');
           }
         }, 1000);
       };
@@ -139,10 +167,15 @@
         run: run,
         getCode: getCode,
         putCode: putCode,
+        goNext: goNext,
+        resetGame: resetGame
       };
     })
     //set up game 2_3
     .factory('Game2_3Service', function($http, $window, $location, _){
+
+      var winner = new Audio('../../sounds/winner.m4a');
+      var tryAgain = new Audio('../../sounds/tryagain.m4a');
 
       var doors=[];
       var treasures = 0;
@@ -157,11 +190,21 @@
         console.log(doors);
       };
 
+      var goNext = function(){
+        $location.path('/lesson31');
+        resetGame();
+      };
+
       var resetGame = function(){
         for(var i=0; i<5; i++){
           $('#door'+i).removeClass('hidden');
           $('#behindDoor'+i).addClass('hidden');
         }
+        $('#error').html("");
+        $('#error').addClass('hidden');
+        $('#runButton').removeClass('hidden');
+        $('#resetButton').addClass('hidden');
+        $('#nextLessonButton').addClass('hidden');
         doors=[];
         treasures = 0;
       };
@@ -183,22 +226,16 @@
           console.log("treasures: " + treasures);
           if(doors.length === 2 && treasures === 2 && _.contains(doors, 1) && _.contains(doors, 4)){
             putProgress();
-            var moveOn = confirm("Congrats, would you like to go to the next lesson?");
-            if(moveOn === true){
-              console.log('in move on');
-              $window.location.assign('#/lesson31');
-              resetGame();
-            }
-            else{
-              console.log('why not?');
-              resetGame();
-            }
+            winner.play();
+            $('#runButton').addClass('hidden');
+            $('#nextLessonButton').removeClass('hidden');
+            $('#gameSuccess').removeClass('hidden');
+            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done! Click Next to go to the next lesson!');
           }
           else{
-            alert("Sorry, try again");
-            $('#error').html("");
-            $('#error').addClass('hidden');
-            resetGame();
+            tryAgain.play();
+            $('#runButton').addClass('hidden');
+            $('#resetButton').removeClass('hidden');
           }
         }, 1500);
       };
@@ -229,6 +266,8 @@
         run: run,
         getCode: getCode,
         putCode: putCode,
+        resetGame: resetGame,
+        goNext: goNext
       };
     });
 }());

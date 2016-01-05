@@ -5,6 +5,10 @@
     .module('game')
     .factory('Game1_1Service', function($http, $location, _){
       //set up current game coordinates
+
+      var winner = new Audio('../../sounds/winner.m4a');
+      var tryAgain = new Audio('../../sounds/tryagain.m4a');
+
       var setGame = function(){
         $('#x').css('left', '10px');
         $('#x').css('top', '60px');
@@ -101,6 +105,7 @@
           if(numMoves === 1 && down === 1){
           //we succeeeded so we put update the progress
           putProgress();
+          winner.play();
           $('#runButton').addClass('hidden');
           $('#nextLessonButton').removeClass('hidden');
           $('#gameSuccess').removeClass('hidden');
@@ -110,6 +115,7 @@
         //losing condition
         else{
           $('#char').stop();
+          tryAgain.play();
           $('#runButton').addClass('hidden');
           $('#resetButton').removeClass('hidden');
 
@@ -153,6 +159,7 @@
       //set up game 1 part 2
 
       var winner = new Audio('../../sounds/winner.m4a');
+      var tryAgain = new Audio('../../sounds/tryagain.m4a');
 
       var setGame = function(){
         $('#x').css('left', '100px');
@@ -215,8 +222,15 @@
         numMoves = 0;
         $('#error').html("");
         $('#error').addClass('hidden');
+        $('#runButton').removeClass('hidden');
+        $('#resetButton').addClass('hidden');
+        $('#nextLessonButton').addClass('hidden');
       };
 
+      var goNext = function(){
+        $location.path('/game13');
+        resetGame();
+      };
       var run = function(input){
         //run code and throw errors
         try{
@@ -238,23 +252,18 @@
           //we succeeeded so we put update the progress
           putProgress();
           winner.play();
-          var next = confirm("Go to next lesson?");
-          if(next === true){
-            $location.path('/game13');
-            resetGame();
-          }
-          else{
-          resetGame();
-        }
-
+          $('#runButton').addClass('hidden');
+          $('#nextLessonButton').removeClass('hidden');
+          $('#gameSuccess').removeClass('hidden');
+          $('#gameSuccess').html('Well Done! Click Next to go to the next lesson!');
         }
         //set losing condition
         else{
           $('#char').stop();
-          alert("Sorry, try again");
-          console.log($('#char').position());
-          console.log($('#x').position());
-          resetGame();
+          tryAgain.play();
+          $('#runButton').addClass('hidden');
+          $('#resetButton').removeClass('hidden');
+
 
       }}, 1200);
 
@@ -286,7 +295,8 @@
         getCode: getCode,
         putCode: putCode,
         run: run,
-        resetGame: resetGame
+        resetGame: resetGame,
+        goNext: goNext
       };
     })
     //set up game 1_3
@@ -298,6 +308,9 @@
       var up = 0;
       var down = 0;
       var numMoves = 0;
+
+      var winner = new Audio('../../sounds/winner.m4a');
+      var tryAgain = new Audio('../../sounds/tryagain.m4a');
 
       var moveLeft = function(){
         left++;
@@ -350,6 +363,14 @@
         numMoves = 0;
         $('#error').html("");
         $('#error').addClass('hidden');
+        $('#runButton').removeClass('hidden');
+        $('#resetButton').addClass('hidden');
+        $('#nextLessonButton').addClass('hidden');
+      };
+
+      var goNext = function(){
+        $location.path('/lesson21');
+        resetGame();
       };
 
       var run = function(input){
@@ -368,25 +389,21 @@
           $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
         }
         setTimeout(function(){
-        if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left){
+        if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left && numMoves === 5){
         //we succeeeded so we put update the progress
         putProgress();
-        var next = confirm("Go to next lesson?");
-        if(next === true){
-          $location.path('/lesson21');
-          resetGame();
-        }
-        else{
-        resetGame();
-      }
+        winner.play();
+        $('#runButton').addClass('hidden');
+        $('#nextLessonButton').removeClass('hidden');
+        $('#gameSuccess').removeClass('hidden');
+        $('#gameSuccess').html('Well Done! Click Next to go to the next lesson!');
 
       }
       else{
         $('#char').stop();
-        alert("Sorry, try again");
-        console.log($('#char').position());
-        console.log($('#x').position());
-        resetGame();
+        tryAgain.play();
+        $('#runButton').addClass('hidden');
+        $('#resetButton').removeClass('hidden');
 
       }}, 3000);
 
@@ -423,7 +440,8 @@
         getCode: getCode,
         putCode: putCode,
         setGame: setGame,
-        resetGame: resetGame
+        resetGame: resetGame,
+        goNext: goNext
       };
     })
     //game playground for development
