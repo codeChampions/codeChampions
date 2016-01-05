@@ -12,7 +12,9 @@
       <div ui-ace="game2Ctrl.aceOption" ng-model="game2Ctrl.aceModel">stuff</div>
     </aside>
     <aside class="col-xs-4 gameBox">
-      <button class="run btn btn-danger" ng-click="game2Ctrl.run()">Run</button><button class="run btn btn-danger" ng-click="game2Ctrl.resetAce()">Reset</button><br>
+      <button id="runButton" class="gameButton btn btn-primary" ng-click="game2Ctrl.run()">Run</button>
+      <button id="resetButton" class="gameButton btn btn-danger hidden" ng-click="game2Ctrl.resetGame()">Reset</button>
+      <button id="nextLessonButton" class="gameButton btn btn-success hidden" ng-click="game2Ctrl.goNext()">Next!</button>
       <div id="field23">
         <div class="row dungeonRow">
           <div class="col-xs-2 dungeonDoor">
@@ -39,6 +41,8 @@
 
       </div>
       <div id="error" class="alert alert-danger hidden" role="alert">
+      </div>
+      <div id="gameSuccess" class="alert alert-success hidden" role="alert">
       </div>
     </aside>
   </section>

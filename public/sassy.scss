@@ -279,13 +279,17 @@ aside {
     }
     }
 
-.run {
-  background-color: #D32F2F;
-  font-family:  'Anton', sans-serif;
-  margin-top: 5px;
-  margin-right: 1px;
-}
-
+  .run {
+    background-color: #D32F2F;
+    font-family:  'Anton', sans-serif;
+    margin-top: 5px;
+    margin-right: 1px;
+  }
+  .gameButton, {
+    font-family: 'Anton', sans-serif;
+    margin-top: 5px;
+    margin-right: 1px;
+  }
   #obstacle{
     position: absolute;
     z-index: 2;
