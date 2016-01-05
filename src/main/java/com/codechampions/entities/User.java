@@ -76,6 +76,7 @@ public class User {
     public AccessType accessType;
 
     @Column
+    @JsonView(View.userSummary.class)
     public String avatar;
 
 
