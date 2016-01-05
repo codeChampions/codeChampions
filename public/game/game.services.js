@@ -49,6 +49,7 @@
       //move the character down
       var moveDown = function(){
         if(posUp < 150){
+          console.log("moved down");
         $('#char').animate({top: "+=50"}, {duration: 500});
         posUp += 50;
         down++;
@@ -68,8 +69,15 @@
         numMoves = 0;
         $('#error').html("");
         $('#error').addClass('hidden');
+        $('#runButton').removeClass('hidden');
+        $('#resetButton').addClass('hidden');
+        $('#nextLessonButton').addClass('hidden');
       };
 
+      var goNext = function(){
+        $location.path('/lesson12');
+        resetGame();
+      };
 
       //run the code
       var run = function(input){
@@ -89,26 +97,21 @@
         }
         setTimeout(function(){
         //winning condition
+          console.log(down);
           if(numMoves === 1 && down === 1){
           //we succeeeded so we put update the progress
           putProgress();
-          var next = confirm("Go to next lesson?");
-          if(next === true){
-            $location.path('/lesson12');
-            resetGame();
-        }
-          else{
-            resetGame();
-      }
+          $('#runButton').addClass('hidden');
+          $('#nextLessonButton').removeClass('hidden');
+          $('#gameSuccess').removeClass('hidden');
+          $('#gameSuccess').html('Well Done! Click Next to go to the next lesson!');
 
-      }
+        }
         //losing condition
         else{
           $('#char').stop();
-          alert("Sorry, try again");
-          console.log($('#char').position());
-          console.log($('#x').position());
-          resetGame();
+          $('#runButton').addClass('hidden');
+          $('#resetButton').removeClass('hidden');
 
         }}, 600);
 
@@ -141,6 +144,8 @@
         getCode: getCode,
         putCode: putCode,
         run: run,
+        resetGame: resetGame,
+        goNext: goNext
       };
     })
     //Game 1 part 2
@@ -281,6 +286,7 @@
         getCode: getCode,
         putCode: putCode,
         run: run,
+        resetGame: resetGame
       };
     })
     //set up game 1_3
@@ -416,7 +422,8 @@
         run: run,
         getCode: getCode,
         putCode: putCode,
-        setGame: setGame
+        setGame: setGame,
+        resetGame: resetGame
       };
     })
     //game playground for development

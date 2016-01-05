@@ -98,8 +98,36 @@
 
       };
       //reset the editor
-      vm.resetAce = function(){
-        vm.aceModel = vm.aceOriginal;
+      vm.resetGame = function(){
+        switch (vm.loc) {
+          case ('/game11'):
+            Game1_1Service.resetGame();
+            break;
+          case ('/game12'):
+            Game1_2Service.resetGame();
+            break;
+          case ('/game13'):
+            Game1_3Service.resetGame();
+            break;
+          default:
+
+        }
+      };
+
+      vm.goNext = function(){
+        switch (vm.loc) {
+          case ('/game11'):
+            Game1_1Service.goNext();
+            break;
+          case ('/game12'):
+            Game1_2Service.goNext();
+            break;
+          case ('/game13'):
+            Game1_3Service.goNext();
+            break;
+          default:
+
+        }
       };
       //grab the student's code and put it into the editor if they have played the game before
       vm.getCode = function(){
