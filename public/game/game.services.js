@@ -89,7 +89,7 @@
         }
         setTimeout(function(){
         //winning condition
-          if($('#char').position().top === 50 && $('#char').position().left === 0){
+          if(numMoves === 1 && down === 1){
           //we succeeeded so we put update the progress
           putProgress();
           var next = confirm("Go to next lesson?");

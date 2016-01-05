@@ -564,3 +564,27 @@ aside {
     font-size: 14px;
   }
 }
+
+@media only screen and (max-width: 1000px){
+
+  .progress {
+    width: 50%;
+  }
+
+  .student h3 {
+    font-size: 30px;
+  }
+
+}
+
+@media only screen and (max-width: 700px){
+
+  .progress {
+    width: 30%;
+  }
+
+  .student h3 {
+    font-size: 20px;
+  }
+
+}
