@@ -3,7 +3,7 @@
 
   angular
   .module('game')
-  .factory('SpaceGame2Service', function($http, $location, $window){
+  .factory('SpaceGame2Service', function($http, $location, $window, _){
 
     var player;
           var aliens;
@@ -52,12 +52,6 @@
           player.body.gravity.y = 300;
           player.body.collideWorldBounds = true;
 
-          //  Our animations of walking
-          // player.animations.add('left', [0, 1, 2, 3], true);
-          // player.animations.add('right', [5, 6, 7, 8], true);
-          // player.animations.add('up', [0, 1, 2, 3], true);
-          // player.animations.add('down', [5, 6, 7, 8], true);
-
           aliens = game.add.group();
           aliens.enableBody = true;
           aliens.physicsBodyType = Phaser.Physics.ARCADE;
@@ -93,11 +87,6 @@
               aliens.x = 250;
               aliens.y = 80;
 
-              //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
-              // var tween = game.add.tween(aliens).to( { x: 200 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
-
-              //  When the tween loops it calls descend
-              // tween.onLoop.add(descend, this);
           };
 
           var scanForEnemy = function(){
@@ -224,35 +213,6 @@
             rightMove = false;
             numRight= 0;
            }
-          // else if (cursors.right.isDown)
-          // {
-          //     //  Move to the right
-          //     player.body.velocity.x = 150;
-          //
-          //     // player.animations.play('right', 10, true);
-          // }
-          //
-          // else if (cursors.up.isDown)
-          // {
-          //    //  Move to the Up
-          //    player.body.velocity.y = -150;
-          //
-          //   //  player.animations.play('up', 10, true);
-          // }
-          //
-          //    else if (cursors.down.isDown)
-          // {
-          //    //  Move to the Down
-          //    player.body.velocity.y = 150;
-          //
-          //   //  player.animations.play('down', 10, true);
-          // }
-
-          // if (fireButton.isDown)
-          //      {
-          //          fireLaser();
-          //      }
-
 
 
           game.physics.arcade.overlap(bullets, aliens, collisionHandler, null, this);
@@ -260,14 +220,19 @@
         };
 
 
-    var game = new Phaser.Game(600, 400, Phaser.AUTO, 'spaceGame', { preload: preload, create: create, createAliens: createAliens, setupInvader: setupInvader, update: update });
+        var game;
+        var gameSet = function(){
+            game = new Phaser.Game(600, 400, Phaser.AUTO, 'spaceGame', { preload: preload, create: create, createAliens: createAliens, setupInvader: setupInvader, update: update });
+        }
+        gameSet();
 
-
-    var resetGame = function(){
-      player.body.x = 32;
-      $('#error').html("");
-      $('#error').addClass('hidden');
-    };
+        var resetGame = function(){
+          console.log("yes please");
+          $('canvas').remove();
+          game.world.shutdown();
+          game.destroy();
+          gameSet();
+        };
 
     var run = function(input){
 
@@ -343,7 +308,8 @@
     return {
       run: run,
       getCode: getCode,
-      putCode: putCode
+      putCode: putCode,
+      resetGame: resetGame
     };
 });
 
