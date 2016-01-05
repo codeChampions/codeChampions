@@ -43,7 +43,7 @@ public class CodeChampionsController {
     public String game1_2InitialCode = ("//Javascript goes here \n");
     public String game1_3InitialCode = ("//Javascript goes here \n");
     public String game2_1InitialCode = ("animal1 = \"PUT_NAME_HERE\";\nanimal2 = \nanimal3 = \nanimal4 = ");
-    public String game2_2InitialCode = ("//Strings\ngreeting = \"\";\n//Numbers\nx=\ny=\n//Boolean\nidFriendly=");
+    public String game2_2InitialCode = ("//Strings\ngreeting = \"\";\n//Numbers\nx=\ny=\n//Boolean\nisFriendly=");
     public String game2_3InitialCode = ("openDoor(PUT_NUMBER_HERE);");
     public String game3_1InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_FUNCTION_HERE\n}\n");
     public String game3_2InitialCode = ("if(PUT_CONDITION_HERE){\nPUT_IF_CODE_HERE\n}\nelse{\nPUT_ELSE_CODE_HERE\n}\n");
@@ -57,54 +57,64 @@ public class CodeChampionsController {
             admin.username = "Admin";
             admin.password = PasswordHash.createHash("Admin");
             admin.accessType = User.AccessType.ADMIN;
+            admin.avatar = "octopus.png";
             users.save(admin);
 
             User jack = new User();
             jack.username = "Jack";
             jack.password = PasswordHash.createHash("Jack");
             jack.accessType = User.AccessType.TEACHER;
+            jack.email = "Jack@CodeChampions.com";
+            jack.avatar = "octopus.png";
             users.save(jack);
 
             User terry = new User();
             terry.username = "Terry";
             terry.password = PasswordHash.createHash("Terry");
             terry.accessType = User.AccessType.TEACHER;
+            terry.avatar = "pirate.png";
             users.save(terry);
 
             User kelleeMorgan = new User();
             kelleeMorgan.username = "Kellee-Morgan";
             kelleeMorgan.password = PasswordHash.createHash("Kellee-Morgan");
             kelleeMorgan.accessType = User.AccessType.TEACHER;
+            kelleeMorgan.avatar = "princess.png";
             users.save(kelleeMorgan);
 
             User calvin = new User();
             calvin.username = "Calvin";
             calvin.password = PasswordHash.createHash("Calvin");
             calvin.accessType = User.AccessType.STUDENT;
+            calvin.avatar = "cat.png";
             users.save(calvin);
 
             User nathan = new User();
             nathan.username = "Nathan";
             nathan.password = PasswordHash.createHash("Nathan");
             nathan.accessType = User.AccessType.STUDENT;
+            nathan.avatar = "octopus.png";
             users.save(nathan);
 
             User zach = new User();
             zach.username = "Zach";
             zach.password = PasswordHash.createHash("Zach");
             zach.accessType = User.AccessType.STUDENT;
+            zach.avatar = "pirate.png";
             users.save(zach);
 
             User betsy = new User();
             betsy.username = "Betsy";
             betsy.password = PasswordHash.createHash("Betsy");
             betsy.accessType = User.AccessType.STUDENT;
+            betsy.avatar = "princess.png";
             users.save(betsy);
 
             User katie = new User();
             katie.username = "Katie";
             katie.password = PasswordHash.createHash("Katie");
             katie.accessType = User.AccessType.STUDENT;
+            katie.avatar = "cat.png";
             users.save(katie);
         }
 
