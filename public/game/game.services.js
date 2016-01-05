@@ -69,6 +69,8 @@
         $('#error').html("");
         $('#error').addClass('hidden');
       };
+
+
       //run the code
       var run = function(input){
         //look for errors
@@ -144,6 +146,9 @@
     //Game 1 part 2
     .factory('Game1_2Service', function($http, $location, _){
       //set up game 1 part 2
+
+      var winner = new Audio('../../sounds/winner.m4a');
+
       var setGame = function(){
         $('#x').css('left', '100px');
         $('#x').css('top', '0px');
@@ -227,6 +232,7 @@
           if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left){
           //we succeeeded so we put update the progress
           putProgress();
+          winner.play();
           var next = confirm("Go to next lesson?");
           if(next === true){
             $location.path('/game13');

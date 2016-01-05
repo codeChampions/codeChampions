@@ -1,17 +1,17 @@
 <div class="container">
   <header-direct logout="userCtrl.logout()"></header-direct>
   <div class="profile-info">
-    <aside class="col-md-3">
+    <aside class="col-xs-3">
       <p class="image"><img src="../../images/avatars/{{userCtrl.avatar}}"></p>
       <button class="image-edit" ng-click="">Edit</button>
     </aside>
     <aside>
-      <h3 class="col-md-5">Username: {{userCtrl.currentUser}}</h3><input style="color: black" type="text" class="terry" ng-model="userCtrl.currentUser">
+      <h3 class="col-xs-5">Username: {{userCtrl.currentUser}}</h3><input style="color: black" type="text" class="terry" ng-model="userCtrl.currentUser">
       <p class="edit"><button ng-click="userCtrl.edit(userCtrl.currentUser, userCtrl.id)">Submit</button></p>
 <!-- <p class="edit"><button ng-init="nameEdit=0" ng-click="nameEdit=nameEdit + 1">Edit</button></p> -->
     </aside>
     <aside>
-      <h3 class="col-md-5">Email: {{userCtrl.email}}</h3>
+      <h3 class="col-xs-5">Email: {{userCtrl.email}}</h3>
       <p class="edit"><button ng-click="">Edit</button></p>
     </aside>
   </div>
