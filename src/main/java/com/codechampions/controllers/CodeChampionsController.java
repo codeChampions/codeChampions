@@ -547,8 +547,7 @@ public class CodeChampionsController {
                 })
                 .collect(Collectors.toList());
 
-        int linesInt = filteredList.size();
-        stat.linesCoded = linesInt;
+        stat.linesCoded = filteredList.size();
         stats.save(stat);
         return stat;
     }
