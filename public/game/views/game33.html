@@ -13,8 +13,14 @@
     <aside class="col-xs-6">
       <div id="spaceGame">
       </div>
-      <button class="run btn" ng-click="space3Ctrl.run()">Run</button><button class="run btn" ng-click="space3Ctrl.resetGame()">Reset</button><br>
-      <div id="error" class="alert alert-danger hidden" role="alert">
+      <div class="buttons">
+        <button id="runButton" class="gameButton btn btn-primary" ng-click="space3Ctrl.run()">Run</button>
+        <button id="resetButton" class="gameButton btn btn-danger hidden" ng-click="space3Ctrl.resetGame()">Reset</button>
+        <button id="nextLessonButton" class="gameButton btn btn-success hidden" ng-click="space3Ctrl.goNext()">Next!</button><br>
+        <br><div id="error" class="alert alert-danger hidden" role="alert">
+        </div>
+        <div id="gameSuccess" class="alert alert-success hidden" role="alert">
+        </div>
       </div>
     </aside>
   </section>

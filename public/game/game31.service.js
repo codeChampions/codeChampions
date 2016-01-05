@@ -227,6 +227,16 @@
           game.world.shutdown();
           game.destroy();
           gameSet();
+          $('#error').html("");
+          $('#error').addClass('hidden');
+          $('#runButton').removeClass('hidden');
+          $('#resetButton').addClass('hidden');
+          $('#nextLessonButton').addClass('hidden');
+        };
+
+        var goNext = function(){
+          $location.path('/lesson32');
+          resetGame();
         };
 
 
@@ -251,23 +261,16 @@
 
                 if(player.body.x > 50 && livingEnemies > 0){
                   putProgress();
+                  $('#runButton').addClass('hidden');
+                  $('#nextLessonButton').removeClass('hidden');
+                  $('#gameSuccess').removeClass('hidden');
+                  $('#gameSuccess').html('Well Done! Click Next to go to the next lesson!');
                   //confirm move to next lesson
-
-                var goTo = confirm("Congrats, you piloted the Space Avenger. Go to next lesson?");
-                if(goTo === true){
-                  console.log("in if");
-                  console.log(game.state);
-                  console.log($location.url());
-                  $window.location.assign('#/lesson32');
-                }
-                else{
-                  console.log("in else");
-
-                }
               }
               //losing condition and what happens
               else{
-                alert("You failed to pilot the Space Avenger correctly. Try Again!")
+                $('#runButton').addClass('hidden');
+                $('#resetButton').removeClass('hidden');
               }
             }
           },2000);
@@ -302,7 +305,8 @@
       run: run,
       getCode: getCode,
       putCode: putCode,
-      resetGame: resetGame
+      resetGame: resetGame,
+      goNext: goNext
     };
 });
 
