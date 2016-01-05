@@ -54,7 +54,7 @@ body {
 .student h3 {
   font-size: 40px; }
 
-.student .col-md-3 {
+.student .col-xs-3 {
   background-color: white;
   border: 1px solid white;
   color: black;
@@ -72,20 +72,20 @@ body {
   margin-top: 0;
   margin-bottom: 10px; }
 
-.main-lessons .col-md-8 {
+.main-lessons .col-xs-8 {
   height: 50px;
   background-color: white;
   color: black;
   margin-top: 10px;
   border-radius: 5px; }
 
-.main-lessons .col-md-6 {
+.main-lessons .col-xs-6 {
   height: 30px;
   background-color: white;
   color: black;
   margin-top: 10px;
   border-radius: 5px; }
-  .main-lessons .col-md-6 a {
+  .main-lessons .col-xs-6 a {
     color: black; }
 
 .nav h1 {

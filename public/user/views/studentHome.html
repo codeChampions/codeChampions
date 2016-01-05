@@ -2,9 +2,9 @@
 
   <header-direct logout="userCtrl.logout()"></header-direct>
   <section class="row">
-    <div class="student col-md-12">
+    <div class="student col-xs-12">
       <h2>Hello, {{userCtrl.currentUser}}! <img src="../../images/avatars/{{userCtrl.avatar}}"></h2>
-      <div class="col-md-1">
+      <div class="col-xs-1">
       </div>
       <!-- <div ng-if="userCtrl.accessType === 'TEACHER'">
       <button class="btn btn-primary" ng-click="createOpen = !createOpen">Make Classroom</button>
@@ -15,131 +15,131 @@
         </form>
       </div>
     </div> -->
-      <section ng-click="classOpen = !classOpen" class="col-md-3 student-classrooms">
+      <section ng-click="classOpen = !classOpen; lessonOpen = false; statsOpen = false;" class="col-xs-3 student-classrooms">
         <h3>My Classrooms</h3>
         <i class="glyphicon glyphicon-apple"></i>
       </section>
-      <section ng-click="lessonOpen = !lessonOpen" class="col-md-3 student-lessons">
+      <section ng-click="lessonOpen = !lessonOpen; statsOpen = false; classOpen = false;" class="col-xs-3 student-lessons">
         <h3>My Lessons</h3>
         <i class="glyphicon glyphicon-tasks"></i>
       </section>
-      <section ng-click="statsOpen = !statsOpen" class="col-md-3 student-stats">
+      <section ng-click="statsOpen = !statsOpen; lessonOpen = false; classOpen = false;" class="col-xs-3 student-stats">
         <h3>My Stats</h3>
         <i class="glyphicon glyphicon-stats"></i>
       </section>
-      <div class="col-md-2">
+      <div class="col-xs-2">
       </div>
     </div>
   </section>
   <section ng-controller="ClassController as classCtrl" ng-show="classOpen" class="row main-lessons">
-    <div class="col-md-1"></div>
+    <div class="col-xs-1"></div>
     <div ng-if="userCtrl.accessType === 'TEACHER'">
       <button class="btn classroom-btn" ng-click="createOpen = !createOpen">Make Classroom</button>
           <div ng-show="createOpen">
-            <div class="col-md-1"></div>
+            <div class="col-xs-1"></div>
             <form ng-submit="classCtrl.createClassroom(className)">
               <input class="classRoomInput input" name="className" ng-model="className" placeholder="Classroom Name" value="" type="text">
               <input class="submit btn btn-primary" name="Submit" value="Submit" type="Submit">
             </form>
         </div>
   </div>
-    <aside class="col-md-12" ng-repeat="class in classCtrl.classList">
+    <aside class="col-xs-12" ng-repeat="class in classCtrl.classList">
       <a href="#/classroom/{{class.id}}">
-        <div class="col-md-2">
+        <div class="col-xs-2">
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-8">
           <h3>{{class.className}}</h3>
         </div>
       </a>
     </aside>
   </section>
   <section ng-controller="LessonController as lessonCtrl" ng-show="lessonOpen" class="row main-lessons">
-    <aside class="col-md-12">
-      <div class="col-md-2">
+    <aside class="col-xs-12">
+      <div class="col-xs-2">
       </div>
-      <div class="col-md-8" ng-click="lessonCtrl.goToLesson1()" ng-click="">
+      <div class="col-xs-8" ng-click="lessonCtrl.goToLesson1()" ng-click="">
         <h3>Lesson 1</h3><uib-progressbar animate="false" value="lessonCtrl.dynamic1" type="success"><b>{{lessonCtrl.dynamic1}}%</b></uib-progressbar>
       </div>
-      <div class="col-md-4">
+      <div class="col-xs-4">
       </div>
-      <div class="col-md-6">
+      <div class="col-xs-6">
         <a href="#/lesson11"><h4>Part 1: Getting Started</h4></a>
       </div>
-      <div class="col-md-4">
+      <div class="col-xs-4">
       </div>
-      <div ng-if="lessonCtrl.lesson1Progress >= 1" class="col-md-6">
+      <div ng-if="lessonCtrl.lesson1Progress >= 1" class="col-xs-6">
         <a href="#/lesson12"><h4>Part 2: Functions 1</h4></a>
       </div>
-      <div class="col-md-4">
+      <div class="col-xs-4">
       </div>
-      <div ng-if="lessonCtrl.lesson1Progress >= 2" class="col-md-6">
+      <div ng-if="lessonCtrl.lesson1Progress >= 2" class="col-xs-6">
         <a href="#/game13"><h4>Part 3: Functions 2</h4></a>
       </div>
     </aside>
-    <aside class="col-md-12">
-      <div class="col-md-2">
+    <aside class="col-xs-12">
+      <div class="col-xs-2">
       </div>
-      <div class="col-md-8" ng-click="lessonCtrl.goToLesson2()" ng-click="">
+      <div class="col-xs-8" ng-click="lessonCtrl.goToLesson2()" ng-click="">
         <h3>Lesson 2</h3><uib-progressbar animate="false" value="lessonCtrl.dynamic2" type="success"><b>{{lessonCtrl.dynamic2}}%</b></uib-progressbar>
       </div>
-      <div class="col-md-4">
+      <div class="col-xs-4">
       </div>
-      <div class="col-md-6">
+      <div class="col-xs-6">
         <a href="#/lesson21"><h4>Part 1: Variables 1</h4></a>
       </div>
-      <div class="col-md-4">
+      <div class="col-xs-4">
       </div>
-      <div ng-if="lessonCtrl.lesson2Progress >= 1" class="col-md-6">
+      <div ng-if="lessonCtrl.lesson2Progress >= 1" class="col-xs-6">
         <a href="#/game22"><h4>Part 2: Variables 2</h4></a>
       </div>
-      <div class="col-md-4">
+      <div class="col-xs-4">
       </div>
-      <div ng-if="lessonCtrl.lesson2Progress >= 2" class="col-md-6">
+      <div ng-if="lessonCtrl.lesson2Progress >= 2" class="col-xs-6">
         <a href="#/lesson22"><h4>Part 3: Arrays</h4></a>
       </div>
     </aside>
-    <aside class="col-md-12">
-      <div class="col-md-2">
+    <aside class="col-xs-12">
+      <div class="col-xs-2">
       </div>
-      <div class="col-md-8" ng-click="lessonCtrl.goToLesson3()" ng-click="">
+      <div class="col-xs-8" ng-click="lessonCtrl.goToLesson3()" ng-click="">
         <h3>Lesson 3</h3><uib-progressbar animate="false" value="lessonCtrl.dynamic3" type="success"><b>{{lessonCtrl.dynamic3}}%</b></uib-progressbar>
       </div>
-      <div class="col-md-4">
+      <div class="col-xs-4">
       </div>
-      <div class="col-md-6">
+      <div class="col-xs-6">
         <a href="#/lesson31"><h4>Part 1: If Statments</h4></a>
       </div>
-      <div class="col-md-4">
+      <div class="col-xs-4">
       </div>
-      <div ng-if="lessonCtrl.lesson3Progress >= 1" class="col-md-6">
+      <div ng-if="lessonCtrl.lesson3Progress >= 1" class="col-xs-6">
         <a href="#/lesson32"><h4>Part 2: If/Else Statements</h4></a>
       </div>
-      <div class="col-md-4">
+      <div class="col-xs-4">
       </div>
-      <div ng-if="lessonCtrl.lesson3Progress >= 2" class="col-md-6">
+      <div ng-if="lessonCtrl.lesson3Progress >= 2" class="col-xs-6">
         <a href="#/lesson33"><h4>Part 3: Else If Statements</h4></a>
       </div>
     </aside>
   </section>
   <section ng-controller="StatsController as statsCtrl" ng-show="statsOpen" class="row main-lessons">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-xs-2">
       </div>
-      <div class="col-md-6">
+      <div class="col-xs-6">
         <h3>Total Games Completed: {{statsCtrl.myStats.gamesFinished}}</h3>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-xs-2">
       </div>
-      <div class="col-md-6">
+      <div class="col-xs-6">
         <h3>Total Lessons Completed: {{statsCtrl.myStats.lessonsFinished}}</h3>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-xs-2">
       </div>
-      <div class="col-md-6">
+      <div class="col-xs-6">
         <h3>Lines of Code Written: {{statsCtrl.myStats.linesCoded}}</h3>
       </div>
     </div>
