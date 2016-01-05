@@ -294,7 +294,7 @@
                   console.log("in if");
                   console.log(game.state);
                   console.log($location.url());
-                  game.state.restart(false,true);
+                  // game.state.restart(false,true);
                   game.destroy();
                   $window.location.assign('#/lesson32');
                   resetGame();

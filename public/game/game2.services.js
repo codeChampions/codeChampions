@@ -55,7 +55,7 @@
 
       var putCode = function(code) {
         var obj = {
-          game2_2Code: code,
+          game2_1Code: code,
         };
         return $http.post(putGameCode, obj);
       };
