@@ -186,6 +186,9 @@ aside .edit {
   background-color: #D32F2F;
   color: white; }
 
+.buttons {
+  padding: 10px; }
+
 .gameView {
   padding: 10px 20px; }
   .gameView .ace_editor {

@@ -23,7 +23,7 @@
               game.load.image('sky', 'assets/Gamedevtuts_Free_Shmup_Sprites/Backgrounds/farback.gif');
               game.load.image('ship', 'assets/SpaceShipSmall.png', 32, 48);
               game.load.image('aliens', 'assets/ship (16).png', 40, 44);
-              game.load.image('bullet', 'assets/projectile1.svg', 32, 32);
+              game.load.image('bullet', 'assets/spr_bullet_strip04.png', 32, 32);
               game.load.image('kaboom', 'assets/exload01_2.png', 10, 10);
           };
 
@@ -40,9 +40,10 @@
           bullets = game.add.group();
           bullets.enableBody = true;
           bullets.physicsBodyType = Phaser.Physics.ARCADE;
-          bullets.createMultiple(30, 'bullet');
-          bullets.setAll('anchor.x', 0.5);
-          bullets.setAll('anchor.y', 1);
+          bullets.createMultiple(10, 'bullet');
+          // bullets.setAll('anchor.x', 0.5);
+          // bullets.setAll('anchor.y', 1);
+          bullets.scale.set(1, 1);
           bullets.setAll('outOfBoundsKill', true);
           bullets.setAll('checkWorldBounds', true);
 
@@ -193,10 +194,9 @@
         };
         var leftMove = false;
         var numLeft = 0;
+
       var moveLeft = function(){
-        // player.body.velocity.x = -150;
         leftMove = true;
-        numLeft++;
       };
 
       var rightMove = false;
@@ -205,14 +205,13 @@
 
       var mobilizeRight = function(amount){
           rightMove = true;
-          numRight++;
       };
 
       var attackRight = function(){
         mobilizeRight();
         setTimeout(function(){
           fireLaser();
-        }, 1000);
+        }, 1500);
 
     };
 
@@ -220,7 +219,7 @@
       moveLeft();
       setTimeout(function(){
         fireLaser();
-      }, 1000);
+      }, 1500);
 
   };
 
@@ -241,26 +240,20 @@
           if (rightMove)
            {
               //  Move to the left
-              console.log(numRight);
-             player.body.velocity.x = 40000*numRight;
-             console.log(numRight);
+             player.body.velocity.x = 40000;
              console.log("once moved" + player.body.x);
 
             player.animations.play('right', 10, true);
             rightMove = false;
-            numRight= 0;
            }
            if (leftMove)
             {
                //  Move to the left
-               console.log(numLeft);
-              player.body.velocity.x = -40000*numLeft;
-              console.log(numLeft);
               console.log("once moved" + player.body.x);
+              player.x -= 2;
 
              player.animations.play('left', 10, true);
              leftMove = false;
-             numLeft= 0;
             }
 
           game.physics.arcade.overlap(bullets, aliens, collisionHandler, null, this);
@@ -280,6 +273,17 @@
           game.world.shutdown();
           game.destroy();
           gameSet();
+          $('#error').html("");
+          $('#error').addClass('hidden');
+          $('#runButton').removeClass('hidden');
+          $('#resetButton').addClass('hidden');
+          $('#nextLessonButton').addClass('hidden');
+          livingEnemies = 0;
+        };
+
+        var goNext = function(){
+          $location.path('/home');
+          resetGame();
         };
 
     var run = function(input){
@@ -289,6 +293,7 @@
         eval(input);
 
         setTimeout(function(){
+          console.log(livingEnemies);
         try {
             if (player.body.x > 400) throw "You did not move correctly!";
             if (livingEnemies > 0) throw "You did not get the aliens!";
@@ -304,29 +309,19 @@
 
           if(player.body.x < 200 && livingEnemies === 0 && shotsFired > 0  ){
             putProgress();
+            $('#runButton').addClass('hidden');
+            $('#nextLessonButton').removeClass('hidden');
+            $('#gameSuccess').removeClass('hidden');
+            $('#gameSuccess').html('Well Done! Click Next to go to home!');
             //confirm move to next lesson
-
-          var goTo = confirm("Congrats, you piloted the Space Avenger. Go to home?");
-          if(goTo === true){
-            console.log("in if");
-            console.log($location.url());
-            game.destroy();
-            $window.location.assign('#/home');
-            resetGame();
           }
-          else{
-            console.log("in else");
-
-            resetGame();
-          }
-        }
         //losing condition and what happens
         else{
-          alert("You failed to pilot the Space Avenger correctly. Try Again!")
-          resetGame();
+          $('#runButton').addClass('hidden');
+          $('#resetButton').removeClass('hidden');
         }
       }
-    },2000);
+    },2500);
 
   };
 
@@ -358,7 +353,8 @@
       run: run,
       getCode: getCode,
       putCode: putCode,
-      resetGame: resetGame
+      resetGame: resetGame,
+      goNext: goNext
     };
 });
 

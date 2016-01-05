@@ -232,6 +232,16 @@
           game.world.shutdown();
           game.destroy();
           gameSet();
+          $('#error').html("");
+          $('#error').addClass('hidden');
+          $('#runButton').removeClass('hidden');
+          $('#resetButton').addClass('hidden');
+          $('#nextLessonButton').addClass('hidden');
+        };
+
+        var goNext = function(){
+          $location.path('/lesson33');
+          resetGame();
         };
 
     var run = function(input){
@@ -256,25 +266,16 @@
 
             if(player.body.x > 50 && shotsFired === 0 && /else/.test(input)) {
               putProgress();
+              $('#runButton').addClass('hidden');
+              $('#nextLessonButton').removeClass('hidden');
+              $('#gameSuccess').removeClass('hidden');
+              $('#gameSuccess').html('Well Done! Click Next to go to the next lesson!');
               //confirm move to next lesson
-
-            var goTo = confirm("Congrats, you piloted the Space Avenger. Go to next lesson?");
-            if(goTo === true){
-              console.log("in if");
-              console.log($location.url());
-              game.destroy();
-              $window.location.assign('#/lesson33');
-              resetGame();
-            }
-            else{
-              console.log("in else");
-              resetGame();
-            }
           }
           //losing condition and what happens
           else{
-            alert("You failed to pilot the Space Avenger correctly. Try Again!")
-            resetGame();
+            $('#runButton').addClass('hidden');
+            $('#resetButton').removeClass('hidden');
           }
         }
       },2000);
@@ -309,7 +310,8 @@
       run: run,
       getCode: getCode,
       putCode: putCode,
-      resetGame: resetGame
+      resetGame: resetGame,
+      goNext: goNext
     };
 });
 
