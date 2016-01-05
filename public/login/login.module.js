@@ -13,6 +13,10 @@
         .when('/', {
           templateUrl: 'login/views/login.html',
           controller: 'LoginController as loginCtrl'
+        })
+        .when('/about', {
+          templateUrl: 'login/views/about.html',
+          controller: 'LoginController as loginCtrl'
         });
 
     });

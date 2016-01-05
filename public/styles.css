@@ -24,6 +24,30 @@ body {
     background-color: #D32F2F;
     color: white; }
 
+footer {
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%; }
+  footer a {
+    text-decoration: none;
+    color: white; }
+
+.aboutUs {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  font-family: 'Ek Mukta', sans-serif;
+  font-size: 16px;
+  border: 1px solid black;
+  padding: 10px; }
+
 .newUser {
   text-align: center; }
   .newUser .btn {

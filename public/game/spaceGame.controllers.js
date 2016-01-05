@@ -22,6 +22,10 @@
         SpaceGame1Service.run(vm.aceModel);
       };
 
+      vm.resetGame = function(){
+        SpaceGame1Service.resetGame();
+      };
+
 
       vm.resetAce = function(){
         vm.aceModel = vm.aceOriginal;
@@ -58,6 +62,10 @@
       vm.run = function(){
           vm.putCode();
           SpaceGame2Service.run(vm.aceModel);
+      };
+
+      vm.resetGame = function(){
+        SpaceGame2Service.resetGame();
       };
 
       vm.resetAce = function(){
@@ -97,6 +105,9 @@
           SpaceGame3Service.run(vm.aceModel);
       };
 
+      vm.resetGame = function(){
+        SpaceGame3Service.resetGame();
+      };
 
       vm.resetAce = function(){
         vm.aceModel = vm.aceOriginal;
