@@ -17,10 +17,6 @@
         .when('/classroom/:classId',{
           templateUrl: 'classrooms/views/classroom.html',
           controller: 'ClassController as classCtrl'
-        })
-        .when('/makeClassroom', {
-          templateUrl: 'classrooms/views/makeClassroom.html',
-          controller: 'ClassController as classCtrl'
         });
 
     });
