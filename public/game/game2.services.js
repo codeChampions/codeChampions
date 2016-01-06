@@ -6,6 +6,7 @@
     .factory('Game2_1Service', function($http, $window, $location, _){
       //set audio
       var winner = new Audio('../../sounds/winner.m4a');
+      winner.volume = 0.4;
       var tryAgain = new Audio('../../sounds/tryagain.m4a');
       //set variables
       var animal1="";
@@ -95,6 +96,7 @@
     .factory('Game2_2Service', function($http, $window, $location, _){
       //set game audio
       var winner = new Audio('../../sounds/winner.m4a');
+      winner.volume = 0.4;
       var tryAgain = new Audio('../../sounds/tryagain.m4a');
 
       //set where user goes next
@@ -182,6 +184,7 @@
     .factory('Game2_3Service', function($http, $window, $location, _){
       //set game audio
       var winner = new Audio('../../sounds/winner.m4a');
+      winner.volume = 0.4;
       var tryAgain = new Audio('../../sounds/tryagain.m4a');
       //set intitial values
       var doors=[];
