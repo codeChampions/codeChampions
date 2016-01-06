@@ -6,6 +6,7 @@
   .factory('SpaceGame1Service', function($http, $location, $window, _){
 
         var winner = new Audio('../../sounds/winner.m4a');
+        winner.volume = 0.4;
         var tryAgain = new Audio('../../sounds/tryagain.m4a');
 
         var player;
