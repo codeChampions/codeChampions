@@ -143,6 +143,9 @@
               bullet.kill();
         };
 
+        var leftMove = false;
+        var numLeft = 0;
+
         var moveLeft = function(){
           player.body.velocity.x = -150;
         };
@@ -215,37 +218,44 @@
 
 
         var run = function(input){
-
+            try{
               eval(input);
-              setTimeout(function(){
-              try {
-                  if (player.body.x > 50) throw "You did not move correctly!";
-                  if (shotsFired < 1) throw "You did not shoot the laser";
-              }
-              catch(err){
-                console.log(err);
-                $('#error').removeClass('hidden');
-                $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
-              }
-              finally {
-                //winning condition and what happens
+            }
+            catch(error){
+              $('#error').removeClass('hidden');
+              $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+error);
+              tryAgain.play();
+              $('#runButton').addClass('hidden');
+              $('#resetButton').removeClass('hidden');
+            }
+            setTimeout(function(){
+            try {
+                if (player.body.x > 50) throw "You did not move correctly!";
+                if (shotsFired < 1) throw "You did not shoot the laser";
+            }
+            catch(err){
+              $('#error').removeClass('hidden');
+              $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
+            }
+            finally {
+              //winning condition and what happens
 
-                if(player.body.x < 50 && shotsFired > 0){
-                  putProgress();
-                  winner.play();
-                  game.destroy();
-                  $('#runButton').addClass('hidden');
-                  $('#nextLessonButton').removeClass('hidden');
-                  $('#gameSuccess').removeClass('hidden');
-                  $('#gameSuccess').html('Well Done, Code Champion!');
+              if(player.body.x < 50 && shotsFired > 0){
+                putProgress();
+                winner.play();
+                game.destroy();
+                $('#runButton').addClass('hidden');
+                $('#nextLessonButton').removeClass('hidden');
+                $('#gameSuccess').removeClass('hidden');
+                $('#gameSuccess').html('Well Done, Code Champion!');
               }
-              //losing condition and what happens
-                else{
-                  tryAgain.play();
-                  $('#runButton').addClass('hidden');
-                  $('#resetButton').removeClass('hidden');
-                }
+            //losing condition and what happens
+              else {
+                tryAgain.play();
+                $('#runButton').addClass('hidden');
+                $('#resetButton').removeClass('hidden');
               }
+            }
           },2000);
 
         };

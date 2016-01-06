@@ -215,7 +215,16 @@
     };
 
     var run = function(input){
-        eval(input);
+        try{
+          eval(input);
+        }
+        catch(error){
+          $('#error').removeClass('hidden');
+          $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+error);
+          tryAgain.play();
+          $('#runButton').addClass('hidden');
+          $('#resetButton').removeClass('hidden');
+        }
         setTimeout(function(){
           try {
               if (player.body.x <50) throw "You did not move correctly!";
