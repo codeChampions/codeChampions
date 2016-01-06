@@ -18,7 +18,6 @@
           templateUrl: 'login/views/about.html',
           controller: 'LoginController as loginCtrl'
         });
-
     });
 
     angular

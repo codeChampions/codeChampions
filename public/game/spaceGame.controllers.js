@@ -17,36 +17,35 @@
           };
         }
       };
-      vm.run = function(){
-        vm.putCode();
-        SpaceGame1Service.run(vm.aceModel);
-      };
+    vm.run = function(){
+      vm.putCode();
+      SpaceGame1Service.run(vm.aceModel);
+    };
 
-      vm.resetGame = function(){
-        SpaceGame1Service.resetGame();
-      };
+    vm.resetGame = function(){
+      SpaceGame1Service.resetGame();
+    };
 
-      vm.goNext = function(){
-            SpaceGame1Service.goNext();
-      };
+    vm.goNext = function(){
+      SpaceGame1Service.goNext();
+    };
 
 
-      vm.resetAce = function(){
-        vm.aceModel = vm.aceOriginal;
-      };
+    vm.resetAce = function(){
+      vm.aceModel = vm.aceOriginal;
+    };
 
-      vm.getCode = function(){
-        SpaceGame1Service.getCode().then(function(res){
-              vm.aceModel = res.data.game3_1Code;
-            })
-      };
+    vm.getCode = function(){
+      SpaceGame1Service.getCode().then(function(res){
+        vm.aceModel = res.data.game3_1Code;
+      });
+    };
 
-      vm.putCode = function(){
-        SpaceGame1Service.putCode(vm.aceModel);
-      };
+    vm.putCode = function(){
+      SpaceGame1Service.putCode(vm.aceModel);
+    };
 
-      vm.getCode();
-
+    vm.getCode();
 
   })
 
@@ -63,34 +62,34 @@
           };
         }
       };
-      vm.run = function(){
-          vm.putCode();
-          SpaceGame2Service.run(vm.aceModel);
-      };
+    vm.run = function(){
+      vm.putCode();
+      SpaceGame2Service.run(vm.aceModel);
+    };
 
-      vm.resetGame = function(){
-        SpaceGame2Service.resetGame();
-      };
+    vm.resetGame = function(){
+      SpaceGame2Service.resetGame();
+    };
 
-      vm.goNext = function(){
-            SpaceGame2Service.goNext();
-      };
+    vm.goNext = function(){
+      SpaceGame2Service.goNext();
+    };
 
-      vm.resetAce = function(){
-        vm.aceModel = vm.aceOriginal;
-      };
+    vm.resetAce = function(){
+      vm.aceModel = vm.aceOriginal;
+    };
 
-      vm.getCode = function(){
-        SpaceGame2Service.getCode().then(function(res){
-              vm.aceModel = res.data.game3_2Code;
-            })
-      };
+    vm.getCode = function(){
+      SpaceGame2Service.getCode().then(function(res){
+        vm.aceModel = res.data.game3_2Code;
+      });
+    };
 
-      vm.putCode = function(){
-        SpaceGame2Service.putCode(vm.aceModel);
-      };
+    vm.putCode = function(){
+      SpaceGame2Service.putCode(vm.aceModel);
+    };
 
-      vm.getCode();
+    vm.getCode();
 
 
   })
@@ -100,72 +99,64 @@
     vm.loc = $location.url();
     vm.mode = 'JavaScript';
     vm.aceOption = {
-        mode: vm.mode.toLowerCase(),
-        theme: 'monokai',
-        onLoad: function(_ace){
-          vm.modeChanged = function(){
-            _ace.getSession().setMode("ace/mode/" + vm.mode.toLowerCase());
-          };
-        }
-      };
-      vm.run = function(){
-          vm.putCode();
-          SpaceGame3Service.run(vm.aceModel);
-      };
+      mode: vm.mode.toLowerCase(),
+      theme: 'monokai',
+      onLoad: function(_ace){
+        vm.modeChanged = function(){
+          _ace.getSession().setMode("ace/mode/" + vm.mode.toLowerCase());
+        };
+      }
+    };
+    vm.run = function(){
+      vm.putCode();
+      SpaceGame3Service.run(vm.aceModel);
+    };
 
-      vm.resetGame = function(){
-        SpaceGame3Service.resetGame();
-      };
+    vm.resetGame = function(){
+      SpaceGame3Service.resetGame();
+    };
 
-      vm.goNext = function(){
-            SpaceGame3Service.goNext();
-      };
+    vm.goNext = function(){
+      SpaceGame3Service.goNext();
+    };
 
-      vm.resetAce = function(){
-        vm.aceModel = vm.aceOriginal;
-      };
+    vm.resetAce = function(){
+      vm.aceModel = vm.aceOriginal;
+    };
 
-      vm.getCode = function(){
-        SpaceGame3Service.getCode().then(function(res){
-          console.log(res.data.game3_3Code);
-              vm.aceModel = res.data.game3_3Code;
-            });
-      };
+    vm.getCode = function(){
+      SpaceGame3Service.getCode().then(function(res){
+          vm.aceModel = res.data.game3_3Code;
+      });
+    };
 
-      vm.putCode = function(){
-        SpaceGame3Service.putCode(vm.aceModel);
-      };
+    vm.putCode = function(){
+      SpaceGame3Service.putCode(vm.aceModel);
+    };
 
-      vm.getCode();
-
+    vm.getCode();
 
   })
+
   .controller('SpacePlayController', function($scope, $location, SpacePlayService){
     var vm = this;
     vm.loc = $location.url();
     vm.mode = 'JavaScript';
     vm.aceOption = {
-        mode: vm.mode.toLowerCase(),
-        theme: 'monokai',
-        onLoad: function(_ace){
-          vm.modeChanged = function(){
-            _ace.getSession().setMode("ace/mode/" + vm.mode.toLowerCase());
-          };
-        }
-      };
-      vm.run = function(){
+      mode: vm.mode.toLowerCase(),
+      theme: 'monokai',
+      onLoad: function(_ace){
+        vm.modeChanged = function(){
+          _ace.getSession().setMode("ace/mode/" + vm.mode.toLowerCase());
+        };
+      }
+    };
+    vm.run = function(){
+      SpacePlayService.run(vm.aceModel);
+    };
 
-          SpacePlayService.run(vm.aceModel);
-      };
-
-
-      vm.resetAce = function(){
-        vm.aceModel = vm.aceOriginal;
-      };
-
-
-
+    vm.resetAce = function(){
+      vm.aceModel = vm.aceOriginal;
+    };
   });
-
-
 }());

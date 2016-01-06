@@ -10,12 +10,10 @@
       var logout = function(){
         return $http.post(logoutUrl);
       };
-    var edit = function(editInfo, id){
-      console.log("SERIVCE: " + editInfo + "ID: " + id);
-      var obj = {username: editInfo, id: id};
-      return $http.put(editUrl + id, obj);
-    };
-
+      var edit = function(editInfo, id){
+        var obj = {username: editInfo, id: id};
+        return $http.put(editUrl + id, obj);
+      };
 
       return {
         logout: logout,
