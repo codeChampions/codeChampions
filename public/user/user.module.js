@@ -22,7 +22,6 @@
           templateUrl: 'user/views/profile.html',
           controller: 'UserController as userCtrl'
         });
-
     });
 
     angular
@@ -30,6 +29,4 @@
       .factory('_', function($window){
         return $window._;
       });
-
-
 }());
