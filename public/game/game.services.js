@@ -24,39 +24,40 @@
 
       //move the character left
       var moveLeft = function(){
-        if(posLeft>0){
-        $('#char').animate({left: "-=50"}, {duration: 500});
-        posLeft -=50;
         left++;
         numMoves++;
-      }
+        if(posLeft>0){
+          posLeft -=50;
+          $('#char').animate({left: "-=50"}, {duration: 500});
+        }
       };
 
       //move the character right
       var moveRight = function(){
-        if(posLeft < 250){
-        $('#char').animate({left: "+=50"}, {duration: 500});
-        posLeft +=50;
         right++;
         numMoves++;
-      }
+        if(posLeft < 250){
+          posLeft +=50;
+          $('#char').animate({left: "+=50"}, {duration: 500});
+        }
       };
       //move the character up
       var moveUp = function(){
-        if(posUp > 0){
-        $('#char').animate({top: "-=50"}, {duration: 500});
-        posUp -= 50;
         up++;
         numMoves++;
-      }
+        if(posUp > 0){
+          posUp -= 50;
+          $('#char').animate({top: "-=50"}, {duration: 500});
+
+        }
       };
       //move the character down
       var moveDown = function(){
+        down++;
+        numMoves++;
         if(posUp < 150){
-          $('#char').animate({top: "+=50"}, {duration: 500});
           posUp += 50;
-          down++;
-          numMoves++;
+          $('#char').animate({top: "+=50"}, {duration: 500});
         }
       };
       //reset the game to initial values after running
@@ -107,7 +108,7 @@
           $('#runButton').addClass('hidden');
           $('#nextLessonButton').removeClass('hidden');
           $('#gameSuccess').removeClass('hidden');
-          $('#gameSuccess').html('Well Done, Code Champion!');
+          $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done, Code Champion!');
 
         }
         //losing condition
@@ -174,39 +175,39 @@
       var numMoves =0;
       //move character left
       var moveLeft = function(){
-        if(posLeft>0){
-        $('#char').animate({left: "-=50"}, {duration: 500});
-        posLeft -=50;
         left++;
         numMoves++;
-      }
+        if(posLeft>0){
+          posLeft -=50;
+          $('#char').animate({left: "-=50"}, {duration: 500});
+        }
       };
       //move character right
       var moveRight = function(){
-        if(posLeft < 250){
-        $('#char').animate({left: "+=50"}, {duration: 500});
-        posLeft +=50;
         right++;
         numMoves++;
-      }
+        if(posLeft < 250){
+          posLeft +=50;
+          $('#char').animate({left: "+=50"}, {duration: 500});
+        }
       };
       //move character up
       var moveUp = function(){
-        if(posUp > 0){
-        $('#char').animate({top: "-=50"}, {duration: 500});
-        posUp -= 50;
         up++;
         numMoves++;
-      }
+        if(posUp > 0){
+          posUp -= 50;
+          $('#char').animate({top: "-=50"}, {duration: 500});
+        }
       };
       //move character down
       var moveDown = function(){
-        if(posUp < 150){
-        $('#char').animate({top: "+=50"}, {duration: 500});
-        posUp += 50;
         down++;
         numMoves++;
-      }
+        if(posUp < 150){
+          posUp += 50;
+          $('#char').animate({top: "+=50"}, {duration: 500});
+        }
       };
       //reset game to initial state after running
       var resetGame = function(){
@@ -254,7 +255,7 @@
             $('#runButton').addClass('hidden');
             $('#nextLessonButton').removeClass('hidden');
             $('#gameSuccess').removeClass('hidden');
-            $('#gameSuccess').html('Well Done, Code Champion!');
+            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done, Code Champion!');
           }
         //set losing condition
           else{
@@ -396,7 +397,7 @@
             $('#runButton').addClass('hidden');
             $('#nextLessonButton').removeClass('hidden');
             $('#gameSuccess').removeClass('hidden');
-            $('#gameSuccess').html('Well Done, Code Champion!');
+            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span>Well Done, Code Champion!');
 
           }
           //failing code
