@@ -26,7 +26,7 @@
               game.load.image('sky', 'assets/Gamedevtuts_Free_Shmup_Sprites/Backgrounds/farback.gif');
               game.load.image('ship', 'assets/SpaceShipSmall.png', 32, 48);
               game.load.image('aliens', 'assets/ship (16).png', 40, 44);
-              game.load.image('bullet', 'assets/projectile1.svg', 32, 32);
+              game.load.image('bullet', 'assets/spr_bullet_strip04.png', 32, 32);
               game.load.image('kaboom', 'assets/exload01_2.png', 10, 10);
           };
 
@@ -43,9 +43,10 @@
           bullets = game.add.group();
           bullets.enableBody = true;
           bullets.physicsBodyType = Phaser.Physics.ARCADE;
-          bullets.createMultiple(30, 'bullet');
-          bullets.setAll('anchor.x', 0.5);
-          bullets.setAll('anchor.y', 1);
+          bullets.createMultiple(10, 'bullet');
+          // bullets.setAll('anchor.x', 0.5);
+          // bullets.setAll('anchor.y', 1);
+          bullets.scale.set(1, 1);
           bullets.setAll('outOfBoundsKill', true);
           bullets.setAll('checkWorldBounds', true);
 
@@ -119,6 +120,7 @@
         };
 
         var firing = false;
+        var shotsFired = 0;
         var fireLaser = function() {
 
            //  To avoid them being allowed to fire too fast we set a time limit
@@ -134,6 +136,7 @@
                    bullet.body.velocity.y = -400;
                    bulletTime = game.time.now + 200;
                    firing = true;
+                   shotsFired++;
                }
            //}
 
@@ -250,8 +253,8 @@
               eval(input);
               setTimeout(function(){
               try {
-                  if (player.body.x < 50) throw "You did not move correctly!";
-                  if (!livingEnemies > 0) throw "You forgot to check for enemies";
+                  if (player.body.x > 50) throw "You did not move correctly!";
+                  if (shotsFired < 1) throw "You did not shoot the laser";
                 // if (livingEnemies > 0) throw "You did not get the aliens!";
               }
               catch(err){
@@ -262,9 +265,10 @@
               finally {
                 //winning condition and what happens
 
-                if(player.body.x > 50 && livingEnemies > 0){
+                if(player.body.x < 50 && shotsFired > 0){
                   putProgress();
                   winner.play();
+                  game.destroy();
                   $('#runButton').addClass('hidden');
                   $('#nextLessonButton').removeClass('hidden');
                   $('#gameSuccess').removeClass('hidden');

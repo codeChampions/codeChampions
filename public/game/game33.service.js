@@ -243,8 +243,7 @@
           if (rightMove)
            {
               //  Move to the left
-             player.body.velocity.x = 40000;
-             console.log("once moved" + player.body.x);
+             player.x += 2;
 
             player.animations.play('right', 10, true);
             rightMove = false;
@@ -313,6 +312,7 @@
           if(player.body.x < 200 && livingEnemies === 0 && shotsFired > 0  ){
             putProgress();
             winner.play();
+            game.destroy();
             $('#runButton').addClass('hidden');
             $('#nextLessonButton').removeClass('hidden');
             $('#gameSuccess').removeClass('hidden');
