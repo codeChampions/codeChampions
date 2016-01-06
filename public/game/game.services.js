@@ -4,11 +4,11 @@
   angular
     .module('game')
     .factory('Game1_1Service', function($http, $location, _){
-      //set up current game coordinates
 
       var winner = new Audio('../../sounds/winner.m4a');
       var tryAgain = new Audio('../../sounds/tryagain.m4a');
 
+      //set up current game coordinates
       var setGame = function(){
         $('#x').css('left', '10px');
         $('#x').css('top', '60px');
@@ -53,12 +53,11 @@
       //move the character down
       var moveDown = function(){
         if(posUp < 150){
-          console.log("moved down");
-        $('#char').animate({top: "+=50"}, {duration: 500});
-        posUp += 50;
-        down++;
-        numMoves++;
-      }
+          $('#char').animate({top: "+=50"}, {duration: 500});
+          posUp += 50;
+          down++;
+          numMoves++;
+        }
       };
       //reset the game to initial values after running
       var resetGame = function(){
@@ -101,7 +100,6 @@
         }
         setTimeout(function(){
         //winning condition
-          console.log(down);
           if(numMoves === 1 && down === 1){
           //we succeeeded so we put update the progress
           putProgress();
@@ -113,13 +111,14 @@
 
         }
         //losing condition
-        else{
-          $('#char').stop();
-          tryAgain.play();
-          $('#runButton').addClass('hidden');
-          $('#resetButton').removeClass('hidden');
+          else{
+            $('#char').stop();
+            tryAgain.play();
+            $('#runButton').addClass('hidden');
+            $('#resetButton').removeClass('hidden');
 
-        }}, 600);
+          }
+        }, 600);
 
       };
       //route to grab code for game
@@ -249,23 +248,24 @@
         setTimeout(function(){
         //check winning condition
           if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left){
-          //we succeeeded so we put update the progress
-          putProgress();
-          winner.play();
-          $('#runButton').addClass('hidden');
-          $('#nextLessonButton').removeClass('hidden');
-          $('#gameSuccess').removeClass('hidden');
-          $('#gameSuccess').html('Well Done, Code Champion!');
-        }
+            //we succeeeded so we put update the progress
+            putProgress();
+            winner.play();
+            $('#runButton').addClass('hidden');
+            $('#nextLessonButton').removeClass('hidden');
+            $('#gameSuccess').removeClass('hidden');
+            $('#gameSuccess').html('Well Done, Code Champion!');
+          }
         //set losing condition
-        else{
-          $('#char').stop();
-          tryAgain.play();
-          $('#runButton').addClass('hidden');
-          $('#resetButton').removeClass('hidden');
+          else{
+            $('#char').stop();
+            tryAgain.play();
+            $('#runButton').addClass('hidden');
+            $('#resetButton').removeClass('hidden');
 
 
-      }}, 1200);
+          }
+        }, 1200);
 
       };
       //route to get game code
@@ -389,23 +389,25 @@
           $('#error').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>'+err);
         }
         setTimeout(function(){
-        if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left && numMoves === 5){
-        //we succeeeded so we put update the progress
-        putProgress();
-        winner.play();
-        $('#runButton').addClass('hidden');
-        $('#nextLessonButton').removeClass('hidden');
-        $('#gameSuccess').removeClass('hidden');
-        $('#gameSuccess').html('Well Done, Code Champion!');
+          if($('#char').position().top === $('#x').position().top && $('#char').position().left === $('#x').position().left && numMoves === 5){
+            //we succeeeded so we put update the progress
+            putProgress();
+            winner.play();
+            $('#runButton').addClass('hidden');
+            $('#nextLessonButton').removeClass('hidden');
+            $('#gameSuccess').removeClass('hidden');
+            $('#gameSuccess').html('Well Done, Code Champion!');
 
-      }
-      else{
-        $('#char').stop();
-        tryAgain.play();
-        $('#runButton').addClass('hidden');
-        $('#resetButton').removeClass('hidden');
+          }
+          //failing code
+          else{
+            $('#char').stop();
+            tryAgain.play();
+            $('#runButton').addClass('hidden');
+            $('#resetButton').removeClass('hidden');
 
-      }}, 3000);
+          }
+        }, 3000);
 
       };
 

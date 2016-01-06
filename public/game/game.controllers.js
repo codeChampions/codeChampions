@@ -77,20 +77,9 @@
             var doorOpen;
             var doorClosed;
             var pets = "";
-                eval(vm.aceModel);
-                // vm.array = pets;
-                // vm.arrlength = vm.array.length;
-                vm.openDoor = doorOpen;
-                vm.closedDoor = doorClosed;
-                // vm.characterName = personName;
-                // vm.character2Name = animalName;
-                // vm.x = x;
-                // vm.y = y;
-                // vm.z = z;
-                // vm.xAns = x+2;
-                // vm.yAns = y+4;
-                // vm.zAns = z+1;
-
+            eval(vm.aceModel);
+            vm.openDoor = doorOpen;
+            vm.closedDoor = doorClosed;
             break;
           default:
 
@@ -114,6 +103,7 @@
         }
       };
 
+      //set location for next button click
       vm.goNext = function(){
         switch (vm.loc) {
           case ('/game11'):
@@ -171,7 +161,7 @@
         }
 
       };
-
+      //start controller by grabbing user's code or the preset initial code
       vm.getCode();
 
     });
