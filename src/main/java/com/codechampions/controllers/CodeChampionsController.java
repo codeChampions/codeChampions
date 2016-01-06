@@ -221,6 +221,7 @@ public class CodeChampionsController {
             response.sendError(404, "Username already exists!");
         } else {
             user.username = tempUser.username;
+            session.setAttribute("username", user.username);
             users.save(user);
         }
     }
