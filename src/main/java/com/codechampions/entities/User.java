@@ -71,7 +71,7 @@ public class User {
     @Column
     public int lesson3Progress;
 
-    @Column
+    @Column(nullable = false)
     @JsonView(View.userSummary.class)
     public AccessType accessType;
 
