@@ -172,7 +172,6 @@ public class CodeChampionsController {
             else {
                 user.avatar = tempUser.avatar;
             }
-
             users.save(user);
             System.out.println("Success!");
             return user;
@@ -184,7 +183,6 @@ public class CodeChampionsController {
     public User login(HttpServletResponse response, HttpSession session, @RequestBody User tempUser) throws Exception {
         User user = users.findOneByUsername(tempUser.username);
         session.setAttribute("username", tempUser.username);
-        session.getAttribute(tempUser.username);
 
         if (tempUser.username == null || tempUser.password == null) {
             response.sendError(404, "Please enter both a username and password!");
@@ -330,8 +328,7 @@ public class CodeChampionsController {
     @RequestMapping("/getLessonProgress")
     public User user2(HttpSession session) {
         String username = (String) session.getAttribute("username");
-        User user2 = users.findOneByUsername(username);
-        return user2;
+        return users.findOneByUsername(username);
     }
 
     @RequestMapping("/putLesson1Progress")
@@ -536,6 +533,7 @@ public class CodeChampionsController {
         if (user.lesson3Progress == 3) {
             stat.lessonsFinished++;
         }
+
         stat.gamesFinished = user.lesson1Progress + user.lesson2Progress + user.lesson3Progress;
 
         String totalLines = (user.game1_1Code + "\n") + (user.game1_2Code + "\n") + (user.game1_3Code + "\n") + (user.game2_1Code + "\n") + (user.game2_2Code + "\n") + (user.game2_3Code + "\n") + (user.game3_1Code + "\n") + (user.game3_2Code + "\n") + user.game3_3Code;
