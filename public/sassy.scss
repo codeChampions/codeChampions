@@ -417,9 +417,16 @@ aside {
   #error{
     width: 85%;
     margin: 0 auto;
+    font-size:14px;
     .glyphicon-exclamation-sign {
       font-size: 20px;
     }
+  }
+  .glyphicon-star{
+    font-size:20px;
+  }
+  #gameSuccess{
+    font-size:14px;
   }
   .hidden{
     display: none;

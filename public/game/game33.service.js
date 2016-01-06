@@ -5,6 +5,9 @@
   .module('game')
   .factory('SpaceGame3Service', function($http, $location, $window, _){
 
+    var winner = new Audio('../../sounds/winner.m4a');
+    var tryAgain = new Audio('../../sounds/tryagain.m4a');
+
     var player;
           var aliens;
           var bullets;
@@ -309,14 +312,16 @@
 
           if(player.body.x < 200 && livingEnemies === 0 && shotsFired > 0  ){
             putProgress();
+            winner.play();
             $('#runButton').addClass('hidden');
             $('#nextLessonButton').removeClass('hidden');
             $('#gameSuccess').removeClass('hidden');
-            $('#gameSuccess').html('Well Done! Click Next to go to home!');
+            $('#gameSuccess').html('Well Done, Code Champion!');
             //confirm move to next lesson
           }
         //losing condition and what happens
         else{
+          tryAgain.play();
           $('#runButton').addClass('hidden');
           $('#resetButton').removeClass('hidden');
         }
