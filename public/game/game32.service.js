@@ -26,7 +26,7 @@
               game.load.image('sky', 'assets/Gamedevtuts_Free_Shmup_Sprites/Backgrounds/farback.gif');
               game.load.image('ship', 'assets/SpaceShipSmall.png', 32, 48);
               game.load.image('aliens', 'assets/ship (16).png', 40, 44);
-              game.load.image('bullet', 'assets/projectile1.svg', 32, 32);
+              game.load.image('bullet', 'assets/spr_bullet_strip04.png', 32, 32);
               game.load.image('kaboom', 'assets/exload01_2.png', 10, 10);
           };
 
@@ -43,9 +43,10 @@
           bullets = game.add.group();
           bullets.enableBody = true;
           bullets.physicsBodyType = Phaser.Physics.ARCADE;
-          bullets.createMultiple(30, 'bullet');
-          bullets.setAll('anchor.x', 0.5);
-          bullets.setAll('anchor.y', 1);
+          bullets.createMultiple(10, 'bullet');
+          // bullets.setAll('anchor.x', 0.5);
+          // bullets.setAll('anchor.y', 1);
+          bullets.scale.set(1, 1);
           bullets.setAll('outOfBoundsKill', true);
           bullets.setAll('checkWorldBounds', true);
 
@@ -169,8 +170,11 @@
 
         };
 
+        var leftMove = false;
+        var numLeft = 0;
+
       var moveLeft = function(){
-        player.body.velocity.x = -150;
+        leftMove = true;
       };
 
       var rightMove = false;
@@ -179,17 +183,23 @@
 
       var mobilizeRight = function(amount){
           rightMove = true;
-          numRight++;
       };
 
-      var attack = function(){
+      var attackRight = function(){
         mobilizeRight();
         setTimeout(function(){
           fireLaser();
-        }, 1000);
+        }, 1500);
 
     };
 
+    var attackLeft = function(){
+      moveLeft();
+      setTimeout(function(){
+        fireLaser();
+      }, 1500);
+
+  };
       var moveUp = function(){
         player.body.velocity.y = -150;
       };
@@ -201,22 +211,26 @@
       var update = function() {
 
           player.body.velocity.x = 0;
-         player.body.velocity.y = 0;
+          player.body.velocity.y = 0;
         //  console.log("updating");
 
-          if (rightMove)
-           {
-              //  Move to the left
-              console.log(numRight);
-             player.body.velocity.x = 40000*numRight;
-             console.log(numRight);
-             console.log("once moved" + player.body.x);
+        if (rightMove)
+         {
+            //  Move to the left
+           player.x += 2;
 
-            player.animations.play('right', 10, true);
-            rightMove = false;
-            numRight= 0;
-           }
+          player.animations.play('right', 10, true);
+          rightMove = false;
+         }
+           if (leftMove)
+            {
+               //  Move to the left
+              console.log("once moved" + player.body.x);
+              player.x -= 2;
 
+             player.animations.play('left', 10, true);
+             leftMove = false;
+            }
 
           game.physics.arcade.overlap(bullets, aliens, collisionHandler, null, this);
 
@@ -271,6 +285,7 @@
             if(player.body.x > 50 && shotsFired === 0 && /else/.test(input)) {
               putProgress();
               winner.play();
+              game.destroy();
               $('#runButton').addClass('hidden');
               $('#nextLessonButton').removeClass('hidden');
               $('#gameSuccess').removeClass('hidden');
