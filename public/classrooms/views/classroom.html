@@ -7,9 +7,10 @@
     <section class="row">
       <div class="col-xs-12">
         <div class="col-xs-1"></div>
+        <div class="col-xs-2 btn upload" ng-click="addNewStudent = !addNewStudent">Add Student</div>
         <form class="col-xs-3" ng-submit="classCtrl.addStudent(studentName, classCtrl.singleClass.id)">
-          <input  class="classRoomInput input" name="studentName" type="text" ng-model="studentName" placeholder="Student to add" value="">
-          <input class="btn btn-primary submit" type="submit" value="submit">
+          <input ng-show="addNewStudent" class="classRoomInput input" name="studentName" type="text" ng-model="studentName" placeholder="Student to add" value="">
+          <input ng-show="addNewStudent" class="btn btn-primary submit" type="submit" value="submit">
         </form>
         <div class="col-xs-3"></div>
       </div>
@@ -67,7 +68,7 @@
   <label ng-if="classCtrl.singleClass.owner.username === classCtrl.username" class="col-xs-2" for="my-file-selector">
     <form class="col-xs-2 btn" action="upload" enctype="multipart/form-data" method="post">
       <input type="number" value="{{classCtrl.singleClass.id}}" name="id" style="display:none;">
-      <span ng-hide="" ng-click="uploadNotes = !uploadNotes" class="btn upload">Upload Notes</span>
+      <span ng-click="uploadNotes = !uploadNotes" class="btn upload">Upload Notes</span>
       <input ng-show="uploadNotes" id="my-file-selector" name="file" type="file" style="display:none;" value="">
       <input ng-show="uploadNotes" name="displayName" class="classRoomInput input" type="text" placeholder="Name to Display" value="">
       <input ng-show="uploadNotes" class="btn submit" type="submit">
