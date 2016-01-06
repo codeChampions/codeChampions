@@ -5,21 +5,21 @@
     .module('message')
     .controller('MessageController', function($scope, $location, MessageService, ClassService, $routeParams){
       var vm = this;
-
+      //grab messages based on the boardID
       vm.getMessages = function(boardId){
         MessageService.getMessages(boardId).then(function(res){
           vm.messages = res.data;
+          //find grab messages from board
           _.each(vm.messages, function(currVal, idx, arr){
             MessageService.getMessages(currVal.id).then(function(res){
+              //get replies to each message
               arr[idx].replies=res.data;
             });
           });
-          console.log(vm.messages);
         });
     };
     //use regular expressions to find what kind of page we are in to get the right message boards
       if(/game/.test($location.url())){
-        console.log("you are in a game");
         var myGameLoc = $location.url();
         switch (myGameLoc) {
           case "/game11":
@@ -54,7 +54,6 @@
             console.log("you are not in a board");
 
         }
-        console.log(vm.board);
         vm.getMessages(vm.board);
       }
       else if(/lesson/.test($location.url())){
@@ -85,38 +84,33 @@
             vm.board=1;
             console.log("you are not in a board");
         }
-        console.log(vm.board);
         vm.getMessages(vm.board);
       }
+      //search class boards if not a lesson or game
       else{
         ClassService.getSingleClass($routeParams.classId).then(function(res){
-          console.log(res.data.messageBoard.id);
           vm.board = res.data.messageBoard.id;
           vm.getMessages(vm.board);
 
         });
       }
+
       vm.currentUser = sessionStorage.getItem('username');
+      //send message
       vm.sendNewMessage = function(newMessage){
         angular.element(document).find('input[name="message"]').val("");
         MessageService.sendNewMessage(newMessage, vm.currentUser, vm.board).then(function(res){
           vm.getMessages(vm.board);
         });
       };
-
+      //send reply to an existing message
       vm.sendReply = function(replyMessage, replyId){
-        console.log("replyID: " + replyId);
         angular.element(document).find('input[name="replymessage"]').val("");
         MessageService.sendReply(replyMessage, replyId).then(function(res){
           vm.getMessages(vm.board);
         });
       };
-      vm.check = function(){
-        console.log("in message controller");
-        MessageService.check();
-      };
 
-    //vm.getMessages(vm.board);
     });
 
 }());
