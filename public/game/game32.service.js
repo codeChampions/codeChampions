@@ -235,6 +235,7 @@
           game.world.shutdown();
           game.destroy();
           gameSet();
+          shotsFired = 0;
           $('#error').html("");
           $('#error').addClass('hidden');
           $('#runButton').removeClass('hidden');
