@@ -266,7 +266,7 @@
             $('#runButton').addClass('hidden');
             $('#nextLessonButton').removeClass('hidden');
             $('#gameSuccess').removeClass('hidden');
-            $('#gameSuccess').html('Well Done, Code Champion!');
+            $('#gameSuccess').html('<span class="glyphicon glyphicon-star"></span> Well Done, Code Champion!');
           }
         //losing condition and what happens
           else{
