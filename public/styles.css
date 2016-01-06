@@ -24,6 +24,12 @@ body {
     background-color: #D32F2F;
     color: white; }
 
+.usImg {
+  width: 100%; }
+
+.usList {
+  list-style: none; }
+
 footer {
   font-size: 16px;
   margin-left: auto;
