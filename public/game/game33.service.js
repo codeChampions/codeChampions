@@ -93,15 +93,22 @@
           };
 
           var scanForEnemy = function(){
-            console.log(aliens.x);
-            var alienPos = aliens.x;
-            var playerPos = player.body.x;
-            if(alienPos + 20 >= playerPos && alienPos -20 <= playerPos){
-              console.log("scanForEnemy", true);
+            if(livingEnemies > 0){
+              console.log(true);
               return true;
             }
             else{
-              console.log(false);
+              return false;
+            }
+          };
+
+          var scanForward = function(){
+            var alienPos = aliens.x;
+            var playerPos = player.body.x;
+            if(alienPos + 20 >= playerPos && alienPos -20 <= playerPos){
+              return true;
+            }
+            else{
               return false;
             }
           };

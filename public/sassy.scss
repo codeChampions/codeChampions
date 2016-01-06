@@ -71,6 +71,16 @@ footer {
   background-color: #D32F2F;
   color: white;
   }
+  img {
+    width: 50px;
+    margin: 5px;
+  }
+  img:hover {
+    background: rgba(white, 0.5);
+  }
+  img:focus {
+    background: rgba(white, 0.5);
+  }
 }
 .newUserInput{
   width: 30%;
@@ -82,6 +92,11 @@ footer {
 }
 
 // student page
+
+.homeAvatar {
+    width: 50px;
+    margin: 0px;
+}
 
 .progress-bar {
   color: black;
@@ -162,10 +177,8 @@ footer {
   }
 }
 
-.image {
-  border: 1px solid black;
-  background: white;
-  height: 300px;
+.image img {
+  width: 75px;
 }
 
 

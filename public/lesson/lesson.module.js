@@ -39,9 +39,6 @@
           templateUrl: 'lesson/views/lesson33.html',
           controller: 'LessonController as lessonCtrl'
         });
-        //thanks Zumek for the tip on StackOverflow http://stackoverflow.com/questions/21292114/external-resource-not-being-loaded-by-angularjs
-        $sceDelegateProvider
-         .resourceUrlWhitelist(['self', new RegExp('^(http[s]?):\/\/(w{3}.)?youtube\.com/.+$')]);
 
     });
 

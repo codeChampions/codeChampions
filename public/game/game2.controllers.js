@@ -4,10 +4,11 @@
   angular
     .module('game')
     .controller('Game2Controller', function($scope, $location, Game1_3Service, Game2_3Service, Game2_1Service, Game2_2Service){
+
         var vm = this;
         vm.loc = $location.url();
         vm.mode = 'Javascript';
-
+        // put presets in for game21
         if (vm.loc === "/game21") {
           vm.animals={
           pig: "animal1",
@@ -21,7 +22,7 @@
         var animal4 ="";
 
       }
-
+      //put presets in for game22
       if (vm.loc === "/game22")  {
         vm.game22Ans={
           myGreeting: "Welcome",
@@ -30,7 +31,7 @@
           ansVal: "",
           friendly: ""
         };
-
+        //initiate variable to prevent errors
         var greeting = "";
         var x = "";
         var y = "";
@@ -50,7 +51,7 @@
           };
         }
       };
-
+      //reset game field and variables where applicable
       vm.resetGame = function(){
         switch (vm.loc) {
           case ('/game21'):
@@ -66,6 +67,7 @@
 
         }
       };
+      // set where you go on clicking next
       vm.goNext = function(){
         switch (vm.loc) {
           case ('/game21'):
@@ -91,20 +93,20 @@
           case ('/game21'):
 
             eval(vm.aceModel);
-
+            //convert user's code to display on our page
             vm.animals={
               pig: animal1,
               penguin: animal2,
               owl: animal3,
               turtle: animal4
             };
-
+            // run to service for checking code for errors
             Game2_1Service.run(vm.aceModel);
 
             break;
           case ('/game22'):
               eval(vm.aceModel);
-
+            //convert user's code to display on our page
               vm.game22Ans={
                 myGreeting: greeting,
                 xVal: x,
@@ -133,7 +135,6 @@
               break;
             case ('/game23'):
               vm.aceModel = res.data.game2_3Code;
-              console.log(res.data);
               break;
           default:
             console.log("no code to get");
