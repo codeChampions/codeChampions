@@ -79,7 +79,7 @@
       //increment user's progress. number is sent to check whether progress is incremented or if game has been completed before
       var incrProgressUrl = '/incrementProgress2/';
       var putProgress = function(){
-        var currentGame = "2";
+        var currentGame = "1";
         return $http.post(incrProgressUrl + currentGame);
       };
 
