@@ -257,6 +257,20 @@ public class CodeChampionsController {
         return newMessage;
     }
 
+    @RequestMapping("/deleteMessage/{id}")
+    public void deleteMessage(HttpSession session, HttpServletResponse response, @PathVariable("id") int id) throws IOException {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        Message message = messages.findOne(id);
+        if (user == message.user || user.accessType == User.AccessType.ADMIN) {
+            messages.delete(id);
+            System.out.println("Success");
+        }
+        else {
+            response.sendError(403, "Can't delete messages that you didn't create");
+        }
+    }
+
     @RequestMapping("/getGameCode")
     public User user(HttpSession session) {
         String username = (String) session.getAttribute("username");
