@@ -257,6 +257,29 @@ public class CodeChampionsController {
         return newMessage;
     }
 
+    @RequestMapping("/newPM")
+    public Message newPM(HttpSession session, HttpServletResponse response, @RequestBody Message tempMessage) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        Message message = new Message();
+        if (messages.findOne(tempMessage.replyId) != null) {
+            message.replyId = tempMessage.replyId;
+        }
+        message.messageText = tempMessage.messageText;
+        message.user = user;
+        message.replyUser = tempMessage.replyUser;
+        messages.save(message);
+        System.out.println("New Private Message!");
+        return message;
+    }
+
+    @RequestMapping("/myPM")
+    public List<Message> myPM(HttpSession session, HttpServletResponse response) {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        return messages.findAllByUser(user);
+    }
+
     @RequestMapping("/deleteMessage/{id}")
     public void deleteMessage(HttpSession session, HttpServletResponse response, @PathVariable("id") int id) throws IOException {
         String username = (String) session.getAttribute("username");

@@ -27,6 +27,12 @@ public class Message {
     @JsonView(View.userSummaryWithMessages.class)
     public User user;
 
+    @ManyToOne
+    public User replyUser;
+
+    
+    public boolean isRead;
+
     public Message() {
     }
 
