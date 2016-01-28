@@ -21,6 +21,7 @@
       <p><strong>{{message.user.username}}</strong>: {{message.messageText}}</p>
       <div class="col-xs-8">
         <button ng-click="replyMessage = !replyMessage" class="message-btn btn btn-danger">Reply</button>
+        <button ng-show="message.user.username === messageCtrl.username || messageCtrl.userType ==='Admin'" class="message-btn btn btn-danger" ng-click="messageCtrl.deleteMessage(message.id)">Delete</button>
       </div>
     </div>
     <aside class="row replies" ng-show="replyMessage">
@@ -43,6 +44,9 @@
         </div>
         <div class="col-xs-7 replyMessage">
           <p><strong>{{reply.user.username}}</strong>: {{reply.messageText}}</p>
+          <div class="col-xs-7">
+            <button ng-show="reply.user.username === messageCtrl.username || messageCtrl.userType ==='Admin'" class="message-btn btn btn-danger" ng-click="messageCtrl.deleteMessage(reply.id)">Delete</button>
+          </div>
         </div>
         <div class="col-xs-3">
         </div>

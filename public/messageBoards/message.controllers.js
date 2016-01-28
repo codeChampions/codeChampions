@@ -6,6 +6,8 @@
     .controller('MessageController', function($scope, $location, MessageService, ClassService, $routeParams){
       var vm = this;
       //grab messages based on the boardID
+      vm.username = sessionStorage.getItem('username');
+      vm.userType = sessionStorage.getItem('userType');
       vm.getMessages = function(boardId){
         MessageService.getMessages(boardId).then(function(res){
           vm.messages = res.data;
@@ -110,7 +112,12 @@
           vm.getMessages(vm.board);
         });
       };
-
+      //delete message or reply from user who sent or admin
+      vm.deleteMessage = function(messageId){
+        MessageService.deleteMessage(messageId).then(function(res){
+          vm.getMessages(vm.board);
+        });
+      };
     });
 
 }());
