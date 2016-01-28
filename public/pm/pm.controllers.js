@@ -6,8 +6,10 @@
     .controller('PMController', function($scope, $location, PMService){
         var vm = this;
 
-        vm.sendNewMessage =function(toName, newMessage){
-          PMService.sendNewMessage(toName, newMessage).then(function(res){
+        vm.sendNewMessage =function(replyUser, newMessage){
+          angular.element(document).find('input[name="newMessage"]').val("");
+          angular.element(document).find('input[name="replyUser"]').val("");
+          PMService.sendNewMessage(replyUser, newMessage).then(function(res){
             console.log(res);
           });
         };
