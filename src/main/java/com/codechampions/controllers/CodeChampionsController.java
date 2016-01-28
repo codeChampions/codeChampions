@@ -273,8 +273,8 @@ public class CodeChampionsController {
         return message;
     }
 
-    @RequestMapping("/myPMs")
-    public List<Message> myPMs(HttpSession session, HttpServletResponse response) {
+    @RequestMapping("/myPM")
+    public List<Message> myPM(HttpSession session, HttpServletResponse response) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
         return messages.findAllByUser(user);
