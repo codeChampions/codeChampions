@@ -14,7 +14,8 @@
       'game',
       'message',
       'classroom',
-      'stats'
+      'stats',
+      'pm'
     ])
     .config(function($routeProvider){
       $routeProvider
