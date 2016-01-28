@@ -16,7 +16,9 @@
       </div>
     </section>
     <article class="classroom-student" ng-repeat="student in classCtrl.singleClass.classStudents">
-      <h3 ng-click="showStudent = !showStudent">{{student.username}}</h3>
+      <h3 ng-click="showStudent = !showStudent">{{student.username}}
+      </h3>
+      <button class="classroom-btn btn btn-danger" ng-click="classCtrl.removeStudent(classCtrl.singleClass.id, student.username)">Remove</button>
       <div ng-show="showStudent" ng-click="show1Code = !show1Code">
         <h4>Lesson 1 Progress: <uib-progressbar animate="false" value="student.lesson1Progress/3 * 100" type="success"><b>{{student.lesson1Progress/3 * 100 | number:0}}%</b></uib-progressbar></h4>
       </div>

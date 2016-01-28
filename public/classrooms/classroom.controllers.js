@@ -62,7 +62,12 @@
             vm.getClassNotes();
           });
         };
-
+        //remove student from classroom. teachers only
+        vm.removeStudent = function(classId, studentName){
+          ClassService.removeStudent(classId, studentName).then(function(res){
+            vm.getSingleClass();
+          });
+        };
     });
 
 

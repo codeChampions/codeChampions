@@ -10,6 +10,7 @@
       var addStudentUrl = '/addStudent';
       var getNotesUrl = '/myUploads';
       var deleteUpUrl = '/deleteUpload';
+      var removeStudentUrl = '/removeStudent/';
 
       //post to classroom database
       var createClassroom = function(name){
@@ -37,6 +38,11 @@
         var obj={id: uploadId};
         return $http.post(deleteUpUrl, obj);
       };
+      //remove student from classroom. teacher only
+      var removeStudent = function(classId, studentName){
+        var obj = {username: studentName};
+        return $http.post(removeStudentUrl + classId, obj);
+      };
 
       return {
           createClassroom: createClassroom,
@@ -44,7 +50,8 @@
           addStudent: addStudent,
           getSingleClass: getSingleClass,
           getClassNotes: getClassNotes,
-          deleteUpload: deleteUpload
+          deleteUpload: deleteUpload,
+          removeStudent: removeStudent
         };
     });
 
