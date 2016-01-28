@@ -9,7 +9,11 @@
       'ui.ace'
     ])
     .config(function($routeProvider){
-
+      $routeProvider
+        .when('/myPM', {
+          templateUrl: 'pm/views/myPM.html',
+          controller: 'PMController as PMCtrl'
+        });
     });
 
     angular
