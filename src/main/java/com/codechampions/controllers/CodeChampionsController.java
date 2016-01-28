@@ -481,8 +481,8 @@ public class CodeChampionsController {
         User user = users.findOneByUsername(username);
         User student = users.findOneByUsername(tempUser.username);
         Classroom classroom = classrooms.findOne(id);
-        if (user == classroom.owner) {
-            classroom.classStudents.remove(student.id);
+        if (user == classroom.owner || user.accessType == User.AccessType.ADMIN) {
+            classroom.classStudents.remove(student);
             System.out.println("Success!");
         }
         else {
