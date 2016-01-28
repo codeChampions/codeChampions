@@ -6,6 +6,7 @@
     .factory('MessageService', function($http, _){
       var getUrl = '/showReplies/1';
       var postUrl = '/addMessage';
+      var deleteUrl = '/deleteMessage/';
       //get messages
       var getMessages = function(id){
         return $http.post('/showReplies/'+id, {id: 1});
@@ -25,12 +26,16 @@
         return $http.post(postUrl + '/' + replyId, obj);
       };
 
+      var deleteMessage = function(messageId){
+        return $http.post(deleteUrl + messageId);
+      };
 
       return{
           sendReply: sendReply,
           sendNewMessage: sendNewMessage,
           getMessages: getMessages,
-          getReplies: getReplies
+          getReplies: getReplies,
+          deleteMessage: deleteMessage
       };
     });
 }());
