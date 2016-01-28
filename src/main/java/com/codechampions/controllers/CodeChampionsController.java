@@ -257,6 +257,21 @@ public class CodeChampionsController {
         return newMessage;
     }
 
+    @RequestMapping("/deleteMessage/{id}")
+    public void deleteMessage(HttpSession session, HttpServletResponse response, @PathVariable("id") int id) throws IOException {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        Message message = messages.findOne(id);
+        if (user == message.user || user.accessType == User.AccessType.ADMIN) {
+            messages.delete(id);
+            System.out.println("Success");
+        }
+        else {
+            response.sendError(403, "Can't delete messages that you didn't create");
+        }
+    }
+
+
     @RequestMapping("/getGameCode")
     public User user(HttpSession session) {
         String username = (String) session.getAttribute("username");
@@ -458,6 +473,21 @@ public class CodeChampionsController {
     @RequestMapping("myClasses/{id}")
     public Classroom myClass(@PathVariable("id") int id) {
         return classrooms.findOne(id);
+    }
+
+    @RequestMapping("removeStudent/{id}")
+    public void removeStudent(HttpSession session, HttpServletResponse response, @PathVariable("id") int id, @RequestBody User tempUser) throws IOException {
+        String username = (String) session.getAttribute("username");
+        User user = users.findOneByUsername(username);
+        User student = users.findOneByUsername(tempUser.username);
+        Classroom classroom = classrooms.findOne(id);
+        if (user == classroom.owner) {
+            classroom.classStudents.remove(student.id);
+            System.out.println("Success!");
+        }
+        else {
+            response.sendError(403, "You don't own this classroom!");
+        }
     }
 
     @RequestMapping("/uploads")
