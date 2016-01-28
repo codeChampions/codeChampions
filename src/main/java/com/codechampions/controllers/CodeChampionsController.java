@@ -258,16 +258,17 @@ public class CodeChampionsController {
     }
 
     @RequestMapping("/newPM")
-    public Message newPM(HttpSession session, HttpServletResponse response, @RequestBody Message tempMessage) {
+    public Message newPM(HttpSession session, HttpServletResponse response, @RequestBody Message tempMessage, String replyUser) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
+        User user2 = users.findOneByUsername(replyUser);
         Message message = new Message();
         if (messages.findOne(tempMessage.replyId) != null) {
             message.replyId = tempMessage.replyId;
         }
         message.messageText = tempMessage.messageText;
         message.user = user;
-        message.replyUser = tempMessage.replyUser;
+        message.replyUser = user2;
         messages.save(message);
         System.out.println("New Private Message!");
         return message;
