@@ -32,7 +32,7 @@ public class Message {
     @JsonView(View.userSummaryWithMessages.class)
     public User replyUser;
 
-    @Column(nullable = false)
+    @Column
     @JsonView(View.userSummaryWithMessages.class)
     public boolean isRead;
 
@@ -43,10 +43,11 @@ public class Message {
     public Message() {
     }
 
-    public Message(int id, int replyId, String messageText, User user) {
+    public Message(int id, int replyId, String messageText, User user, LocalDateTime messageTime) {
         this.id = id;
         this.replyId = replyId;
         this.messageText = messageText;
         this.user = user;
+        this.messageTime = messageTime;
     }
 }
