@@ -36,14 +36,14 @@ public class Message {
     @JsonView(View.userSummaryWithMessages.class)
     public boolean isRead;
 
-    @Column(nullable = false)
+    @Column
     @JsonView(View.userSummaryWithMessages.class)
-    public LocalDateTime messageTime;
+    public String messageTime;
 
     public Message() {
     }
 
-    public Message(int id, int replyId, String messageText, User user, LocalDateTime messageTime) {
+    public Message(int id, int replyId, String messageText, User user, String messageTime) {
         this.id = id;
         this.replyId = replyId;
         this.messageText = messageText;
