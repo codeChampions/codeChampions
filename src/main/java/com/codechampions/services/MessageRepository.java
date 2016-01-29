@@ -12,4 +12,5 @@ import java.util.List;
 public interface MessageRepository extends CrudRepository<Message, Integer> {
     List<Message> findAllByReplyId(int replyId);
     List<Message> findAllByUser(User user);
+    List<Message> findAllByReplyUser(User replyUser);
 }
