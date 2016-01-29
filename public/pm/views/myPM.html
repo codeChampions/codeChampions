@@ -20,12 +20,12 @@
   </h3>
   <section ng-show="showChain">
     <div class="row">
-      <div class="col-xs-10"><img ng-src="../../images/avatars/{{pm.user.avatar}}"> {{pm.user.username}} ({{pm.messageTime}}): {{pm.messageText}}
+      <div class="col-xs-10"><img ng-src="../../images/avatars/{{pm.user.avatar}}"> {{pm.user.username}}: {{pm.messageText}}
       </div>
     </div>
   <section ng-repeat="reply in pm.replies | orderBy: 'id'">
     <div class="row">
-      <div class="col-xs-10"><img ng-src="../../images/avatars/{{reply.user.avatar}}">{{reply.user.username}} ({{reply.messageTime}}): {{reply.messageText}}
+      <div class="col-xs-10"><img ng-src="../../images/avatars/{{reply.user.avatar}}">{{reply.user.username}}: {{reply.messageText}}
       </div>
     </div>
   </section>
