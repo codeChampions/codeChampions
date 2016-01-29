@@ -15,5 +15,19 @@
     <div class="col-xs-3"></div>
   </div>
 </section>
+<article ng-repeat="pm in PMCtrl.pm">
+  <div class="row">
+    <div class="col-xs-10">{{pm.user.username}}<img ng-src="../../images/avatars/{{pm.user.avatar}}"> {{pm.messageText}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10">
+      <form ng-submit="PMCtrl.sendReply(replyUser, replyMessage, pm.id)">
+        <input class="messageForm form-control" name="replyMessage" type="text" ng-model="replyMessage" placeholder="Reply">
+        <input class="btn btn-primary submit" type="submit" value="submit">
+      </form>
+    </div>
+  </div>
+</article>
 
 </div>
