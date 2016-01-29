@@ -258,6 +258,7 @@ public class CodeChampionsController {
         return newMessage;
     }
 
+    @JsonView(View.userSummaryWithMessages.class)
     @RequestMapping("/newPM")
     public Message newPM(HttpSession session, @RequestBody Message tempMessage) {
         String username = (String) session.getAttribute("username");
@@ -270,11 +271,13 @@ public class CodeChampionsController {
         message.messageText = tempMessage.messageText;
         message.user = user;
         message.replyUser = user2;
+        message.messageTime = LocalDateTime.now();
         messages.save(message);
         System.out.println("New Private Message!");
         return message;
     }
 
+    @JsonView(View.userSummaryWithMessages.class)
     @RequestMapping("/myPM")
     public List<Message> myPM(HttpSession session, HttpServletResponse response) {
         String username = (String) session.getAttribute("username");
@@ -282,7 +285,6 @@ public class CodeChampionsController {
         List<Message> myMessages = new ArrayList();
         myMessages.addAll(messages.findAllByUser(user));
         myMessages.addAll(messages.findAllByReplyUser(user));
-       // List<Message> myPMs = myMessages.stream()
         return myMessages;
     }
 
