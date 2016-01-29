@@ -23,7 +23,7 @@
       <div class="col-xs-10">{{pm.user.username}}<img ng-src="../../images/avatars/{{pm.user.avatar}}"> {{pm.messageText}}
       </div>
     </div>
-  <section ng-repeat="reply in pm.replies">
+  <section ng-repeat="reply in pm.replies | orderBy: 'id'">
     <div class="row">
       <div class="col-xs-10">{{reply.user.username}}<img ng-src="../../images/avatars/{{reply.user.avatar}}"> {{reply.messageText}}
       </div>

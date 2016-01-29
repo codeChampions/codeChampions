@@ -36,6 +36,7 @@
           angular.element(document).find('input[name="newMessage"]').val("");
           angular.element(document).find('input[name="replyUser"]').val("");
           PMService.sendNewMessage(replyUser, newMessage).then(function(res){
+            vm.getPM();
           });
         };
 
