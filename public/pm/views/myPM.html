@@ -6,7 +6,7 @@
 <section class="row message">
   <div class="col-xs-12">
     <div class="col-xs-1"></div>
-    <div class="col-xs-2 btn upload" ng-click="sendNewMessage = !sendNewMessage">Send Message</div>
+    <button class="btn upload" ng-click="sendNewMessage = !sendNewMessage">Send Message</button>
     <form class="col-xs-12" ng-submit="PMCtrl.sendNewMessage(replyUser, newMessage)">
       <input ng-show="sendNewMessage" class="classRoomInput input" name="replyUser" type="text" ng-model="replyUser" placeholder="Send to" value="">
       <input ng-show="sendNewMessage" class="classRoomInput input formMessage" name="newMessage" type="text" ng-model="newMessage" placeholder="Message" value="">
