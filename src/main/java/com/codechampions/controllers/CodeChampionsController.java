@@ -271,7 +271,16 @@ public class CodeChampionsController {
         message.messageText = tempMessage.messageText;
         message.user = user;
         message.replyUser = user2;
+
         message.messageTime = LocalDateTime.now().toString();
+        String[] tempArray = message.messageTime.split("T");
+        String[] date = tempArray[0].split("-");
+        String[] time = tempArray[1].split(":");
+        String dateStr = date[1].toString() + "-" + date[2].toString() + "-" + date[0].toString() + " ";
+        String timeStr = time[0].toString() + ":" + time[1].toString();
+        String cleanTime = dateStr + timeStr;
+        message.messageTime = cleanTime;
+
         messages.save(message);
         System.out.println("New Private Message!");
         return message;
@@ -299,6 +308,20 @@ public class CodeChampionsController {
         }
         else {
             response.sendError(403, "Can't delete messages that you didn't create");
+        }
+    }
+
+    @RequestMapping("/read/{id}")
+    public void isRead(HttpServletResponse response, @PathVariable("id") int id) {
+        Message pM = messages.findOne(id);
+        pM.isRead = true;
+        messages.save(pM);
+
+        for (Message temp : messages.findAll()) {
+            if (pM.id == temp.replyId) {
+                temp.isRead = true;
+                messages.save(temp);
+            }
         }
     }
 
