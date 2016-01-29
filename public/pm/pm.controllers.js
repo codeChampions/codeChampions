@@ -13,6 +13,15 @@
             vm.pm = _.filter(res.data, function(currVal){
               return currVal.replyId === 0;
             });
+            _.each(vm.pm, function(currVal, idx, arr){
+              if(currVal.user.username === vm.username){
+                arr[idx].title = currVal.replyUser.username;
+              }
+              else{
+                arr[idx].title = currVal.user.username;
+              }
+            });
+            console.log(vm.pm);
           });
         };
         vm.getPM();
