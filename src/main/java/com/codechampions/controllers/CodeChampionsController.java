@@ -119,22 +119,22 @@ public class CodeChampionsController {
             users.save(katie);
         }
 
-            Message message1 = new Message(1, -1, "Lesson11 Message Board", admin, LocalDateTime.now());
-            Message message2 = new Message(2, -1, "Game11 Message Board", admin, LocalDateTime.now());
-            Message message3 = new Message(3, -1, "Lesson12 Message Board", admin, LocalDateTime.now());
-            Message message4 = new Message(4, -1, "Game12 Message Board", admin, LocalDateTime.now());
-            Message message5 = new Message(5, -1, "Game13 Message Board", admin, LocalDateTime.now());
-            Message message6 = new Message(6, -1, "Lesson21 Message Board", admin, LocalDateTime.now());
-            Message message7 = new Message(7, -1, "Game21 Message Board", admin, LocalDateTime.now());
-            Message message8 = new Message(8, -1, "Game22 Message Board", admin, LocalDateTime.now());
-            Message message9 = new Message(9, -1, "Lesson22 Message Board", admin, LocalDateTime.now());
-            Message message10 = new Message(10, -1, "Game23 Message Board", admin, LocalDateTime.now());
-            Message message11 = new Message(11, -1, "Lesson31 Message Board", admin, LocalDateTime.now());
-            Message message12 = new Message(12, -1, "Game31 Message Board", admin, LocalDateTime.now());
-            Message message13 = new Message(13, -1, "Lesson32 Message Board", admin, LocalDateTime.now());
-            Message message14 = new Message(14, -1, "Game32 Message Board", admin, LocalDateTime.now());
-            Message message15 = new Message(15, -1, "Lesson33 Message Board", admin, LocalDateTime.now());
-            Message message16 = new Message(16, -1, "Game33 Message Board", admin, LocalDateTime.now());
+            Message message1 = new Message(1, -1, "Lesson11 Message Board", admin, LocalDateTime.now().toString());
+            Message message2 = new Message(2, -1, "Game11 Message Board", admin, LocalDateTime.now().toString());
+            Message message3 = new Message(3, -1, "Lesson12 Message Board", admin, LocalDateTime.now().toString());
+            Message message4 = new Message(4, -1, "Game12 Message Board", admin, LocalDateTime.now().toString());
+            Message message5 = new Message(5, -1, "Game13 Message Board", admin, LocalDateTime.now().toString());
+            Message message6 = new Message(6, -1, "Lesson21 Message Board", admin, LocalDateTime.now().toString());
+            Message message7 = new Message(7, -1, "Game21 Message Board", admin, LocalDateTime.now().toString());
+            Message message8 = new Message(8, -1, "Game22 Message Board", admin, LocalDateTime.now().toString());
+            Message message9 = new Message(9, -1, "Lesson22 Message Board", admin, LocalDateTime.now().toString());
+            Message message10 = new Message(10, -1, "Game23 Message Board", admin, LocalDateTime.now().toString());
+            Message message11 = new Message(11, -1, "Lesson31 Message Board", admin, LocalDateTime.now().toString());
+            Message message12 = new Message(12, -1, "Game31 Message Board", admin, LocalDateTime.now().toString());
+            Message message13 = new Message(13, -1, "Lesson32 Message Board", admin, LocalDateTime.now().toString());
+            Message message14 = new Message(14, -1, "Game32 Message Board", admin, LocalDateTime.now().toString());
+            Message message15 = new Message(15, -1, "Lesson33 Message Board", admin, LocalDateTime.now().toString());
+            Message message16 = new Message(16, -1, "Game33 Message Board", admin, LocalDateTime.now().toString());
 
             messages.save(message1);
             messages.save(message2);
@@ -271,7 +271,7 @@ public class CodeChampionsController {
         message.messageText = tempMessage.messageText;
         message.user = user;
         message.replyUser = user2;
-        message.messageTime = LocalDateTime.now();
+        message.messageTime = LocalDateTime.now().toString();
         messages.save(message);
         System.out.println("New Private Message!");
         return message;
@@ -455,7 +455,7 @@ public class CodeChampionsController {
             newBoard.replyId = -1;
             newBoard.messageText = String.format("%s Message Board", classroom.className);
             newBoard.user = user;
-            newBoard.messageTime = LocalDateTime.now();
+            newBoard.messageTime = LocalDateTime.now().toString();
             messages.save(newBoard);
 
             classroom.messageBoard = newBoard;
