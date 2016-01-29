@@ -15,5 +15,29 @@
     <div class="col-xs-3"></div>
   </div>
 </section>
+<article ng-repeat="pm in PMCtrl.pm">
+  <h3 ng-click="showChain = !showChain">{{pm.title}}
+  </h3>
+  <section ng-show="showChain">
+    <div class="row">
+      <div class="col-xs-10">{{pm.user.username}}<img ng-src="../../images/avatars/{{pm.user.avatar}}"> {{pm.messageText}}
+      </div>
+    </div>
+  <section ng-repeat="reply in pm.replies | orderBy: 'id'">
+    <div class="row">
+      <div class="col-xs-10">{{reply.user.username}}<img ng-src="../../images/avatars/{{reply.user.avatar}}"> {{reply.messageText}}
+      </div>
+    </div>
+  </section>
+    <div class="row">
+      <div class="col-xs-10">
+        <form ng-submit="PMCtrl.sendReply(pm.title, replyMessage, pm.id)">
+          <input class="messageForm form-control" name="replyMessage" type="text" ng-model="replyMessage" placeholder="Reply">
+          <input class="btn btn-primary submit" type="submit" value="submit">
+        </form>
+      </div>
+    </div>
+  </section>
+</article>
 
 </div>
