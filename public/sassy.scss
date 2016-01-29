@@ -628,6 +628,20 @@ aside {
   }
 }
 
+// private messages
+
+.message {
+  .upload {
+    margin-bottom: 10px;
+  }
+  .formMessage {
+    width: 300px;
+  }
+  .classRoomInput {
+    font-size: 16px;
+  }
+}
+
 @media only screen and (max-width: 1000px){
 
   .progress {
