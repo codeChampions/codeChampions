@@ -14,12 +14,19 @@
               return currVal.replyId === 0;
             });
             _.each(vm.pm, function(currVal, idx, arr){
-              if(currVal.user.username === vm.username){
-                arr[idx].title = currVal.replyUser.username;
-              }
-              else{
-                arr[idx].title = currVal.user.username;
-              }
+                arr[idx].replies=[];
+                if(currVal.user.username === vm.username){
+                  arr[idx].title = currVal.replyUser.username;
+                }
+                else{
+                  arr[idx].title = currVal.user.username;
+                }
+                  _.each(res.data, function(resVal, resIdx, resArr){
+                    if(resVal.replyId === currVal.id){
+                      arr[idx].replies.push(resVal);
+                    }
+                  });
+
             });
             console.log(vm.pm);
           });

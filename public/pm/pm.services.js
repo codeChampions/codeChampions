@@ -15,12 +15,13 @@
         return $http.post(sendMessageUrl, obj);
       };
       var sendReply = function(toName, replyMessage, Id){
-        var obj = {messageText: replyMessage, replyUser: {username: toName}, replyID: Id};
+        var obj = {messageText: replyMessage, replyUser: {username: toName}, replyId: Id};
         return $http.post(sendMessageUrl, obj);
       };
       return{
           getPM: getPM,
-          sendNewMessage: sendNewMessage
+          sendNewMessage: sendNewMessage,
+          sendReply: sendReply
       };
     });
 }());
