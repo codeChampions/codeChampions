@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -278,7 +279,11 @@ public class CodeChampionsController {
     public List<Message> myPM(HttpSession session, HttpServletResponse response) {
         String username = (String) session.getAttribute("username");
         User user = users.findOneByUsername(username);
-        return messages.findAllByUser(user);
+        List<Message> myMessages = new ArrayList();
+        myMessages.addAll(messages.findAllByUser(user));
+        myMessages.addAll(messages.findAllByReplyUser(user));
+       // List<Message> myPMs = myMessages.stream()
+        return myMessages;
     }
 
     @RequestMapping("/deleteMessage/{id}")
